@@ -1,7 +1,6 @@
 # About Data Base
 ## Data Base URL
-[Click here to access database ](https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/)
-
+https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/
 
 ## Tables
 ### users
