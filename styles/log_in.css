@@ -54,6 +54,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .log-in-headline-container {
@@ -79,13 +80,86 @@ body {
     font-weight: 700;
 }
 
-.log-in-input-field {
-    width: 422px;
-    height: 48px;
-    margin-top: 30px;
-    border-radius: 10px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 1);
+.login-forms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.log-in-input-field-mail {
+    width: 422px;
+    height: 48px;
+    margin: 30px 0 20px 0;
+    border-radius: 10px;
+    border: 2px solid rgba(209, 209, 209, 1) !important;
+    outline: none; 
+    background-image: url('/asset/images/grey-mail.svg');
+    background-repeat: no-repeat;
+    background-position: 380px 10px; 
+    padding-left: 21px;
+    font-size: 20px;
+    color: rgba(209, 209, 209, 1);
+}
+
+.log-in-input-field-mail::placeholder {
+    font-size: 20px;
+    color: rgba(209, 209, 209, 1);
+}
+
+.log-in-input-field-password{
+    width: 422px;
+    height: 48px;
+    margin: 30px 0 20px 0;
+    border-radius: 10px;
+    border: 2px solid rgba(209, 209, 209, 1) !important;
+    outline: none; 
+    background-image: url('/asset/images/grey-mail.svg');
+    background-repeat: no-repeat;
+    background-position: 380px 10px; 
+    padding-left: 21px;
+    font-size: 20px;
+    color: rgba(209, 209, 209, 1);
+}
+
+.log-in-input-field-password::placeholder{
+    font-size: 20px;
+    color: rgba(209, 209, 209, 1);
+}
+
+.login-forms-submit-buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 322px;
+}
+
+.login-forms-submit-buttons-login {
+    padding: 15px 24px 15px 24px;
+    background-color: rgba(42, 54, 71, 1);
+    border-radius: 8px;
+    font-size: 21px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 1);
+}
+
+.login-forms-submit-buttons-guest {
+    padding: 15px 24px 15px 24px;
+    border: 1px solid rgba(42, 54, 71, 1);
+    border-radius: 8px;
+    font-size: 21px;
+    font-weight: 700;
+    color: rgba(42, 54, 71, 1);
+}
+
+.login-footer{
+    width: 246px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.login-footer a {
+    text-decoration: none;
+    color: rgba(168, 168, 168, 1);
+    font-size: 16px;
+}
