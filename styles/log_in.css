@@ -1,0 +1,91 @@
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/asset/fonts/inter-v18-latin-regular.woff2') format('woff2');
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter';
+}
+
+.content {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    position: absolute;
+    top: 80px;
+    left: 77px;
+    width: 100px;
+}
+
+.sign-up-container {
+    position: absolute;
+    top: 80px;
+    right: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 35px;
+}
+
+.sign-up-container-text {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);   
+}
+
+.sign-up-container-field {
+    cursor: pointer;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+    padding: 15px 16px 15px 16px;
+    background-color: rgba(42, 54, 71, 1);
+    border-radius: 8px;
+}
+
+.log-in-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.log-in-headline-container {
+    position: relative;
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.log-in-headline-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    height: 3px; 
+    background-color: rgba(41, 171, 226, 1);
+}
+
+.log-in-headline {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.log-in-input-field {
+    width: 422px;
+    height: 48px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 1);
+}
+
