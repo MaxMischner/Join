@@ -6,20 +6,28 @@
 async function getAllUsers(){
     let response = await fetch(BASE_URL_USER + ".json");
     let responseJSON = await response.json();
+
+    let keys = Object.keys(responseJSON);
     
-    let allUsers = Object.values(responseJSON).filter(e => e !== null);
+    let allUsers = [];
+    for (let index = 0; index < keys.length; index++) {
+        const key = keys[index];
+        const value = responseJSON[key];
+        if (responseJSON[key]) allUsers.push({[key]: value});
+    }   
+
     return allUsers;
 }
 
 // test
-// getAllUsers().then(() => {
+// getAllUsers().then(allUsers => {
 //     console.log(allUsers);
 // })
 
 /**
  * 
  * @param {String} id id is only to be passed by updating user info.
- * @param {object} data 
+ * @param {object} data {email:"xin33@gmail.com", name:"Yang Xin", password:"1234567"}
  */
 async function putUser(data, id="") {
     let allUsers = await getAllUsers();
