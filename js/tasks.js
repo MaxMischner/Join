@@ -33,8 +33,17 @@ async function getAllTasks(){
 
 /**
  * 
- * @param {String} id id is only to be passed by updating contact info.
- * @param {object} data {email:"Anna@gmail.com", name:"Anna Yang", phone:"+4913023269953"}
+ * @param {String} id id is only to be passed by updating task info.
+ * @param {object} data {
+                        title:"Meeting at 10", 
+                        description:"call everybody", 
+                        assigned:"Max, Xin",
+                        category:"User Story",
+                        duedate:"+4913023269953",
+                        priority:"Medium",
+                        status:"Await feedback",
+                        subtasks:["call everybody", "nobody ist there"]
+                        }
  */
 async function putTask(data, id="") {
     let allTasks = await getAllTasks();
