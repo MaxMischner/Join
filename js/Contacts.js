@@ -56,3 +56,13 @@ async function putContact(data, id="") {
 // test edit contact
 // putContact({email:"Anna@gmail.com", name:"Anna Yang", phone:"+4913023269953"}, 1);
 
+
+async function deleteContact(id) {
+    let response = await fetch(BASE_URL_CONTACT + id + ".json", {
+        method: "DELETE"
+    })
+    return responseToJSON = await response.json();
+}
+
+// test delete one contact
+// deleteContact("-OMO6ieY9mPBiA33sDmv");

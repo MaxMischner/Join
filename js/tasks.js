@@ -86,3 +86,13 @@ async function putTask(data, id="") {
 //     status:"Await feedback",
 //     subtasks:["call everybody", "nobody ist there"]
 // }, "-OMOecH28TWHgoUqicT4");
+
+async function deleteTask(id) {
+    let response = await fetch(BASE_URL_TASK + id + ".json", {
+        method: "DELETE"
+    })
+    return responseToJSON = await response.json();
+}
+
+// test delete one task
+// deleteTask("-OMOecH28TWHgoUqicT4");
