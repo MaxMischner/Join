@@ -14,11 +14,10 @@ phone
 ### tasks
 title\
 description\
-category\
-priority\
-status\
+category\ Technical Task, Administration Task, User Story
+priority\ Urgent Medium Low
+status\  To do, In progress, Await feedback, Done 
 subtasks\
 duedate\
 assgined
-
 
