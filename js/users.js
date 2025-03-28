@@ -15,7 +15,7 @@ async function getAllUsers(){
         const value = responseJSON[key];
         if (responseJSON[key]) allUsers.push({[key]: value});
     }   
-
+     
     return allUsers;
 }
 
