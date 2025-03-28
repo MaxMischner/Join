@@ -5,11 +5,20 @@ let doneTasks = [];
 let urgentTasks = [];
 let awaitFeedback = [];
 let inProgress = [];
+let upcomingDeadline = null;
 
+
+/**
+ * onload init Function
+ */
 async function init() {
-    await getTasks()
+    await getTasks();
 }
 
+
+/**
+ * fetch the tasks from firebase API and start next render Functions
+ */
 async function getTasks() {
     let response = await fetch(BASE_URL_TASK + ".json");
     let responseJson = await response.json();    
@@ -18,8 +27,15 @@ async function getTasks() {
         renderTodoDone(keys, index);
         renderUrgent(keys, index);
         renderSummary(keys, index);
+        renderDeadline()
     } 
 }
+
+/**
+ * render the values in the first line of the site (To do and Done)
+ * @param {*} keys 
+ * @param {*} index 
+ */
 
 async function renderTodoDone(keys, index) {
     let response = await fetch(BASE_URL_TASK + ".json");
@@ -45,6 +61,23 @@ async function renderUrgent(keys, index) {
     }
 }
 
+async function renderDeadline() {
+    let response = await fetch(BASE_URL_TASK + ".json");
+    let responseJson = await response.json();  
+    let tasksArray = Object.values(responseJson);
+    for (let i = 0; i < tasksArray.length; i++) {
+        let task = tasksArray[i];
+        if (task.duedate && task.duedate !== 'null') {
+            if (upcomingDeadline === null || new Date(task.duedate) < new Date(upcomingDeadline)) {
+                upcomingDeadline = task.duedate;  
+            }
+        }
+    }
+    deadline = moment(upcomingDeadline).format('ll');
+    document.getElementById('deadline').innerHTML = deadline; 
+}
+
+
 async function renderSummary(keys, index) {
     let response = await fetch(BASE_URL_TASK + ".json");
     let responseJson = await response.json();   
@@ -54,7 +87,7 @@ async function renderSummary(keys, index) {
     if (task.status === "in Progress") {
         awaitFeedback.push(task)
         document.getElementById('taksProgress').innerHTML = awaitFeedback.length; 
-    }else if (task.status === "await feedback") { 
+    }else if (task.status === "await Feedback") { 
         awaitFeedback.push(task);
         document.getElementById('awaitFeedback').innerHTML = awaitFeedback.length; 
     }
