@@ -13,6 +13,17 @@ let upcomingDeadline = null;
  */
 async function init() {
     await getTasks();
+    setTimeout(() => {
+        renderContent();
+    }, 800);
+}
+
+/**
+ * Wait till all elements are loaded in the fields
+ */
+
+function renderContent() {
+    document.getElementById('summaryContent').classList.remove('d-none')    
 }
 
 
@@ -76,7 +87,6 @@ async function renderDeadline() {
     deadline = moment(upcomingDeadline).format('ll');
     document.getElementById('deadline').innerHTML = deadline; 
 }
-
 
 async function renderSummary(keys, index) {
     let response = await fetch(BASE_URL_TASK + ".json");

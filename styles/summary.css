@@ -242,6 +242,10 @@ body {
     color: rgba(41, 171, 226, 1)
 }
 
+.d-none {
+    display: none;
+}
+
 @media (max-width: 1700px) {
     .conten-middle{
         margin-right: 310px;
