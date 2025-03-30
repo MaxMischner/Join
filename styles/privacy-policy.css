@@ -1,0 +1,11 @@
+.privacy-policy-container{
+    padding: 0 50px 50px;
+}
+
+.privacy-policy-container h4:first-child {
+    margin-top: 0px;
+}
+
+.privacy-policy-container h4 {
+    margin-top: 20px;
+}

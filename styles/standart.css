@@ -1,0 +1,56 @@
+:root {
+    --main-container-bg:#f6f7f9;
+    --main-card-bg:#fff;
+    --sidebar-text: #cdcdcd;
+    --sidebar-text-selected: #fff;
+}
+
+@font-face{
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/asset/fonts/inter-v18-latin-regular.woff2') format('woff2');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Inter';
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:visited {
+    color: var(--sidebar-text);
+    text-decoration: none;
+}
+
+
+.white-card {
+    border-radius: 10px;
+    background-color: var(--main-card-bg);
+    padding: 10px 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.d-none {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    
+
+    .white-card {
+        padding: 5px 10px !important;
+    }
+}
+

@@ -1,145 +1,24 @@
-@font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/asset/fonts/inter-v18-latin-regular.woff2') format('woff2');
-}
-
-body {
-    margin: 0;
-    font-family: 'Inter';
-}
-
-.widescreen {
-    max-width: 1920px;
-    margin: auto;
-}
-
-.sidebar-dummy {
-    width: 232px;
-    height: 100vh;
-    background-color: rgba(42, 54, 71, 1);      
-}
-
-.content {
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header {
-    height: 96px;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1)
-}
-
-.header-left {
-    font-size: 20px;
-    margin-left: 350px;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 1);
-}
-
-.header-right {
-    width: 104px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 5%;
-}
-
-.header-right-help {
-    cursor: pointer;
-}
-
-.header-right-name {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: white;  
-    color: rgba(41, 171, 226, 1); 
-    border: 2px solid black;  
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase; 
-    cursor: pointer;
-}
-
-.conten-middle{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 580px;
-}
-
-.content-left {
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    margin: 75 0px 0 30px;
-}
-
-.headline {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 80px;
-    width: 625px;
-}
-
-.headline-left {
-    font-size: 61px;
-    font-weight: 700;
-    color: rgba(0, 0, 0, 1);
-}
-
-.headline-border {
-    height: 59px;
-    width: 3px;
-    background-color: rgba(41, 171, 226, 1);
-}
-
-.headline-right {
-    font-size: 27px;
-    font-weight: 400;
-    color: rgba(42, 54, 71, 1);
-}
 
 .summary-tasks {
-    padding-left: 30x;
     display: flex;
     flex-direction: column;
-    width: 625px;
 }
 
 .summary-tasks-todo-done {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 115px 0 30px;
+    gap:20px;
+    
 }
 
 .summary-tasks-todo {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex: 1;
+}
+
+.summary-tasks-done {
+    flex: 1;
 }
 
 .summary-tasks-todo-image {
@@ -154,6 +33,7 @@ body {
     align-items: center;
 }
 
+
 .summary-tasks-todo-number{
     font-size: 64px;
 }
@@ -167,7 +47,13 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 60px 115px 60px 50px;
+    margin: 20px 0;
+}
+
+.summary-tasks-urgent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .summary-tasks-urgent-image {
@@ -180,6 +66,7 @@ body {
     width: 2px;
     height: 102px;
     background-color: rgba(209, 209, 209, 1);
+    margin: 0 20px;
 }
 
 .summary-tasks-urgent-date-deadline{
@@ -200,17 +87,17 @@ body {
 
 .summary-tasks-task-summary {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 0 80px 0 30px;
+    gap: 20px;
 }
 
 .summary-tasks-task-summary-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100px;
+    flex: 1;
+
 }
 
 .summary-tasks-task-summary-number {
@@ -268,42 +155,10 @@ body {
 }
 
 @media (max-width: 1320px) {
-    .conten-middle{
-        margin-right: 220px;
-    }
-
-    .headline {
-        width: 450px;
-    }
-    
-
-    .headline-left {
-        font-size: 41px;
-    }
-    
-    .headline-right {
-        font-size: 18px;
-    }
-
-    .summary-tasks {
-        padding-left: 20x;
-        width: 450px;
-    }
-    
-    .summary-tasks-todo-done {
-        margin: 0 80px 0 20px;
-    }    
-  
     .summary-tasks-todo-image {
         width: 49px;
         height: auto;
         margin-right: 15px;
-    }
-    
-    .summary-tasks-todo-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
     
     .summary-tasks-todo-number{
@@ -314,9 +169,7 @@ body {
         font-size: 13px;
     }
     
-    .summary-tasks-urgent-container{
-        margin: 40px 85px 40px 35px;
-    }
+   
     
     .summary-tasks-urgent-image {
         width: 44px;
@@ -324,9 +177,6 @@ body {
         margin-right: 10px;
     }
     
-    .summary-tasks-urgent-border{
-        height: 80;
-    }
     
     .summary-tasks-urgent-date {
         font-size: 16;
@@ -338,32 +188,12 @@ body {
         font-weight: 400;
     }
     
-    .summary-tasks-task-summary {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0 80px 0 30px;
-    }
-    
-    .summary-tasks-task-summary-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 80px;
-    }
-    
     .summary-tasks-task-summary-number {
         font-size: 44px;
     }
     
     .summary-tasks-task-summary-text {
         font-size: 13px;
-    }
-    
-    .content-right {
-        display: flex;
-        flex-direction: column;
     }
     
     .content-right-text-greeting {
@@ -376,18 +206,31 @@ body {
     
 }
 
-@media (max-width: 1200px) {
-    .conten-middle{
-        margin-right: 120px;
+@media (max-width: 780px) {
+    .content-right {
+        display: none;
     }
 
-    .header-left {
-        margin-left: 300px;
+    .headline {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .headline-border {
+        height: 3px;
+        width: 59px;
+        margin: 10px 0;
+    }
+
+    .content-middle {
+        display: block;
+        padding: 0 50px;
+        margin-left: 0px;
     }
 }
 
-@media (max-width: 1070px) {
-    .conten-middle{
-        margin-right: 50px;
+@media (max-width: 400px) { 
+    .content-middle {
+        padding: 0 20px;
     }
 }
