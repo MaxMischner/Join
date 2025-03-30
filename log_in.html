@@ -11,7 +11,7 @@
 
 </head>
 
-<body onload="init()">
+<body>
     <div class="content">
         <img class="logo" src="/asset/images/logo.svg" alt="">
         <div class="sign-up-container">
@@ -24,12 +24,12 @@
             <div class="log-in-headline-container">
                 <span class="log-in-headline">Log in</span>
             </div>
-            <form class="login-forms" action="">
-                <input class="log-in-input-field-mail" type="email" placeholder="Email" name="uname" required>
-                <input class="log-in-input-field-password" type="text" placeholder="Password" name="uname" required>
+            <form onsubmit="login();return false" class="login-forms" action="">
+                <input id="loginEmail" class="log-in-input-field-mail" type="email" placeholder="Email" name="uname" required>
+                <input id="loginPassword" class="log-in-input-field-password" type="text" placeholder="Password" name="uname" required>
                 <div class="login-forms-submit-buttons">
-                    <button class="login-forms-submit-buttons-login">Log in</button>
-                    <button class="login-forms-submit-buttons-guest">Guest Log in</button>
+                    <button type="submit" class="login-forms-submit-buttons-login">Log in</button>
+                    <div class="login-forms-submit-buttons-guest">Guest Log in</div>
                 </div>
             </form>
         </div>
@@ -39,5 +39,6 @@
         </footer>   
     </div>    
 </body>
-
+<script src="/js/log_in.js"></script>
+<script src="/script.js"></script>
 </html>
