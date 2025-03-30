@@ -17,13 +17,12 @@ async function init() {
         renderContent();
     }, 800);
 }
-
 /**
  * Wait till all elements are loaded in the fields
  */
 
 function renderContent() {
-    document.getElementById('summaryContent').classList.remove('d-none')    
+    document.getElementById('contentMiddle').classList.remove('d-none')    
 }
 
 
