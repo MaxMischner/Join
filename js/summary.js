@@ -27,7 +27,8 @@ async function initSummary() {
  */
 
 function renderContent() {
-    document.getElementById('mainContainer').classList.remove('d-none')    
+    document.getElementById('mainContainer').classList.remove('d-none');
+    document.getElementById('waitLogo').classList.add('d-none');
 }
 
 function renderInitials(activeUser) {

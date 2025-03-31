@@ -1,4 +1,12 @@
 
+.wait-logo {
+    width: 250px;
+    height: auto;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+}
+
 .summary-tasks {
     display: flex;
     flex-direction: column;
@@ -6,8 +14,7 @@
 
 .summary-tasks-todo-done {
     display: flex;
-    gap:20px;
-    
+    gap:20px;    
 }
 
 .summary-tasks-todo {
@@ -207,6 +214,11 @@
 }
 
 @media (max-width: 780px) {
+    .wait-logo {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
     .content-right {
         display: none;
     }
@@ -230,6 +242,10 @@
 }
 
 @media (max-width: 400px) { 
+    .wait-logo {
+    width: 150px;
+    }
+    
     .content-middle {
         padding: 0 20px;
     }

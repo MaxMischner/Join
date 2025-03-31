@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./styles/sidebar.css">
     <link rel="stylesheet" href="./styles/standart.css">
     <link rel="stylesheet" href="./styles/summary.css">
+    <link rel="stylesheet" href="./styles/board.css">
 </head>
 <body onload=""> 
     <div class="content">
@@ -65,15 +66,29 @@
                             </svg>
                         </div>
                     </a>
-                    <div class="header-right-name">SM</div>
+                    <div class="header-right-name">G</div>
                 </div>
 
             </header>
             <div class="content-left">
-                <div class="headline">
-                    <span class="headline-left">Board</span>
-                   
-                </div>   
+                <div class="headline headline-board">
+                    <span class="headline-left">Board</span>       
+                    <div class="add-task-container">
+                        <div class="board-search-field-container">
+                            <input class="board-search-field" type="text" placeholder="Find Task">
+                            <div class="search-field-border"></div>
+                        </div>                        
+                        <div class="add-task-button">
+                            <div>Add task</div>
+                            <img class="add-task-button-plus" src="/asset/images/add-task-button-plus-sign.png" alt="">
+                        </div>
+                    </div>            
+                </div>  
+                
+                
+
+
+
             </div> 
         
         </div>
@@ -83,4 +98,5 @@
 <script src="/js/summary.js"></script>
 <script src="/js/users.js"></script>
 <script src="/js/moment.js"></script>
+<script src="/js/board.js"></script>
 </html>
