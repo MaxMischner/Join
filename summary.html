@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/standart.css">
     <link rel="stylesheet" href="./styles/summary.css">
 </head>
-<body onload="init()"> 
+<body onload="initSummary()"> 
     <div class="content">
         <div class="sidebar-dummy">
             <img class="pointer" src="./asset/images/logo-light.svg" alt="" onclick="window.location.reload()">
@@ -49,7 +49,7 @@
                 </li>
             </ul>
         </div>
-        <div class="main-container">   
+        <div id="mainContainer" class="main-container d-none">   
             <header class="header">
                 <img src="./asset/images/logo.svg" alt="" class="header-logo d-none" width="32" height="39">
                 <span class="header-left">Kanban Project Management Tool</span>
@@ -66,7 +66,7 @@
                             </svg>
                         </div>
                     </a>
-                    <div class="header-right-name">SM</div>
+                    <div id="initialNames" class="header-right-name"></div>
                 </div>
 
             </header>
@@ -76,7 +76,7 @@
                     <div class="headline-border"></div>
                     <span class="headline-right">Key Metrics at a Glance</span>
                 </div>
-                    <div id="contentMiddle" class="content-middle d-none">  
+                    <div id="contentMiddle" class="content-middle">  
                         <div class="summary-tasks">
                             <div class="summary-tasks-todo-done">
                                 <div class="summary-tasks-todo white-card">
@@ -126,8 +126,8 @@
                             </div>
                         </div>
                         <div class="content-right">
-                            <span class="content-right-text-greeting">Good Morning</span>
-                            <span class="content-right-text-name">Sofia Müller</span>
+                            <span id="greeting" class="content-right-text-greeting">Hello</span>
+                            <span id="userName" class="content-right-text-name"></span>
                         </div>
                     </div>      
             </div> 
@@ -139,4 +139,5 @@
 <script src="/js/summary.js"></script>
 <script src="/js/users.js"></script>
 <script src="/js/moment.js"></script>
+<script src="/js/log_in.js"></script>
 </html>

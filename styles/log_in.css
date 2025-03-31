@@ -57,7 +57,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: var(--main-card-bg);
+    background-color: white;
     width: 652px;
     height: 449px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);

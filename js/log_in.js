@@ -1,4 +1,4 @@
-activeUser = [];
+let activeUser = [];
 
 async function init() {
     let response = await fetch(BASE_URL_USER + ".json");
@@ -16,12 +16,16 @@ async function login() {
     let users = Object.values(responseJSON);
     let user = users.find(u => u.email == email && u.password == password);    
     if(user) {
-        console.log('gefunden');  
-        console.log(user);
         activeUser.push (user);
-        console.log('active User: ' + JSON.stringify(activeUser));
+        localStorage.setItem("activeUser", JSON.stringify(activeUser));
+        window.location.href = "summary.html";
  
     }else {
         console.log('nicht gefunden');        
     }    
+}
+
+function guestLogin() {
+    localStorage.removeItem("activeUser");
+    window.location.href = "summary.html";
 }

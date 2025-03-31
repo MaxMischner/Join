@@ -11,18 +11,33 @@ let upcomingDeadline = null;
 /**
  * onload init Function
  */
-async function init() {
+async function initSummary() {
     await getTasks();
+    let activeUser = JSON.parse(localStorage.getItem("activeUser"));
+    renderName (activeUser);
+    renderGreeting();
+    renderInitials(activeUser);
     setTimeout(() => {
         renderContent();
     }, 800);
 }
+
 /**
  * Wait till all elements are loaded in the fields
  */
 
 function renderContent() {
-    document.getElementById('contentMiddle').classList.remove('d-none')    
+    document.getElementById('mainContainer').classList.remove('d-none')    
+}
+
+function renderInitials(activeUser) {
+    if (!activeUser) {
+        document.getElementById('initialNames').innerHTML = "G"; 
+   }else {
+        let originalName = activeUser[0].name;
+        let initials = originalName.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+        document.getElementById('initialNames').innerHTML = initials; 
+    }
 }
 
 
@@ -37,7 +52,7 @@ async function getTasks() {
         renderTodoDone(keys, index);
         renderUrgent(keys, index);
         renderSummary(keys, index);
-        renderDeadline()
+        renderDeadline();
     } 
 }
 
@@ -100,4 +115,23 @@ async function renderSummary(keys, index) {
         awaitFeedback.push(task);
         document.getElementById('awaitFeedback').innerHTML = awaitFeedback.length; 
     }
+}
+
+function renderGreeting() {
+    let today = new Date();
+    let hour = today.getHours()
+    if((hour >=0) && (hour <=9))
+    document.getElementById('greeting').innerHTML = 'Good Morning'
+    if((hour >=10) && (hour <=18))
+    document.getElementById('greeting').innerHTML = 'Good Day'
+    if((hour >=19) && (hour <=23))
+    document.getElementById('greeting').innerHTML = 'Good Evening'
+}
+
+
+function renderName(activeUser) {
+   if (!activeUser) {
+        document.getElementById('userName').innerHTML = ""; 
+   }else
+        document.getElementById('userName').innerHTML = activeUser[0].name; 
 }
