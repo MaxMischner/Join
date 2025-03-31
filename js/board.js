@@ -30,9 +30,16 @@ async function getAllTasks() {
     
 }
 
+
 function renderProgressTasks() {
     let inProgress = document.getElementById('inProgress'); 
+    let ToDo = document.getElementById('ToDo'); 
+   
     for (let index = 0; index < allTasks.length; index++) {
-        inProgress.innerHTML += showInProgressTasks(index);        
-    } 
-}
+        if (allTasks[index].status === "in Progress") {
+            inProgress.innerHTML += showInProgressTasks(index);        
+        } 
+        if (allTasks[index].status === "To do") {
+            ToDo.innerHTML += showToDoTasks(index);        
+        } 
+    }}
