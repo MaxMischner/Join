@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join – Contacts</title>
+    <link rel="icon" href="./asset/images/fav.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./styles/sidebar.css" />
+    <link rel="stylesheet" href="./styles/standart.css" />
+    <link rel="stylesheet" href="./styles/contacts.css" />
+  </head>
+  <body onload="initContactsPage()">
+    <div class="content">
+      <!-- Sidebar -->
+      <div class="sidebar-dummy">
+        <img class="pointer" src="./asset/images/logo-light.svg" alt="Join Logo" onclick="window.location.href='index.html'">
+        <ul class="sidebar-middle">
+          <li class="pointer"><a href="summary.html"><img src="./asset/images/sidebar-imgs/summary.png" alt=""><span>Summary</span></a></li>
+          <li class="pointer"><a href="add_task.html"><img src="./asset/images/sidebar-imgs/add_task.png" alt=""><span>Add Task</span></a></li>
+          <li class="pointer"><a href="board.html"><img src="./asset/images/sidebar-imgs/board.png" alt=""><span>Board</span></a></li>
+          <li class="sidebar-li-selected pointer"><a href="contacts.html"><img src="./asset/images/sidebar-imgs/contacts.png" alt=""><span>Contacts</span></a></li>
+        </ul>
+        <ul class="sidebar-bottom">
+          <li class="pointer"><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li class="pointer"><a href="legal-notice.html">Legal Notice</a></li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-container">
+        <!-- Header -->
+        <header class="header">
+          <img src="./asset/images/logo.svg" alt="Join Logo" class="header-logo d-none" width="32" height="39" />
+          <span class="header-left">Kanban Project Management Tool</span>
+          <div class="header-right">
+            <a href="help.html"><div class="header-right-help">?</div></a>
+            <div class="header-right-name">SM</div>
+          </div>
+        </header>
+
+        <!-- Body -->
+        <div class="contacts-body">
+          <!-- Left Side -->
+          <div class="contacts-left">
+            <button class="btn primary-btn full-width" onclick="toggleAddContactForm()">Add new contact</button>
+
+            <!-- Add Contact Form -->
+            <div id="add-contact-form" class="add-contact-form d_none">
+              <form onsubmit="addNewContact(event)" novalidate>
+                <input type="text" id="contact-name" placeholder="Name" required />
+                <input type="email" id="contact-email" placeholder="Email" required />
+                <input type="tel" id="contact-phone" placeholder="Telefon" required />
+                <div class="form-buttons">
+                  <button type="submit" class="btn">Speichern</button>
+                  <button type="button" class="btn cancel-btn" onclick="toggleAddContactForm()">Abbrechen</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Contact List -->
+            <div id="contacts-list" class="contacts-list">
+              <!-- Dynamisch gefüllt -->
+            </div>
+          </div>
+
+          <!-- Right Side -->
+          <div class="contacts-right" id="contacts-detail">
+            <h1>Contacts <span class="blue-line">|</span> <span class="subtext">Better with a team</span></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/contacts.js"></script>
+    <script src="./js/users.js"></script>
+  </body>
+</html>
