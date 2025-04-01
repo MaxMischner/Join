@@ -5,8 +5,7 @@ async function init() {
     renderInitials(activeUser);
     await getAllTasks();  
     await  renderTasks();  
-    randomBackgroundColor();
-    
+    randomBackgroundColor();    
 }
 
 function renderInitials(activeUser) {
@@ -35,15 +34,16 @@ async function renderTasks() {
         renderTodo(index);
         renderAwaitFeedback(index);
         renderDone(index);    
-        
+        // renderTaskInitials(index);   
     }
 }
 
 function renderProgress(index) {
     let inProgress = document.getElementById('inProgress'); 
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    let names = allTasks[index].assigned.split(',');
     if (allTasks[index].status === "in Progress") {
-        inProgress.innerHTML += showInProgressTasks(index, subtasksClass);  // Übergabe von categoryColor an showInProgressTasks
+        inProgress.innerHTML += showInProgressTasks(index, subtasksClass, names);  // Übergabe von categoryColor an showInProgressTasks
     } 
 }
 
@@ -110,6 +110,30 @@ function randomBackgroundColor(index) {
   "#9b59b6"  // lavender purple
       ];
     let backgroundColor = Colors[Math.floor(Math.random()*Colors.length)];
-    console.log(backgroundColor);
     return backgroundColor;    
 }
+
+function toggleOverlay() {
+    let overlayRef = document.getElementById('overlay')
+    overlayRef.classList.toggle('d-none');  
+}
+
+function renderAddTaskOverlay() {
+    let overlay = document.getElementById('overlay');
+    overlay.innerHTML = showAddTaskOverlay();
+    overlay.classList.remove('d-none');
+}
+
+function noBubbling(event) {
+    event.stopPropagation();
+}   
+
+function getInitials(names) {
+    let initials = names.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+    return initials;
+    
+    }
+
+    
+    
+   

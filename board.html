@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="./styles/standart.css">
     <link rel="stylesheet" href="./styles/summary.css">
     <link rel="stylesheet" href="./styles/board.css">
+    <link rel="stylesheet" href="/styles/add_task.css">
 </head>
 <body onload="init()"> 
     <div class="content">
+        <div onclick="toggleOverlay()" id="overlay" class="d-none overlay-box "></div> 
         <div class="sidebar-dummy">
             <img class="pointer" src="./asset/images/logo-light.svg" alt="" onclick="window.location.reload()">
             <ul class="sidebar-middle">
@@ -69,6 +71,8 @@
                     <div id="initialNames" class="header-right-name">G</div>
                 </div>
             </header>
+
+            
             
             <div class="content-left">
                 <div class="headline headline-board">
@@ -78,8 +82,8 @@
                             <input class="board-search-field" type="text" placeholder="Find Task">
                             <div class="search-field-border"></div>
                         </div>                        
-                        <div class="add-task-button">
-                            <div>Add task</div>
+                        <div onclick="renderAddTaskOverlay()" class="add-task-button">
+                            <div class="add-task-button-text">Add task</div>
                             <img class="add-task-button-plus" src="/asset/images/add-task-button-plus-sign.png" alt="">
                         </div>
                     </div>            
@@ -89,7 +93,7 @@
                     <div class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">To Do</span>
-                            <img class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
+                            <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
                         </div>
                         <div id="ToDo"></div>
                     </div>  
@@ -97,7 +101,7 @@
                     <div class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">In Progress</span>
-                            <img class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
+                            <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
                         </div>
 
                         <div id="inProgress">
@@ -108,7 +112,7 @@
                     <div class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">Await feedback</span>
-                            <img class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
+                            <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
                         </div>
 
                         <div id="await"></div>
@@ -118,17 +122,12 @@
                     <div class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">Done</span>
-                            <img class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
+                            <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
                         </div>
                         <div id="done"></div>
                     </div>  
 
-                </div>
-                
-                
-
-
-
+                </div>             
             </div> 
         
         </div>
@@ -141,4 +140,5 @@
 <script src="/js/users.js"></script>
 <script src="/js/moment.js"></script>
 <script src="/js/board.js"></script>
+<script src="/js/add_task.js"></script>
 </html>
