@@ -1,0 +1,20 @@
+.join-text {
+    color: rgb(41, 171, 226);
+    font-weight: bold;
+}
+.contact-info {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.help-container {
+    padding: 0 50px 50px;
+}
+
+.help-container h2 {
+    margin-top: 20px;
+}
+
+.help-container h3 {
+    margin-top: 10px;
+}

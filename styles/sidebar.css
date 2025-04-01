@@ -1,0 +1,127 @@
+.sidebar-dummy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 232px;
+    height: 100vh;
+    background-color: rgba(42, 54, 71, 1); 
+    color: var(--sidebar-text); 
+}
+
+.sidebar-dummy a {
+    color: var(--sidebar-text);
+}
+
+
+.sidebar-dummy > img {
+    margin-top: 50px;
+}
+
+.sidebar-dummy .sidebar-middle {
+    width: 100%;
+    margin-top: 100px;
+    flex-grow: 1;
+}
+
+.sidebar-dummy .sidebar-middle img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.sidebar-dummy .sidebar-middle li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 0;
+}
+
+.sidebar-dummy .sidebar-middle li a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 35px;
+}
+
+.sidebar-dummy .sidebar-middle li a:hover {
+    color: #fff;
+}
+
+
+.sidebar-dummy li.sidebar-li-selected {
+    color: var(--sidebar-text-selected);
+    background-color: #091931;
+}
+
+.sidebar-dummy .sidebar-bottom {
+    width: 100%;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.sidebar-dummy .sidebar-bottom li {
+    height: 40px;
+}
+
+.sidebar-dummy .sidebar-bottom li a {
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    display: block;
+}
+
+.sidebar-dummy .sidebar-bottom li a:hover {
+    color: #fff;
+}
+
+@media (max-width: 780px) {
+    .sidebar-dummy .sidebar-bottom {
+        display: none;
+    }
+
+    .sidebar-dummy > img {
+        display: none;
+    }
+
+    .sidebar-dummy .sidebar-middle {
+        margin-top: 0;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        display: flex;
+    }
+
+    .sidebar-dummy .sidebar-middle li {
+        height: 80px;
+        width: 25%;
+        margin-top: 0;
+        padding: 0;
+        align-items: center;
+    }
+
+    .sidebar-dummy .sidebar-middle li a{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0;
+        width: 100%;
+        height: 80px;
+        padding-left: 0px;
+    }
+
+    .sidebar-dummy .sidebar-middle img {
+        margin-right: 0;
+    }
+
+    .sidebar-dummy {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 80px;
+        width: 100% !important;
+    }
+
+}

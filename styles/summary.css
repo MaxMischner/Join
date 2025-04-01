@@ -1,0 +1,252 @@
+
+.wait-logo {
+    width: 250px;
+    height: auto;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+}
+
+.summary-tasks {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-tasks-todo-done {
+    display: flex;
+    gap:20px;    
+}
+
+.summary-tasks-todo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+}
+
+.summary-tasks-done {
+    flex: 1;
+}
+
+.summary-tasks-todo-image {
+    width: 69px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.summary-tasks-todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.summary-tasks-todo-number{
+    font-size: 64px;
+}
+
+.summary-tasks-todo-text {
+    font-size: 20px;
+}
+
+.summary-tasks-urgent-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.summary-tasks-urgent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.summary-tasks-urgent-image {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.summary-tasks-urgent-border{
+    width: 2px;
+    height: 102px;
+    background-color: rgba(209, 209, 209, 1);
+    margin: 0 20px;
+}
+
+.summary-tasks-urgent-date-deadline{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.summary-tasks-urgent-date {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.summary-tasks-urgent-deadline {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.summary-tasks-task-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.summary-tasks-task-summary-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+}
+
+.summary-tasks-task-summary-number {
+    font-size: 64px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1)
+}
+
+.summary-tasks-task-summary-text {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    color: (42, 54, 71, 1)
+}
+
+.content-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-right-text-greeting {
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.content-right-text-name{
+    font-size: 64px;
+    font-weight: 700;
+    color: rgba(41, 171, 226, 1)
+}
+
+.d-none {
+    display: none;
+}
+
+@media (max-width: 1700px) {
+    .conten-middle{
+        margin-right: 310px;
+    }
+    
+}
+
+@media (max-width: 1600px) {
+    .conten-middle{
+        margin-right: 180px;
+    }
+    
+}
+
+@media (max-width: 1420px) {
+    .conten-middle{
+        margin-right: 80px;
+    }
+    
+}
+
+@media (max-width: 1320px) {
+    .summary-tasks-todo-image {
+        width: 49px;
+        height: auto;
+        margin-right: 15px;
+    }
+    
+    .summary-tasks-todo-number{
+        font-size: 44px;
+    }
+    
+    .summary-tasks-todo-text {
+        font-size: 13px;
+    }
+    
+   
+    
+    .summary-tasks-urgent-image {
+        width: 44px;
+        height: auto;
+        margin-right: 10px;
+    }
+    
+    
+    .summary-tasks-urgent-date {
+        font-size: 16;
+        font-weight: 700;
+    }
+    
+    .summary-tasks-urgent-deadline {
+        font-size: 12;
+        font-weight: 400;
+    }
+    
+    .summary-tasks-task-summary-number {
+        font-size: 44px;
+    }
+    
+    .summary-tasks-task-summary-text {
+        font-size: 13px;
+    }
+    
+    .content-right-text-greeting {
+        font-size: 32px;
+    }
+    
+    .content-right-text-name{
+        font-size: 44px;
+    }
+    
+}
+
+@media (max-width: 780px) {
+    .wait-logo {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .content-right {
+        display: none;
+    }
+
+    .headline {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .headline-border {
+        height: 3px;
+        width: 59px;
+        margin: 10px 0;
+    }
+
+    .content-middle {
+        display: block;
+        padding: 0 50px;
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 400px) { 
+    .wait-logo {
+    width: 150px;
+    }
+    
+    .content-middle {
+        padding: 0 20px;
+    }
+}

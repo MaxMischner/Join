@@ -1,0 +1,210 @@
+/** CONTACTS CSS – angepasst an Figma-Vorlage **/
+
+.contacts-body {
+    display: flex;
+    height: calc(100vh - 80px);
+    background-color: #f6f7f8;
+}
+
+.contacts-left {
+    width: 32%;
+    padding: 2rem;
+    background-color: white;
+    border-right: 1px solid #d1d1d1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contacts-right {
+    flex-grow: 1;
+    padding: 60px 80px;
+    background-color: #f6f7f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contacts-right h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.contacts-right .blue-line {
+    color: #29abe2;
+    font-weight: 700;
+    margin-left: 8px;
+}
+
+.contacts-right .subtext {
+    font-weight: 400;
+    color: #6b6b6b;
+    font-size: 22px;
+}
+
+.btn.primary-btn {
+    background-color: #2a3647;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 24px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn.primary-btn:hover {
+    background-color: #1f2a3b;
+}
+
+.add-contact-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.form-buttons .btn {
+    flex: 1;
+    margin: 0 4px;
+    font-weight: 600;
+}
+
+.cancel-btn {
+    background-color: #ddd;
+}
+
+.contact-letter {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 12px 0 8px 0;
+    color: #555;
+    padding-left: 8px;
+}
+
+.contact-entry {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.contact-entry:hover {
+    background-color: #f2f2f2;
+}
+
+.contact-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #29abe2;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-info b {
+    display: block;
+    font-size: 16px;
+}
+
+.contact-info small {
+    color: #29abe2;
+    font-size: 13px;
+}
+
+.contact-detail-card {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.contact-detail-header {
+    padding: 40px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFA726;
+}
+
+.contact-detail-initials {
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+}
+
+.contact-detail-body {
+    padding: 20px 30px 30px;
+}
+
+.contact-detail-body h2 {
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.contact-detail-body p {
+    margin: 6px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-detail-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-detail-actions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.contact-detail-actions button:first-child {
+    background-color: #29abe2;
+    color: white;
+}
+
+.contact-detail-actions button:last-child {
+    background-color: #ef5350;
+    color: white;
+}
+
+/* Utility */
+.d_none {
+    display: none !important;
+}
+
