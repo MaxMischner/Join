@@ -91,7 +91,6 @@ body {
 
 .board-splits {
     width: 25%;
-
 }
 
 .board-splits-category {
@@ -99,7 +98,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: 244px;
+    max-width: 274px;
 }
 
 .board-splits-text {
@@ -125,9 +124,10 @@ body {
     margin-top: 15px;
     gap:16px;
     background-color: rgba(255, 255, 255, 1);
+    max-width: 247px;
 }
 
-.tasks-content-category {
+.tasks-content-user {
     width: 113px;
     color: rgba(255, 255, 255, 1);
     background-color: rgba(0, 56, 255, 1);
@@ -135,7 +135,26 @@ body {
     text-align: center;
     vertical-align: middle;
     padding: 4px 0 4px 0;
+}
 
+.tasks-content-technical {
+    width: 144px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(31, 215, 193, 1);
+    border-radius: 8px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px 0 4px 0;
+}
+
+.tasks-content-default {
+    width: 113px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 56, 255, 1);
+    border-radius: 8px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px 0 4px 0;
 }
 
 .tasks-content-title {
@@ -150,6 +169,11 @@ body {
     font-weight: 400;
     line-height: 120%;
     color: rgba(168, 168, 168, 1);
+    width : 200px;
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 3; 
+    overflow: hidden; 
 }
 
 .tasks-content-done {
@@ -187,12 +211,11 @@ body {
     justify-content: center;
 }
 
-.assigned1 {
+.assigned {
     width: 32px;
     height: 32px;
     font-size: 12px;
     font-weight: 400;
-    background-color: rgba(255, 122, 0, 1);
     color: rgba(255, 255, 255, 1);
     border-radius: 45px;
     border: 1px solid rgba(255, 255, 255, 1);
@@ -202,12 +225,29 @@ body {
     margin-right: -7px;
 }
 
-.priority {
-    
+.priority-low {
     background-image: url('/asset/images/priority-low.png');
     width: 32px;
     height: 32px;
     object-fit: contain;
+}
+
+.priority-medium {
+    background-image: url('/asset/images/priority-mid.png');
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.priority-Urgent {
+    background-image: url('/asset/images/priority-high.png');
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.d-none {
+    display: none;
 }
 
 
