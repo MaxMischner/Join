@@ -70,9 +70,7 @@
                     </a>
                     <div id="initialNames" class="header-right-name">G</div>
                 </div>
-            </header>
-
-            
+            </header>            
             
             <div class="content-left">
                 <div class="headline headline-board">
@@ -89,8 +87,8 @@
                     </div>            
                 </div>  
                     
-                <div class="board-splits-container">
-                    <div class="board-splits">
+                <div id="boardSplitsContainer" class="board-splits-container">
+                    <div ondrop="moveTo('To do')" ondragover="allowDrop(event)" class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">To Do</span>
                             <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
@@ -98,7 +96,7 @@
                         <div id="ToDo"></div>
                     </div>  
 
-                    <div class="board-splits">
+                    <div ondrop="moveTo('in Progress')" ondragover="allowDrop(event)" class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">In Progress</span>
                             <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
@@ -109,7 +107,7 @@
                         </div>
                     </div>  
 
-                    <div class="board-splits">
+                    <div ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">Await feedback</span>
                             <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
@@ -119,7 +117,7 @@
                         
                     </div>  
 
-                    <div class="board-splits">
+                    <div ondrop="moveTo('done')" ondragover="allowDrop(event)" class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">Done</span>
                             <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">

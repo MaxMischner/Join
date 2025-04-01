@@ -1,4 +1,5 @@
 let allTasks = [];
+let currentDraggedElement;
 
 async function init() {
     let activeUser = JSON.parse(localStorage.getItem("activeUser"));
@@ -24,17 +25,21 @@ async function getAllTasks() {
     let keys = Object.keys(responseJson);  
     for (let index = 0; index < keys.length; index++) {
         let task = responseJson[keys[index]];
-        allTasks.push(task);          
-    }          
+        allTasks.push(task);                 
+    }      
+        
 }
 
 async function renderTasks() {  
+    document.getElementById('inProgress').innerHTML = "";
+    document.getElementById('ToDo').innerHTML = "";
+    document.getElementById('await').innerHTML = "";
+    document.getElementById('done').innerHTML = "";
     for (let index = 0; index < allTasks.length; index++) {
         renderProgress(index);
         renderTodo(index);
         renderAwaitFeedback(index);
         renderDone(index);    
-        // renderTaskInitials(index);   
     }
 }
 
@@ -70,7 +75,7 @@ function renderDone(index) {
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
     let names = allTasks[index].assigned.split(',');
     if (allTasks[index].status === "done") {
-        done.innerHTML += showDoneTasks(index, subtasksClass, names);        
+        done.innerHTML += showDoneTasks(index, subtasksClass, names);              
     }           
 }
 
@@ -134,8 +139,22 @@ function noBubbling(event) {
 function getInitials(names) {
     let initials = names.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
     return initials;
+}
+
+function startDragging(index) {
+    currentDraggedElement = index;
     
-    }
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(category) {
+    allTasks[currentDraggedElement]['status'] = category;
+    renderTasks();    
+}
+  
 
     
     

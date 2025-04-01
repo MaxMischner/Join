@@ -130,6 +130,8 @@ body {
 
 .board-splits {
     width: 25%;
+    min-height: calc(100vh - 300px);
+    margin-bottom: 50px;
 }
 
 .board-splits-category {

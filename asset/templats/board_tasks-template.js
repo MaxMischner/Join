@@ -1,6 +1,6 @@
 function showInProgressTasks(index, subtasksClass, names) {
     return `
-            <div class="tasks-content">
+            <div draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
@@ -25,7 +25,7 @@ function showInProgressTasks(index, subtasksClass, names) {
 
 function showToDoTasks(index, subtasksClass, names) {
     return `
-            <div class="tasks-content">
+            <div draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
@@ -49,7 +49,7 @@ function showToDoTasks(index, subtasksClass, names) {
 
 function showAwaitFeedbackTasks(index, subtasksClass, names) {
     return `
-            <div class="tasks-content">
+            <div draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
@@ -73,7 +73,7 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
 
 function showDoneTasks(index, subtasksClass, names) {
     return `
-            <div class="tasks-content">
+            <div draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('done')" ondragover="allowDrop(event)" class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
