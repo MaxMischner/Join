@@ -50,24 +50,27 @@ function renderProgress(index) {
 function renderTodo(index) {
     let ToDo = document.getElementById('ToDo'); 
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    let names = allTasks[index].assigned.split(',');
     if (allTasks[index].status === "To do") {
-        ToDo.innerHTML += showToDoTasks(index, subtasksClass);        
+        ToDo.innerHTML += showToDoTasks(index, subtasksClass, names);        
     } 
 }
 
 function renderAwaitFeedback(index) {
     let await = document.getElementById('await');
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    let names = allTasks[index].assigned.split(',');
     if (allTasks[index].status === "await Feedback") {
-        await.innerHTML += showAwaitFeedbackTasks(index, subtasksClass);        
+        await.innerHTML += showAwaitFeedbackTasks(index, subtasksClass, names);        
     } 
 }
 
 function renderDone(index) {
     let done = document.getElementById('done'); 
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    let names = allTasks[index].assigned.split(',');
     if (allTasks[index].status === "done") {
-        done.innerHTML += showDoneTasks(index, subtasksClass);        
+        done.innerHTML += showDoneTasks(index, subtasksClass, names);        
     }           
 }
 

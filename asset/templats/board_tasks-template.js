@@ -12,8 +12,10 @@ function showInProgressTasks(index, subtasksClass, names) {
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
                         <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[1] ? getInitials(names[1]) : ""}</span>
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
+                        ${names[1] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[1])}</span>` : ""}
+                        ${names[2] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[2])}</span>` : ""}
+                        ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
+                        ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
@@ -21,7 +23,7 @@ function showInProgressTasks(index, subtasksClass, names) {
         `
 }
 
-function showToDoTasks(index, subtasksClass) {
+function showToDoTasks(index, subtasksClass, names) {
     return `
             <div class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
@@ -33,9 +35,11 @@ function showToDoTasks(index, subtasksClass) {
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
+                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
+                        ${names[1] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[1])}</span>` : ""}
+                        ${names[2] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[2])}</span>` : ""}
+                        ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
+                        ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
@@ -43,7 +47,7 @@ function showToDoTasks(index, subtasksClass) {
         `
 }
 
-function showAwaitFeedbackTasks(index, subtasksClass) {
+function showAwaitFeedbackTasks(index, subtasksClass, names) {
     return `
             <div class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
@@ -55,9 +59,11 @@ function showAwaitFeedbackTasks(index, subtasksClass) {
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
+                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
+                        ${names[1] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[1])}</span>` : ""}
+                        ${names[2] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[2])}</span>` : ""}
+                        ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
+                        ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
@@ -65,7 +71,7 @@ function showAwaitFeedbackTasks(index, subtasksClass) {
         `
 }
 
-function showDoneTasks(index, subtasksClass) {
+function showDoneTasks(index, subtasksClass, names) {
     return `
             <div class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
@@ -77,9 +83,11 @@ function showDoneTasks(index, subtasksClass) {
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">AM</span>
+                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
+                        ${names[1] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[1])}</span>` : ""}
+                        ${names[2] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[2])}</span>` : ""}
+                        ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
+                        ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
