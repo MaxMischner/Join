@@ -1,6 +1,6 @@
 function showInProgressTasks(index, subtasksClass, names) {
     return `
-            <div draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
+            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
@@ -25,7 +25,7 @@ function showInProgressTasks(index, subtasksClass, names) {
 
 function showToDoTasks(index, subtasksClass, names) {
     return `
-            <div draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
+            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
@@ -49,7 +49,7 @@ function showToDoTasks(index, subtasksClass, names) {
 
 function showAwaitFeedbackTasks(index, subtasksClass, names) {
     return `
-            <div draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="tasks-content">
+            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
@@ -73,7 +73,7 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
 
 function showDoneTasks(index, subtasksClass, names) {
     return `
-            <div draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('done')" ondragover="allowDrop(event)" class="tasks-content">
+            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('done')" ondragover="allowDrop(event)" class="tasks-content">
                 <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
@@ -94,6 +94,71 @@ function showDoneTasks(index, subtasksClass, names) {
             </div>
         `
 }
+
+function showTaskDetail(index, names, subtasksClass) {
+    return `
+            <div onclick="noBubbling(event)" class="task-detail-container">
+                <div class="task-detail-head">
+                    <span class="overlay-tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
+                    <img onclick="toggleOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt="">
+                </div>
+                <span class="task-detail-title">${allTasks[index].title}</span>
+                <span class="task-detail-description">${allTasks[index].description}</span>
+                <span class="task-detail-due-date">Due date: ${taskDeatilDueDate(allTasks[index].duedate)}</span>
+                <div class="task-detail-due-priority-container">
+                    <span class="task-detail-due-priority-text">Priority: </span>
+                    <span class="task-detail-due-priority">${allTasks[index].priority}</span>
+                    <div class="task-detail-priority-${allTasks[index].priority}"></div>
+                </div>
+                <span class="task-detail-due-date">Assigned To:</span>
+                <div class="task-detail-assigned">
+                    <div class="task-detail-assigned-container">
+                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
+                        <span class="task-detail-assigned-name">${names[0] ? names[0] : ""}</span>
+                    </div>
+                    ${names[1] ? `<div class="task-detail-assigned-container">
+                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[1] ? getInitials(names[1]) : ""}</span>
+                        <span class="task-detail-assigned-name">${names[1] ? names[1] : ""}</span>
+                    </div>` : ""}
+                    ${names[2] ? `<div class="task-detail-assigned-container">
+                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[2] ? getInitials(names[2]) : ""}</span>
+                        <span class="task-detail-assigned-name">${names[2] ? names[2] : ""}</span>
+                    </div>` : ""}
+                    ${names[3] ? `<div class="task-detail-assigned-container">
+                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[3] ? getInitials(names[3]) : ""}</span>
+                        <span class="task-detail-assigned-name">${names[3] ? names[3] : ""}</span>
+                    </div>` : ""}
+                    ${names[4] ? `<div class="task-detail-assigned-container">
+                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[4] ? getInitials(names[4]) : ""}</span>
+                        <span class="task-detail-assigned-name">${names[4] ? names[4] : ""}</span>
+                    </div>` : ""}
+                </div>
+                <div class="task-detail-subtasks-container ${subtasksClass}">        
+                    <span class="task-detail-subtasks">Subtasks</span>
+                    <div class="task-detail-subtask-container">
+                        <div class="task-detail-subtask-image-${getSubTaskImage(index)}"></div>
+                        <div class="task-detail-subtask-text"> ${subtaskWords[0].name}</div><br>
+                    </div>
+                    <div class="task-detail-subtask-container">
+                        <div class="task-detail-subtask-image-${getSubTaskImage(index)}"></div>
+                        <div class="task-detail-subtask-text"> ${subtaskWords[1].name}</div><br>
+                    </div>
+                </div>
+                <div class="task-detail-delete-edit-container">
+                    <div class="task-detail-delete-container">
+                        <img class="task-detail-delete-image" src="/asset/images/board-task-detail-delete.png" alt="">
+                        <Span class="task-detail-delete-text">Delete</Span>
+                    </div>     
+                    <div class="task-detail-delete-container-border"></div>
+                    <div class="task-detail-delete-container">
+                        <img class="task-detail-edit-image" src="/asset/images/board-task-detail-edit.png" alt="">
+                        <Span class="task-detail-delete-text">Edit</Span>
+                    </div>                
+                </div>
+            </div>
+        `
+}
+
 
 function showAddTaskOverlay() {
     return `

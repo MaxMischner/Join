@@ -14,23 +14,7 @@
 </head>
 <body onload="init()"> 
     <div class="content">
-        <div onclick="toggleOverlay()" id="overlay" class=" overlay-box ">
-            <div class="task-detail-container">
-                <div class="task-detail-head">
-                    <span class="overlay-tasks-content-user">User Story</span>
-                    <img class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt="">
-                </div>
-                <span class="task-detail-title">Kochwelt Page & Recipe Recommender</span>
-                <span class="task-detail-description">Build start page with recipe recommendation</span>
-                <span class="task-detail-due-date">Due date: 10/05/2023</span>
-                <div class="task-detail-due-priority-container">
-                    <span class="task-detail-due-priority-text">Priority: </span>
-                    <span class="task-detail-due-priority-priority">Medium</span>
-                    <div class="task-detail-priority-${allTasks[index].priority}"></div>
-                </div>
-            </div>
-
-        </div> 
+        <div onclick="toggleOverlay()" id="overlay" class="overlay-box d-none"></div> 
 
 
         <div class="sidebar-dummy">

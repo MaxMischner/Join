@@ -1,4 +1,5 @@
 let allTasks = [];
+let subtaskWords = [];
 let currentDraggedElement;
 
 async function init() {
@@ -172,6 +173,43 @@ function getDoneSubtasks(index) {
     }    
 }
 
+function renderTaskDetail(index) {
+    let overlay = document.getElementById('overlay');
+    let names = allTasks[index].assigned.split(',');
+    let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    let subtasks = allTasks[index].subtasks;
+    
+    
+    for (let i = 0; i < subtasks.length; i++) {
+        // Parsen des Strings in ein echtes Objekt
+        let subtaskObj = JSON.parse('{' + subtasks[i] + '}');       
+        subtaskWords.push({
+            name: subtaskObj.name,
+            completed: subtaskObj.completed
+        });
+    }    
+    overlay.innerHTML = showTaskDetail(index, names, subtasksClass);
+    overlay.classList.remove('d-none');
+    console.log(subtaskWords);
+    let subtaskWords = [];
+}
+
+function taskDeatilDueDate(date) {
+   let dueDate = moment(date).format('L');     
+   return dueDate
+}
+
+function getSubTaskImage(index) {
+    let subTasks = allTasks[index].subtasks;  
+    if(!subTasks){
+        return}
+    if (subTasks.filter(subtask => subtask.includes('"completed" : true'))) {
+        subTaskCheck = 'on'
+    }else {
+        subTaskCheck = 'off'
+    }
+    return subTaskCheck
+}
     
    
     
