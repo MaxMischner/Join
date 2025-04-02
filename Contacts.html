@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="./styles/sidebar.css">
     <link rel="stylesheet" href="./styles/standart.css">
     <link rel="stylesheet" href="./styles/summary.css">
+    <link rel="stylesheet" href="/styles/Contacts.css">
 </head>
-<body onload=""> 
+<body onload="init()"> 
     <div class="content">
         <div class="sidebar-dummy">
             <img class="pointer" src="./asset/images/logo-light.svg" alt="" onclick="window.location.reload()">
@@ -70,9 +71,12 @@
 
             </header>
             <div class="content-left">
+                <div class="contact_list">
+                    <button>Add new contact</button>
+                    <div id="contact-list"></div>
+                </div>
                 <div class="headline">
                     <span class="headline-left">Contacts</span>
-                    
                 </div>
                          
             </div> 
@@ -80,6 +84,7 @@
         </div>
     </div>
 </body>
+<script src="/js/Contacts.js"></script>
 <script src="/script.js"></script>
 <script src="/js/summary.js"></script>
 <script src="/js/users.js"></script>

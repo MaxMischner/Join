@@ -1,5 +1,7 @@
 let BASE_URL_CONTACT =
   "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/contacts";
+  let BASE_URL_TASK =
+  "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/tasks";
 
 let title = "";
 let description = "";
@@ -334,10 +336,10 @@ async function saveTask() {
     status,
     subtasks,
   };
-  await putTask(data, id);
+  await putTask(data);
   resetForm();
   // Weiterleitung
-  window.location.href = ""; //  Zielseite später
+  window.location.href = "board.html"; //  Zielseite später
 }
 
 async function getAllTasks() {
@@ -357,19 +359,17 @@ async function getAllTasks() {
   return allTasks;
 }
 
-let BASE_URL_TASK =
-  "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/tasks";
-
 async function putTask(data, id = "") {
   let allTasks = await getAllTasks();
-  let response = await fetch(BASE_URL_TASK + id + ".json", {
-    method: id ? "PUT" : "POST",
+  const response = await fetch(BASE_URL_TASK + ".json", {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
-  let responseToJson = await response.json();
+
+  const responseToJson = await response.json();
   console.log("Response:", responseToJson);
   return responseToJson;
 }
