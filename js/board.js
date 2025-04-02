@@ -27,9 +27,7 @@ async function getAllTasks() {
         let task = responseJson[keys[index]];
         task.firebaseID = keys[index];
         allTasks.push(task);                 
-    }      
-    console.log(allTasks);
-           
+    }                 
 }
 
 async function renderTasks() {  
@@ -159,10 +157,28 @@ async function moveTo(status) {
     let response = await fetch(`${BASE_URL_TASK}/${task.firebaseID}.json`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: status })  // Nur den Status ändern!
+        body: JSON.stringify({ status: status }) 
     });
     let responseJson = await response.json();
-}     
+}
+
+function getDoneSubtasks(index) {
+    let subTasks = allTasks[index].subtasks;   
+    if(!subTasks){
+        return
+    }else{
+    let doneSubtasks = subTasks.filter(subtask => subtask.includes('"completed" : true'));
+    return doneSubtasks.length;    
+    }    
+}
+
+    
+   
+    
+
+
+   
+
 
  
 

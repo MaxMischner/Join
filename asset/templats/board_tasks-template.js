@@ -6,8 +6,8 @@ function showInProgressTasks(index, subtasksClass, names) {
                 <span class="tasks-content-description">${allTasks[index].description}</span>
                 
                 <div id="subtasks" class="tasks-content-done ${subtasksClass}">
-                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="1" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
-                    <span class="tasks-content-done-text">1/${subTaskLenght(index)} Subtasks</span>
+                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
+                    <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>                
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
@@ -30,8 +30,8 @@ function showToDoTasks(index, subtasksClass, names) {
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
                 <div class="tasks-content-done ${subtasksClass}">
-                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="1" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
-                    <span class="tasks-content-done-text">1/${subTaskLenght(index)} Subtasks</span>
+                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
+                    <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
@@ -54,8 +54,8 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
                 <div class="tasks-content-done ${subtasksClass}">
-                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="1" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
-                    <span class="tasks-content-done-text">1/${subTaskLenght(index)} Subtasks</span>
+                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
+                    <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
@@ -78,8 +78,8 @@ function showDoneTasks(index, subtasksClass, names) {
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
                 <div class="tasks-content-done ${subtasksClass}">
-                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="1" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
-                    <span class="tasks-content-done-text">1/${subTaskLenght(index)} Subtasks</span>
+                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
+                    <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
