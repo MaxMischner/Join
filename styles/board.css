@@ -288,9 +288,125 @@ body {
     object-fit: contain;
 }
 
+/* overlay: */
+.task-detail-container {
+    height: 800px;
+    width: 525px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    gap: 24px;
+
+}
+
+.task-detail-head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 40px 0 40px;
+}
+
+.overlay-tasks-content-user {
+    width: 164px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 56, 255, 1);
+    border-radius: 8px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px 0 4px 0;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.overlay-tasks-content-technical {
+    width: 164px;;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(31, 215, 193, 1);
+    border-radius: 8px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px 0 4px 0;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.task-detail-close-button {
+    width: 24px;
+    height: auto;
+}
+
+.task-detail-title {
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 0 40px 0 40px;
+}
+
+.task-detail-description {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+    margin: 0 40px 0 40px;
+}
+
+.task-detail-due-date {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+    margin: 0 40px 0 40px;
+    color: rgba(42, 54, 71, 1);
+}
+
+.task-detail-priority-low {
+    background-image: url('/asset/images/priority-low.png');
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+}
+
+.task-detail-priority-medium {
+    background-image: url('/asset/images/priority-mid.png');
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+}
+
+.task-detail-priority-Urgent {
+    background-image: url('/asset/images/priority-high.png');
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+}
+
+.task-detail-due-priority-container {
+    margin: 0 40px 0 40px;
+}
+
+.task-detail-due-priority-text {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+    color: rgba(42, 54, 71, 1);
+    margin-right: 25px;
+}
+
+.task-detail-due-priority-priority {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 120%;
+    color: rgba(42, 54, 71, 1);
+}
+
+
+
 .d-none {
     display: none;
 }
+
+
 
 
 
