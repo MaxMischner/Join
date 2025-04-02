@@ -2,11 +2,11 @@ let allTasks = [];
 let currentDraggedElement;
 
 async function init() {
-    let activeUser = JSON.parse(localStorage.getItem("activeUser"));
+    let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
     renderInitials(activeUser);
     await getAllTasks();  
     await  renderTasks();  
-    randomBackgroundColor();    
+    randomBackgroundColor();       
 }
 
 function renderInitials(activeUser) {
@@ -25,9 +25,11 @@ async function getAllTasks() {
     let keys = Object.keys(responseJson);  
     for (let index = 0; index < keys.length; index++) {
         let task = responseJson[keys[index]];
+        task.firebaseID = keys[index];
         allTasks.push(task);                 
     }      
-        
+    console.log(allTasks);
+           
 }
 
 async function renderTasks() {  
@@ -150,11 +152,19 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
-    allTasks[currentDraggedElement]['status'] = category;
+async function moveTo(status) {
+    let task = allTasks[currentDraggedElement]; 
+    task.status = status; 
     renderTasks();    
-}
-  
+    let response = await fetch(`${BASE_URL_TASK}/${task.firebaseID}.json`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: status })  // Nur den Status ändern!
+    });
+    let responseJson = await response.json();
+}     
+
+ 
 
     
     
