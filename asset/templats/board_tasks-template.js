@@ -133,17 +133,22 @@ function showTaskDetail(index, names, subtasksClass) {
                         <span class="task-detail-assigned-name">${names[4] ? names[4] : ""}</span>
                     </div>` : ""}
                 </div>
-                <div class="task-detail-subtasks-container ${subtasksClass}">        
-                    <span class="task-detail-subtasks">Subtasks</span>
-                    <div class="task-detail-subtask-container">
-                        <div class="task-detail-subtask-image-${getSubTaskImage(index)}"></div>
-                        <div class="task-detail-subtask-text"> ${subtaskWords[0].name}</div><br>
-                    </div>
-                    <div class="task-detail-subtask-container">
-                        <div class="task-detail-subtask-image-${getSubTaskImage(index)}"></div>
-                        <div class="task-detail-subtask-text"> ${subtaskWords[1].name}</div><br>
-                    </div>
-                </div>
+                ${subtaskContent.length > 0 ?                                  
+                    `<div class="task-detail-subtasks-container ${subtasksClass}">        
+                        <span class="task-detail-subtasks">Subtasks</span>
+                        ${(() => {
+                            let subtaskHTML = "";
+                            for (let i = 0; i < subtaskContent.length; i++) {
+                                subtaskHTML += `
+                                    <div class="task-detail-subtask-container">
+                                        <div class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
+                                        <div class="task-detail-subtask-text">${subtaskContent[i].name}</div><br>
+                                    </div>
+                                `;
+                            }
+                            return subtaskHTML;
+                        })()}
+                    </div>` : ""}
                 <div class="task-detail-delete-edit-container">
                     <div class="task-detail-delete-container">
                         <img class="task-detail-delete-image" src="/asset/images/board-task-detail-delete.png" alt="">

@@ -349,6 +349,11 @@ body {
     cursor: pointer;
 }
 
+.task-detail-close-button:hover {
+    background-color: rgb(187, 189, 192);
+    border-radius: 50%;
+}
+
 .task-detail-title {
     font-size: 61px;
     font-weight: 700;
@@ -377,8 +382,7 @@ body {
     background-image: url('/asset/images/priority-low.png');
     width: 17px;
     height: 17px;
-    object-fit: contain;
-    background-size: contain;
+    background-size: 17px 17px contain;
     background-repeat: no-repeat; 
     background-position: center;  
 }
@@ -387,7 +391,7 @@ body {
     background-image: url('/asset/images/priority-mid.png');
     width: 17px;
     height: 17px;
-    background-size: contain;
+    background-size: 17px 17px contain;
     background-repeat: no-repeat; 
     background-position: center;  
 }
@@ -396,7 +400,7 @@ body {
     background-image: url('/asset/images/priority-high.png');
     width: 17px;
     height: 17px;
-    background-size: contain;
+    background-size: 17px 17px contain;
     background-repeat: no-repeat; 
     background-position: center;      
 }
@@ -431,7 +435,7 @@ body {
     gap: 16px;
     max-height: 130px;
     overflow:auto;
-    margin-top: -10px;
+    margin: -10px 40px 0 0;
 }
 
 .task-detail-assigned-container {
@@ -477,10 +481,18 @@ body {
 }
 
 .task-detail-subtask-container {
-    margin: 0 40px 0 40px;
+    margin: 0 40px 0 30px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
+    max-height: 120px;
+    overflow:auto;
+}
+
+.task-detail-subtask-container:hover {
+    background-color: rgb(230, 230, 230);
+    border-radius: 8px;
+    background-position: center;
 }
 
 .task-detail-subtask-image-on {
@@ -488,6 +500,13 @@ body {
     width: 24px;
     height: 24px;
     margin-right: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.task-detail-subtask-image-on:hover{
+    
+    transform: translateY(-1px);
 }
 
 .task-detail-subtask-image-off {
@@ -495,13 +514,28 @@ body {
     width: 24px;
     height: 24px;
     margin-right: 16px;
+    cursor: pointer;
+    margin-left: 10px;
 }
+
+.task-detail-subtask-image-off:hover{
+        transform: translateY(-1px);
+   }
 
 .task-detail-subtask-text {
     font-size: 16px;
     font-weight: 400;
     line-height: 120%;
     color: rgba(0, 0, 0, 1);
+    overflow: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 80%;
+}
+
+.task-detail-subtask-text:hover {
+    margin-right: 10px;
 }
 
 .task-detail-delete-edit-container {

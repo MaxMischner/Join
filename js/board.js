@@ -1,5 +1,5 @@
 let allTasks = [];
-let subtaskWords = [];
+let subtaskContent = [];
 let currentDraggedElement;
 
 async function init() {
@@ -125,6 +125,7 @@ function randomBackgroundColor(index) {
 function toggleOverlay() {
     let overlayRef = document.getElementById('overlay')
     overlayRef.classList.toggle('d-none');  
+    subtaskContent = [];
 }
 
 function renderAddTaskOverlay() {
@@ -177,21 +178,22 @@ function renderTaskDetail(index) {
     let overlay = document.getElementById('overlay');
     let names = allTasks[index].assigned.split(',');
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    parseSubtasks(index);
+    overlay.innerHTML = showTaskDetail(index, names, subtasksClass);
+    overlay.classList.remove('d-none');  
+}
+
+function parseSubtasks(index) {
+    subtaskContent = []; 
     let subtasks = allTasks[index].subtasks;
-    
-    
+    if (!subtasks) return; 
     for (let i = 0; i < subtasks.length; i++) {
-        // Parsen des Strings in ein echtes Objekt
         let subtaskObj = JSON.parse('{' + subtasks[i] + '}');       
-        subtaskWords.push({
+        subtaskContent.push({
             name: subtaskObj.name,
             completed: subtaskObj.completed
         });
-    }    
-    overlay.innerHTML = showTaskDetail(index, names, subtasksClass);
-    overlay.classList.remove('d-none');
-    console.log(subtaskWords);
-    let subtaskWords = [];
+    }
 }
 
 function taskDeatilDueDate(date) {
@@ -200,15 +202,9 @@ function taskDeatilDueDate(date) {
 }
 
 function getSubTaskImage(index) {
-    let subTasks = allTasks[index].subtasks;  
-    if(!subTasks){
-        return}
-    if (subTasks.filter(subtask => subtask.includes('"completed" : true'))) {
-        subTaskCheck = 'on'
-    }else {
-        subTaskCheck = 'off'
-    }
-    return subTaskCheck
+    console.log(subtaskContent[index].completed);
+    let subTaskImage = (subtaskContent[index].completed === true ? 'on' : 'off');
+    return subTaskImage
 }
     
    
