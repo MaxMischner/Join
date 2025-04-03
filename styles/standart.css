@@ -36,6 +36,14 @@ a:visited {
     background-color: var(--main-card-bg);
     padding: 10px 20px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.white-card:hover{
+    border-radius: 14px;
+    background-color: rgb(42,54,71);
+    transform: scale(1.07);
+    color: rgba(255, 255, 255, 1);    
 }
 
 .pointer:hover {

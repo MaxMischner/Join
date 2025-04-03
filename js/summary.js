@@ -19,7 +19,7 @@ async function initSummary() {
     renderInitials(activeUser);
     setTimeout(() => {
         renderContent();
-    }, 800);
+    }, 1200);
 }
 
 /**

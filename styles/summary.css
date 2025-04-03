@@ -30,16 +30,34 @@
 
 .summary-tasks-todo-image {
     width: 69px;
-    height: auto;
+    height: 69px;
     margin-right: 15px;
+    background-image: url('/asset/images/pencil-white-black-circle.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
+.white-card:hover .summary-tasks-todo-image {
+    background-image: url('/asset/images/pencil-black-white-circle.svg');
+}
+
+.summary-tasks-done-image {
+    width: 69px;
+    height: 69px;
+    margin-right: 15px;
+    background-image: url('/asset/images/hook-white-black-circle.svg');
+    background-size: contain;
+}
+
+.white-card:hover .summary-tasks-done-image {
+    background-image: url('/asset/images/hook-black-white-circle.svg');
+}
 .summary-tasks-todo-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 }
-
 
 .summary-tasks-todo-number{
     font-size: 64px;
@@ -104,13 +122,28 @@
     flex-direction: column;
     align-items: center;
     flex: 1;
+}
 
+.summary-tasks-task-summary-container:hover {
+    color: rgba(255, 255, 255, 1);
 }
 
 .summary-tasks-task-summary-number {
     font-size: 64px;
     font-weight: 600;
     color: rgba(0, 0, 0, 1)
+}
+
+.white-card:hover #taksTotal {
+    color: white;
+}
+
+.white-card:hover #taksProgress {
+    color: white;
+}
+
+.white-card:hover #awaitFeedback {
+    color: white;
 }
 
 .summary-tasks-task-summary-text {
@@ -161,10 +194,10 @@
     
 }
 
-@media (max-width: 1320px) {
+@media (max-width: 1220px) {
     .summary-tasks-todo-image {
         width: 49px;
-        height: auto;
+        height: 49px;
         margin-right: 15px;
     }
     

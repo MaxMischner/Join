@@ -251,27 +251,29 @@ async function changeSubtaskCompleteApi(index, i) {
     });
 }
 
-function deleteTask() {
+function deleteTask(index) {
     let test = document.getElementById('overlayDelete');
     test.classList.remove('d-none')
-    console.log('hallo');    
-    test.innerHTML = showDeleteTask()    
+    test.innerHTML = showDeleteTask(index)   
+    console.log(allTasks.length); 
 }
 
-function noDelete() {
-    console.log('Closing only the delete overlay');  
-
-    let overlayDelete = document.getElementById('overlayDelete');
-
-    if (overlayDelete) {
-        overlayDelete.classList.add('d-none'); // Nur das obere Overlay schließen
-    }
+function noDelete() { 
+    let overlayRef = document.getElementById('overlayDelete');
+    document.getElementById('CompletelyDeleteTask').classList.add('d-none'); 
+    overlayRef.classList.add('d-none'); 
 }
    
-function deleteTaskCompletely() {
-    console.log('hallo');
-    
-    
+async function deleteTaskCompletely(index) {    
+    document.getElementById('overlayDelete').classList.add('d-none');
+    firebaseID = allTasks[index].firebaseID;
+    let response = await fetch(`${BASE_URL_TASK}/${firebaseID}.json`,{
+        method: "DELETE"
+    });
+    allTasks.splice(index, 1);
+    closeOverlay();
+    renderTasks();    
+    return responseToJson = await response.json();
 }
     
 

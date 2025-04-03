@@ -150,7 +150,7 @@ function showTaskDetail(index, names, subtasksClass) {
                         })()}
                     </div>` : ""}
                 <div class="task-detail-delete-edit-container">
-                    <div onclick="deleteTask()" class="task-detail-delete-container">
+                    <div onclick="deleteTask('${index}')" class="task-detail-delete-container">
                         <img class="task-detail-delete-image" src="/asset/images/board-task-detail-delete.png" alt="">
                         <Span class="task-detail-delete-text">Delete</Span>
                     </div>     
@@ -260,12 +260,12 @@ function showAddTaskOverlay() {
     `
 }
 
-function showDeleteTask() {
+function showDeleteTask(index) {
     return `
         <div id="CompletelyDeleteTask" class="delete-question-overlay">
             <span class="delete-question-overlay-text">Completely delete Task?</span>
             <div lass="delete-question-overlay-button-container">
-                <span onclick="deleteTaskCompletely()" class="delete-question-overlay-button" >Yes</span>
+                <span onclick="deleteTaskCompletely('${index}')" class="delete-question-overlay-button" >Yes</span>
                 <Span onclick="noDelete()" class="delete-question-overlay-button">No</Span>
             </div>
         </div>
