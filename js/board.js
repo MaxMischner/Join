@@ -252,13 +252,27 @@ async function changeSubtaskCompleteApi(index, i) {
 }
 
 function deleteTask() {
-    let test = document.getElementById('taskDetail')
-    console.log('hallo');
-    
-    test.innerHTML = showDeleteTask()
-    
+    let test = document.getElementById('overlayDelete');
+    test.classList.remove('d-none')
+    console.log('hallo');    
+    test.innerHTML = showDeleteTask()    
+}
+
+function noDelete() {
+    console.log('Closing only the delete overlay');  
+
+    let overlayDelete = document.getElementById('overlayDelete');
+
+    if (overlayDelete) {
+        overlayDelete.classList.add('d-none'); // Nur das obere Overlay schließen
+    }
 }
    
+function deleteTaskCompletely() {
+    console.log('hallo');
+    
+    
+}
     
 
 

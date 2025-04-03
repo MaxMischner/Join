@@ -265,8 +265,8 @@ function showDeleteTask() {
         <div id="CompletelyDeleteTask" class="delete-question-overlay">
             <span class="delete-question-overlay-text">Completely delete Task?</span>
             <div lass="delete-question-overlay-button-container">
-                <span class="delete-question-overlay-button" onclick="finalDeleteTask()">Yes</span>
-                <Span class="delete-question-overlay-button" onclick="noDeleteTask()">No</Span>
+                <span onclick="deleteTaskCompletely()" class="delete-question-overlay-button" >Yes</span>
+                <Span onclick="noDelete()" class="delete-question-overlay-button">No</Span>
             </div>
         </div>
     `
