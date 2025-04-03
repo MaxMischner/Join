@@ -97,10 +97,10 @@ function showDoneTasks(index, subtasksClass, names) {
 
 function showTaskDetail(index, names, subtasksClass) {
     return `
-            <div onclick="noBubbling(event)" class="task-detail-container">
+            <div id="taskDetail" onclick="noBubbling(event)" class="task-detail-container slide-in">
                 <div class="task-detail-head">
                     <span class="overlay-tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
-                    <img onclick="toggleOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt="">
+                    <img onclick="closeOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt="">
                 </div>
                 <span class="task-detail-title">${allTasks[index].title}</span>
                 <span class="task-detail-description">${allTasks[index].description}</span>
@@ -141,7 +141,7 @@ function showTaskDetail(index, names, subtasksClass) {
                             for (let i = 0; i < subtaskContent.length; i++) {
                                 subtaskHTML += `
                                     <div class="task-detail-subtask-container">
-                                        <div class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
+                                        <div onclick="changeSubtaskComplete(${subtaskContent[i].completed}, '${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
                                         <div class="task-detail-subtask-text">${subtaskContent[i].name}</div><br>
                                     </div>
                                 `;
@@ -150,7 +150,7 @@ function showTaskDetail(index, names, subtasksClass) {
                         })()}
                     </div>` : ""}
                 <div class="task-detail-delete-edit-container">
-                    <div class="task-detail-delete-container">
+                    <div onclick="deleteTask()" class="task-detail-delete-container">
                         <img class="task-detail-delete-image" src="/asset/images/board-task-detail-delete.png" alt="">
                         <Span class="task-detail-delete-text">Delete</Span>
                     </div>     
@@ -256,10 +256,18 @@ function showAddTaskOverlay() {
                     <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
                     </div>
             </div>                
+        </div>   
+    `
+}
+
+function showDeleteTask() {
+    return `
+        <div id="CompletelyDeleteTask" class="delete-question-overlay">
+            <span class="delete-question-overlay-text">Completely delete Task?</span>
+            <div lass="delete-question-overlay-button-container">
+                <span class="delete-question-overlay-button" onclick="finalDeleteTask()">Yes</span>
+                <Span class="delete-question-overlay-button" onclick="noDeleteTask()">No</Span>
+            </div>
         </div>
-    
-    
-    
-    
     `
 }

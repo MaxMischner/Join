@@ -122,9 +122,14 @@ function randomBackgroundColor(index) {
     return backgroundColor;    
 }
 
-function toggleOverlay() {
-    let overlayRef = document.getElementById('overlay')
-    overlayRef.classList.toggle('d-none');  
+function closeOverlay() {
+    let overlayRef = document.getElementById('overlay');
+    let overlayDetail = document.getElementById('taskDetail')
+    overlayDetail.classList.remove('slide-in')
+    overlayDetail.classList.add('slide-out')
+    setTimeout(() => {
+        overlayRef.classList.add('d-none'); // Blende das Overlay aus
+    }, 300);
     subtaskContent = [];
 }
 
@@ -183,6 +188,16 @@ function renderTaskDetail(index) {
     overlay.classList.remove('d-none');  
 }
 
+function renderTaskDetailNew(index) {
+    document.getElementById('taskDetail').classList.remove('slide-in');
+    let overlay = document.getElementById('overlay');
+    let names = allTasks[index].assigned.split(',');
+    let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    parseSubtasks(index);
+    overlay.classList.remove('d-none');  
+    overlay.innerHTML = showTaskDetail(index, names, subtasksClass);    
+}
+
 function parseSubtasks(index) {
     subtaskContent = []; 
     let subtasks = allTasks[index].subtasks;
@@ -202,11 +217,47 @@ function taskDeatilDueDate(date) {
 }
 
 function getSubTaskImage(index) {
-    console.log(subtaskContent[index].completed);
     let subTaskImage = (subtaskContent[index].completed === true ? 'on' : 'off');
     return subTaskImage
 }
+
+function changeSubtaskComplete(completed, index, i) { 
+        let subtaskString = allTasks[index].subtasks[i];
+        let subtaskObj = JSON.parse('{' + subtaskString + '}');
+        subtaskObj.completed = !subtaskObj.completed;
+        let updatedSubtaskString = JSON.stringify(subtaskObj).slice(1, -1); 
+        allTasks[index].subtasks[i] = updatedSubtaskString;
+        renderTaskDetailNew(index)                
+}
     
+
+async function changeSubtaskCompleteApi(index, i) {
+   firebaseID = allTasks[index].firebaseID;
+   let response = await fetch(`${BASE_URL_TASK}/${firebaseID}.json`);
+   let responseJson = await response.json(); 
+   let SubTaskString = responseJson.subtasks[i]
+   if (SubTaskString.includes('"completed" : true')) {
+        SubTaskString = SubTaskString.replace('"completed" : true', '"completed" : false');
+    } else if (SubTaskString.includes('"completed" : false')) {
+        SubTaskString = SubTaskString.replace('"completed" : false', '"completed" : true');
+    }
+    responseJson.subtasks[i] = SubTaskString;
+    let updateResponse = await fetch(`${BASE_URL_TASK}/${firebaseID}.json`, {
+        method: 'PUT',  
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(responseJson),
+    });
+}
+
+function deleteTask() {
+    let test = document.getElementById('taskDetail')
+    console.log('hallo');
+    
+    test.innerHTML = showDeleteTask()
+    
+}
    
     
 
