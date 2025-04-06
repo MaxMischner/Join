@@ -78,12 +78,11 @@
                 </div>
                 <div class="main_Box">                    
                     <div class="content_box">
-                        <div>
+                        <div class="left-content-maincontent">
                             <div>
-                            <label for="title-task" class="required">Title</label><br>
-                            <p id="errorMsg" style="color: red; display: none;">*This field is required</p>
-            
-                            <input class="input_field" type="text" id="title-task" placeholder="Enter a title" required>
+                                <label for="title-task" class="required">Title</label> <br>
+                                <input class="input_field" type="text" id="title-task" placeholder="Enter a title">
+                                <p id="errorMsg-title" class="input-error">This field is required</p>
                             </div>
                             <div>
                                 <label for="">Description</label><br>
@@ -91,13 +90,14 @@
                         
                             </div>
                              <div>
-                                <label for="" class="required">Due date</label><br>
-                                <input class="input_field" type="date" id="date-task" required>
+                                <label for="date-task" class="required">Due date</label><br>
+                                <input class="input_field" type="date" id="date-task">
+                                <p id="errorMsg-date" class="input-error">This field is required</p>
                             </div>
                         </div>
                         <div class="splitbar"></div>
                     <div>
-                        <div>
+                        <div class="left-content-maincontent">
                             <label for="Priority">Priority</label><br>
                             <div class="priority-button-group">
                                 <button class="priorty_button urgent" data-value="Urgent" onclick="selectPriority(this)">
@@ -124,12 +124,13 @@
             
                       </div>
                       <div>
-                        <label for="assigned_category">Category</label><br>
-                        <select name="assigned_category" id="assigned_category" required>
-                          <option value="">Select task category</option>
-                          <option value="User Story">User Story</option>
-                          <option value="Technical Task">Technical Task</option>
-                        </select>
+                        <label for="assigned_category" class="required">Category</label>
+                            <select name="assigned_category" id="assigned_category">
+                                <option value="">Select task category</option>
+                                <option value="User Story">User Story</option>
+                                <option value="Technical Task">Technical Task</option>
+                            </select>
+                        <p id="errorMsg-category" class="input-error">This field is required</p>
                       </div>
                       
                        <div class="todo-wrapper">
@@ -155,13 +156,24 @@
                       </div>
                     </div>
                     </div>
-                    <div class="button_container">
+                    <div class="validation-info mobile-only">
+                        <p><span class="red-star">*</span>This field is required</p>
+                      </div>
+                    <div class="button_container desktop-only">
                         <p><span class="red-star">*</span>This field is required</p>
                         <div class="button-row">
-                        <button class="cancel-btn" onclick="resetForm()">Cancel <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
-                        <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
+                          <button class="cancel-btn" onclick="resetForm()">Clear <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
+                          <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
                         </div>
-                </div>
+                      </div>
+                      
+                      
+                      <div class="fixed-buttons mobile-only">
+                        <div class="button-row">
+                          <button class="cancel-btn" onclick="resetForm()">Clear <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
+                          <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
+                        </div>
+                      </div>
                 
             </div>
             </div> 

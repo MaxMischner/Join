@@ -1,11 +1,9 @@
-
-
 .main_Box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  width: 100%;
 }
 
 .red-star {
@@ -15,6 +13,9 @@
 .content_box {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .splitbar {
@@ -79,8 +80,14 @@ label.required::after {
   color: red;
 }
 
+.left-content-maincontent{
+  width: 100%;
+  max-width: 480px;
+}
+
 .input_field {
-  width: 440px;
+  width: 100%;
+  max-width: 440px;
   height: 44px;
 
   padding: 12px 21px;
@@ -166,17 +173,6 @@ label.required::after {
   margin-bottom: 16px;
 }
 
-.priorty_button {
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: 1px solid #d1d1d1;
-  background-color: white;
-  color: #2a3647;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-}
-
 .priorty_button.selected {
   background-color: #2a3647;
   color: white;
@@ -196,12 +192,12 @@ label.required::after {
   position: relative;
   width: 100%;
   max-width: 440px;
-  font-family: "Arial", sans-serif;
   margin-bottom: 8px;
   margin-top: 8px;
 }
 
 .dropdown-toggle {
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -225,7 +221,6 @@ label.required::after {
   height: 18px;
   margin-left: 8px;
 }
-
 
 .dropdown-menu {
   display: none;
@@ -352,181 +347,369 @@ select:focus {
 }
 
 .subtask-input-wrapper {
-    position: relative;
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+
+.subtask-input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #d1d1d1;
+  background-color: #f6f7f8;
+  color: #2a3647;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.subtask-input::placeholder {
+  color: #c0c0c0;
+}
+
+.subtask-icons {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.subtask-icons img {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.subtask-input:focus + .subtask-icons,
+.subtask-input:not(:placeholder-shown) + .subtask-icons {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.subtask-add-btn {
+  position: absolute;
+  right: 12px;
+  top: 26px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #2a3647;
+  cursor: pointer;
+}
+
+.subtask-icon {
+  position: absolute;
+  right: 12px;
+  top: 26px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #2a3647;
+  cursor: pointer;
+}
+
+.subtask-icon-group {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.subtask-icon-group img {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.subtask-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.subtask-list-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #2a3647;
+  padding-left: 20px;
+  position: relative;
+}
+
+.subtask-list-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+  color: #2a3647;
+}
+
+.editable-subtask {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 87%;
+  max-width: 100%;
+  background-color: #f6f7f8;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  padding-right: 48px; /* Platz für Icons */
+}
+
+.editable-subtask input {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 12px 16px;
+  font-size: 16px;
+  outline: none;
+}
+
+.editable-subtask img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.editable-subtask img:first-of-type {
+  right: 36px; /* 🗑️ etwas weiter links */
+}
+
+.editable-subtask img:last-of-type {
+  right: 12px; /* ✅ ganz rechts */
+}
+.subtask-divider {
+  position: absolute;
+  right: 34px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background-color: #d1d1d1;
+}
+
+.input-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  display: none;
+}
+.input_field.error {
+  border: 1px solid red;
+}
+
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .main_Box{
+    padding: 5px;
+  }
+  .content_box {
+    gap: 10px;
+  }
+
+  .input_field,
+  .input_field_description,
+  select,
+  .subtask-input-wrapper,
+  .dropdown-container {
+    max-width: 380px;
+  }
+  .button_container{
     width: 100%;
-    max-width: 440px;
   }
-  
-  .subtask-input {
+}
+
+/* === Tablet bis 900px === */
+@media (max-width: 900px) {
+  .content_box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .splitbar {
+    display: none;
+  }
+
+  .input_field,
+  .input_field_description,
+  select,
+  .subtask-input-wrapper,
+  .dropdown-container {
+    max-width: 100%;
     width: 100%;
-    padding: 12px 40px 12px 16px;
-    border-radius: 8px;
-    border: 1px solid #D1D1D1;
-    background-color: #F6F7F8;
-    color: #2A3647;
-    font-size: 16px;
-    box-sizing: border-box;
   }
 
-  .subtask-input::placeholder {
-    color: #C0C0C0;
-  }
-  
-  .subtask-icons {
-    position: absolute;
-    right: 12px;
-    display: flex;
-    gap: 8px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-  }
-  
-  .subtask-icons img {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-  }
-  
-  .subtask-input:focus + .subtask-icons,
-  .subtask-input:not(:placeholder-shown) + .subtask-icons {
-    opacity: 1;
-    pointer-events: all;
-  }
-  
-  .subtask-add-btn {
-    position: absolute;
-    right: 12px;
-    top: 26px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: #2A3647;
-    cursor: pointer;
+  .priority-button-group {
+    flex-wrap: wrap;
   }
 
-  .subtask-icon {
-    position: absolute;
-    right: 12px;
-    top: 26px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: #2A3647;
-    cursor: pointer;
-  }
-  
-  .subtask-icon-group {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-  }
-  .subtask-icon-group img {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-  }
-
-  .subtask-list {
-    margin-top: 12px;
-    display: flex;
+  .button_container {
     flex-direction: column;
-    gap: 6px;
+    align-items: stretch;
+    gap: 12px;
   }
-  
-  .subtask-list-item {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    color: #2A3647;
-    padding-left: 20px;
-    margin-left: 20px;
-    position: relative;
-  }
-  
-  .subtask-list-item::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    font-size: 20px;
-    color: #2A3647;
-  }
-  .subtask-list {
-    margin-top: 12px;
-    display: flex;
+
+  .button-row {
     flex-direction: column;
-    gap: 6px;
+    gap: 12px;
   }
-  
+
+  .cancel-btn,
+  .create-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 780px) {
+  .main_Box {
+    padding: 16px;
+    margin-bottom: 40px;
+  }
+
+  .content-left {
+    height: calc(100vh - 100px - 96px);
+  }
+
+  .content_box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input_field,
+  .input_field_description,
+  select,
+  .subtask-input-wrapper,
+  .dropdown-container,
+  .button_container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .priority-button-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .button_container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .button-row {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .cancel-btn,
+  .create-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .splitbar {
+    display: none;
+  }
+
   .subtask-list-item {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    color: #2A3647;
-    padding-left: 20px;
-    position: relative;
+    margin-left: 0;
+    padding-left: 16px;
   }
-  
-  .subtask-list-item::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    font-size: 20px;
-    color: #2A3647;
+
+  .fixed-buttons .button_container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
   }
-  
-  .editable-subtask {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width:390px;
-    max-width: 440px;
-    background-color: #f6f7f8;
-    border: 1px solid #d1d1d1;
-    border-radius: 8px;
-    padding-right: 48px; /* Platz für Icons */
+
+  .fixed-buttons .button-row {
+    justify-content: space-between;
+    width: 100%;
   }
-  
-  .editable-subtask input {
+
+  .fixed-buttons .cancel-btn,
+  .fixed-buttons .create-btn {
     flex: 1;
-    border: none;
-    background: transparent;
-    padding: 12px 16px;
+    width: 48%;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .fixed-buttons {
+    position: fixed;
+    bottom: 72px;
+    width: 100%;
+    background-color: #f6f7f8;
+    padding: 0px 16px;
+    padding-bottom: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  .fixed-buttons .button-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .cancel-btn,
+  .create-btn {
+    flex: 1;
+
     font-size: 16px;
-    outline: none;
+    font-weight: 600;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
   }
-  
-  .editable-subtask img {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
+
+  .cancel-btn {
+    background-color: white;
+    color: #2a3647;
+    border: 1px solid #2a3647;
   }
-  
-  .editable-subtask img:first-of-type {
-    right: 36px; /* 🗑️ etwas weiter links */
+
+  .create-btn {
+    background-color: #2a3647;
+    color: white;
+    border: none;
   }
-  
-  .editable-subtask img:last-of-type {
-    right: 12px; /* ✅ ganz rechts */
+
+  .cancel-btn img,
+  .create-btn img {
+    width: 20px;
+    height: 20px;
   }
-  .subtask-divider {
-    position: absolute;
-    right: 34px;
-    top: 8px;
-    bottom: 8px;
-    width: 1px;
-    background-color: #D1D1D1;
-  }
-  
+}

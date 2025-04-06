@@ -1,7 +1,5 @@
-let BASE_URL_CONTACT =
-  "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/contacts";
-  let BASE_URL_TASK =
-  "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/tasks";
+let BASE_URL_CONTACT ="https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/contacts";
+let BASE_URL_TASK ="https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/tasks";
 
 let title = "";
 let description = "";
@@ -19,9 +17,7 @@ function init() {
 
 function setupPriorityButtons() {
   const priorityButtons = document.querySelectorAll(".priorty_button");
-
-  priorityButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
+  priorityButtons.forEach((btn) => {btn.addEventListener("click", () => {
       priorityButtons.forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");
     });
@@ -101,12 +97,13 @@ async function getAllContacts() {
 function addTodo() {
   const input = document.getElementById("todoInput");
   const value = input.value.trim();
-
   if (value !== "") {
     const todoList = document.getElementById("todoList");
     const item = document.createElement("div");
     item.className = "subtask-list-item";
     item.textContent = value;
+    item.dataset.completed = "false";
+    item.dataset.name = value;
     item.addEventListener("click", () => editSubtask(item, value));
     todoList.appendChild(item);
     input.value = "";
@@ -131,18 +128,13 @@ function createWrapper(className) {
 
 function editSubtask(item, oldValue) {
   const wrapper = createWrapper("editable-subtask");
-
   const input = document.createElement("input");
   input.type = "text";
   input.value = oldValue;
-
-  const delBtn = createIconButton("asset/img/icons/delete.png", "Delete", () =>
-    item.remove()
+  const delBtn = createIconButton("asset/img/icons/delete.png", "Delete", () =>item.remove()
   );
-
   const saveBtn = createIconButton("asset/img/icons/Subtasks icons11.png","Save",() => {const newValue = input.value.trim();
       if (!newValue) return item.remove();
-
       const newItem = document.createElement("div");
       newItem.className = "subtask-list-item";
       newItem.textContent = newValue;
@@ -154,7 +146,6 @@ function editSubtask(item, oldValue) {
   const divider = document.createElement("div");
   divider.className = "subtask-divider";
   wrapper.append(input, delBtn, divider, saveBtn);
-
   item.innerHTML = "";
   item.className = "";
   item.appendChild(wrapper);
@@ -165,7 +156,6 @@ function toggleSubtaskIcons() {
   const input = document.getElementById("todoInput");
   const plusBtn = document.getElementById("subtaskPlus");
   const iconGroup = document.getElementById("subtaskConfirmIcons");
-
   if (input.value.trim() !== "") {
     plusBtn.style.display = "none";
     iconGroup.style.opacity = "1";
@@ -184,19 +174,15 @@ function clearSubtaskInput() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  document
-    .getElementById("todoInput")
-    .addEventListener("keydown", function (e) {
+  document.getElementById("todoInput").addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
-        addTodo();
-      }
+        addTodo();}
     });
 });
 
 function renderContactsInDropdown(allContacts) {
     const container = document.getElementById("dropdownContent");
     container.innerHTML = "";
-  
     allContacts.forEach((contactObj) => {
       const [key, value] = Object.entries(contactObj)[0];
       const contactItem = createContactItem(key, value);
@@ -206,27 +192,26 @@ function renderContactsInDropdown(allContacts) {
   
   function createContactItem(key, contact) {
     const name = contact.name;
-    const initials = getInitials(name);
-    const color = getColorForName(name);
-  
     const checkbox = createContactCheckbox(key, name);
-    const left = createContactLeft(name, initials, color);
-    const right = createContactRight(checkbox);
-  
-    const contactItem = document.createElement("div");
-    contactItem.className = "contact-item";
-    contactItem.dataset.name = name;
-    contactItem.appendChild(left);
-    contactItem.appendChild(right);
-  
+    const contactItem = buildContactItem(name, checkbox);
     contactItem.addEventListener("click", (event) => {
       if (event.target !== checkbox) {
         checkbox.checked = !checkbox.checked;
         handleSelectionChange();
       }
     });
-  
     return contactItem;
+  }
+
+  function buildContactItem(name, checkbox) {
+    const initials = getInitials(name);
+    const color = getColorForName(name);
+    const item = document.createElement("div");
+    item.className = "contact-item";
+    item.dataset.name = name;
+    item.appendChild(createContactLeft(name, initials, color));
+    item.appendChild(createContactRight(checkbox));
+    return item;
   }
   
   function createContactCheckbox(key, name) {
@@ -242,10 +227,8 @@ function renderContactsInDropdown(allContacts) {
   function createContactLeft(name, initials, color) {
     const left = document.createElement("div");
     left.className = "contact-left";
-    left.innerHTML = `
-      <div class="contact-initial" style="background:${color}">${initials}</div>
-      <span>${name}</span>
-    `;
+    left.innerHTML = `<div class="contact-initial" style="background:${color}">${initials}</div>
+      <span>${name}</span>`;
     return left;
   }
   
@@ -259,25 +242,13 @@ function renderContactsInDropdown(allContacts) {
 
 function getInitials(name) {
   if (!name || typeof name !== "string") return "??";
-  return name
-    .split(" ")
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase();
+  return name.split(" ").map((word) => word[0]).join("").toUpperCase();
 }
 
 function getColorForName(name) {
   const colors = [
-    "#29ABE2",
-    "#FF8A00",
-    "#9327FF",
-    "#6E52FF",
-    "#FC71FF",
-    "#FFBB2B",
-    "#1FD7C1",
-    "#462F8A",
+    "#29ABE2","#FF8A00","#9327FF", "#6E52FF","#FC71FF","#FFBB2B","#1FD7C1","#462F8A",
   ];
-
   if (!name || typeof name !== "string") {
     return "#D1D1D1";
   }
@@ -289,7 +260,6 @@ function handleSelectionChange() {
     const checkboxes = getAllContactCheckboxes();
     const selectedContactsDiv = document.getElementById("selectedContacts");
     selectedContactsDiv.innerHTML = "";
-  
     const selectedNames = checkboxes.filter(cb => cb.checked).map(cb => {
         const name = cb.dataset.name;
         const contactItem = cb.closest(".contact-item");
@@ -313,16 +283,22 @@ function handleSelectionChange() {
     container.appendChild(chip);
   }
 
-function collectTaskData() {
-  title = document.getElementById("title-task").value;
-  description = document.getElementById("description-task").value;
-  duedate = document.getElementById("date-task").value;
-  const selectedPriorityBtn = document.querySelector(".priorty_button.selected" );
-  priority = selectedPriorityBtn ? selectedPriorityBtn.textContent.trim() : "";
-  category = document.getElementById("assigned_category").value;
-  const subtaskElements = document.querySelectorAll(".subtask-list-item");
-  subtasks = Array.from(subtaskElements).map((el) => el.textContent.trim());
-}
+  function collectTaskData() {
+    title = document.getElementById("title-task").value;
+    description = document.getElementById("description-task").value;
+    duedate = document.getElementById("date-task").value;
+    const selectedPriorityBtn = document.querySelector(".priorty_button.selected" );
+    priority = selectedPriorityBtn ? selectedPriorityBtn.textContent.trim() : "";
+    category = document.getElementById("assigned_category").value; 
+    const subtaskElements = document.querySelectorAll(".subtask-list-item");
+    subtasks = Array.from(subtaskElements).map((el) => {
+      return {
+        name: el.dataset.name || el.textContent.trim(),
+        completed: el.dataset.completed === "true" 
+      };
+    });
+  }
+  
 
 async function saveTask() {
   collectTaskData();
@@ -338,8 +314,7 @@ async function saveTask() {
   };
   await putTask(data);
   resetForm();
-  // Weiterleitung
-  window.location.href = "board.html"; //  Zielseite später
+  window.location.href = "board.html"; 
 }
 
 async function getAllTasks() {
@@ -350,10 +325,8 @@ async function getAllTasks() {
   for (let index = 0; index < keys.length; index++) {
     const key = keys[index];
     const value = responseJSON[key];
-
     if (Object.keys(value).indexOf("subtasks") != -1)
       value["subtasks"] = value["subtasks"].filter((e) => e != null);
-
     if (responseJSON[key]) allTasks.push({ [key]: value });
   }
   return allTasks;
@@ -368,23 +341,46 @@ async function putTask(data, id = "") {
     },
     body: JSON.stringify(data),
   });
-
   const responseToJson = await response.json();
   console.log("Response:", responseToJson);
   return responseToJson;
 }
 
 function validateTaskBeforeSave() {
-  const title = document.getElementById("title-task").value.trim();
-  const date = document.getElementById("date-task").value.trim();
-  const category = document.getElementById("assigned_category").value;
+  let isValid = true;
+  const titleField = document.getElementById("title-task");
+  const dateField = document.getElementById("date-task");
+  const categoryField = document.getElementById("assigned_category");
 
-  if (!title || !date || !category) {
-    document.getElementById("errorMsg").style.display = "block";
-    return false;
+  if (!titleField.value.trim()) {
+    showError(titleField, "errorMsg-title");
+    isValid = false;
+  } else {
+    hideError(titleField, "errorMsg-title");
   }
-  document.getElementById("errorMsg").style.display = "none";
-  return true;
+  if (!dateField.value.trim()) {
+    showError(dateField, "errorMsg-date");
+    isValid = false;
+  } else {
+    hideError(dateField, "errorMsg-date");
+  }
+  if (!categoryField.value.trim()) {
+    showError(categoryField, "errorMsg-category");
+    isValid = false;
+  } else {
+    hideError(categoryField, "errorMsg-category");
+  }
+  return isValid;
+}
+
+function showError(field, errorId) {
+  field.classList.add("error");
+  document.getElementById(errorId).style.display = "block";
+}
+
+function hideError(field, errorId) {
+  field.classList.remove("error");
+  document.getElementById(errorId).style.display = "none";
 }
 
 function resetForm() {
