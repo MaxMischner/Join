@@ -122,11 +122,11 @@ function renderGreeting() {
     let today = new Date();
     let hour = today.getHours()
     if((hour >=0) && (hour <=9))
-    document.getElementById('greeting').innerHTML = 'Good Morning'
+        document.getElementById('greeting').innerHTML = 'Good Morning'
     if((hour >=10) && (hour <=18))
-    document.getElementById('greeting').innerHTML = 'Good Day'
+        document.getElementById('greeting').innerHTML = 'Good Day'
     if((hour >=19) && (hour <=23))
-    document.getElementById('greeting').innerHTML = 'Good Evening'
+        document.getElementById('greeting').innerHTML = 'Good Evening'
 }
 
 

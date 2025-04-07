@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in || Join</title>
     <link rel="icon" href="/asset/images/fav.svg" type="image/svg+xml">
-
     <link rel="stylesheet" href="/styles/sidebar.css">
     <link rel="stylesheet" href="/styles/log_in.css">
-
+    <link rel="stylesheet" href="/styles/standart.css">
 </head>
 
 <body>
+    <div class="animated-container">
+        <img class="animated-logo" src="/asset/images/logo.svg" alt="">
+    </div>
     <div class="content">
-        <img class="logo" src="/asset/images/logo.svg" alt="">
-        <div class="sign-up-container">
-            <span class="sign-up-container-text">Not a Join user?</span>
-            <div class="sign-up-container-field">
-                <span class="sign-up-container-field-text">Sign up</span>
+        
+        <div class="content-top">
+            <img class="logo" src="/asset/images/logo.svg" alt="">
+            <div class="sign-up-container">
+                <span class="sign-up-container-text">Not a Join user?</span>
+                <div class="sign-up-container-field" onclick="window.location.href='sign-up.html'">
+                    <span class="sign-up-container-field-text">Sign up</span>
+                </div>
             </div>
         </div>
         <div class="log-in-container">
@@ -26,7 +31,7 @@
             </div>
             <form onsubmit="login();return false" class="login-forms" action="">
                 <input id="loginEmail" class="log-in-input-field-mail" type="email" placeholder="Email" name="uname" required>
-                <input id="loginPassword" class="log-in-input-field-password" type="text" placeholder="Password" name="uname" required>
+                <input id="loginPassword" class="log-in-input-field-password" type="password" placeholder="Password" name="uname" required>
                 <div class="login-forms-submit-buttons">
                     <button type="submit" class="login-forms-submit-buttons-login">Log in</button>
                     <div onclick="guestLogin()" class="login-forms-submit-buttons-guest">Guest Log in</div>
@@ -34,8 +39,8 @@
             </form>
         </div>
         <footer class="login-footer">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Legal notice</a>
+            <a class="pointer" href="privacy-policy-simple.html">Privacy Policy</a>
+            <a class="pointer" href="legal-notice-simple.html">Legal notice</a>
         </footer>   
     </div>    
 </body>
