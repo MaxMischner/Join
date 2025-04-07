@@ -44,7 +44,6 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 550px;
     padding: 0 20px 0 20px;
     border-radius: 30px;
 }
@@ -84,6 +83,7 @@ body {
     background-position: 280px 14px;     
     font-size: 20px;
     color: rgb(13, 12, 12);
+    padding-left: 21px;
 }
 
 .search-field-border {
@@ -106,7 +106,7 @@ body {
 
 .board-search-field::placeholder {
     font-size: 20px;
-    padding-left: 21px;
+    
     color: rgba(209, 209, 209, 1);
 }
 
@@ -279,14 +279,14 @@ body {
     margin-right: -7px;
 }
 
-.priority-low {
+.priority-Low {
     background-image: url('/asset/images/priority-low.png');
     width: 32px;
     height: 32px;
     object-fit: contain;
 }
 
-.priority-medium {
+.priority-Medium {
     background-image: url('/asset/images/priority-mid.png');
     width: 32px;
     height: 32px;
@@ -410,7 +410,7 @@ body {
     color: rgba(42, 54, 71, 1);
 }
 
-.task-detail-priority-low {
+.task-detail-priority-Low {
     background-image: url('/asset/images/priority-low.png');
     width: 17px;
     height: 17px;
@@ -419,7 +419,7 @@ body {
     background-position: center;  
 }
 
-.task-detail-priority-medium {
+.task-detail-priority-Medium {
     background-image: url('/asset/images/priority-mid.png');
     width: 17px;
     height: 17px;
@@ -650,10 +650,26 @@ body {
 
 .add-task-overlay-close-button {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
     width: 95%;
 }
 
+.add-task-overlay-close-header {
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 120%;
+    margin: 30px 0 30px 0 ;
+}
+
+.button-row-overlay{
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin: 20px 0 30px 0;
+
+}
+  
 
 
 

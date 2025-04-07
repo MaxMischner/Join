@@ -30,7 +30,7 @@
         </ul>
     </div>
     <div class="content">
-        <div onclick="closeOverlay()" id="overlay" class="overlay-box d-none"></div> 
+        <div onclick="closeOverlay()" id="overlayDetail" class="overlay-box d-none"></div> 
         <div id="overlayDelete" class="overlay-box-delete d-none"></div> 
         <div id="overlayAddTask" class="overlay-box d-none"></div> 
 
@@ -98,7 +98,7 @@
                     <span class="headline-left">Board</span>       
                     <div class="add-task-container">
                         <div class="board-search-field-container">
-                            <input class="board-search-field" type="text" placeholder="Find Task">
+                            <input id="boardSearchField" class="board-search-field" type="text" placeholder="Find Task">
                             <div class="search-field-border"></div>
                         </div>                        
                         <div onclick="renderAddTaskOverlay()" class="add-task-button">
@@ -153,6 +153,7 @@
     </div>
 </body>
 <script src="/asset/templats/board_tasks-template.js"></script>
+<script src="/js/add_task.js"></script>
 <script src="/js/log_in.js"></script>
 <script src="/script.js"></script>
 <script src="/js/summary.js"></script>

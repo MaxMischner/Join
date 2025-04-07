@@ -123,7 +123,7 @@ function randomBackgroundColor(index) {
 }
 
 async function closeOverlay() {
-    let overlayRef = document.getElementById('overlay');
+    let overlayRef = document.getElementById('overlayDetail');
     let overlayDetail = document.getElementById('taskDetail');
     overlayDetail.classList.remove('slide-in');
     overlayDetail.classList.add('slide-out');
@@ -141,6 +141,10 @@ async function closeAddTaskOverlay() {
     let addTaskOverlay = document.getElementById('addTaskOverlay');
     addTaskOverlay.classList.remove('slide-in');
     addTaskOverlay.classList.add('slide-out');
+    let script = document.querySelector('script[src="/js/add_task.js"]');
+    if (script) {
+        script.remove();
+    }
     setTimeout(() => {
         overlayAddTaskRef.classList.add('d-none');
     }, 300);
@@ -185,7 +189,7 @@ function getDoneSubtasks(index) {
 }
 function renderTaskDetail(index) {
     currentTaskIndex = index;
-    let overlay = document.getElementById('overlay');
+    let overlay = document.getElementById('overlayDetail');
     let names = allTasks[index].assigned.split(',');
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
     parseSubtasks(index);
@@ -234,11 +238,7 @@ async function changeSubtaskCompleteApi(index, i) {
     let response = await fetch(`${BASE_URL_TASK}/${firebaseID}.json`);
     let responseJson = await response.json();
     let subtask = responseJson.subtasks[i];
-
-    // Umkehren der completed-Eigenschaft
     subtask.completed = !subtask.completed;
-
-    // Update der Subtask
     responseJson.subtasks[i] = subtask;
     await fetch(`${BASE_URL_TASK}/${firebaseID}.json`, {
         method: 'PUT',
@@ -277,13 +277,23 @@ function renderAddTaskOverlay() {
     let overlay = document.getElementById('overlayAddTask');
     overlay.innerHTML = showAddTaskOverlay();
     overlay.classList.remove('d-none');
-    setTimeout(() => {
-    let script = document.createElement('script');
-    script.src = '/js/add_task.js'; 
-    script.type = 'text/javascript';
-    document.head.appendChild(script);
-    }, 0); 
+    // setTimeout(() => {
+    // let script = document.createElement('script');
+    // script.src = '/js/add_task.js'; 
+    // script.type = 'text/javascript';
+    // document.head.appendChild(script);
+    // }, 0); 
 }
+
+function filterTasks() {
+    const input = document.getElementById("boardSearchField").value.toLowerCase();
+    const titleSearch = allTasks[index].title
+    const descriptionDearch = allTasks[index].title
+    items.forEach((item) => {
+      const name = item.dataset.name.toLowerCase();
+      item.style.display = name.includes(input) ? "flex" : "none";
+    });
+  }
 
 
     

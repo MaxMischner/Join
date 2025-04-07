@@ -187,7 +187,9 @@ function showOverlaySubtasks(index, subtasksClass) {
 function showAddTaskOverlay() {
     return `               
             <div id="addTaskOverlay" class="add-task-overlay slide-in" onclick="noBubbling(event)">                    
-            <div class="add-task-overlay-close-button"><img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>
+            <div class="add-task-overlay-close-button">
+                <span class="add-task-overlay-close-header">Add Task</span>
+                <img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>
             <div class="content_box">
                 <div class="left-content-maincontent">
                     <div>
@@ -272,7 +274,7 @@ function showAddTaskOverlay() {
                 </div>
             <div class="button_container desktop-only">
                 <p><span class="red-star">*</span>This field is required</p>
-                <div class="button-row">
+                <div class="button-row-overlay">
                     <button class="cancel-btn" onclick="resetForm()">Clear <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
                     <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
                 </div>
@@ -280,7 +282,7 @@ function showAddTaskOverlay() {
                 
                 
                 <div class="fixed-buttons mobile-only">
-                <div class="button-row">
+                <div class="button-row-overlay">
                     <button class="cancel-btn" onclick="resetForm()">Clear <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
                     <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
                 </div>
