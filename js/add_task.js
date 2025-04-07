@@ -68,6 +68,8 @@ function buttenReset(buttons, iconMap) {
 function toggleDropdown() {
   const menu = document.getElementById("dropdownMenu");
   menu.classList.toggle("show");
+  const menuback = document.getElementById("toggleDropdown");
+  menuback.classList.toggle("back");
 }
 
 function filterContacts() {

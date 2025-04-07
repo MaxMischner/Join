@@ -14,7 +14,6 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
@@ -196,6 +195,11 @@ label.required::after {
   margin-top: 8px;
 }
 
+
+.dropdown-container.back{
+  height: 280px;
+}
+
 .dropdown-toggle {
   
   display: flex;
@@ -208,6 +212,9 @@ label.required::after {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   cursor: pointer;
 }
+
+
+
 
 .dropdown-toggle input {
   border: none;
@@ -229,14 +236,22 @@ label.required::after {
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   margin-top: 8px;
-
   max-height: 260px;
   overflow-y: auto;
+  
 }
+
+
 
 .dropdown-menu.show {
   display: block;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+
 }
+
+
 
 .contact-item {
   display: flex;
@@ -284,6 +299,9 @@ label.required::after {
 }
 
 .selected-contacts {
+  position: relative;
+  z-index: 0;
+  
   display: flex;
   gap: 8px;
   margin-top: 10px;
@@ -321,9 +339,9 @@ select:focus {
   border-color: #29abe2;
   box-shadow: 0px 0px 0px 2px rgba(41, 171, 226, 0.2);
 }
-#assigned_category {
+.assigned_category {
   width: 100%;
-  max-width: 440px;
+ 
   height: 44px;
   padding: 12px 16px;
   font-size: 16px;
@@ -524,28 +542,47 @@ select:focus {
 @media (max-width: 1200px) {
   .main_Box{
     padding: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    max-width: 98%;
   }
   .content_box {
     gap: 10px;
+    
   }
 
-  .input_field,
-  .input_field_description,
-  select,
-  .subtask-input-wrapper,
-  .dropdown-container {
-    max-width: 380px;
-  }
+  
+  
   .button_container{
     width: 100%;
+  }
+  .priorty_button{
+    height: 50px;
+    width: 100%;
+    max-width: 156px;
+    font-size: 16px;
+    margin-right: 0;
   }
 }
 
 /* === Tablet bis 900px === */
 @media (max-width: 900px) {
+  .content-left{
+    display: flex;
+    
+    flex-direction: column;
+  }
+  .main_Box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .content_box {
     flex-direction: column;
     align-items: stretch;
+    justify-content: center;
+    align-items: center;
+    
   }
 
   .splitbar {
@@ -563,6 +600,8 @@ select:focus {
 
   .priority-button-group {
     flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
   }
 
   .button_container {
@@ -580,21 +619,28 @@ select:focus {
   .create-btn {
     width: 100%;
   }
+
+
 }
 
 @media (max-width: 780px) {
   .main_Box {
     padding: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 75px;
+    
   }
 
   .content-left {
     height: calc(100vh - 100px - 96px);
+    
   }
 
   .content_box {
     flex-direction: column;
     align-items: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .input_field,
@@ -608,8 +654,9 @@ select:focus {
   }
 
   .priority-button-group {
-    flex-direction: column;
+    flex-direction: row;
     gap: 8px;
+    
   }
 
   .button_container {
@@ -619,13 +666,13 @@ select:focus {
   }
 
   .button-row {
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: row;
   }
 
   .cancel-btn,
   .create-btn {
     width: 100%;
+    max-width: 150px;
     justify-content: center;
   }
 
@@ -645,10 +692,7 @@ select:focus {
     width: 100%;
   }
 
-  .fixed-buttons .button-row {
-    justify-content: space-between;
-    width: 100%;
-  }
+
 
   .fixed-buttons .cancel-btn,
   .fixed-buttons .create-btn {
@@ -677,8 +721,10 @@ select:focus {
 
   .fixed-buttons .button-row {
     display: flex;
-    justify-content: space-between;
+   
     gap: 12px;
+    
+    margin-right: 10px;
   }
 
   .cancel-btn,
@@ -712,4 +758,33 @@ select:focus {
     width: 20px;
     height: 20px;
   }
+
+  .priorty_button{
+    height: 50px;
+    width: 100%;
+    max-width: 154px;
+    font-size: 16px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 510px){
+  .main_Box{
+    width: 100%;
+    margin-left: 0;
+    padding: 5px;
+   
+  }
+  .priorty_button{
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 400px){
+  .priorty_button{
+    max-width: 90px;
+    font-size: 14px;
+    height: 45px;
+  }
+
 }

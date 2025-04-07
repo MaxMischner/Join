@@ -96,8 +96,8 @@
                             </div>
                         </div>
                         <div class="splitbar"></div>
-                    <div>
-                        <div class="left-content-maincontent">
+                    <div class="left-content-maincontent">
+                        <div >
                             <label for="Priority">Priority</label><br>
                             <div class="priority-button-group">
                                 <button class="priorty_button urgent" data-value="Urgent" onclick="selectPriority(this)">
@@ -111,9 +111,9 @@
                                 </button>
                               </div>
                           </div> 
-                       <div class="dropdown-container">
+                       <div class="dropdown-container" id="toggleDropdown">
                         <label for="">Assigned to</label>
-                        <div class="dropdown-toggle" onclick="toggleDropdown()">
+                        <div class="dropdown-toggle" onclick="toggleDropdown()" >
                           <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
                           <img src="asset/img/icons/arrow_drop_downaa.png" />
                         </div>
