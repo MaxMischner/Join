@@ -122,21 +122,28 @@ function randomBackgroundColor(index) {
     return backgroundColor;    
 }
 
-function closeOverlay() {
+async function closeOverlay() {
     let overlayRef = document.getElementById('overlay');
-    let overlayDetail = document.getElementById('taskDetail')
-    overlayDetail.classList.remove('slide-in')
-    overlayDetail.classList.add('slide-out')
+    let overlayDetail = document.getElementById('taskDetail');
+    overlayDetail.classList.remove('slide-in');
+    overlayDetail.classList.add('slide-out');
     setTimeout(() => {
-        overlayRef.classList.add('d-none'); // Blende das Overlay aus
+        overlayRef.classList.add('d-none'); 
     }, 300);
-    subtaskContent = [];
+    subtaskContent = [];   
+    allTasks = []; 
+    await getAllTasks();
+    renderTasks();
 }
 
-function renderAddTaskOverlay() {
-    let overlay = document.getElementById('overlay');
-    overlay.innerHTML = showAddTaskOverlay();
-    overlay.classList.remove('d-none');
+async function closeAddTaskOverlay() {
+    let overlayAddTaskRef = document.getElementById('overlayAddTask');
+    let addTaskOverlay = document.getElementById('addTaskOverlay');
+    addTaskOverlay.classList.remove('slide-in');
+    addTaskOverlay.classList.add('slide-out');
+    setTimeout(() => {
+        overlayAddTaskRef.classList.add('d-none');
+    }, 300);
 }
 
 function noBubbling(event) {
@@ -149,8 +156,7 @@ function getInitials(names) {
 }
 
 function startDragging(index) {
-    currentDraggedElement = index;
-    
+    currentDraggedElement = index;    
 }
 
 function allowDrop(ev) {
@@ -170,16 +176,15 @@ async function moveTo(status) {
 }
 
 function getDoneSubtasks(index) {
-    let subTasks = allTasks[index].subtasks;   
-    if(!subTasks){
-        return
-    }else{
-    let doneSubtasks = subTasks.filter(subtask => subtask.includes('"completed" : true'));
-    return doneSubtasks.length;    
-    }    
+    let subTasks = allTasks[index].subtasks;
+    if (!subTasks) {
+        return;
+    }
+    let doneSubtasks = subTasks.filter(subtask => subtask.completed === true);
+    return doneSubtasks.length;
 }
-
 function renderTaskDetail(index) {
+    currentTaskIndex = index;
     let overlay = document.getElementById('overlay');
     let names = allTasks[index].assigned.split(',');
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
@@ -188,25 +193,14 @@ function renderTaskDetail(index) {
     overlay.classList.remove('d-none');  
 }
 
-function renderTaskDetailNew(index) {
-    document.getElementById('taskDetail').classList.remove('slide-in');
-    let overlay = document.getElementById('overlay');
-    let names = allTasks[index].assigned.split(',');
-    let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
-    parseSubtasks(index);
-    overlay.classList.remove('d-none');  
-    overlay.innerHTML = showTaskDetail(index, names, subtasksClass);    
-}
-
 function parseSubtasks(index) {
-    subtaskContent = []; 
+    subtaskContent = [];
     let subtasks = allTasks[index].subtasks;
-    if (!subtasks) return; 
+    if (!subtasks) return;
     for (let i = 0; i < subtasks.length; i++) {
-        let subtaskObj = JSON.parse('{' + subtasks[i] + '}');       
         subtaskContent.push({
-            name: subtaskObj.name,
-            completed: subtaskObj.completed
+            name: subtasks[i].name,
+            completed: subtasks[i].completed
         });
     }
 }
@@ -218,32 +212,36 @@ function taskDeatilDueDate(date) {
 
 function getSubTaskImage(index) {
     let subTaskImage = (subtaskContent[index].completed === true ? 'on' : 'off');
-    return subTaskImage
+    return subTaskImage;
 }
 
-function changeSubtaskComplete(completed, index, i) { 
-        let subtaskString = allTasks[index].subtasks[i];
-        let subtaskObj = JSON.parse('{' + subtaskString + '}');
-        subtaskObj.completed = !subtaskObj.completed;
-        let updatedSubtaskString = JSON.stringify(subtaskObj).slice(1, -1); 
-        allTasks[index].subtasks[i] = updatedSubtaskString;
-        renderTaskDetailNew(index)                
+function changeSubtaskComplete(completed, index, i) {
+    let subtask = allTasks[index].subtasks[i];
+    subtask.completed = !subtask.completed; 
+    renderSubtaskOverlay(index);  
 }
-    
+
+function renderSubtaskOverlay(index) {
+    let subtasks = document.getElementById('subTasksOverlay');    
+    let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    parseSubtasks(index); 
+
+    subtasks.innerHTML = showOverlaySubtasks(index, subtasksClass);
+}    
 
 async function changeSubtaskCompleteApi(index, i) {
-   firebaseID = allTasks[index].firebaseID;
-   let response = await fetch(`${BASE_URL_TASK}/${firebaseID}.json`);
-   let responseJson = await response.json(); 
-   let SubTaskString = responseJson.subtasks[i]
-   if (SubTaskString.includes('"completed" : true')) {
-        SubTaskString = SubTaskString.replace('"completed" : true', '"completed" : false');
-    } else if (SubTaskString.includes('"completed" : false')) {
-        SubTaskString = SubTaskString.replace('"completed" : false', '"completed" : true');
-    }
-    responseJson.subtasks[i] = SubTaskString;
-    let updateResponse = await fetch(`${BASE_URL_TASK}/${firebaseID}.json`, {
-        method: 'PUT',  
+    let firebaseID = allTasks[index].firebaseID;
+    let response = await fetch(`${BASE_URL_TASK}/${firebaseID}.json`);
+    let responseJson = await response.json();
+    let subtask = responseJson.subtasks[i];
+
+    // Umkehren der completed-Eigenschaft
+    subtask.completed = !subtask.completed;
+
+    // Update der Subtask
+    responseJson.subtasks[i] = subtask;
+    await fetch(`${BASE_URL_TASK}/${firebaseID}.json`, {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -255,7 +253,6 @@ function deleteTask(index) {
     let test = document.getElementById('overlayDelete');
     test.classList.remove('d-none')
     test.innerHTML = showDeleteTask(index)   
-    console.log(allTasks.length); 
 }
 
 function noDelete() { 
@@ -275,6 +272,20 @@ async function deleteTaskCompletely(index) {
     renderTasks();    
     return responseToJson = await response.json();
 }
+
+function renderAddTaskOverlay() {
+    let overlay = document.getElementById('overlayAddTask');
+    overlay.innerHTML = showAddTaskOverlay();
+    overlay.classList.remove('d-none');
+    setTimeout(() => {
+    let script = document.createElement('script');
+    script.src = '/js/add_task.js'; 
+    script.type = 'text/javascript';
+    document.head.appendChild(script);
+    }, 0); 
+}
+
+
     
 
 
