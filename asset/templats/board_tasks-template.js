@@ -11,7 +11,7 @@ function showInProgressTasks(index, subtasksClass, names) {
                 </div>                
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
+                        ${names[0] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}   
                         ${names[1] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[2])}</span>` : ""}
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
@@ -35,7 +35,7 @@ function showToDoTasks(index, subtasksClass, names) {
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
+                        ${names[0] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}
                         ${names[1] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[2])}</span>` : ""}
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
@@ -59,7 +59,7 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
+                        ${names[0] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}   
                         ${names[1] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[2])}</span>` : ""}
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
@@ -83,7 +83,7 @@ function showDoneTasks(index, subtasksClass, names) {
                 </div>
                 <div class="assigned-priority-container">
                     <div class="assigned-container">
-                        <span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
+                        ${names[0] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}
                         ${names[1] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[2])}</span>` : ""}
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
@@ -111,28 +111,25 @@ function showTaskDetail(index, names, subtasksClass) {
                     <div class="task-detail-priority-${allTasks[index].priority}"></div>
                 </div>
                 <span class="task-detail-due-date">Assigned To:</span>
-                <div class="task-detail-assigned">
-                    <div class="task-detail-assigned-container">
-                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[0] ? getInitials(names[0]) : ""}</span>
-                        <span class="task-detail-assigned-name">${names[0] ? names[0] : ""}</span>
-                    </div>
-                    ${names[1] ? `<div class="task-detail-assigned-container">
-                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[1] ? getInitials(names[1]) : ""}</span>
-                        <span class="task-detail-assigned-name">${names[1] ? names[1] : ""}</span>
-                    </div>` : ""}
-                    ${names[2] ? `<div class="task-detail-assigned-container">
-                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[2] ? getInitials(names[2]) : ""}</span>
-                        <span class="task-detail-assigned-name">${names[2] ? names[2] : ""}</span>
-                    </div>` : ""}
-                    ${names[3] ? `<div class="task-detail-assigned-container">
-                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[3] ? getInitials(names[3]) : ""}</span>
-                        <span class="task-detail-assigned-name">${names[3] ? names[3] : ""}</span>
-                    </div>` : ""}
-                    ${names[4] ? `<div class="task-detail-assigned-container">
-                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${names[4] ? getInitials(names[4]) : ""}</span>
-                        <span class="task-detail-assigned-name">${names[4] ? names[4] : ""}</span>
-                    </div>` : ""}
-                </div>
+                ${allTasks[index].assigned !== "" ? 
+                    `<div class="task-detail-assigned">`
+                    + (function() {
+                        let assignedHtml = '';
+                        for (let i = 0; i < names.length; i++) {
+                            if (names[i]) {
+                                assignedHtml += `
+                                    <div class="task-detail-assigned-container">
+                                        <span class="task-detail-assigned-initials" style="background-color: ${randomBackgroundColor()};">${getInitials(names[i])}</span>
+                                        <span class="task-detail-assigned-name">${names[i]}</span>
+                                    </div>
+                                `;
+                            }
+                        }
+                        return assignedHtml;
+                    })()
+                    + `</div>`
+                : ""}
+                <div id="subTasksOverlay">
                 ${subtaskContent.length > 0 ?                                  
                     `<div class="task-detail-subtasks-container ${subtasksClass}">        
                         <span class="task-detail-subtasks">Subtasks</span>
@@ -149,6 +146,7 @@ function showTaskDetail(index, names, subtasksClass) {
                             return subtaskHTML;
                         })()}
                     </div>` : ""}
+                </div>    
                 <div class="task-detail-delete-edit-container">
                     <div onclick="deleteTask('${index}')" class="task-detail-delete-container">
                         <img class="task-detail-delete-image" src="/asset/images/board-task-detail-delete.png" alt="">
@@ -164,99 +162,130 @@ function showTaskDetail(index, names, subtasksClass) {
         `
 }
 
+function showOverlaySubtasks(index, subtasksClass) {
+   return ` 
+    ${subtaskContent.length > 0 ?                                  
+        `<div class="task-detail-subtasks-container ${subtasksClass}">        
+            <span class="task-detail-subtasks">Subtasks</span>
+            ${(() => {
+                let subtaskHTML = "";
+                for (let i = 0; i < subtaskContent.length; i++) {
+                    subtaskHTML += `
+                        <div class="task-detail-subtask-container">
+                            <div onclick="changeSubtaskComplete(${subtaskContent[i].completed}, '${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
+                            <div class="task-detail-subtask-text">${subtaskContent[i].name}</div><br>
+                        </div>
+                    `;
+                }
+                return subtaskHTML;
+            })()}
+        </div>` : ""}
+        `
+}
+
 
 function showAddTaskOverlay() {
-    return `
-            <div class="add-task-overlay" onclick="noBubbling(event)">                    
-                <div>
-                    <Span class="headline-left overlay-headline">Add task</Span>
-                <div>
-                <div class="content_box">                    
+    return `               
+            <div id="addTaskOverlay" class="add-task-overlay slide-in" onclick="noBubbling(event)">                    
+            <div class="add-task-overlay-close-button"><img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>
+            <div class="content_box">
+                <div class="left-content-maincontent">
                     <div>
+                        <label for="title-task" class="required">Title</label> <br>
+                        <input class="input_field" type="text" id="title-task" placeholder="Enter a title">
+                        <p id="errorMsg-title" class="input-error">This field is required</p>
+                    </div>
+                    <div>
+                        <label for="">Description</label><br>
+                        <textarea class="input_field input_field_description" name="Description" id="description-task" placeholder="Enter a Description" ></textarea>
+                
+                    </div>
                         <div>
-                        <label for="title-task" class="required">Title</label><br>
-                        <p id="errorMsg" style="color: red; display: none;">*This field is required</p>
-        
-                        <input class="input_field" type="text" id="title-task" placeholder="Enter a title" required>
-                        </div>
-                        <div>
-                            <label for="">Description</label><br>
-                            <textarea class="input_field input_field_description" name="Description" id="description-task" placeholder="Enter a Description" ></textarea>
-                    
-                        </div>
-                            <div>
-                            <label for="" class="required">Due date</label><br>
-                            <input class="input_field" type="date" id="date-task" required>
-                        </div>
+                        <label for="date-task" class="required">Due date</label><br>
+                        <input class="input_field" type="date" id="date-task">
+                        <p id="errorMsg-date" class="input-error">This field is required</p>
                     </div>
-                    <div class="splitbar"></div>
+                </div>
+                <div class="splitbar"></div>
+            <div>
+                <div class="left-content-maincontent">
+                    <label for="Priority">Priority</label><br>
+                    <div class="priority-button-group">
+                        <button class="priorty_button urgent" data-value="Urgent" onclick="selectPriority(this)">
+                            Urgent <img src="asset/img/icons/icon_urgent.png" />
+                        </button>
+                        <button class="priorty_button medium" data-value="Medium" onclick="selectPriority(this)">
+                            Medium <img src="asset/img/icons/icon_medium.png" />
+                        </button>
+                        <button class="priorty_button low" data-value="Low" onclick="selectPriority(this)">
+                            Low <img src="asset/img/icons/icon_low.png" />
+                        </button>
+                        </div>
+                    </div> 
+                <div class="dropdown-container">
+                <label for="">Assigned to</label>
+                <div class="dropdown-toggle" onclick="toggleDropdown()">
+                    <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
+                    <img src="asset/img/icons/arrow_drop_downaa.png" />
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div id="dropdownContent"></div>
+                </div>
+                <div id="selectedContacts" class="selected-contacts"></div>
+    
+                </div>
                 <div>
-                    <div>
-                        <label for="Priority">Priority</label><br>
-                        <div class="priority-button-group">
-                            <button class="priorty_button urgent" data-value="Urgent" onclick="selectPriority(this)">
-                                Urgent <img src="asset/img/icons/icon_urgent.png" />
-                            </button>
-                            <button class="priorty_button medium" data-value="Medium" onclick="selectPriority(this)">
-                                Medium <img src="asset/img/icons/icon_medium.png" />
-                            </button>
-                            <button class="priorty_button low" data-value="Low" onclick="selectPriority(this)">
-                                Low <img src="asset/img/icons/icon_low.png" />
-                            </button>
-                            </div>
-                        </div> 
-                    <div class="dropdown-container">
-                    <label for="">Assigned to</label>
-                    <div class="dropdown-toggle" onclick="toggleDropdown()">
-                        <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
-                        <img src="asset/img/icons/arrow_drop_downaa.png" />
-                    </div>
-                    <div class="dropdown-menu" id="dropdownMenu">
-                        <div id="dropdownContent"></div>
-                    </div>
-                    <div id="selectedContacts" class="selected-contacts"></div>
-        
-                    </div>
-                    <div>
-                    <label for="assigned_category">Category</label><br>
-                    <select name="assigned_category" id="assigned_category" required>
+                <label for="assigned_category" class="required">Category</label>
+                    <select name="assigned_category" id="assigned_category">
                         <option value="">Select task category</option>
                         <option value="User Story">User Story</option>
                         <option value="Technical Task">Technical Task</option>
                     </select>
+                <p id="errorMsg-category" class="input-error">This field is required</p>
+                </div>
+                
+                <div class="todo-wrapper">
+                <label for="Subtasks">Subtasks</label><br>
+                <div class="subtask-input-wrapper">
+                    <input
+                        type="text"
+                        id="todoInput"
+                        class="input_field subtask-input"
+                        placeholder="Add new subtask"
+                        oninput="toggleSubtaskIcons()"
+                    />
+                    <button id="subtaskPlus" class="subtask-icon" onclick="addTodo()">+</button>
+                    <div id="subtaskConfirmIcons" class="subtask-icon-group">
+                        <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
+                        <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
+                    </div>
                     </div>
                     
-                    <div class="todo-wrapper">
-                    <label for="Subtasks">Subtasks</label><br>
-                    <div class="subtask-input-wrapper">
-                        <input
-                            type="text"
-                            id="todoInput"
-                            class="input_field subtask-input"
-                            placeholder="Add new subtask"
-                            oninput="toggleSubtaskIcons()"
-                        />
-                        <button id="subtaskPlus" class="subtask-icon" onclick="addTodo()">+</button>
-                        <div id="subtaskConfirmIcons" class="subtask-icon-group">
-                            <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
-                            <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
-                        </div>
-                        </div>
-                        
-                        
-                        <div id="todoList" class="subtask-list"></div>
-        
-                    </div>
+                    
+                    <div id="todoList" class="subtask-list"></div>
+    
                 </div>
+            </div>
+            </div>
+            <div class="validation-info mobile-only">
+                <p><span class="red-star">*</span>This field is required</p>
                 </div>
-                <div class="button_container">
-                    <p><span class="red-star">*</span>This field is required</p>
-                    <div class="button-row">
-                    <button class="cancel-btn" onclick="resetForm()">Cancel <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
+            <div class="button_container desktop-only">
+                <p><span class="red-star">*</span>This field is required</p>
+                <div class="button-row">
+                    <button class="cancel-btn" onclick="resetForm()">Clear <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
                     <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
-                    </div>
-            </div>                
-        </div>   
+                </div>
+                </div>
+                
+                
+                <div class="fixed-buttons mobile-only">
+                <div class="button-row">
+                    <button class="cancel-btn" onclick="resetForm()">Clear <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
+                    <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
+                </div>
+                </div>               
+        </div>
     `
 }
 
