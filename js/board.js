@@ -136,18 +136,19 @@ async function closeOverlay() {
     renderTasks();
 }
 
-async function closeAddTaskOverlay() {
+function closeAddTaskOverlay() {
     let overlayAddTaskRef = document.getElementById('overlayAddTask');
     let addTaskOverlay = document.getElementById('addTaskOverlay');
     addTaskOverlay.classList.remove('slide-in');
     addTaskOverlay.classList.add('slide-out');
-    let script = document.querySelector('script[src="/js/add_task.js"]');
-    if (script) {
-        script.remove();
-    }
-    setTimeout(() => {
-        overlayAddTaskRef.classList.add('d-none');
-    }, 300);
+    overlayAddTaskRef.classList.add('d-none');
+}
+
+function closeSignUpOverlay() {
+    let overlaySignUp = document.getElementById('overlay');
+    initialNamesDiv.style.background = ""
+    initialNamesDiv.style.color = "rgba(41, 171, 226, 1)";
+    overlaySignUp.classList.add('d-none');
 }
 
 function noBubbling(event) {
@@ -277,23 +278,28 @@ function renderAddTaskOverlay() {
     let overlay = document.getElementById('overlayAddTask');
     overlay.innerHTML = showAddTaskOverlay();
     overlay.classList.remove('d-none');
-    // setTimeout(() => {
-    // let script = document.createElement('script');
-    // script.src = '/js/add_task.js'; 
-    // script.type = 'text/javascript';
-    // document.head.appendChild(script);
-    // }, 0); 
 }
 
 function filterTasks() {
-    const input = document.getElementById("boardSearchField").value.toLowerCase();
-    const titleSearch = allTasks[index].title
-    const descriptionDearch = allTasks[index].title
-    items.forEach((item) => {
-      const name = item.dataset.name.toLowerCase();
-      item.style.display = name.includes(input) ? "flex" : "none";
-    });
-  }
+    const searchInput = document.getElementById("boardSearchField").value;
+    if(searchInput.length < 3) return;
+    const searchResults = allTasks.filter(result => {
+    return result.title.toLowerCase().includes(searchInput.toLowerCase()) || result.description.toLowerCase().includes(searchInput.toLowerCase());}); 
+    allTasks = searchResults;
+    renderTasks();      
+}
+
+function filterTasksButton() {
+    const searchInput = document.getElementById("boardSearchField").value;
+    if (searchInput == "") {
+        allTasks = [];
+        init();
+    }else {
+    const searchResults = allTasks.filter(result => {
+        return result.title.toLowerCase().includes(searchInput.toLowerCase()) || result.description.toLowerCase().includes(searchInput.toLowerCase());}); 
+    allTasks = searchResults;
+    renderTasks(); }   
+}
 
 
     

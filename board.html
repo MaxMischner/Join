@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/styles/add_task.css">
 </head>
 <body onload="init()"> 
-    <div onclick="closeOverlay(event)" id="overlay" class="overlay d-none" >
+    <div onclick="closeSignUpOverlay(event)" id="overlay" class="overlay d-none" >
         <ul>
             <li>
                 <a  class="pointer" href="help.html">Help</a>
@@ -98,8 +98,9 @@
                     <span class="headline-left">Board</span>       
                     <div class="add-task-container">
                         <div class="board-search-field-container">
-                            <input id="boardSearchField" class="board-search-field" type="text" placeholder="Find Task">
+                            <input id="boardSearchField" class="board-search-field" type="text" placeholder="Find Task" onkeyup="filterTasks()">
                             <div class="search-field-border"></div>
+                            <img onclick="filterTasksButton()" class="search-field-button" src="/asset/images/board-search.png" alt="">
                         </div>                        
                         <div onclick="renderAddTaskOverlay()" class="add-task-button">
                             <div class="add-task-button-text">Add task</div>
