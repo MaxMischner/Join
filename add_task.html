@@ -13,7 +13,22 @@
     
 </head>
 <body onload="init()">
-
+    <div onclick="closeOverlay(event)" id="overlay" class="overlay d-none" >
+        <ul>
+            <li>
+                <a  class="pointer" href="help.html">Help</a>
+            </li>
+            <li>
+                <a class="pointer" href="legal-notice.html">Legal Notice</a>
+            </li>
+            <li>
+                <a class="pointer" href="privacy-policy.html">Privacy Policy</a>
+            </li>
+            <li>
+                <a class="pointer" href="#" onclick="logout()">Log Out</a>
+            </li>
+        </ul>
+    </div>
     <div class="content">
         <div class="sidebar-dummy">
             <img class="pointer" src="./asset/images/logo-light.svg" alt="" onclick="window.location.reload()">
@@ -68,7 +83,7 @@
                             </svg>
                         </div>
                     </a>
-                    <div class="header-right-name">SM</div>
+                    <div id="initialNames" class="header-right-name" onclick="openOverlay(event)">SM</div>
                 </div>
 
             </header>
@@ -85,7 +100,7 @@
                                 <p id="errorMsg-title" class="input-error">This field is required</p>
                             </div>
                             <div>
-                                <label for="">Description</label><br>
+                                <label for="description-task">Description</label><br>
                                 <textarea class="input_field input_field_description" name="Description" id="description-task" placeholder="Enter a Description" ></textarea>
                         
                             </div>
@@ -134,7 +149,7 @@
                       </div>
                       
                        <div class="todo-wrapper">
-                        <label for="Subtasks">Subtasks</label><br>
+                        <label>Subtasks</label><br>
                         <div class="subtask-input-wrapper">
                             <input
                               type="text"
@@ -189,4 +204,5 @@
 <script src="/js/summary.js"></script>
 <script src="/js/users.js"></script>
 <script src="/js/moment.js"></script>
+<script src="script.js"></script>
 </html>
