@@ -565,7 +565,7 @@ select:focus {
   }
 }
 
-/* === Tablet bis 900px === */
+
 @media (max-width: 900px) {
   .content-left{
     display: flex;
