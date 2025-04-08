@@ -17,7 +17,7 @@ function showInProgressTasks(index, subtasksClass, names) {
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
+                    <div class="priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
             </div>
         `
@@ -41,7 +41,7 @@ function showToDoTasks(index, subtasksClass, names) {
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
+                    <div class="priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
             </div>
         `
@@ -65,7 +65,7 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
+                    <div class="priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
             </div>
         `
@@ -89,7 +89,7 @@ function showDoneTasks(index, subtasksClass, names) {
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
+                    <div class="priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
             </div>
         `
@@ -107,8 +107,8 @@ function showTaskDetail(index, names, subtasksClass) {
                 <span class="task-detail-due-date">Due date: ${taskDetailDueDate(allTasks[index].duedate)}</span>
                 <div class="task-detail-due-priority-container">
                     <span class="task-detail-due-priority-text">Priority: </span>
-                    <span class="task-detail-due-priority">${allTasks[index].priority}</span>
-                    <div class="task-detail-priority-${allTasks[index].priority}"></div>
+                    <span class="task-detail-due-priority">${!allTasks[index].priority ? `Low` : allTasks[index].priority}</span>
+                    <div class="task-detail-priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
                 <span class="task-detail-due-date">Assigned To:</span>
                 ${allTasks[index].assigned !== "" ? 
