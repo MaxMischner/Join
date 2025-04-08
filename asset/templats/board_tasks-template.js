@@ -104,7 +104,7 @@ function showTaskDetail(index, names, subtasksClass) {
                 </div>
                 <span class="task-detail-title">${allTasks[index].title}</span>
                 <span class="task-detail-description">${allTasks[index].description}</span>
-                <span class="task-detail-due-date">Due date: ${taskDeatilDueDate(allTasks[index].duedate)}</span>
+                <span class="task-detail-due-date">Due date: ${taskDetailDueDate(allTasks[index].duedate)}</span>
                 <div class="task-detail-due-priority-container">
                     <span class="task-detail-due-priority-text">Priority: </span>
                     <span class="task-detail-due-priority">${allTasks[index].priority}</span>
@@ -138,7 +138,7 @@ function showTaskDetail(index, names, subtasksClass) {
                             for (let i = 0; i < subtaskContent.length; i++) {
                                 subtaskHTML += `
                                     <div class="task-detail-subtask-container">
-                                        <div onclick="changeSubtaskComplete(${subtaskContent[i].completed}, '${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
+                                        <div onclick="changeSubtaskComplete('${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
                                         <div class="task-detail-subtask-text">${subtaskContent[i].name}</div><br>
                                     </div>
                                 `;

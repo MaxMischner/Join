@@ -52,14 +52,6 @@ body {
     scrollbar-color: #c1c1c1 transparent;
 }
 
-.overlay-wrapper {
-    border-radius: 30px;
-    overflow: hidden;
-    max-height: 800px;
-    height: 100%;
-    width: 100%;
-}
-
 .add-task-overlay::-webkit-scrollbar {
     width: 6px;
     
@@ -79,9 +71,6 @@ body {
 .add-task-overlay::-webkit-scrollbar-thumb:hover {
     background-color: #a1a1a1;
 }
-
-
-
 
 .overlay-headline {
     padding-bottom: 20px;
@@ -182,6 +171,26 @@ body {
 .board-splits {
     margin-bottom: 50px;
     width: 20%;
+}
+
+.board-splits::-webkit-scrollbar {
+    width: 6px;
+    
+}
+
+.board-splits::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    padding-right: 50px;
+}
+
+.board-splits::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 10px;
+}
+
+.board-splits::-webkit-scrollbar-thumb:hover {
+    background-color: #a1a1a1;
 }
 
 .board-splits-category {
@@ -590,8 +599,8 @@ body {
 }
 
 .task-detail-subtask-image-off:hover{
-        transform: translateY(-1px);
-   }
+    transform: translateY(-1px);
+}
 
 .task-detail-subtask-text {
     font-size: 16px;
