@@ -103,17 +103,14 @@ body {
 .board-splits-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    gap: 26px;
+    justify-content: space-around;  
     max-width: 1208px;
     padding: 0 64px 0 64px;
-
     flex-wrap: wrap;
 }
 
 .board-search-field::placeholder {
-    font-size: 20px;
-    
+    font-size: 20px;    
     color: rgba(209, 209, 209, 1);
 }
 
@@ -149,6 +146,7 @@ body {
 
 .board-splits {
     margin-bottom: 50px;
+    width: 20%;
 }
 
 .board-splits-category {
@@ -229,7 +227,7 @@ body {
     font-weight: 400;
     line-height: 120%;
     color: rgba(168, 168, 168, 1);
-    width : 200px;
+    width : 90%;
     display: -webkit-box; 
     -webkit-box-orient: vertical; 
     -webkit-line-clamp: 3; 
@@ -240,7 +238,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     margin: 5px 0 5px 0;
 }
 
@@ -676,14 +674,48 @@ body {
 
 }
 
+@media(max-width: 1250px) {
+    .board-splits-container {
+        display: grid;
+        grid-template-columns: 240px 240px;
+    }
+    
+    .board-splits {
+        width: 240px;
+        max-height: 600px;
+        overflow: auto;
+    }
+    
+}
+
+@media(max-width: 1250px) {
+.board-search-field-container {
+    margin-left: 20px;
+    }
+}
+
 @media (max-width: 900px) {
     .headline-board{
         flex-wrap: wrap;
     }
 
-    .add-task-container {
-        width: 100%;
-        margin-top: 20px;
+    .board-splits-container {
+        display: grid;
+        grid-template-columns: 350px; 
+    }
+
+    .board-splits {
+        width: 350px;
+        max-height: 600px;
+        overflow: auto;
+    }
+
+    .board-search-field-container {
+        margin-left: 0;
+    }
+
+    .tasks-content {
+        max-width: 350px;
     }
 }
 
@@ -692,6 +724,37 @@ body {
         width: 100%;
         flex-direction: column;
         margin-top: 20px;
+    }
+
+    .board-splits-container {
+        display: flex;
+        
+    }
+}
+
+@media (max-width: 460px) {
+    .board-splits {
+        width: 280px;
+    }
+
+    .board-search-field-container {
+        margin-left: 0;
+    }
+
+    .tasks-content {
+        max-width: 300px;
+    }
+
+    .board-splits-container {
+        padding: 5px;
+    }
+
+    .board-search-field-container {
+        width: 270px;
+    }
+
+    .headline {
+        margin: 5px;
     }
 }
 
