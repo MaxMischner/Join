@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join - Kontakt bearbeiten</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/editContact.css">
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Join Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="board.html">Kanban-Board</a></li>
+        <li><a href="contacts.html">Kontakte</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="register.html">Registrieren</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="edit-contact">
+      <h1>Kontakt bearbeiten</h1>
+      <form id="edit-contact-form">
+        <div class="form-group">
+          <label for="edit-name">Name:</label>
+          <input type="text" id="edit-name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-email">E-Mail:</label>
+          <input type="email" id="edit-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-phone">Telefon:</label>
+          <input type="text" id="edit-phone" name="phone">
+        </div>
+        <div class="form-actions">
+          <button type="submit">Speichern</button>
+          <button type="button" id="cancel-edit">Abbrechen</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Join Project. Alle Rechte vorbehalten.</p>
+  </footer>
+  
+  <!-- JavaScript für Edit Contact -->
+  <script src="js/editContact.js"></script>
+</body>
+</html>
