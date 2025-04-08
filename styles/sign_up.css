@@ -47,10 +47,15 @@
 .signup-headerline-with-arrow {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
 }
 
 .signup-headerline-with-arrow img {
     height: 20px;
+    position: absolute;
+    left:  100px;
 }
 
 .signup-headline-container {
@@ -232,6 +237,9 @@
         margin-top: 140px;
     }
     
+    .signup-headerline-with-arrow img {
+        left: 20px;
+    }
 }
 
 @media (max-width: 430px) {
@@ -296,4 +304,7 @@
         margin-top: 230px;
     }
     
+    .signup-headerline-with-arrow img {
+        left: 15px;
+    }
 }

@@ -3,6 +3,12 @@ let subtaskContent = [];
 let currentDraggedElement;
 
 async function init() {
+    let user = localStorage.getItem("activeUser");
+    if (!user) {
+        window.location.href = "log_in.html";
+        return ;
+    } 
+
     let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
     renderInitials(activeUser);
     await getAllTasks();  

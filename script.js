@@ -2,8 +2,9 @@ const BASE_URL_TASK = "https://join-61c56-default-rtdb.europe-west1.firebasedata
 const BASE_URL_USER = "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/users/"
 const BASE_URL_CONTACT = "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/contacts/"
 
-let initialNamesDiv = document.getElementById("initialNames");
 
+
+let initialNamesDiv = document.getElementById("initialNames");
 
 function closeOverlay(event) {
     if (event.target !== event.currentTarget) return;

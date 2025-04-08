@@ -168,8 +168,16 @@
         </div>
     </div>
 </body>
+<script>
+    let user = localStorage.getItem("activeUser");
+    if (!user) {
+        window.location.href = "log_in.html"
+    } 
+</script>
 <script src="/script.js"></script>
 <script src="/js/summary.js"></script>
 <script src="/js/users.js"></script>
 <script src="/js/moment.js"></script>
+
+
 </html>

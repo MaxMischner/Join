@@ -57,6 +57,11 @@ a:visited {
     display: none;
 }
 
+button {
+    border: none;
+}
+
+
 @media (max-width: 900px) {
     
 

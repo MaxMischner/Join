@@ -12,6 +12,12 @@ let upcomingDeadline = null;
  * onload init Function
  */
 async function initSummary() {
+    let user = localStorage.getItem("activeUser");
+    if (!user) {
+        window.location.href = "log_in.html";
+        return ;
+    } 
+
     await getTasks();
     let activeUser = JSON.parse(localStorage.getItem("activeUser"));
     renderName (activeUser);
