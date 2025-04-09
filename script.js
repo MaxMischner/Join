@@ -32,5 +32,6 @@ function openOverlay(event) {
 
 function logout() {
     localStorage.removeItem("activeUser");
+    localStorage.removeItem("guestUser");
     window.location.href = "index.html";
 }

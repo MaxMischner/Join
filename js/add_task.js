@@ -10,10 +10,11 @@ let subtasks = "";
 
 function init() {
   let user = localStorage.getItem("activeUser");
-  if (!user) {
-      window.location.href = "log_in.html";
-      return ;
-  } 
+    let guestUser = localStorage.getItem("guestUser");
+    if (!user && !guestUser) {
+        window.location.href = "log_in.html";
+        return ;
+    } 
 
 
   getAllContacts();
