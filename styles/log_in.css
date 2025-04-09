@@ -260,6 +260,12 @@ body {
     font-size: 16px;
 }
 
+.wrong-login-text {
+    color: red;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
 @media (max-width: 950px) {
     .logo {
         width: 64px;
