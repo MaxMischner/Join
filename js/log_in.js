@@ -49,6 +49,8 @@ function wrongLogin() {
  * 
  */
 function guestLogin() {
+
     localStorage.removeItem("activeUser");
+    localStorage.setItem("guestUser", "guest")
     window.location.href = "summary.html";
 }
