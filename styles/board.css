@@ -124,6 +124,18 @@ body {
     cursor: pointer;
 }
 
+.no-tasks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    height: 48px;
+    background-color: rgba(231, 231, 231, 1);
+    border: 1px dotted rgba(168, 168, 168, 1);
+    border-radius: 10px;
+    color: rgba(168, 168, 168, 1);
+}
+
 .board-splits-container {
     display: flex;
     flex-direction: row;

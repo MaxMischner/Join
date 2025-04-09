@@ -17,7 +17,6 @@ async function initSummary() {
         window.location.href = "log_in.html";
         return ;
     } 
-
     await getTasks();
     let activeUser = JSON.parse(localStorage.getItem("activeUser"));
     renderName (activeUser);

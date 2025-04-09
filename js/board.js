@@ -70,26 +70,9 @@ async function renderTasks() {
 }
 
 /**
- * Render the allTasks data with status 'in Progress' in the split Progress with 
- * the showInProgressTasks-function
- * 
- * @param {*} index - the index of the task ind the allTasks object
- * @property {string} allTasks[index].subtasks - if there are no subtasks in the object, the container 
- * gets a display:none
- * @property {string} allTasks[index].assigned - the name value is a string. with split it ist transformed for Initials
- */
-function renderProgress(index) {
-    let inProgress = document.getElementById('inProgress'); 
-    let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
-    let names = allTasks[index].assigned.split(',');
-    if (allTasks[index].status === "in Progress") {
-        inProgress.innerHTML += showInProgressTasks(index, subtasksClass, names);  
-    } 
-}
-
-/**
  * Render the allTasks data with status 'in Progress' in the split To-do with 
- * the showInProgressTasks-function
+ * the showInProgressTasks-function.
+ * If there are tasks, the Container "No Tasks To Do" will be removed.
  * 
  * @param {*} index - the index of the task ind the allTasks object
  * @property {string} allTasks[index].subtasks - if there are no subtasks in the object, the container 
@@ -102,13 +85,35 @@ function renderTodo(index) {
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
     let names = allTasks[index].assigned.split(',');
     if (allTasks[index].status === "To do") {
-        ToDo.innerHTML += showToDoTasks(index, subtasksClass, names);        
+        ToDo.innerHTML += showToDoTasks(index, subtasksClass, names); 
+        document.getElementById('noTasksToDo').classList.add('d-none');       
+    } 
+}
+
+/**
+ * Render the allTasks data with status 'in Progress' in the split Progress with 
+ * the showInProgressTasks-function.
+ * If there are tasks, the Container "In Progress" will be removed.
+ * 
+ * @param {*} index - the index of the task ind the allTasks object
+ * @property {string} allTasks[index].subtasks - if there are no subtasks in the object, the container 
+ * gets a display:none
+ * @property {string} allTasks[index].assigned - the name value is a string. with split it ist transformed for Initials
+ */
+function renderProgress(index) {
+    let inProgress = document.getElementById('inProgress'); 
+    let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
+    let names = allTasks[index].assigned.split(',');
+    if (allTasks[index].status === "in Progress") {
+        inProgress.innerHTML += showInProgressTasks(index, subtasksClass, names);  
+        document.getElementById('noTasksInProgress').classList.add('d-none');  
     } 
 }
 
 /**
  * Render the allTasks data with status 'in Progress' in the split Await Feedback-do with 
- * the showInProgressTasks-function
+ * the showInProgressTasks-function.
+ * If there are tasks, the Container "Await Feedback" will be removed.
  * 
  * @param {*} index - the index of the task ind the allTasks object
  * @property {string} allTasks[index].subtasks - if there are no subtasks in the object, the container 
@@ -121,13 +126,15 @@ function renderAwaitFeedback(index) {
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
     let names = allTasks[index].assigned.split(',');
     if (allTasks[index].status === "await Feedback") {
-        await.innerHTML += showAwaitFeedbackTasks(index, subtasksClass, names);        
+        await.innerHTML += showAwaitFeedbackTasks(index, subtasksClass, names); 
+        document.getElementById('noTasksAwaitFeedback').classList.add('d-none');        
     } 
 }
 
 /**
  * Render the allTasks data with status 'in Progress' in the split Doneo with 
- * the showInProgressTasks-function
+ * the showInProgressTasks-function.
+ * If there are tasks, the Container "Done" will be removed.
  * 
  * @param {*} index - the index of the task ind the allTasks object
  * @property {string} allTasks[index].subtasks - if there are no subtasks in the object, the container 
@@ -140,7 +147,8 @@ function renderDone(index) {
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
     let names = allTasks[index].assigned.split(',');
     if (allTasks[index].status === "done") {
-        done.innerHTML += showDoneTasks(index, subtasksClass, names);              
+        done.innerHTML += showDoneTasks(index, subtasksClass, names);  
+        document.getElementById('noTasksDone').classList.add('d-none');             
     }           
 }
 
