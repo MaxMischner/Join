@@ -153,7 +153,7 @@ function showTaskDetail(index, names, subtasksClass) {
                         <Span class="task-detail-delete-text">Delete</Span>
                     </div>     
                     <div class="task-detail-delete-container-border"></div>
-                    <div class="task-detail-delete-container">
+                    <div onclick="renderEditTaskOverlay(${index})" class="task-detail-delete-container">
                         <img class="task-detail-edit-image" src="/asset/images/board-task-detail-edit.png" alt="">
                         <Span class="task-detail-delete-text">Edit</Span>
                     </div>                
@@ -184,101 +184,107 @@ function showOverlaySubtasks(index, subtasksClass) {
 }
 
 
-function showAddTaskOverlay() {
+function showEditTaskOverlay(task, index) {
     return `               
         <div>
         <div id="addTaskOverlay" class="add-task-overlay slide-in" onclick="noBubbling(event)">                    
             <div class="add-task-overlay-close-button">
-                <span class="add-task-overlay-close-header">Add Task</span>
+                <span class="add-task-overlay-close-header"></span>
                 <img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>
-            <div class="content_box">
-                <div class="left-content-maincontent">
-                    <div>
-                        <label for="title-task" class="required">Title</label> <br>
-                        <input class="input_field" type="text" id="title-task" placeholder="Enter a title">
-                        <p id="errorMsg-title" class="input-error">This field is required</p>
-                    </div>
-                    <div>
-                        <label for="">Description</label><br>
-                        <textarea class="input_field input_field_description" name="Description" id="description-task" placeholder="Enter a Description" ></textarea>
-                
-                    </div>
-                        <div>
-                        <label for="date-task" class="required">Due date</label><br>
-                        <input class="input_field" type="date" id="date-task">
-                        <p id="errorMsg-date" class="input-error">This field is required</p>
-                    </div>
-                </div>
-                <div class="splitbar"></div>
-            <div>
-                <div class="left-content-maincontent">
-                    <label for="Priority">Priority</label><br>
-                    <div class="priority-button-group">
-                        <button class="priorty_button urgent" data-value="Urgent" onclick="selectPriority(this)">
-                            Urgent <img src="asset/img/icons/icon_urgent.png" />
-                        </button>
-                        <button class="priorty_button medium" data-value="Medium" onclick="selectPriority(this)">
-                            Medium <img src="asset/img/icons/icon_medium.png" />
-                        </button>
-                        <button class="priorty_button low" data-value="Low" onclick="selectPriority(this)">
-                            Low <img src="asset/img/icons/icon_low.png" />
-                        </button>
+            <div class="main_Box">                    
+                    <div class="content_box">
+                        <div class="left-content-maincontent">
+                            <div>
+                                <label for="title-task" class="required">Title</label> <br>
+                                 <input class="input_field" type="text" id="title-task" value="${task.title}">
+                                <p id="errorMsg-title" class="input-error">This field is required</p>
+                            </div>
+                            <div>
+                                <label for="description-task">Description</label><br>
+                                 <textarea class="input_field input_field_description" id="description-task">${task.description}</textarea>
+                        
+                            </div>
+                             <div>
+                                <label for="date-task" class="required">Due date</label><br>
+                                <input class="input_field" type="date" id="date-task" value="${task.duedate}">
+                                <p id="errorMsg-date" class="input-error">This field is required</p>
+                            </div>
                         </div>
-                    </div> 
-                <div class="dropdown-container">
-                <label for="">Assigned to</label>
-                <div class="dropdown-toggle" onclick="toggleDropdown()">
-                    <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
-                    <img src="asset/img/icons/arrow_drop_downaa.png" />
-                </div>
-                <div class="dropdown-menu" id="dropdownMenu">
-                    <div id="dropdownContent"></div>
-                </div>
-                <div id="selectedContacts" class="selected-contacts"></div>
-    
-                </div>
-                <div>
-                <label for="assigned_category" class="required">Category</label>
-                    <select name="assigned_category" id="assigned_category">
-                        <option value="">Select task category</option>
-                        <option value="User Story">User Story</option>
-                        <option value="Technical Task">Technical Task</option>
-                    </select>
-                <p id="errorMsg-category" class="input-error">This field is required</p>
-                </div>
-                
-                <div class="todo-wrapper">
-                <label for="Subtasks">Subtasks</label><br>
-                <div class="subtask-input-wrapper">
-                    <input
-                        type="text"
-                        id="todoInput"
-                        class="input_field subtask-input"
-                        placeholder="Add new subtask"
-                        oninput="toggleSubtaskIcons()"
-                    />
-                    <button id="subtaskPlus" class="subtask-icon" onclick="addTodo()">+</button>
-                    <div id="subtaskConfirmIcons" class="subtask-icon-group">
-                        <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
-                        <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
-                    </div>
-                    </div>
-                    
-                    
-                    <div id="todoList" class="subtask-list"></div>
-    
-                </div>
-            </div>
-            </div>
-
-            <div class="button_container">
+                        <div class="splitbar"></div>
+                    <div class="left-content-maincontent">
+                        <div >
+                            <label for="Priority">Priority</label><br>
+                            <div class="priority-button-group">
+                               <button class="priorty_button urgent ${task.priority === 'Urgent' ? 'selected' : ''}" data-value="Urgent" onclick="selectPriority(this)">
+                                  Urgent <img src="asset/img/icons/icon_urgent.png" />
+                                </button>
+                                <button class="priorty_button medium ${task.priority === 'Medium' ? 'selected' : ''}" data-value="Medium" onclick="selectPriority(this)">
+                                  Medium <img src="asset/img/icons/icon_medium.png" />
+                                </button>
+                                <button class="priorty_button low ${task.priority === 'Low' ? 'selected' : ''}" data-value="Low" onclick="selectPriority(this)">
+                                  Low <img src="asset/img/icons/icon_low.png" />
+                                </button>
+                              </div>
+                          </div> 
+                       <div class="dropdown-container" id="toggleDropdown">
+                        <label for="">Assigned to</label>
+                        <div class="dropdown-toggle" onclick="toggleDropdown()" >
+                          <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
+                          <img src="asset/img/icons/arrow_drop_downaa.png" />
+                        </div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                          <div id="dropdownContent"></div>
+                        </div>
+                        <div id="selectedContacts" class="selected-contacts"></div>
+            
+                      </div>
+                      <div>
+                        <label for="assigned_category" class="required ">Category</label>
+                            <select name="assigned_category" id="assigned_category">
+                                 <option value="User Story" ${task.category === 'User Story' ? 'selected' : ''}>User Story</option>
+                            <option value="Technical Task" ${task.category === 'Technical Task' ? 'selected' : ''}>Technical Task</option>
+                            </select>
+                        <p id="errorMsg-category" class="input-error">This field is required</p>
+                      </div>
+                      
+                       <div class="todo-wrapper">
+                        <label>Subtasks</label><br>
+                        <div class="subtask-input-wrapper">
+                            <input
+                              type="text"
+                              id="todoInput"
+                              class="input_field subtask-input"
+                              placeholder="Add new subtask"
+                              oninput="toggleSubtaskIcons()"
+                            />
+                            <button id="subtaskPlus" class="subtask-icon" onclick="addTodo()">+</button>
+                            <div id="subtaskConfirmIcons" class="subtask-icon-group">
+                              <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
+                              <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
+                            </div>
+                          </div>
+                          
+                          
+                          <div id="todoList" class="subtask-list"></div>
+            
+                      </div>
+                      <div class="button_container">
                 <p><span class="red-star">*</span>This field is required</p>
                 <div class="button-row-overlay">
                     <button class="cancel-btn" onclick="resetForm()">Clear <img src="asset/img/icons/subtasks_icons_X.png" alt=""></button>
                     <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveTask()">Create Task <img src="asset/img/icons/check.png" alt=""></button>
                 </div>
                 </div>  
-        </div>
+     </div>
+                    </div>
+                    </div>
+                    
+                
+            </div>
+            </div> 
+        
+        </div>  
+     </div>
     `
 }
 

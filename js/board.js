@@ -307,7 +307,12 @@ function filterTasksButton() {
     renderTasks(); }   
 }
 
-
+function renderEditTaskOverlay(index) {
+    const task = allTasks[index];
+    let overlay = document.getElementById('overlayAddTask');
+    overlay.innerHTML = showEditTaskOverlay(task, index);
+    overlay.classList.remove('d-none');
+}
     
 
 
