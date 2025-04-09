@@ -61,12 +61,26 @@ async function renderTasks() {
     document.getElementById('ToDo').innerHTML = "";
     document.getElementById('await').innerHTML = "";
     document.getElementById('done').innerHTML = "";
+    showNoTasksContainer();
     for (let index = 0; index < allTasks.length; index++) {
         renderProgress(index);
         renderTodo(index);
         renderAwaitFeedback(index);
         renderDone(index);    
     }
+}
+
+/**
+ * Removes display:none from the No-Tasks-Container if there are no tasks 
+ * in the split after dragging in a new split.   
+ * 
+ */
+
+function showNoTasksContainer() {
+    document.getElementById('noTasksToDo').classList.remove('d-none');
+    document.getElementById('noTasksInProgress').classList.remove('d-none');
+    document.getElementById('noTasksAwaitFeedback').classList.remove('d-none'); 
+    document.getElementById('noTasksDone').classList.remove('d-none'); 
 }
 
 /**
