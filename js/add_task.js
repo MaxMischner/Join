@@ -89,17 +89,19 @@ function filterContacts() {
   });
 }
 
-async function getAllContacts() {
+async function getAllContacts(preSelectedNames = []) {
   let response = await fetch(BASE_URL_CONTACT + ".json");
   let responseJSON = await response.json();
   let keys = Object.keys(responseJSON);
   let allContacts = [];
+
   for (let index = 0; index < keys.length; index++) {
     let key = keys[index];
     let value = responseJSON[key];
     if (responseJSON[key]) allContacts.push({ [key]: value });
   }
-  renderContactsInDropdown(allContacts);
+
+  renderContactsInDropdown(allContacts, preSelectedNames); // 🆕
 }
 
 function addTodo() {
@@ -188,28 +190,39 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-function renderContactsInDropdown(allContacts) {
-    const container = document.getElementById("dropdownContent");
-    container.innerHTML = "";
-    allContacts.forEach((contactObj) => {
-      const [key, value] = Object.entries(contactObj)[0];
-      const contactItem = createContactItem(key, value);
-      container.appendChild(contactItem);
-    });
-  }
+function renderContactsInDropdown(allContacts, preSelectedNames = []) {
+  const container = document.getElementById("dropdownContent");
+  container.innerHTML = "";
+
+  allContacts.forEach((contactObj) => {
+    const [key, value] = Object.entries(contactObj)[0];
+    const contactItem = createContactItem(key, value, preSelectedNames); // 🆕
+    container.appendChild(contactItem);
+  });
+
+  // nach dem Laden: trigger für Chips-Anzeige
+  handleSelectionChange();
+}
   
-  function createContactItem(key, contact) {
-    const name = contact.name;
-    const checkbox = createContactCheckbox(key, name);
-    const contactItem = buildContactItem(name, checkbox);
-    contactItem.addEventListener("click", (event) => {
-      if (event.target !== checkbox) {
-        checkbox.checked = !checkbox.checked;
-        handleSelectionChange();
-      }
-    });
-    return contactItem;
+function createContactItem(key, contact, preSelectedNames = []) {
+  const name = contact.name;
+  const checkbox = createContactCheckbox(key, name);
+
+  // ✅ Wenn Name zu preSelectedNames gehört, Checkbox aktivieren
+  if (preSelectedNames.includes(name)) {
+    checkbox.checked = true;
   }
+
+  const contactItem = buildContactItem(name, checkbox);
+  contactItem.addEventListener("click", (event) => {
+    if (event.target !== checkbox) {
+      checkbox.checked = !checkbox.checked;
+      handleSelectionChange();
+    }
+  });
+  return contactItem;
+}
+
 
   function buildContactItem(name, checkbox) {
     const initials = getInitials(name);

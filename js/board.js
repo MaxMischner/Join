@@ -540,6 +540,7 @@ function renderAddTaskOverlay() {
     let overlay = document.getElementById('overlayAddTask');
     overlay.innerHTML = showAddTaskOverlay();
     overlay.classList.remove('d-none');
+    getAllContacts();
 }
 
 
@@ -593,7 +594,55 @@ function renderEditTaskOverlay(index) {
     let overlay = document.getElementById('overlayAddTask');
     overlay.innerHTML = showEditTaskOverlay(task, index);
     overlay.classList.remove('d-none');
+
+    const preSelectedNames = task.assigned.split(",").map(name => name.trim());
+    getAllContacts(preSelectedNames);
+
+  
+    if (task.subtasks && task.subtasks.length > 0) {
+        const todoList = document.getElementById("todoList");
+        task.subtasks.forEach((subtask) => {
+            const item = document.createElement("div");
+            item.className = "subtask-list-item";
+            item.textContent = subtask.name;
+            item.dataset.completed = subtask.completed;
+            item.dataset.name = subtask.name;
+            item.addEventListener("click", () => editSubtask(item, subtask.name));
+            todoList.appendChild(item);
+        });
+    }
 }
+
+async function saveEditedTask(index) {
+    collectTaskData(); 
+
+    const task = allTasks[index];
+    const firebaseID = task.firebaseID;
+
+    let updatedData = {
+        title,
+        description,
+        assigned,
+        category,
+        duedate,
+        priority,
+        status: task.status, 
+        subtasks,
+    };
+
+    await fetch(`${BASE_URL_TASK}/${firebaseID}.json`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+    });
+
+  
+    closeAddTaskOverlay();
+    allTasks = [];
+    await getAllTasks();
+    renderTasks();
+}
+
     
 
 
