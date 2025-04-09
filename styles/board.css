@@ -55,14 +55,6 @@ body {
     max-width: 450px;
 }
 
-.overlay-wrapper {
-    border-radius: 30px;
-    overflow: hidden;
-    max-height: 800px;
-    height: 100%;
-    width: 100%;
-}
-
 .add-task-overlay::-webkit-scrollbar {
     width: 6px;
     
@@ -82,9 +74,6 @@ body {
 .add-task-overlay::-webkit-scrollbar-thumb:hover {
     background-color: #a1a1a1;
 }
-
-
-
 
 .overlay-headline {
     padding-bottom: 20px;
@@ -138,6 +127,18 @@ body {
     cursor: pointer;
 }
 
+.no-tasks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    height: 48px;
+    background-color: rgba(231, 231, 231, 1);
+    border: 1px dotted rgba(168, 168, 168, 1);
+    border-radius: 10px;
+    color: rgba(168, 168, 168, 1);
+}
+
 .board-splits-container {
     display: flex;
     flex-direction: row;
@@ -185,6 +186,26 @@ body {
 .board-splits {
     margin-bottom: 50px;
     width: 20%;
+}
+
+.board-splits::-webkit-scrollbar {
+    width: 6px;
+    
+}
+
+.board-splits::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    padding-right: 50px;
+}
+
+.board-splits::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+    border-radius: 10px;
+}
+
+.board-splits::-webkit-scrollbar-thumb:hover {
+    background-color: #a1a1a1;
 }
 
 .board-splits-category {
@@ -404,7 +425,7 @@ body {
 }
 
 .overlay-tasks-content-technical {
-    width: 164px;;
+    width: 208px;;
     color: rgba(255, 255, 255, 1);
     background-color: rgba(31, 215, 193, 1);
     border-radius: 8px;
@@ -593,8 +614,8 @@ body {
 }
 
 .task-detail-subtask-image-off:hover{
-        transform: translateY(-1px);
-   }
+    transform: translateY(-1px);
+}
 
 .task-detail-subtask-text {
     font-size: 16px;

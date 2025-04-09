@@ -17,7 +17,7 @@ function showInProgressTasks(index, subtasksClass, names) {
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
+                    <div class="priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
             </div>
         `
@@ -41,7 +41,7 @@ function showToDoTasks(index, subtasksClass, names) {
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
+                    <div class="priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
             </div>
         `
@@ -65,7 +65,7 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
+                    <div class="priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
             </div>
         `
@@ -89,7 +89,7 @@ function showDoneTasks(index, subtasksClass, names) {
                         ${names[3] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned" style="background-color: ${randomBackgroundColor()};">${getInitials(names[4])}</span>` : ""}
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
+                    <div class="priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
             </div>
         `
@@ -104,11 +104,11 @@ function showTaskDetail(index, names, subtasksClass) {
                 </div>
                 <span class="task-detail-title">${allTasks[index].title}</span>
                 <span class="task-detail-description">${allTasks[index].description}</span>
-                <span class="task-detail-due-date">Due date: ${taskDeatilDueDate(allTasks[index].duedate)}</span>
+                <span class="task-detail-due-date">Due date: ${taskDetailDueDate(allTasks[index].duedate)}</span>
                 <div class="task-detail-due-priority-container">
                     <span class="task-detail-due-priority-text">Priority: </span>
-                    <span class="task-detail-due-priority">${allTasks[index].priority}</span>
-                    <div class="task-detail-priority-${allTasks[index].priority}"></div>
+                    <span class="task-detail-due-priority">${!allTasks[index].priority ? `Low` : allTasks[index].priority}</span>
+                    <div class="task-detail-priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
                 <span class="task-detail-due-date">Assigned To:</span>
                 ${allTasks[index].assigned !== "" ? 
@@ -138,7 +138,7 @@ function showTaskDetail(index, names, subtasksClass) {
                             for (let i = 0; i < subtaskContent.length; i++) {
                                 subtaskHTML += `
                                     <div class="task-detail-subtask-container">
-                                        <div onclick="changeSubtaskComplete(${subtaskContent[i].completed}, '${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
+                                        <div onclick="changeSubtaskComplete('${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
                                         <div class="task-detail-subtask-text">${subtaskContent[i].name}</div><br>
                                     </div>
                                 `;

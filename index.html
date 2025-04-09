@@ -15,6 +15,7 @@
         <img class="animated-logo" src="/asset/images/logo.svg" alt="">
     </div>
     <div class="content">
+        
         <div class="content-top">
             <img class="logo" src="/asset/images/logo.svg" alt="">
             <div class="sign-up-container">
@@ -28,14 +29,16 @@
             <div class="log-in-headline-container">
                 <span class="log-in-headline">Log in</span>
             </div>
-            <form onsubmit="login();return false" class="login-forms" action="">
+            <div>
+            <form id="loginForm" onsubmit="login();return false" class="login-forms" action="">
                 <input id="loginEmail" class="log-in-input-field-mail" type="email" placeholder="Email" name="uname" required>
                 <input id="loginPassword" class="log-in-input-field-password" type="password" placeholder="Password" name="uname" required>
-                <div class="login-forms-submit-buttons">
+                <div id="submitButtonsLogin" class="login-forms-submit-buttons">
                     <button type="submit" class="login-forms-submit-buttons-login">Log in</button>
-                    <div onclick="guestLogin()" class="login-forms-submit-buttons-guest">Guest Log in</div>
+                    <div  onclick="guestLogin()" class="login-forms-submit-buttons-guest">Guest Log in</div>
                 </div>
             </form>
+            </div>
         </div>
         <footer class="login-footer">
             <a class="pointer" href="privacy-policy-simple.html">Privacy Policy</a>

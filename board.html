@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/add_task_board.css">
 </head>
 <body onload="init()"> 
-    <div onclick="closeSignUpOverlay(event)" id="overlay" class="overlay d-none" >
+    <div onclick="closeSignOutOverlay(event)" id="overlay" class="overlay d-none" >
         <ul>
             <li>
                 <a  class="pointer" href="help.html">Help</a>
@@ -115,6 +115,9 @@
                             <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
                         </div>
                         <div id="ToDo"></div>
+                        <div class="no-tasks" id="noTasksToDo">
+                            <span>No Tasks To Do</span>
+                        </div>
                     </div>  
 
                     <div ondrop="moveTo('in Progress')" ondragover="allowDrop(event)" class="board-splits">
@@ -123,8 +126,9 @@
                             <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
                         </div>
 
-                        <div id="inProgress">
-
+                        <div id="inProgress"></div>
+                        <div class="no-tasks" id="noTasksInProgress">
+                            <span>No Tasks In Progress</span>
                         </div>
                     </div>  
 
@@ -135,7 +139,9 @@
                         </div>
 
                         <div id="await"></div>
-                        
+                        <div class="no-tasks" id="noTasksAwaitFeedback">
+                            <span>No Tasks Await feedback</span>
+                        </div>
                     </div>  
 
                     <div ondrop="moveTo('done')" ondragover="allowDrop(event)" class="board-splits">
@@ -144,6 +150,9 @@
                             <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/board-splits-plus.png" alt="">
                         </div>
                         <div id="done"></div>
+                        <div class="no-tasks" id="noTasksDone">
+                            <span>No Tasks Done</span>
+                        </div>
                     </div>  
 
                 </div>             

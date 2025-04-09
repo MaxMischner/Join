@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Contact || Join</title>
+  <link rel="icon" href="asset/images/fav.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./styles/sidebar.css">
+  <link rel="stylesheet" href="./styles/standart.css">
+  <link rel="stylesheet" href="./styles/summary.css">
+  <link rel="stylesheet" href="/styles/editContact.css">
+</head>
+<body onload="init()">
+  <!-- Overlay -->
+  <div onclick="closeOverlay(event)" id="overlay" class="overlay d-none">
+    <ul>
+      <li><a class="pointer" href="help.html">Help</a></li>
+      <li><a class="pointer" href="legal-notice.html">Legal Notice</a></li>
+      <li><a class="pointer" href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a class="pointer" href="#" onclick="logout()">Log Out</a></li>
+    </ul>
+  </div>
+  
+  <div class="content">
+    <!-- Sidebar -->
+    <div class="sidebar-dummy">
+      <img class="pointer" src="./asset/images/logo-light.svg" alt="" onclick="window.location.reload()">
+      <ul class="sidebar-middle">
+        <li class="pointer">
+          <a href="summary.html">
+            <img src="./asset/images/sidebar-imgs/summary.png" alt="">
+            <span>Summary</span>
+          </a>
+        </li>
+        <li class="pointer">
+          <a href="add_task.html">
+            <img src="./asset/images/sidebar-imgs/add_task.png" alt="">
+            <span>Add Task</span>
+          </a>
+        </li>
+        <li class="pointer">
+          <a href="board.html">
+            <img src="./asset/images/sidebar-imgs/board.png" alt="">
+            <span>Board</span>
+          </a>
+        </li>
+        <li class="sidebar-li-selected pointer">
+          <a href="contacts.html">
+            <img src="./asset/images/sidebar-imgs/contacts.png" alt="">
+            <span>Contact</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="sidebar-bottom">
+        <li class="pointer"><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li class="pointer"><a href="legal-notice.html">Legal Notice</a></li>
+      </ul>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+      <header class="header">
+        <img src="./asset/images/logo.svg" alt="" class="header-logo d-none" width="32" height="39">
+        <span class="header-left">Kanban Project Management Tool</span>
+        <div class="header-right">
+          <a href="help.html">
+            <div class="header-right-help">
+              <!-- SVG code for help icon -->
+            </div>
+          </a>
+          <div id="initialNames" class="header-right-name" onclick="openOverlay(event)">SM</div>
+        </div>
+      </header>
+      
+      <div class="main-container-inner">
+        <section id="edit-contact-section">
+          <h1>Edit Contact</h1>
+          <form id="edit-contact-form">
+            <div class="form-group">
+              <label for="edit-name">Name:</label>
+              <input type="text" id="edit-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="edit-email">Email:</label>
+              <input type="email" id="edit-email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="edit-phone">Phone:</label>
+              <input type="text" id="edit-phone" name="phone">
+            </div>
+            <div class="form-actions">
+              <button type="submit">Save</button>
+              <button type="button" id="cancel-edit-btn">Cancel</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script src="js/editContact.js"></script>
+  <script src="/script.js"></script>
+  <script src="/js/summary.js"></script>
+  <script src="/js/users.js"></script>
+  <script src="/js/moment.js"></script>
+</body>
+</html>
