@@ -648,6 +648,7 @@ async function saveEditedTask(index) {
     allTasks = [];
     await getAllTasks();
     renderTasks();
+    renderTaskDetail(index)
 }
 
     
