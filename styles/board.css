@@ -46,13 +46,13 @@ body {
     align-items: center;
     padding: 0 10px 0 10px;
     border-radius: 30px;
-    max-height: 800px;
+    max-height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: #c1c1c1 transparent;
     width: 100%;
-    max-width: 450px;
+   
 }
 
 .add-task-overlay::-webkit-scrollbar {
@@ -373,8 +373,29 @@ body {
     justify-content:baseline;
     gap: 24px;    
     position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
+#taskDetail {
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    scrollbar-color: #ccc transparent;
+  }
+  
+  #taskDetail::-webkit-scrollbar {
+    width: 6px; 
+  }
+  
+  #taskDetail::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  #taskDetail::-webkit-scrollbar-thumb {
+    background-color: #bbb;
+    border-radius: 4px;
+  }
+  
 .slide-in {
     animation: slide-in 0.3s both;
 }
@@ -454,8 +475,7 @@ body {
     margin: 0 40px 0 40px;    
     width: 400px;
     max-height: 135px;
-    overflow: auto;
-    
+    overflow: auto;    
 }
 
 .task-detail-description {
