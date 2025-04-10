@@ -97,7 +97,8 @@ function showDoneTasks(index, subtasksClass, names) {
 
 function showTaskDetail(index, names, subtasksClass) {
     return `
-            <div id="taskDetail" onclick="noBubbling(event)" class="task-detail-container slide-in">
+        <div id="taskDetail" class="scrollbar-container-taskdetail slide-in">   
+            <div  onclick="noBubbling(event)" class="task-detail-container">
                 <div class="task-detail-head">
                     <span class="overlay-tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                     <img onclick="closeOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt="">
@@ -159,6 +160,7 @@ function showTaskDetail(index, names, subtasksClass) {
                     </div>                
                 </div>
             </div>
+        <div>     
         `
   }
 

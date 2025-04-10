@@ -534,13 +534,20 @@ async function deleteTaskCompletely(index) {
 
 /**
  * Opens the 'add-task'-overlay after clicking the 'add-task'-button.
+ * If the screen.-width is under 1.200px the buttons redirects to the Add task Html-site.
+ * If the screen.-width is over 1.200px the buttons ober an overlay for adding a task.
  * The functions for the overlay are in add_task.js
  */
 function renderAddTaskOverlay() {
+    const isMobile = window.innerWidth <= 1200;
+    if (isMobile) {
+         window.location.href = `add_task.html`;
+    }else {
     let overlay = document.getElementById('overlayAddTask');
     overlay.innerHTML = showAddTaskOverlay();
     overlay.classList.remove('d-none');
     getAllContacts();
+    }
 }
 
 
