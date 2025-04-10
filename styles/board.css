@@ -375,6 +375,7 @@ body {
     position: relative;
     max-height: 80vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #taskDetail {
@@ -474,8 +475,8 @@ body {
     line-height: 120%;
     margin: 0 40px 0 40px;    
     width: 400px;
-    max-height: 135px;
-    overflow: auto;    
+    
+      
 }
 
 .task-detail-description {
@@ -483,8 +484,8 @@ body {
     font-weight: 400;
     line-height: 120%;
     margin: 0 40px 0 40px;
-    max-height: 100px;
-    overflow:auto;
+    
+   
 }
 
 .task-detail-due-date {
@@ -551,7 +552,6 @@ body {
     gap: 8px;
     gap: 16px;
     max-height: 130px;
-    overflow:auto;
     margin: -10px 40px 0 0;
 }
 
