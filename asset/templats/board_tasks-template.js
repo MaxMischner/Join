@@ -166,21 +166,24 @@ function showTaskDetail(index, names, subtasksClass) {
 
   function showOverlaySubtasks(index, subtasksClass) {
     let subtasks = allTasks[index].subtasks;
-
-    if (!subtasks || subtasks.length === 0) {
-        return '';
-    }
-
-    return `
-        <div class="task-detail-subtasks-container ${subtasksClass}">        
-            <span class="task-detail-subtasks">Subtasks</span>
-            ${subtasks.map((subtask, i) => `
+    let subtaskHTML = '';
+    if (subtasks && subtasks.length > 0) {
+        subtaskHTML += `
+            <div class="task-detail-subtasks-container ${subtasksClass}">        
+                <span class="task-detail-subtasks">Subtasks</span>
+            `;
+        for (let i = 0; i < subtasks.length; i++) {
+            let completed = subtasks[i].completed === true ? 'on' : 'off';
+            subtaskHTML += `
                 <div class="task-detail-subtask-container">
-                    <div onclick="changeSubtaskComplete('${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${subtask.completed ? 'on' : 'off'}"></div>
-                    <div class="task-detail-subtask-text">${subtask.name}</div><br>
+                    <div onclick="changeSubtaskComplete('${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${completed}"></div>
+                    <div class="task-detail-subtask-text">${subtasks[i].name}</div><br>
                 </div>
-            `).join('')}
-        </div>`;
+            `;
+        }
+        subtaskHTML += `</div>`;
+    }
+    return subtaskHTML;
 }
 
 

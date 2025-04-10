@@ -451,7 +451,7 @@ function getSubTaskImage(index) {
 function changeSubtaskComplete(index, i) {
     let subtask = allTasks[index].subtasks[i];
     subtask.completed = !subtask.completed; 
-    renderSubtaskOverlay(index);    
+    renderSubtaskOverlay(index);  
 }
 
 /**
@@ -462,8 +462,8 @@ function changeSubtaskComplete(index, i) {
  */
 function renderSubtaskOverlay(index) {
     let subtasks = document.getElementById('subTasksOverlay');    
-    let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
-   
+    let currentSubtasks = allTasks[index].subtasks;
+    let subtasksClass = (!currentSubtasks || currentSubtasks.length === 0) ? 'd-none' : '';
     subtasks.innerHTML = showOverlaySubtasks(index, subtasksClass);
 }    
 
