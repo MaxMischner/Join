@@ -165,25 +165,23 @@ function showTaskDetail(index, names, subtasksClass) {
   }
 
   function showOverlaySubtasks(index, subtasksClass) {
-    return ` 
-     ${subtaskContent.length > 0 ?                                  
-         `<div class="task-detail-subtasks-container ${subtasksClass}">        
-             <span class="task-detail-subtasks">Subtasks</span>
-             ${(() => {
-                 let subtaskHTML = "";
-                 for (let i = 0; i < subtaskContent.length; i++) {
-                     subtaskHTML += `
-                         <div class="task-detail-subtask-container">
-                             <div onclick="changeSubtaskComplete(${subtaskContent[i].completed}, '${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
-                             <div class="task-detail-subtask-text">${subtaskContent[i].name}</div><br>
-                         </div>
-                     `;
-                 }
-                 return subtaskHTML;
-             })()}
-         </div>` : ""}
-         `
-  }
+    let subtasks = allTasks[index].subtasks;
+
+    if (!subtasks || subtasks.length === 0) {
+        return '';
+    }
+
+    return `
+        <div class="task-detail-subtasks-container ${subtasksClass}">        
+            <span class="task-detail-subtasks">Subtasks</span>
+            ${subtasks.map((subtask, i) => `
+                <div class="task-detail-subtask-container">
+                    <div onclick="changeSubtaskComplete('${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${subtask.completed ? 'on' : 'off'}"></div>
+                    <div class="task-detail-subtask-text">${subtask.name}</div><br>
+                </div>
+            `).join('')}
+        </div>`;
+}
 
 
 function showAddTaskOverlay() {
@@ -203,7 +201,6 @@ function showAddTaskOverlay() {
                     <div>
                         <label for="">Description</label><br>
                         <textarea class="input_field input_field_description" name="Description" id="description-task" placeholder="Enter a Description" ></textarea>
-                
                     </div>
                         <div>
                         <label for="date-task" class="required">Due date</label><br>
@@ -364,7 +361,7 @@ function showDeleteTask(index) {
                        
                         <div class="todo-wrapper">
                          <label>Subtasks</label><br>
-                         <div class="subtask-input-wrapper">
+                         <div class="subtask-input-wrapper-board">
                              <input
                                type="text"
                                id="todoInput"
@@ -372,7 +369,7 @@ function showDeleteTask(index) {
                                placeholder="Add new subtask"
                                oninput="toggleSubtaskIcons()"
                              />
-                              <button id="subtaskPlus" class="subtask-icon" onclick="addTodo()">+</button>
+                             
                              <div id="subtaskConfirmIcons" class="subtask-icon-group">
                                <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
                                <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />

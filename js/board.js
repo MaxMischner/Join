@@ -49,7 +49,7 @@ async function getAllTasks() {
         let task = responseJson[keys[index]];
         task.firebaseID = keys[index];
         allTasks.push(task);                 
-    }                 
+    }                    
 }
 
 /**
@@ -451,7 +451,7 @@ function getSubTaskImage(index) {
 function changeSubtaskComplete(index, i) {
     let subtask = allTasks[index].subtasks[i];
     subtask.completed = !subtask.completed; 
-    renderSubtaskOverlay(index);  
+    renderSubtaskOverlay(index);    
 }
 
 /**
@@ -463,7 +463,7 @@ function changeSubtaskComplete(index, i) {
 function renderSubtaskOverlay(index) {
     let subtasks = document.getElementById('subTasksOverlay');    
     let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
-    parseSubtasks(index); 
+   
     subtasks.innerHTML = showOverlaySubtasks(index, subtasksClass);
 }    
 
