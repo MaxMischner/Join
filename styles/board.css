@@ -757,6 +757,16 @@ body {
 }
 
 
+@media(max-height: 680) {
+    .task-detail-container {
+        max-height: 650px;
+    }
+
+    .scrollbar-container-taskdetail {
+        max-height: 650px;
+    }
+}
+
 
 
 @media(max-width: 1250px) {
