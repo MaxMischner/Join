@@ -1,221 +1,119 @@
+.main_Box-board {
+  margin-right: 5px;
+  margin-left: 5px;
+  max-width: 98%;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+}
 
-    .main_Box {
-      padding: 5px;
-      margin-right: 5px;
-      margin-left: 5px;
-      max-width: 98%;
-    }
-    .content_box {
-      gap: 10px;
-    }
-  
-    .button_container {
-      width: 100%;
-    }
-    .priorty_button {
-      height: 50px;
-      width: 100%;
-      max-width: 156px;
-      font-size: 16px;
-      margin-right: 0;
-    }
-  
-    .content-left {
-      display: flex;
-  
-      flex-direction: column;
-    }
-    .main_Box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .content_box {
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .splitbar {
-      display: none;
-    }
-  
-    .input_field,
-    .input_field_description,
-    select,
-    .subtask-input-wrapper,
-    .dropdown-container {
-      max-width: 100%;
-      width: 100%;
-    }
-  
-    .priority-button-group {
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 5px;
-    }
-  
-    .button_container {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
-    }
-  
-    .button-row {
-      flex-direction: column;
-      gap: 12px;
-    }
-  
-    .cancel-btn,
-    .create-btn {
-      width: 100%;
-    }
+.content_box-board {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+}
 
-    .main_Box {
-      padding: 16px;
-      margin-bottom: 75px;
-    }
-  
-    .content-left {
-      height: calc(100vh - 100px - 96px);
-    }
-  
-    .content_box {
-      flex-direction: column;
-      align-items: stretch;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .input_field,
-    .input_field_description,
-    select,
-    .subtask-input-wrapper,
-    .dropdown-container,
-    .button_container {
-      width: 100%;
-      max-width: 100%;
-    }
-  
-    .priority-button-group {
-      flex-direction: row;
-      gap: 8px;
-    }
-  
-    .button_container {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 8px;
-    }
-  
-    .button-row {
-      flex-direction: row;
-    }
-  
-    .cancel-btn,
-    .create-btn {
-      width: 100%;
-      max-width: 150px;
-      justify-content: center;
-    }
-  
-    .splitbar {
-      display: none;
-    }
-  
-    .subtask-list-item {
-      margin-left: 0;
-      padding-left: 16px;
-    }
-  
-    .fixed-buttons .button_container {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
-      width: 100%;
-    }
-  
-    .fixed-buttons .cancel-btn,
-    .fixed-buttons .create-btn {
-      flex: 1;
-      width: 48%;
-    }
-  
-    .desktop-only {
-      display: none;
-    }
-  
-    .mobile-only {
-      display: block;
-    }
-  
-    .fixed-buttons {
-      position: fixed;
-      bottom: 72px;
-      width: 100%;
-      background-color: #f6f7f8;
-      padding: 0px 16px;
-      padding-bottom: 10px;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 999;
-    }
-  
-    .fixed-buttons .button-row {
-      display: flex;
-  
-      gap: 12px;
-  
-      margin-right: 10px;
-    }
-  
-    .cancel-btn,
-    .create-btn {
-      flex: 1;
-  
-      font-size: 16px;
-      font-weight: 600;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-    }
-  
-    .cancel-btn {
-      background-color: white;
-      color: #2a3647;
-      border: 1px solid #2a3647;
-    }
-  
-    .create-btn {
-      background-color: #2a3647;
+.button_container-board {
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.priorty_button-board {
+  height: 50px;
+  width: 100%;
+  max-width: 156px;
+  font-size: 16px;
+}
+
+.content-left-board {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px - 96px);
+}
+
+.splitbar-board {
+  display: none;
+}
+
+.input_field-board,
+.input_field_description-board,
+select,
+.subtask-input-wrapper-board,
+.dropdown-container-board {
+  max-width: 100%;
+  width: 100%;
+}
+
+.priority-button-group-board {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 5px;
+  flex-direction: row;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.button-row-board {
+  flex-direction: row;
+  gap: 12px;
+}
+
+
+.create-btn-board {
+  width: 100%;
+  max-width: 150px;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #2a3647;
+  color: white;
+  border: none;
+  flex: 1;
+  justify-content: center;
+  background-color: #2a3647;
       color: white;
       border: none;
-    }
+}
+
+.desktop-only-board {
+  display: none;
+}
+
+.mobile-only-board {
+  display: block;
+}
+
+.subtask-list-item-board {
+  margin-left: 0;
+  padding-left: 16px;
+}
   
-    .cancel-btn img,
     .create-btn img {
       width: 20px;
       height: 20px;
-    }
-  
-  
-  
-  
-
-    .main_Box {
-      width: 100%;
-      margin-left: 0;
-      padding: 5px;
     }
     .priorty_button {
       max-width: 120px;
     }
   
-  
- 
+    .wide-overlay {
+      width: 1100px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
  
   

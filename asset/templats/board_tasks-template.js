@@ -187,7 +187,7 @@ function showTaskDetail(index, names, subtasksClass) {
 function showAddTaskOverlay() {
     return `               
         <div>
-        <div id="addTaskOverlay" class="add-task-overlay slide-in" onclick="noBubbling(event)">                    
+        <div id="addTaskOverlay" class="add-task-overlay slide-in wide-overlay" onclick="noBubbling(event)">                   
             <div class="add-task-overlay-close-button">
                 <span class="add-task-overlay-close-header">Add Task</span>
                 <img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>
@@ -304,26 +304,26 @@ function showDeleteTask(index) {
              <div class="add-task-overlay-close-button">
                  <span class="add-task-overlay-close-header"></span>
                  <img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>
-             <div class="main_Box">                    
-                     <div class="content_box">
+             <div class="main_Box-board">                    
+                     <div class="content_box-board">
                          <div class="left-content-maincontent">
                              <div>
                                  <label for="title-task" class="required">Title</label> <br>
-                                  <input class="input_field" type="text" id="title-task" value="${task.title}">
+                                  <input class="input_field input_field-board" type="text" id="title-task" value="${task.title}">
                                  <p id="errorMsg-title" class="input-error">This field is required</p>
                              </div>
                              <div>
                                  <label for="description-task">Description</label><br>
-                                  <textarea class="input_field input_field_description" id="description-task">${task.description}</textarea>
+                                  <textarea class="input_field input_field_description input_field-board" id="description-task">${task.description}</textarea>
                          
                              </div>
                               <div>
                                  <label for="date-task" class="required">Due date</label><br>
-                                 <input class="input_field" type="date" id="date-task" value="${task.duedate}">
+                                 <input class="input_field input_field-board" type="date" id="date-task" value="${task.duedate}">
                                  <p id="errorMsg-date" class="input-error">This field is required</p>
                              </div>
                          </div>
-                         <div class="splitbar"></div>
+                        
                      <div class="left-content-maincontent">
                          <div >
                              <label for="Priority">Priority</label><br>
@@ -339,7 +339,7 @@ function showDeleteTask(index) {
                                  </button>
                                </div>
                            </div> 
-                        <div class="dropdown-container" id="toggleDropdown">
+                        <div class="dropdown-container-board" id="toggleDropdown">
                          <label for="">Assigned to</label>
                          <div class="dropdown-toggle" onclick="toggleDropdown()" >
                            <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
@@ -362,15 +362,15 @@ function showDeleteTask(index) {
                        
                         <div class="todo-wrapper">
                          <label>Subtasks</label><br>
-                         <div class="subtask-input-wrapper">
+                         <div class="subtask-input-wrapper-board">
                              <input
                                type="text"
                                id="todoInput"
-                               class="input_field subtask-input"
+                               class="input_field subtask-input input_field-board"
                                placeholder="Add new subtask"
                                oninput="toggleSubtaskIcons()"
                              />
-                             <button id="subtaskPlus" class="subtask-icon" onclick="addTodo()">+</button>
+                             
                              <div id="subtaskConfirmIcons" class="subtask-icon-group">
                                <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
                                <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
@@ -381,11 +381,11 @@ function showDeleteTask(index) {
                            <div id="todoList" class="subtask-list"></div>
              
                        </div>
-                       <div class="button_container">
+                       <div class="button_container-board">
                  <p><span class="red-star">*</span>This field is required</p>
                  <div class="button-row-overlay">
                     
-                    <button class="create-btn" onclick="if (validateTaskBeforeSave()) saveEditedTask(${index})">OK <img src="asset/img/icons/check.png" alt=""></button>
+                    <button class="create-btn-board" onclick="if (validateTaskBeforeSave()) saveEditedTask(${index})">OK <img src="asset/img/icons/check.png" alt=""></button>
 
                  </div>
                  </div>  
