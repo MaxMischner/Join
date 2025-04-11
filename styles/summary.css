@@ -209,6 +209,10 @@
         font-size: 13px;
     }
     
+    .summary-tasks-done-image {
+        width: 49px;
+        height: 49px;
+    }
    
     
     .summary-tasks-urgent-image {

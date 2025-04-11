@@ -212,7 +212,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: 274px;
+    
 }
 
 .board-splits-text {
@@ -239,8 +239,8 @@ body {
     margin-top: 15px;
     gap:16px;
     background-color: rgba(255, 255, 255, 1);
-    max-width: 280px;
     cursor: pointer;
+    width: 90%;
 }
 
 .tasks-content-user {
@@ -769,12 +769,12 @@ body {
 @media(max-width: 1250px) {
     .board-splits-container {
         display: grid;
-        grid-template-columns: 270px 270px;
+        grid-template-columns: 50% 50%;
         padding: 0 30px 0 30px;
     }
     
     .board-splits {
-        width: 270px;
+        width: 100%;
     }
 
     .board-splits-content {
@@ -783,15 +783,23 @@ body {
         overflow-x: hidden;
         scrollbar-width: thin;
         scrollbar-color: #c1c1c1 transparent;
+        max-width: 75%;
     }
-    
+
+    .board-splits-category{
+        margin-right: 4%;
+        width: 90%;
+    }
+
+    .board-search-field-container {
+        margin-left: 20px;
+        }
+
+    .no-tasks {
+        width: 90%;
+    }  
 }
 
-@media(max-width: 1250px) {
-.board-search-field-container {
-    margin-left: 20px;
-    }
-}
 
 @media (max-width: 900px) {
     .headline-board{
@@ -800,20 +808,25 @@ body {
 
     .board-splits-container {
         display: grid;
-        grid-template-columns: 350px; 
+        grid-template-columns: 90%; 
     }
 
     .board-splits {
-        width: 350px;
+        width: 90%;
     }
 
     .board-search-field-container {
         margin-left: 0;
     }
 
-    .tasks-content {
-        max-width: 350px;
+    .board-splits-category {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 90%;
     }
+    
 }
 
 @media (max-width: 780px){
@@ -891,15 +904,11 @@ body {
 
 @media (max-width: 460px) {
     .board-splits {
-        width: 280px;
+        width: 90%;
     }
 
     .board-search-field-container {
         margin-left: 0;
-    }
-
-    .tasks-content {
-        max-width: 300px;
     }
 
     .board-splits-container {
