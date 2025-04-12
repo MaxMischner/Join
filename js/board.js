@@ -49,7 +49,7 @@ async function getAllTasks() {
         let task = responseJson[keys[index]];
         task.firebaseID = keys[index];
         allTasks.push(task);                 
-    }                 
+    }                    
 }
 
 /**
@@ -462,8 +462,8 @@ function changeSubtaskComplete(index, i) {
  */
 function renderSubtaskOverlay(index) {
     let subtasks = document.getElementById('subTasksOverlay');    
-    let subtasksClass = (!allTasks[index].subtasks) ? 'd-none' : '';
-    parseSubtasks(index); 
+    let currentSubtasks = allTasks[index].subtasks;
+    let subtasksClass = (!currentSubtasks || currentSubtasks.length === 0) ? 'd-none' : '';
     subtasks.innerHTML = showOverlaySubtasks(index, subtasksClass);
 }    
 

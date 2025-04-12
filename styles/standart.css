@@ -3,6 +3,11 @@
     --main-card-bg:#fff;
     --sidebar-text: #cdcdcd;
     --sidebar-text-selected: #fff;
+    --btn-color: #2a3647;
+    --dark-blue: #007cee;
+    --sidebar-bg: rgba(42, 54, 71, 1);
+    --divider:rgba(41, 171, 226, 1);
+    --bg-gray: #d1d1d1;
 }
 
 @font-face{
@@ -59,6 +64,19 @@ a:visited {
 
 button {
     border: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 

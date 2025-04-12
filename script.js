@@ -35,3 +35,11 @@ function logout() {
     localStorage.removeItem("guestUser");
     window.location.href = "index.html";
 }
+
+function generateLightColor() {
+    const hue = Math.floor(Math.random() * 360); 
+    const saturation = Math.floor(Math.random() * 30) + 70; 
+    const lightness = Math.floor(Math.random() * 20) + 75; 
+  
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  }
