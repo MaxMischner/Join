@@ -184,10 +184,14 @@ function clearSubtaskInput() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("todoInput").addEventListener("keydown", function (e) {
+  const todoInput = document.getElementById("todoInput");
+  if (todoInput) {
+    todoInput.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
-        addTodo();}
+        addTodo();
+      }
     });
+  }
 });
 
 function renderContactsInDropdown(allContacts, preSelectedNames = []) {
