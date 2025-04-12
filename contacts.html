@@ -5,13 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts || Join</title>
     <link rel="icon" href="/asset/images/fav.svg" type="image/svg+xml">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/sidebar.css">
+    <link rel="stylesheet" href="./styles/contacts_edit.css">
     <link rel="stylesheet" href="./styles/contacts.css">
     <link rel="stylesheet" href="./styles/standart.css">
 </head>
 <body onload="initContact()"> 
-    <div class="contact-overlay d-none" id="contact-overlay">
+    <div class="contact-overlay d-none" id="contact-overlay" onclick="closeContactOverlay(event)">
+        <!-- <div class="edit-contact-container"> 
+            <img class="edit-contact-container-close pointer close-black" src="asset/images/edit-overlay-close.svg" alt="" onclick="closeContactOverlay(event)"/>
+            <img class="edit-contact-container-close pointer close-white" src="asset/images/edit-close-white.png" alt="" style="z-index: 999;"  onclick="closeContactOverlay(event)"/>
+            <div class="edit-contact-header flex-column">
+                <img src="asset/images/logo-light.svg" alt="" width="50">
+                <div class="edit-contact-title">Edit Contact</div>
+                <div class="edit-contact-divider"></div>
+                <div class="edit-contact-intitals flex" id="edit-contact-intitals" style="background:${color}">
+                    <span>${initals}</span>
+                    <img class="d-none" src="asset/images/person-white.png" alt="">
+                </div>
+            </div>
+            <div class="edit-contact-right">
+                <form onsubmit="saveEditContact(event);return false;" action="">
+                    <div class="edit-contact-form flex-column">
+                        
+                        <div class="edit-contact-field-div">
+                            <input class="edit-contact-field" type="text" id="edit-contact-name" required value="${name}" oninput="editChangeName()" minlength="3">
+                            <img src="/asset/images/person.png" alt="">
+                        </div>
+                        <div class="edit-contact-field-div">
+                            <input class="edit-contact-field" type="email" id="edit-contact-email" required value="${email}" minlength="3">
+                            <img src="/asset/images/grey-mail.svg" alt="">
+                        </div>
+                        <div class="edit-contact-field-div">
+                            <input class="edit-contact-field" type="text" id="edit-contact-phone" required value="${phone}" minlength="3">
+                            <img src="/asset/images/phone.svg" alt="">
+                        </div>
+                        <div class="edit-contact-error" id="edit-contact-error">The email is already used</div>
+                    </div>
+                    <div class="edit-contact-bottom">
+                        <button class="edit-contact-bottom-clear pointer" type="button" onclick="clearEditContact()">Clear</button>
+                        <button class="edit-contact-bottom-save pointer" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+            -->
+        </div>
         
     </div>
     <div onclick="closeOverlay(event)" id="overlay" class="overlay d-none" >
