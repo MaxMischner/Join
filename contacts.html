@@ -93,24 +93,36 @@
                 </div>
             </header>
             <div class="content-left">
-                <div class="contact-left">
+                <div class="contact-left" id="contact-left">
                     
                     <button class="pointer" onclick="addNewConact()">
                         <span>Add new contact</span>
                         <img src="./asset/images/contacts-add.svg" alt="">
                     </button>
-                    
                     <div class="contact-list" id="contact-list">
                         
                     </div>
                     
                     
                 </div>
-                <div class="contact-right">
+                <div class="contact-right" id="contact-right">
+                    <img class="pointer headline-arrow" src="./asset/images/return-icon.png" alt=""  onclick="goContactList()">
+                    <div class="contact-right-action-button pointer" onclick="toggleContactActionButtons()">
+                        <span>⋮</span>
+                        <div id="contact-right-action-buttons" class="flex-column contact-detail-buttons contact-right-action-buttons" style="background-color: white;">
+                            <button class="flex pointer contact-detail-edit" onclick="editContact()">
+                                <span>Edit</span>
+                            </button>
+                            <button class="flex pointer contact-detail-delete" onclick="deleteContact()">
+                                <span>Delete</span>
+                            </button>
+                        </div>
+                    </div>
                     <div class="headline">
                         <span class="headline-left">Contacts</span>
                         <div class="headline-border"></div>
                         <span class="headline-right">Better with a team</span>
+                       
                     </div>
                     <div class="contact-detail" id="contact-detail">
                         

@@ -1,6 +1,6 @@
 function getContactListCard(initials, name, email, id, color) {
     return `
-            <li class="pointer" id="contact-li-${id}" onclick="clickContactCard('contact-li-${id}')" contactID="${id}">
+            <li class="pointer" id="contact-li-${id}" onclick="clickContactCard('${id}')" contactID="${id}">
                                     <div class="contact-logo" style="background: ${color}">
                                         ${initials}
                                     </div>
@@ -30,7 +30,7 @@ function getConactDetail(initials, name, email, phone, id, color) {
                             </div>
                             <div class="contact-detail-header-right">
                                 <div class="contact-detail-name" id="contact-detail-name">${name}</div>
-                                <div class="flex contact-detail-buttons">
+                                <div class="flex contact-detail-buttons contact-detail-buttons-onpage">
                                     <button class="flex pointer contact-detail-edit" onclick="editContact('${id}')">
                                         <span>Edit</span>
                                     </button>

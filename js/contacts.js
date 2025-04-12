@@ -1,16 +1,46 @@
 let queryedContacts = [];
 let allContacts = [];
-let contactListDIV = document.getElementById("contact-list");
-let contactOverlay = document.getElementById("contact-overlay");
+const contactListDIV = document.getElementById("contact-list");
+const contactOverlay = document.getElementById("contact-overlay");
 const contactDetailDIV = document.getElementById("contact-detail");
+
+const contactRightDiv = document.getElementById("contact-right");
+const contactLeftDiv = document.getElementById("contact-left");
+const buttons = document.getElementById("contact-right-action-buttons");
+
 let prevLi;
 let currentID = "";
 
 let shouldChnageColor = currentID ? false : true;
 let colorStr;
 
+let isMobile = false;
+let isOpenContactDetail = false;
+
+
+function getUser() {
+    let user = localStorage.getItem("activeUser");
+    let guestUser = localStorage.getItem("guestUser");
+    if (!user && !guestUser) {
+        window.location.href = "log_in.html";
+        return ;
+    } 
+    renderInitials(user);
+}
+
+
+function initUI() {
+    if (window.innerWidth <= 780) {
+        isMobile = true;
+        contactRightDiv.classList.add("d-none");
+        contactLeftDiv.classList.remove("d-none");
+    }
+}
+
 
 function initContact() {
+    getUser();
+    initUI();
     queryContacts().then(() => {
         for (let index = 0; index < queryedContacts.length; index++) {
 
@@ -19,8 +49,6 @@ function initContact() {
 
             let contactDetail = contact[keys[0]];
             contactDetail['id'] = keys[0];
-            // contactDetail['color']  = generateLightColor();
-            
             allContacts.push(contactDetail);
         }
         console.log(allContacts);
@@ -36,12 +64,10 @@ function reconstructContactArray() {
         let letter = contact.name.at(0).toUpperCase();
         
         if (Object.keys(obj).indexOf(letter) != -1) {
-            // letter exist
             let arr = obj[letter];
             arr.push(contact);
             obj[letter] = arr;
         } else {
-            // letter does no exist
             let arr = [contact];
             obj[letter] = arr;
         }
@@ -71,6 +97,7 @@ function renderContactList(obj) {
     moveToEditedLi();
 }
 
+
 function moveToEditedLi() {
     if (currentID) {
         const li = document.getElementById("contact-li-" + currentID);
@@ -80,6 +107,7 @@ function moveToEditedLi() {
         prevLi = li;
     }
 }
+
 
 function extracNameInitials(name) {
 
@@ -109,8 +137,46 @@ async function queryContacts() {
  
 }
 
+
+function openContactDetail() {
+    isOpenContactDetail  = true;
+    contactLeftDiv.classList.add("d-none");
+    contactRightDiv.classList.remove("d-none");
+    
+}
+
+
+function goContactList() {
+    isOpenContactDetail = false;
+    buttons.style.display = "none";
+
+    contactLeftDiv.classList.remove("d-none");
+    contactRightDiv.classList.add("d-none");
+}
+
+
+addEventListener("resize", (event) => {});
+onresize = (event) => {
+    if (window.innerWidth <= 780) {
+        isMobile = true;
+        if (!isOpenContactDetail)
+            contactRightDiv.classList.add("d-none");
+        else {
+            contactRightDiv.classList.remove("d-none");
+            contactLeftDiv.classList.add("d-none");
+        }
+    } else {
+        isMobile = false;
+        contactRightDiv.classList.remove("d-none");
+        contactLeftDiv.classList.remove("d-none");
+    }
+};
+
+
 function clickContactCard(id) {
-    let li = document.getElementById(id);
+    if (isMobile)  openContactDetail();
+
+    let li = document.getElementById("contact-li-" + id);
     currentID = id;
 
     if (prevLi) {
@@ -124,12 +190,12 @@ function clickContactCard(id) {
     renderContactDetail(li.getAttribute("contactID"));
 }
 
+
 function renderContactDetail(id) {
     const cont = allContacts.filter(c => c.id == id)[0];
- 
-    
     contactDetailDIV.innerHTML = getConactDetail(extracNameInitials(cont.name), cont.name, cont.email, cont.phone, id, cont.color);
 }
+
 
 function addNewConact() {
     if (prevLi) {
@@ -144,14 +210,15 @@ function addNewConact() {
     contactOverlay.innerHTML = getAddContact();
 }
 
-function editContact(id) {
-    console.log("currentid:", id);
-    currentID = id;
+
+function editContact() {
     shouldChnageColor = false;
     
     contactOverlay.classList.remove("d-none");
-    const cont = allContacts.filter(c => c.id == id)[0];
-    contactOverlay.innerHTML = getEditContact(extracNameInitials(cont.name), cont.name, cont.email, cont.phone, cont.color, id);
+    console.log(currentID);
+    
+    const cont = allContacts.filter(c => c.id == currentID)[0];
+    contactOverlay.innerHTML = getEditContact(extracNameInitials(cont.name), cont.name, cont.email, cont.phone, cont.color, currentID);
 }
 
 function clearEditContact() {
@@ -169,8 +236,8 @@ function clearEditContact() {
 }
 
 
-async function deleteContact(id){
-    await fetch(BASE_URL_CONTACT + id + '.json',  {
+async function deleteContact(){
+    await fetch(BASE_URL_CONTACT + currentID + '.json',  {
         method: "DELETE",
     }).then ((response) => {
         if (response.ok) {
@@ -184,6 +251,7 @@ async function deleteContact(id){
                 allContacts = [];
                 currentID = "";
                 initContact();
+                goContactList();
             }, 1000);
         }
     });
@@ -192,7 +260,6 @@ async function deleteContact(id){
 
 async function saveEditContact(e) {
     e.preventDefault();
-
     const nameField = document.getElementById("edit-contact-name");
     const emailField = document.getElementById("edit-contact-email");
     const phoneField = document.getElementById("edit-contact-phone");
@@ -229,22 +296,16 @@ async function putContact(data, id="") {
     })
     .then ((response) => {
         if (!response) throw new Error("Network Error");
-
         let overlay = document.getElementById("contact-overlay");
         overlay.classList.add("d-none");
-
         return response.json();
     })
     .then (result => {
         currentID = id || result.name;
         
         updatePageInfo();
-        
     });
-    // console.log("r", await r.json());
-
 }
-
 
 
 function updatePageInfo() {
@@ -288,7 +349,6 @@ function closeContactOverlay(event) {
 }
 
 
-
 function editChangeName() {
     clearErrorMsg();
     
@@ -330,4 +390,11 @@ function clearErrorMsg() {
 }
 
 
+function toggleContactActionButtons() {
+    if(getComputedStyle(buttons).display == "none") {
+        buttons.style.display = "flex";
+    } else {
+        buttons.style.display = "none";
+    }
+}
 
