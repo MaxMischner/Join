@@ -99,6 +99,12 @@
     margin-top: 20px;
 }
 
+.edit-contact-subtitle {
+    align-self: flex-start;
+    font-size: 22px;
+    font-weight: 100;
+}
+
 .edit-contact-divider {
     align-self: flex-start;
     width: 100px;

@@ -2,8 +2,12 @@ let queryedContacts = [];
 let allContacts = [];
 let contactListDIV = document.getElementById("contact-list");
 let contactOverlay = document.getElementById("contact-overlay");
+const contactDetailDIV = document.getElementById("contact-detail");
 let prevLi;
 let currentID = "";
+
+let shouldChnageColor = currentID ? false : true;
+let colorStr;
 
 
 function initContact() {
@@ -59,7 +63,6 @@ function renderContactList(obj) {
             let initials = extracNameInitials(contact.name);
             listCardHTML += getContactListCard(initials, contact.name, contact.email, contact.id, contact.color);
         });
-
         contactListDIVHTML += getConactLetterContainer(key, listCardHTML);
     });
 
@@ -108,6 +111,7 @@ async function queryContacts() {
 
 function clickContactCard(id) {
     let li = document.getElementById(id);
+    currentID = id;
 
     if (prevLi) {
         prevLi.style.background = "";
@@ -123,21 +127,31 @@ function clickContactCard(id) {
 function renderContactDetail(id) {
     const cont = allContacts.filter(c => c.id == id)[0];
  
-    const contactDetailDIV = document.getElementById("contact-detail");
+    
     contactDetailDIV.innerHTML = getConactDetail(extracNameInitials(cont.name), cont.name, cont.email, cont.phone, id, cont.color);
+}
+
+function addNewConact() {
+    if (prevLi) {
+        prevLi.style.background = "";
+        prevLi.querySelector(".contact-name").style.color = "#000";
+    }
+
+    currentID = "";
+    shouldChnageColor = true;
+
+    contactOverlay.classList.remove("d-none");
+    contactOverlay.innerHTML = getAddContact();
 }
 
 function editContact(id) {
     console.log("currentid:", id);
     currentID = id;
+    shouldChnageColor = false;
     
     contactOverlay.classList.remove("d-none");
-    contactOverlay.innerHTML = getEditContact();
-
     const cont = allContacts.filter(c => c.id == id)[0];
- 
-    const contactDetailDIV = document.getElementById("contact-detail");
-    contactOverlay.innerHTML = getEditContact(extracNameInitials(cont.name), cont.name, cont.email, cont.phone, cont.color);
+    contactOverlay.innerHTML = getEditContact(extracNameInitials(cont.name), cont.name, cont.email, cont.phone, cont.color, id);
 }
 
 function clearEditContact() {
@@ -153,6 +167,28 @@ function clearEditContact() {
     initialsDIV.querySelector("span").innerText = "";
     initialsDIV.querySelector("img").style.display = "block";
 }
+
+
+async function deleteContact(id){
+    await fetch(BASE_URL_CONTACT + id + '.json',  {
+        method: "DELETE",
+    }).then ((response) => {
+        if (response.ok) {
+            document.body.appendChild(getNotification("Contact successfully deleted"));
+            setTimeout(() => {
+                document.body.removeChild(document.getElementById("notification-id"));
+
+                contactListDIV.innerHTML = "";
+                contactDetailDIV.innerHTML = "";
+                queryedContacts = [];
+                allContacts = [];
+                currentID = "";
+                initContact();
+            }, 1000);
+        }
+    });
+}
+
 
 async function saveEditContact(e) {
     e.preventDefault();
@@ -182,21 +218,34 @@ async function saveEditContact(e) {
  * @param {object} data {email:"xin33@gmail.com", name:"Yang Xin", phone:"1234567", color:""}
  */
 async function putContact(data, id="") {
-    let response = await fetch(BASE_URL_CONTACT + id + ".json", {
+    console.log("putConatct");
+    
+    await fetch(BASE_URL_CONTACT + id + ".json", {
         method: id ? "PUT" : "POST" ,
         headers: {
             "Content-Type": "application/json"
         },
         body:JSON.stringify(data)
-    }).then ((response) => {
-        if (response.ok) {
-            let overlay = document.getElementById("contact-overlay");
-            overlay.classList.add("d-none");
-            updatePageInfo();
-        }
     })
-    
+    .then ((response) => {
+        if (!response) throw new Error("Network Error");
+
+        let overlay = document.getElementById("contact-overlay");
+        overlay.classList.add("d-none");
+
+        return response.json();
+    })
+    .then (result => {
+        currentID = id || result.name;
+        
+        updatePageInfo();
+        
+    });
+    // console.log("r", await r.json());
+
 }
+
+
 
 function updatePageInfo() {
     const nameField = document.getElementById("edit-contact-name");
@@ -204,8 +253,8 @@ function updatePageInfo() {
     const phoneField = document.getElementById("edit-contact-phone");
     const initialsDIV = document.getElementById("edit-contact-intitals");
 
-    updateContactNamceCard();
     updateContactDetail(initialsDIV.style.backgroundColor, initialsDIV.querySelector("span").innerText, nameField.value, emailField.value, phoneField.value);
+    updateContactNamceCard();
 }
 
 function updateContactNamceCard() {
@@ -213,9 +262,6 @@ function updateContactNamceCard() {
     queryedContacts = [];
     allContacts = [];
     initContact();
-  
-    
-    
 }
 
 function updateContactDetail(bgColor, inital, name, email, phone){
@@ -241,12 +287,11 @@ function closeContactOverlay(event) {
     event.stopPropagation();
 }
 
-let shouldChnageColor = false;
-let colorStr;
+
 
 function editChangeName() {
     clearErrorMsg();
-
+    
     const nameField = document.getElementById("edit-contact-name");
     const initialsDIV = document.getElementById("edit-contact-intitals");
     const valueStr = String(nameField.value);

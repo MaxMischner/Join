@@ -51,7 +51,7 @@ async function putUser(data, id="") {
 }
 
 // test
-// putUser({email:"xin33@gmail.com", name:"Yang Xin", password:"1234567"});
+// putUser({email:"test@gmail.com", name:"test", password:"1234567"});
 
 async function login(data) {
     let allUsers = await getAllUsers();

@@ -176,6 +176,35 @@
     color: rgba(41, 171, 226, 1)
 }
 
+@keyframes notifaction-ani {
+    from {
+        top: -50px;
+    }
+
+    30% {
+        top: 10px;
+    }
+
+    70% {
+        top: 10px;
+    }
+    to {
+        top: -50px;
+    }
+}
+
+.notifaction-btn {
+    padding: 15px 20px; 
+    position:fixed; 
+    right: 10px; 
+    top:10px;
+    background: var(--btn-color);
+    color: white;
+    border-radius: 10px;
+
+    animation: notifaction-ani 1s ease-in-out  forwards;
+}
+
 
 @media (max-width: 1320px) {
 
@@ -229,4 +258,6 @@
         display: none;
     }
 }
+
+
 
