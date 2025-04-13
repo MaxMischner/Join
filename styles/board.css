@@ -136,6 +136,7 @@ body {
     border: 1px dotted rgba(168, 168, 168, 1);
     border-radius: 10px;
     color: rgba(168, 168, 168, 1);
+    text-align: center;
 }
 
 .board-splits-container {
@@ -343,12 +344,14 @@ body {
 
 .assigned-plus {
     background-image: url('/asset/images/plus.png');
-    width: 32px;
-    height: 32px;
+    width: 21px;
+    height: 21px;
     background-repeat: no-repeat; 
     background-position: center; 
     background-size: contain;  
     margin-left: -4px;
+    border-radius: 45px;
+    border: 1px solid rgb(158, 158, 158);
 }
 
 .priority-Low {
@@ -715,33 +718,46 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2000;
-    width: 250px;
-    background-color: white;
-    border-radius: 8px;
+    width: 320px;
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 90px;
-    justify-content: space-around;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .delete-question-overlay-text {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(42, 54, 71, 1);
+    text-align: center;
 }
 
-.delete-question-overlay-button-container{
-    height: 30px;
+.delete-question-overlay-button-container {
+    display: flex;
+    gap: 12px;
 }
 
 .delete-question-overlay-button {
-    margin: 10px;
-    font-size: 20px;
-    border: 1px solid rgb(201, 199, 199);
-    padding: 3px 13px 3px 13px;
-    box-shadow: 0px 3px 0 rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(231, 231, 231, 1);
+    color: rgba(42, 54, 71, 1);
     cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-question-overlay-button:hover {
+    background-color: rgb(176, 176, 176);
 }
 
 .add-task-overlay-close-button {

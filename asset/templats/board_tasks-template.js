@@ -15,7 +15,7 @@ function showInProgressTasks(index, subtasksClass, names) {
                         ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
                         ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[4] ? `<div class="assigned-plus"</div>` : ""}                        
+                        ${names[4] ? `<div class="assigned-plus"></div>` : ""}                        
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
@@ -39,7 +39,7 @@ function showToDoTasks(index, subtasksClass, names) {
                         ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
                         ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[4] ? `<div class="assigned-plus"</div>` : ""}     
+                        ${names[4] ? `<div class="assigned-plus"></div>` : ""}     
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
@@ -63,7 +63,7 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
                         ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
                         ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[4] ? `<div class="assigned-plus"</div>` : ""}     
+                        ${names[4] ? `<div class="assigned-plus"></div>` : ""}     
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
@@ -87,7 +87,7 @@ function showDoneTasks(index, subtasksClass, names) {
                         ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
                         ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[4] ? `<div class="assigned-plus"</div>` : ""}     
+                        ${names[4] ? `<div class="assigned-plus"></div>` : ""}     
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
