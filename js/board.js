@@ -1,4 +1,5 @@
 let allTasks = [];
+let allContactsBoard = [];
 let subtaskContent = [];
 let currentDraggedElement;
 
@@ -12,7 +13,8 @@ async function init() {
     let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
     renderInitials(activeUser);
     await getAllTasks();  
-    await  renderTasks();  
+    await getAllContactsBoard(); 
+    await  renderTasks();   
     randomBackgroundColor();       
 }
 
@@ -50,6 +52,47 @@ async function getAllTasks() {
         task.firebaseID = keys[index];
         allTasks.push(task);                 
     }                    
+}
+
+/**
+ * Fetches the data from the firebase API ans pushes it in the empty object 'allContactsBoard'
+ * 
+ * generates the new key 'firebase.ID' in the object allContactsBoard 
+ * 
+ */
+async function getAllContactsBoard() {
+    let response = await fetch(BASE_URL_CONTACT  + '.json');
+    let responseJson = await response.json();  
+    let keys = Object.keys(responseJson);  
+    for (let index = 0; index < keys.length; index++) {
+        let task = responseJson[keys[index]];
+        task.firebaseID = keys[index];
+        allContactsBoard.push(task);                 
+    }   
+}
+
+/**
+ * Returns the background color assigned to a contact by name.
+ * 
+ * The function searches through the global `allContactsBoard` array
+ * to find a contact object whose name matches the given `name` parameter.
+ * 
+ * - It normalizes both the input name and contact names by:
+ *   - trimming whitespace
+ *   - removing zero-width spaces (\u200B)
+ *   - converting to lowercase (for case-insensitive comparison)
+ * 
+ * If a matching contact is found, the contact's `color` property is returned.
+ * 
+ * @param {string} name - The name of the contact to find.
+ * @returns {string} The color associated with the matched contact.
+ */
+function getBackgroundColorNames(name) {
+    let nameToFind = name.trim().replace(/\u200B/g, '').toLowerCase(); 
+    let contact = allContactsBoard.find(c =>
+        c.name.trim().replace(/\u200B/g, '').toLowerCase() === nameToFind
+    );
+    return contact.color  
 }
 
 /**
@@ -601,11 +644,8 @@ function renderEditTaskOverlay(index) {
     let overlay = document.getElementById('overlayAddTask');
     overlay.innerHTML = showEditTaskOverlay(task, index);
     overlay.classList.remove('d-none');
-
     const preSelectedNames = task.assigned.split(",").map(name => name.trim());
-    getAllContacts(preSelectedNames);
-
-  
+    getAllContacts(preSelectedNames);  
     if (task.subtasks && task.subtasks.length > 0) {
         const todoList = document.getElementById("todoList");
         task.subtasks.forEach((subtask) => {
@@ -622,10 +662,8 @@ function renderEditTaskOverlay(index) {
 
 async function saveEditedTask(index) {
     collectTaskData(); 
-
     const task = allTasks[index];
     const firebaseID = task.firebaseID;
-
     let updatedData = {
         title,
         description,
@@ -636,14 +674,11 @@ async function saveEditedTask(index) {
         status: task.status, 
         subtasks,
     };
-
     await fetch(`${BASE_URL_TASK}/${firebaseID}.json`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedData),
-    });
-
-  
+    });  
     closeAddTaskOverlay();
     allTasks = [];
     await getAllTasks();
