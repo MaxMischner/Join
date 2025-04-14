@@ -47,6 +47,8 @@ async function getAllTasks() {
     let response = await fetch(BASE_URL_TASK + '.json');
     let responseJson = await response.json();  
     let keys = Object.keys(responseJson);  
+    console.log(responseJson);
+    
     for (let index = 0; index < keys.length; index++) {
         let task = responseJson[keys[index]];
         task.firebaseID = keys[index];
@@ -65,10 +67,9 @@ async function getAllContactsBoard() {
     let responseJson = await response.json();  
     let keys = Object.keys(responseJson);  
     for (let index = 0; index < keys.length; index++) {
-        let task = responseJson[keys[index]];
-        task.firebaseID = keys[index];
-        allContactsBoard.push(task);                 
-    }   
+        let allContacts = responseJson[keys[index]];
+        allContactsBoard.push(allContacts);                 
+    }          
 }
 
 /**
@@ -85,14 +86,15 @@ async function getAllContactsBoard() {
  * If a matching contact is found, the contact's `color` property is returned.
  * 
  * @param {string} name - The name of the contact to find.
- * @returns {string} The color associated with the matched contact.
+ * @returns {string} - The color associated with the matched contact.
  */
 function getBackgroundColorNames(name) {
-    let nameToFind = name.trim().replace(/\u200B/g, '').toLowerCase(); 
+    let nameToFind = name.trim().replace(/\u200B/g, '').toLowerCase();   
     let contact = allContactsBoard.find(c =>
         c.name.trim().replace(/\u200B/g, '').toLowerCase() === nameToFind
     );
-    return contact.color  
+    return contact.color
+    
 }
 
 /**
