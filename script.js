@@ -2,10 +2,9 @@ const BASE_URL_TASK = "https://join-61c56-default-rtdb.europe-west1.firebasedata
 const BASE_URL_USER = "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/users/"
 const BASE_URL_CONTACT = "https://join-61c56-default-rtdb.europe-west1.firebasedatabase.app/contacts/"
 
-
-
 let initialNamesDiv = document.getElementById("initialNames");
 
+/* Close Menu Overlay */
 function closeOverlay(event) {
     if (event.target !== event.currentTarget) return;
 
@@ -18,7 +17,10 @@ function closeOverlay(event) {
     event.stopPropagation();
 }
 
-
+/**
+ * Open Menu overlay
+ * @param {*} event tiggered event
+ */
 function openOverlay(event) {
     initialNamesDiv.style.background = "rgb(41, 171, 226)"
     initialNamesDiv.style.color = "white";
@@ -29,13 +31,14 @@ function openOverlay(event) {
     event.stopPropagation();
 }
 
-
+/** User Logout */
 function logout() {
     localStorage.removeItem("activeUser");
     localStorage.removeItem("guestUser");
     window.location.href = "index.html";
 }
 
+/** generate a random color */ 
 function generateLightColor() {
     const hue = Math.floor(Math.random() * 360); 
     const saturation = Math.floor(Math.random() * 30) + 70; 
