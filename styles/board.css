@@ -27,7 +27,29 @@ body {
     justify-content: center;     
 }
 
+.overlay-box{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.0);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;     
+}
+
 .overlay-box-delete{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;     
+}
+
+.overlay-box-move {
     position: fixed;
     height: 100vh;
     width: 100%;
@@ -707,10 +729,6 @@ body {
     color: rgba(42, 54, 71, 1);
 }
 
-.d-none {
-    display: none;
-}
-
 .delete-question-overlay {
     position: absolute;
     top: 50%;
@@ -843,6 +861,69 @@ body {
         width: 26px;
         height: auto;
         cursor: pointer;
+    }
+
+    .move-to-button-mobile-container {
+        position: relative;
+    }
+
+    .overlay-move-to-button {
+
+    }
+
+
+    
+    .overlay-move-to-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 106px;
+        height: 113px;
+        background-color: #2A3647;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 24px;
+        border-bottom-left-radius: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        overflow: hidden;    
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;    
+    }
+
+    .overlay-move-to-button-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .overlay-move-to-button-arrow {
+        width: 20px;
+        height: 20px;
+    }
+
+    .overlay-move-to-button-headline {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 1);
+        margin-bottom: 10px;
+    }
+
+    .overlay-move-to-button-inner-content {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 1);
+        margin-right: 5px;
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    .overlay-move-to-button-inner-content:hover {
+        background-color: rgba(9, 25, 49, 1);
     }
 }
 
@@ -1003,6 +1084,10 @@ body {
     .headline {
         margin: 5px;
     }
+}
+
+.d-none {
+    display: none;
 }
 
   

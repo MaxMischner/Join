@@ -1,25 +1,64 @@
+function showToDoTasks(index, subtasksClass, names) {
+    return `
+            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
+                <div class="tasks-content-header">
+                    <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
+                    <div class="move-to-button-mobile-container">
+                        <img onclick="openMoveTaskOverlay('overlayMoveToTodo', event)" class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                            <div id="overlayMoveToTodo" class="overlay-move-to-button d-none">
+                                <div class="overlay-move-to-button-content">
+                                    <div class="overlay-move-to-button-inner-content">
+                                        <a class="overlay-move-to-button-headline">Move to</a>
+                                    </div>    
+                                    <div onclick="moveToMobile('overlayMoveToTodo','${index}', 'in Progress', event)" class="overlay-move-to-button-inner-content">
+                                        <img class="overlay-move-to-button-arrow" src="/asset/images/arrow_downward.svg" alt="">
+                                        <span>in Progress</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>        
+                </div>
+                <span class="tasks-content-title">${allTasks[index].title}</span>
+                <span class="tasks-content-description">${allTasks[index].description}</span>
+                <div class="tasks-content-done ${subtasksClass}">
+                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
+                    <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
+                </div>
+                <div class="assigned-priority-container">
+                    <div class="assigned-container">
+                      ${names[0] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}   
+                        ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
+                        ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
+                        ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
+                        ${names[4] ? `<div class="assigned-plus"></div>` : ""}     
+                    </div>
+                    <div class="priority-${allTasks[index].priority}"></div>
+                </div>
+            </div>
+        `
+}
+
 function showInProgressTasks(index, subtasksClass, names) {
     return `
             <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
                 <div class="tasks-content-header">
                     <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
-                    <div>
-                        <img class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
-                            <div onclick="closeMoveTaskOverlay(event)" id="overlay" class="overlay d-none" >
-                                <ul>
-                                    <li>
-                                        <a  class="pointer" href="help.html">Help</a>
-                                    </li>
-                                    <li>
-                                        <a class="pointer" href="legal-notice.html">Legal Notice</a>
-                                    </li>
-                                    <li>
-                                        <a class="pointer" href="privacy-policy.html">Privacy Policy</a>
-                                    </li>
-                                    <li>
-                                        <a class="pointer" href="#" onclick="logout()">Log Out</a>
-                                    </li>
-                                </ul>
+                    <div class="move-to-button-mobile-container">
+                        <img onclick="openMoveTaskOverlay('overlayMoveToProgress', event)" class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                            <div id="overlayMoveToProgress" class="overlay-move-to-button d-none">
+                                <div class="overlay-move-to-button-content">
+                                    <div class="overlay-move-to-button-inner-content">
+                                        <a class="overlay-move-to-button-headline">Move to</a>
+                                    </div>    
+                                    <div onclick="moveToMobile('overlayMoveToProgress','${index}', 'To do', event)" class="overlay-move-to-button-inner-content">
+                                        <img class="overlay-move-to-button-arrow" src="/asset/images/arrow_upward.svg" alt="">
+                                        <span>To do</span>
+                                    </div>
+                                    <div onclick="moveToMobile('overlayMoveToProgress','${index}', 'await Feedback', event)" class="overlay-move-to-button-inner-content">
+                                        <img class="overlay-move-to-button-arrow" src="/asset/images/arrow_downward.svg" alt="">
+                                        <span>Feed- back</span>
+                                    </div>
+                                </div>
                             </div>
                     </div>        
                 </div>
@@ -44,39 +83,29 @@ function showInProgressTasks(index, subtasksClass, names) {
         `
 }
 
-function showToDoTasks(index, subtasksClass, names) {
-    return `
-            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
-                <div class="tasks-content-header">
-                    <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
-                    <img class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
-                </div>
-                <span class="tasks-content-title">${allTasks[index].title}</span>
-                <span class="tasks-content-description">${allTasks[index].description}</span>
-                <div class="tasks-content-done ${subtasksClass}">
-                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
-                    <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
-                </div>
-                <div class="assigned-priority-container">
-                    <div class="assigned-container">
-                      ${names[0] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}   
-                        ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
-                        ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[4] ? `<div class="assigned-plus"></div>` : ""}     
-                    </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
-                </div>
-            </div>
-        `
-}
-
 function showAwaitFeedbackTasks(index, subtasksClass, names) {
     return `
             <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="tasks-content">
                 <div class="tasks-content-header">
                     <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
-                    <img class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                    <div class="move-to-button-mobile-container">
+                        <img onclick="openMoveTaskOverlay('overlayMoveToAwaitFeedback', event)" class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                            <div id="overlayMoveToAwaitFeedback" class="overlay-move-to-button d-none">
+                                <div class="overlay-move-to-button-content">
+                                    <div class="overlay-move-to-button-inner-content">
+                                        <a class="overlay-move-to-button-headline">Move to</a>
+                                    </div>    
+                                    <div onclick="moveToMobile('overlayMoveToAwaitFeedback','${index}', 'in Progress', event)" class="overlay-move-to-button-inner-content">
+                                        <img class="overlay-move-to-button-arrow" src="/asset/images/arrow_upward.svg" alt="">
+                                        <span>in Progress</span>
+                                    </div>
+                                    <div onclick="moveToMobile('overlayMoveToAwaitFeedback','${index}', 'done', event)" class="overlay-move-to-button-inner-content">
+                                        <img class="overlay-move-to-button-arrow" src="/asset/images/arrow_downward.svg" alt="">
+                                        <span>Done</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>        
                 </div>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
@@ -103,7 +132,20 @@ function showDoneTasks(index, subtasksClass, names) {
             <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('done')" ondragover="allowDrop(event)" class="tasks-content">
                 <div class="tasks-content-header">
                     <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
-                    <img class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                    <div class="move-to-button-mobile-container">
+                        <img onclick="openMoveTaskOverlay('overlayMoveToDone', event)" class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                            <div id="overlayMoveToDone" class="overlay-move-to-button d-none">
+                                <div class="overlay-move-to-button-content">
+                                    <div class="overlay-move-to-button-inner-content">
+                                        <a class="overlay-move-to-button-headline">Move to</a>
+                                    </div>    
+                                    <div onclick="moveToMobile('overlayMoveToDone','${index}', 'await Feedback', event)" class="overlay-move-to-button-inner-content">
+                                        <img class="overlay-move-to-button-arrow" src="/asset/images/arrow_upward.svg" alt="">
+                                        <span>in Progress</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>        
                 </div>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>

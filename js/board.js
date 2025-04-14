@@ -2,6 +2,7 @@ let allTasks = [];
 let allContactsBoard = [];
 let subtaskContent = [];
 let currentDraggedElement;
+let currentButton;
 
 async function init() {
     let user = localStorage.getItem("activeUser");
@@ -14,8 +15,7 @@ async function init() {
     renderInitials(activeUser);
     await getAllTasks();  
     await getAllContactsBoard(); 
-    await  renderTasks();   
-    randomBackgroundColor();       
+    await  renderTasks();       
 }
 
 /**
@@ -252,33 +252,6 @@ function subTaskLenght(index) {
     return subTaskLength;
 }
 
-function randomBackgroundColor(index) {
-    const Colors = [
-        "#3498db", // bright blue
-  "#9b59b6", // purple
-  "#e74c3c", // red
-  "#f39c12", // orange
-  "#1abc9c", // turquoise
-  "#2ecc71", // green
-  "#34495e", // dark grey
-  "#16a085", // dark teal
-  "#2980b9", // ocean blue
-  "#8e44ad", // dark purple
-  "#d35400", // orange red
-  "#c0392b", // brick red
-  "#27ae60", // emerald green
-  "#f1c40f", // yellow
-  "#f66d44", // coral orange
-  "#e67e22", // carrot orange
-  "#7f8c8d", // grey
-  "#95a5a6", // light grey
-  "#dcdde1", // light slate grey
-  "#9b59b6"  // lavender purple
-      ];
-    let backgroundColor = Colors[Math.floor(Math.random()*Colors.length)];
-    return backgroundColor;    
-}
-
 /**
  * Closes the overlay and hides the task details.
  * This function removes the slide-in animation, adds a slide-out animation, 
@@ -394,6 +367,73 @@ async function moveTo(status) {
         body: JSON.stringify({ status: status }) 
     });
     let responseJson = await response.json();
+}
+
+/**
+ * Opens the task move overlay by displaying the specified button and the mobile overlay.
+ * This function makes the overlay visible by removing the `d-none` class from the provided button and the overlay element.
+ * It also stops the event propagation to avoid triggering unwanted event listeners.
+ *
+ * @param {string} buttonID - The ID of the button that should be displayed (passed as `currentButton`).
+ * @param {Event} event - The event object representing the user interaction (e.g., click).
+ * @returns {void} This function does not return any value.
+ *
+ * @example
+ * // Example usage:
+ * openMoveTaskOverlay('overlayMoveToProgress', event);
+ * 
+ * // The button with the ID 'overlayMoveToProgress' and the mobile overlay will be made visible.
+ */
+function openMoveTaskOverlay(buttonID, event) {
+    event.stopPropagation();
+    currentButton = buttonID;
+    document.getElementById(currentButton).classList.remove('d-none');
+    document.getElementById('overlayMoveToMobile').classList.remove('d-none');    
+}
+
+/**
+ * Moves a task to a new status and updates the task status in the backend.
+ * This function hides the move overlay and updates the task status in the backend via a PATCH request.
+ * It also re-renders the task list to reflect the updated status.
+ *
+ * @param {string} overlayMoveTo - The ID of the overlay to be closed after moving the task.
+ * @param {number} index - The index of the task in the `allTasks` array.
+ * @param {string} status - The new status to be assigned to the task.
+ * @param {Event} event - The event object representing the user interaction (e.g., click).
+ * @returns {Promise<void>} This function returns a promise that resolves when the backend update is complete.
+ *
+ * @example
+ * // Example usage:
+ * moveToMobile('overlayMoveToProgress', 1, 'await Feedback', event);
+ * 
+ * // The task at index 1 will have its status updated to 'await Feedback' and the UI will be updated.
+ */
+async function moveToMobile(overlayMoveTo, index, status, event) {
+    event.stopPropagation();
+    let task = allTasks[index];     
+    document.getElementById(overlayMoveTo).classList.add('d-none');
+    document.getElementById('overlayMoveToMobile').classList.add('d-none');
+    task.status = status; 
+    renderTasks();    
+    let response = await fetch(`${BASE_URL_TASK}/${task.firebaseID}.json`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: status }) 
+    });
+    let responseJson = await response.json();
+}
+
+/**
+ * Closes the move overlay and hides the UI elements associated with the current button and mobile overlay.
+ * This function adds the `d-none` class to the overlay and mobile overlay elements to make them invisible.
+ *
+ * @param {Event} event - The event object representing the user interaction (e.g., click).
+ * @returns {void} This function does not return any value.
+ *
+ */
+function closeMoveToOverlay(event) {
+    document.getElementById(currentButton).classList.add('d-none');
+    document.getElementById('overlayMoveToMobile').classList.add('d-none'); 
 }
 
 /**
