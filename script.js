@@ -31,6 +31,40 @@ function openOverlay(event) {
     event.stopPropagation();
 }
 
+
+/** Check if user already log in */
+function getUser() {
+    let user = localStorage.getItem("activeUser");
+    let guestUser = localStorage.getItem("guestUser");
+    if (!user && !guestUser) {
+        window.location.href = "log_in.html";
+        return ;
+    } 
+
+    let activeUser = JSON.parse(user);   
+    renderInitials(activeUser);
+}
+
+
+/**
+ * Get two letters of name
+ * @param {} name 
+ * @returns 
+ */
+function extracNameInitials(name) {
+    let arr = name.split(" ");
+    let initialsStr = ""
+    arr.forEach(n => {
+        if (n.length) {
+            initialsStr += n.at(0).toUpperCase();
+        }
+    });
+    if(initialsStr.length > 2) initialsStr = initialsStr.slice(0, 2);
+    return initialsStr;
+}
+
+
+
 /** User Logout */
 function logout() {
     localStorage.removeItem("activeUser");

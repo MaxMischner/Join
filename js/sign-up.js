@@ -7,11 +7,14 @@ let signupCB = document.getElementById("signupCB");
 let signupBtn = document.getElementById("signupBtn");
 
 
+/** Clear error message */
 function clearErrorMsg () {
     errorMSG.style.display = "none";
     errorMSG.innerText = "";
 }
 
+
+/** Clear all files */
 function clearField () {
     errorMSG.style.display = "none";
     signupName.value = "";
@@ -22,6 +25,7 @@ function clearField () {
 }
 
 
+/** User clicks the Singup Button */
 async function signup() {
     let obj = checkField();
     if (!obj["b"]) {
@@ -39,6 +43,7 @@ async function signup() {
 }
 
 
+/** Validate if the mail is already in DB  */
 async function checkEmail() {
     let allUsers = await getAllUsers();
     let allUserArr = [];
@@ -48,7 +53,7 @@ async function checkEmail() {
         allUserArr.push(oneUser[allEntries[0]]);
     }
 
-    let user = allUserArr.find(u => u.email == signupEmail.value);
+    let user = allUserArr.find(u => u.email == signupEmail.value.trim());
     
     if(user) {
         errorMSG.style.display = "block";
@@ -59,6 +64,7 @@ async function checkEmail() {
 }
 
 
+/** Save User into DB */
 async function signupUser() {
     signupBtn.disabled = true;
     let data = {email:signupEmail.value, name:signupName.value, password:signupPassword.value}
@@ -70,18 +76,25 @@ async function signupUser() {
         body:JSON.stringify(data)
     }).then ((response) => {
         if (response.ok) {
-            signupBtn.innerText = "You signed up successsfully."
-            setTimeout(() => {
-                signupBtn.innerText = " Sign Up"
-                signupBtn.disabled = false;
-                clearField();
-            }, 2000) 
+            showNotification();
         }
     })
 
 }
 
 
+/** Show signup success notification */
+function showNotification() {
+    signupBtn.innerText = "You signed up successsfully."
+    setTimeout(() => {
+            signupBtn.innerText = " Sign Up"
+            signupBtn.disabled = false;
+            clearField();
+    }, 2000) 
+}
+
+
+/** Check if all fields are correctly filled */
 function checkField() {
     let b = true;
     let msg = "";
