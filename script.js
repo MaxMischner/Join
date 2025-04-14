@@ -64,7 +64,6 @@ function extracNameInitials(name) {
 }
 
 
-
 /** User Logout */
 function logout() {
     localStorage.removeItem("activeUser");
