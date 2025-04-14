@@ -94,7 +94,10 @@
             
             <div class="content-left">
                 <div class="headline headline-board widescreen">
-                    <span class="headline-left">Board</span>       
+                    <div class="headline-mobile">
+                        <span class="headline-left">Board</span>   
+                        <img onclick="renderAddTaskOverlay()" class="add-task-mobile-plus" src="/asset/images/plus add task mobile.png" alt="">
+                    </div>        
                     <div class="add-task-container">
                         <div class="board-search-field-container">
                             <input id="boardSearchField" class="board-search-field" type="text" placeholder="Find Task" onkeyup="filterTasks()">
