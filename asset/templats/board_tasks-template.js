@@ -1,7 +1,28 @@
 function showInProgressTasks(index, subtasksClass, names) {
     return `
             <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
-                <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
+                <div class="tasks-content-header">
+                    <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
+                    <div>
+                        <img class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                            <div onclick="closeMoveTaskOverlay(event)" id="overlay" class="overlay d-none" >
+                                <ul>
+                                    <li>
+                                        <a  class="pointer" href="help.html">Help</a>
+                                    </li>
+                                    <li>
+                                        <a class="pointer" href="legal-notice.html">Legal Notice</a>
+                                    </li>
+                                    <li>
+                                        <a class="pointer" href="privacy-policy.html">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a class="pointer" href="#" onclick="logout()">Log Out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                    </div>        
+                </div>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
                 
@@ -26,7 +47,10 @@ function showInProgressTasks(index, subtasksClass, names) {
 function showToDoTasks(index, subtasksClass, names) {
     return `
             <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
-                <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
+                <div class="tasks-content-header">
+                    <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
+                    <img class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                </div>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
                 <div class="tasks-content-done ${subtasksClass}">
@@ -50,7 +74,10 @@ function showToDoTasks(index, subtasksClass, names) {
 function showAwaitFeedbackTasks(index, subtasksClass, names) {
     return `
             <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="tasks-content">
-                <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
+                <div class="tasks-content-header">
+                    <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
+                    <img class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                </div>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
                 <div class="tasks-content-done ${subtasksClass}">
@@ -74,7 +101,10 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
 function showDoneTasks(index, subtasksClass, names) {
     return `
             <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('done')" ondragover="allowDrop(event)" class="tasks-content">
-                <span class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
+                <div class="tasks-content-header">
+                    <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
+                    <img class="move-to-button-mobile" src="/asset/images/move-to-button-mobile-board.svg" alt="">
+                </div>
                 <span class="tasks-content-title">${allTasks[index].title}</span>
                 <span class="tasks-content-description">${allTasks[index].description}</span>
                 <div class="tasks-content-done ${subtasksClass}">
