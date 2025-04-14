@@ -157,19 +157,31 @@ function filterContacts() {
  */
 
   function handleSelectionChange() {
-      const checkboxes = getAllContactCheckboxes();
-      const selectedContactsDiv = document.getElementById("selectedContacts");
-      selectedContactsDiv.innerHTML = "";
-      const selectedNames = checkboxes.filter(cb => cb.checked).map(cb => {
-          const name = cb.dataset.name;
-          const contactItem = cb.closest(".contact-item");
-          contactItem.classList.add("selected");
-          addContactChip(name, selectedContactsDiv);
-          return name;
-        });
-      checkboxes.filter(cb => !cb.checked).forEach(cb => cb.closest(".contact-item").classList.remove("selected"));
-      assigned = selectedNames.join(", ");
-    }
+    const checkboxes = getAllContactCheckboxes();
+    const selectedContactsDiv = document.getElementById("selectedContacts");
+    selectedContactsDiv.innerHTML = "";
+  
+    const selectedNames = checkboxes
+      .filter(cb => cb.checked)
+      .map(cb => {
+        const name = cb.dataset.name;
+        const contactItem = cb.closest(".contact-item");
+        contactItem.classList.add("selected");
+  
+        const contactInitial = contactItem.querySelector(".contact-initial");
+        const bgColor = window.getComputedStyle(contactInitial).backgroundColor;
+  
+        addContactChip(name, selectedContactsDiv, bgColor);
+        return name;
+      });
+  
+    checkboxes
+      .filter(cb => !cb.checked)
+      .forEach(cb => cb.closest(".contact-item").classList.remove("selected"));
+  
+    assigned = selectedNames.join(", ");
+  }
+  
     
     /**
  * Retrieves all contact checkbox elements from the dropdown content.
@@ -187,13 +199,14 @@ function filterContacts() {
  * Appends the chip element to the specified container.
  */
 
-    function addContactChip(name, container) {
-      const chip = document.createElement("div");
-      chip.className = "selected-contact-chip";
-      chip.textContent = getInitials(name);
-      chip.style.backgroundColor = getColorForName(name);
-      container.appendChild(chip);
-    }
+    function addContactChip(name, container, color) {
+        const chip = document.createElement("div");
+        chip.className = "selected-contact-chip";
+        chip.textContent = getInitials(name);
+        chip.style.backgroundColor = color;
+        container.appendChild(chip);
+      }
+      
 
     /**
  * Validates the required fields of the task form before saving.

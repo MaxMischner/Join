@@ -1,3 +1,8 @@
+.add-task-overlay{
+  max-width: 525px;
+  width: 100%;
+}
+
 .main_Box-board {
   margin-right: 5px;
   margin-left: 5px;
@@ -10,8 +15,11 @@
   padding: 16px;
 }
 
-.dropdown-menu.show-board{
-  width: 81%;
+
+  
+
+.dropdown-menu.show{
+  width: 83%;
 
 }
 
@@ -121,4 +129,25 @@ select,
       box-sizing: border-box;
     }
  
-  
+    @media (max-width: 1200px) {
+      .dropdown-menu.show{
+        width: 81%;
+      
+      }
+    }
+    
+    @media (max-width: 900px) {
+    
+    }
+    
+    @media (max-width: 780px) {
+      
+    }
+
+    @media (max-width: 510px) {
+     
+    }
+    
+    @media (max-width: 400px) {
+      
+    }
