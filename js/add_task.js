@@ -200,24 +200,22 @@ function renderContactsInDropdown(allContacts, preSelectedNames = []) {
 
   allContacts.forEach((contactObj) => {
     const [key, value] = Object.entries(contactObj)[0];
-    const contactItem = createContactItem(key, value, preSelectedNames); // 🆕
+    const contactItem = createContactItem(key, value, preSelectedNames); 
     container.appendChild(contactItem);
   });
-
-  // nach dem Laden: trigger für Chips-Anzeige
   handleSelectionChange();
 }
   
 function createContactItem(key, contact, preSelectedNames = []) {
   const name = contact.name;
+  const colorItem = contact.color;
   const checkbox = createContactCheckbox(key, name);
 
-  // ✅ Wenn Name zu preSelectedNames gehört, Checkbox aktivieren
   if (preSelectedNames.includes(name)) {
     checkbox.checked = true;
   }
 
-  const contactItem = buildContactItem(name, checkbox);
+  const contactItem = buildContactItem(name, checkbox, colorItem);
   contactItem.addEventListener("click", (event) => {
     if (event.target !== checkbox) {
       checkbox.checked = !checkbox.checked;
@@ -228,9 +226,9 @@ function createContactItem(key, contact, preSelectedNames = []) {
 }
 
 
-  function buildContactItem(name, checkbox) {
+  function buildContactItem(name, checkbox, colorItem) {
     const initials = getInitials(name);
-    const color = getColorForName(name);
+    const color = colorItem;
     const item = document.createElement("div");
     item.className = "contact-item";
     item.dataset.name = name;
@@ -254,6 +252,7 @@ function createContactItem(key, contact, preSelectedNames = []) {
     left.className = "contact-left";
     left.innerHTML = `<div class="contact-initial" style="background:${color}">${initials}</div>
       <span>${name}</span>`;
+
     return left;
   }
   
@@ -270,16 +269,7 @@ function getInitials(name) {
   return name.split(" ").map((word) => word[0]).join("").toUpperCase();
 }
 
-function getColorForName(name) {
-  const colors = [
-    "#29ABE2","#FF8A00","#9327FF", "#6E52FF","#FC71FF","#FFBB2B","#1FD7C1","#462F8A",
-  ];
-  if (!name || typeof name !== "string") {
-    return "#D1D1D1";
-  }
-  const index = name.charCodeAt(0) % colors.length;
-  return colors[index];
-}
+
 
 function handleSelectionChange() {
     const checkboxes = getAllContactCheckboxes();

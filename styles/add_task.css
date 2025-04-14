@@ -253,6 +253,7 @@ label.required::after {
   padding: 8px 12px;
   border-radius: 6px;
   transition: background 0.2s ease;
+  
 }
 
 .contact-left {
@@ -744,6 +745,10 @@ select:focus {
     max-width: 154px;
     font-size: 16px;
     margin-right: 0;
+  }
+  .dropdown-menu.show{
+    width: 81%;
+
   }
 }
 
