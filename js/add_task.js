@@ -8,6 +8,12 @@ let priority = "";
 let status = "To do";
 let subtasks = "";
 
+/**
+ * Initializes the add task view by verifying user authentication.
+ * Redirects to the login page if no active or guest user is found.
+ * Loads contact data and sets up event listeners for priority buttons.
+ */
+
 function init() {
   let user = localStorage.getItem("activeUser");
     let guestUser = localStorage.getItem("guestUser");
@@ -15,11 +21,15 @@ function init() {
         window.location.href = "log_in.html";
         return ;
     } 
-
-
   getAllContacts();
   setupPriorityButtons();
 }
+
+/**
+ * Sets up click event listeners for all priority buttons.
+ * Ensures only one button can be selected at a time by toggling the 'selected' class.
+ * Visually indicates the active priority level.
+ */
 
 function setupPriorityButtons() {
   const priorityButtons = document.querySelectorAll(".priorty_button");
@@ -29,6 +39,12 @@ function setupPriorityButtons() {
     });
   });
 }
+
+/**
+ * Activates a selected priority button and updates its icon to the active state.
+ * Resets all other priority buttons to their default style and icon using an icon map.
+ * Updates the global `priority` variable based on the selected button's data attribute.
+ */
 
 function selectPriority(button) {
   const buttons = document.querySelectorAll(".priorty_button");
@@ -55,12 +71,24 @@ function selectPriority(button) {
   priority = button.dataset.value;
 }
 
+/**
+ * Determines the priority level of a given button based on its CSS class.
+ * Checks for 'urgent', 'medium', or 'low' classes and returns the matching level.
+ * Returns null if no known priority class is found.
+ */
+
 function getPriorityLevel(button) {
   if (button.classList.contains("urgent")) return "urgent";
   if (button.classList.contains("medium")) return "medium";
   if (button.classList.contains("low")) return "low";
   return null;
 }
+
+/**
+ * Resets all priority buttons to their default visual state.
+ * Removes the 'selected' class and restores the default icon for each button.
+ * Uses the provided icon map to determine which icon to apply.
+ */
 
 function buttenReset(buttons, iconMap) {
   buttons.forEach((btn) => {
@@ -71,6 +99,12 @@ function buttenReset(buttons, iconMap) {
   });
 }
 
+/**
+ * Toggles the visibility of the contact dropdown menu.
+ * Adds or removes the 'show' class on the dropdown menu element.
+ * Also toggles the 'back' class on the dropdown trigger for styling effects.
+ */
+
 function toggleDropdown() {
   const menu = document.getElementById("dropdownMenu");
   menu.classList.toggle("show");
@@ -78,31 +112,11 @@ function toggleDropdown() {
   menuback.classList.toggle("back");
 }
 
-function filterContacts() {
-  const input = document
-    .getElementById("contactSearchInput")
-    .value.toLowerCase();
-  const items = document.querySelectorAll(".contact-item");
-  items.forEach((item) => {
-    const name = item.dataset.name.toLowerCase();
-    item.style.display = name.includes(input) ? "flex" : "none";
-  });
-}
-
-async function getAllContacts(preSelectedNames = []) {
-  let response = await fetch(BASE_URL_CONTACT + ".json");
-  let responseJSON = await response.json();
-  let keys = Object.keys(responseJSON);
-  let allContacts = [];
-
-  for (let index = 0; index < keys.length; index++) {
-    let key = keys[index];
-    let value = responseJSON[key];
-    if (responseJSON[key]) allContacts.push({ [key]: value });
-  }
-
-  renderContactsInDropdown(allContacts, preSelectedNames); // 🆕
-}
+/**
+ * Adds a new subtask item to the task's subtask list based on user input.
+ * Creates a styled DOM element with metadata and an edit click handler.
+ * Clears the input field and updates subtask-related icons after insertion.
+ */
 
 function addTodo() {
   const input = document.getElementById("todoInput");
@@ -121,6 +135,12 @@ function addTodo() {
   }
 }
 
+/**
+ * Creates an image-based button element with a click event handler.
+ * Sets the source, tooltip title, and cursor style for the icon.
+ * Returns the configured image element ready for insertion.
+ */
+
 function createIconButton(src, title, onClick) {
   const btn = document.createElement("img");
   btn.src = src;
@@ -130,37 +150,119 @@ function createIconButton(src, title, onClick) {
   return btn;
 }
 
+/**
+ * Creates a new <div> element with the specified CSS class name.
+ * Used as a container for dynamic UI elements.
+ * Returns the created wrapper element.
+ */
+
 function createWrapper(className) {
   const wrapper = document.createElement("div");
   wrapper.className = className;
   return wrapper;
 }
 
+/**
+ * Replaces a subtask item with an editable input form.
+ * Adds delete and save buttons, styled in a wrapper with a divider.
+ * Focuses the input field for immediate editing.
+ */
+
 function editSubtask(item, oldValue) {
   const wrapper = createWrapper("editable-subtask");
+  const input = createSubtaskInput(oldValue);
+  const delBtn = createDeleteButton(item);
+  const saveBtn = createSaveButton(item, input);
+
+  const divider = createDivider();
+  wrapper.append(input, delBtn, divider, saveBtn);
+
+  replaceSubtaskContent(item, wrapper);
+  input.focus();
+}
+
+/**
+ * Creates a text input element prefilled with the given value.
+ * Used to allow the user to edit the subtask text.
+ * Returns the configured input element.
+ */
+
+function createSubtaskInput(value) {
   const input = document.createElement("input");
   input.type = "text";
-  input.value = oldValue;
-  const delBtn = createIconButton("asset/img/icons/delete.png", "Delete", () =>item.remove()
-  );
-  const saveBtn = createIconButton("asset/img/icons/Subtasks icons11.png","Save",() => {const newValue = input.value.trim();
-      if (!newValue) return item.remove();
-      const newItem = document.createElement("div");
-      newItem.className = "subtask-list-item";
-      newItem.textContent = newValue;
-      newItem.addEventListener("click", () => editSubtask(newItem, newValue));
-      item.replaceWith(newItem);
-    }
-  );
+  input.value = value;
+  return input;
+}
 
+/**
+ * Creates a delete icon button that removes the current subtask item when clicked.
+ * Uses a trash icon and attaches the removal logic via an event listener.
+ * Returns the configured button element.
+ */
+
+function createDeleteButton(item) {
+  return createIconButton("asset/img/icons/delete.png", "Delete", () => {
+    item.remove();
+  });
+}
+
+/**
+ * Creates a save icon button for confirming subtask edits.
+ * If the input is empty, the subtask is removed; otherwise, it replaces the item with the updated value.
+ * Returns the save button element with attached logic.
+ */
+
+function createSaveButton(item, input) {
+  return createIconButton("asset/img/icons/Subtasks icons11.png", "Save", () => {
+    const newValue = input.value.trim();
+    if (!newValue) return item.remove();
+    const newItem = createNewSubtaskItem(newValue);
+    item.replaceWith(newItem);
+  });
+}
+
+/**
+ * Builds a new subtask element using the provided value.
+ * Sets its class and text, and adds an event listener to re-enable editing on click.
+ * Returns the fully configured subtask element.
+ */
+
+function createNewSubtaskItem(value) {
+  const newItem = document.createElement("div");
+  newItem.className = "subtask-list-item";
+  newItem.textContent = value;
+  newItem.addEventListener("click", () => editSubtask(newItem, value));
+  return newItem;
+}
+
+/**
+ * Creates a visual divider element for separating subtask icons.
+ * Used within the editable subtask layout to improve structure.
+ * Returns the configured divider element.
+ */
+
+function createDivider() {
   const divider = document.createElement("div");
   divider.className = "subtask-divider";
-  wrapper.append(input, delBtn, divider, saveBtn);
+  return divider;
+}
+
+/**
+ * Clears and replaces the contents of a subtask item with a new wrapper element.
+ * Removes all existing child elements and class names before inserting the new layout.
+ */
+
+function replaceSubtaskContent(item, wrapper) {
   item.innerHTML = "";
   item.className = "";
   item.appendChild(wrapper);
-  input.focus();
 }
+
+/**
+ * Toggles visibility of subtask action icons based on input field content.
+ * Hides the plus button and shows confirm icons when input is not empty.
+ * Restores the plus button and hides icons when input is cleared.
+ */
 
 function toggleSubtaskIcons() {
   const input = document.getElementById("todoInput");
@@ -177,11 +279,22 @@ function toggleSubtaskIcons() {
   }
 }
 
+/**
+ * Clears the value of the subtask input field and updates the related UI icons.
+ * Calls toggleSubtaskIcons() to reflect the cleared state in the interface.
+ */
+
 function clearSubtaskInput() {
   const input = document.getElementById("todoInput");
   input.value = "";
   toggleSubtaskIcons();
 }
+
+/**
+ * Adds an event listener to trigger subtask creation when Enter is pressed.
+ * Waits for the DOM to fully load before attaching the listener to the input field.
+ * Ensures the input exists to prevent errors on pages where it may be missing.
+ */
 
 window.addEventListener("DOMContentLoaded", () => {
   const todoInput = document.getElementById("todoInput");
@@ -194,109 +307,12 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function renderContactsInDropdown(allContacts, preSelectedNames = []) {
-  const container = document.getElementById("dropdownContent");
-  container.innerHTML = "";
 
-  allContacts.forEach((contactObj) => {
-    const [key, value] = Object.entries(contactObj)[0];
-    const contactItem = createContactItem(key, value, preSelectedNames); 
-    container.appendChild(contactItem);
-  });
-  handleSelectionChange();
-}
-  
-function createContactItem(key, contact, preSelectedNames = []) {
-  const name = contact.name;
-  const colorItem = contact.color;
-  const checkbox = createContactCheckbox(key, name);
-
-  if (preSelectedNames.includes(name)) {
-    checkbox.checked = true;
-  }
-
-  const contactItem = buildContactItem(name, checkbox, colorItem);
-  contactItem.addEventListener("click", (event) => {
-    if (event.target !== checkbox) {
-      checkbox.checked = !checkbox.checked;
-      handleSelectionChange();
-    }
-  });
-  return contactItem;
-}
-
-
-  function buildContactItem(name, checkbox, colorItem) {
-    const initials = getInitials(name);
-    const color = colorItem;
-    const item = document.createElement("div");
-    item.className = "contact-item";
-    item.dataset.name = name;
-    item.appendChild(createContactLeft(name, initials, color));
-    item.appendChild(createContactRight(checkbox));
-    return item;
-  }
-  
-  function createContactCheckbox(key, name) {
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.value = key;
-    checkbox.dataset.name = name;
-    checkbox.classList.add("contact-checkbox");
-    checkbox.addEventListener("change", handleSelectionChange);
-    return checkbox;
-  }
-  
-  function createContactLeft(name, initials, color) {
-    const left = document.createElement("div");
-    left.className = "contact-left";
-    left.innerHTML = `<div class="contact-initial" style="background:${color}">${initials}</div>
-      <span>${name}</span>`;
-
-    return left;
-  }
-  
-  function createContactRight(checkbox) {
-    const right = document.createElement("div");
-    right.className = "contact-checkbox-wrapper";
-    right.appendChild(checkbox);
-    return right;
-  }
-  
-
-function getInitials(name) {
-  if (!name || typeof name !== "string") return "??";
-  return name.split(" ").map((word) => word[0]).join("").toUpperCase();
-}
-
-
-
-function handleSelectionChange() {
-    const checkboxes = getAllContactCheckboxes();
-    const selectedContactsDiv = document.getElementById("selectedContacts");
-    selectedContactsDiv.innerHTML = "";
-    const selectedNames = checkboxes.filter(cb => cb.checked).map(cb => {
-        const name = cb.dataset.name;
-        const contactItem = cb.closest(".contact-item");
-        contactItem.classList.add("selected");
-        addContactChip(name, selectedContactsDiv);
-        return name;
-      });
-    checkboxes.filter(cb => !cb.checked).forEach(cb => cb.closest(".contact-item").classList.remove("selected"));
-    assigned = selectedNames.join(", ");
-  }
-  
-  function getAllContactCheckboxes() {
-    return Array.from(document.querySelectorAll('#dropdownContent input[type="checkbox"]'));
-  }
-  
-  function addContactChip(name, container) {
-    const chip = document.createElement("div");
-    chip.className = "selected-contact-chip";
-    chip.textContent = getInitials(name);
-    chip.style.backgroundColor = getColorForName(name);
-    container.appendChild(chip);
-  }
+/**
+ * Collects all task-related data from the form fields and stores it in global variables.
+ * Retrieves title, description, due date, selected priority, category, and subtasks.
+ * Converts subtask elements into structured objects with name and completion status.
+ */
 
   function collectTaskData() {
     title = document.getElementById("title-task").value;
@@ -314,23 +330,27 @@ function handleSelectionChange() {
     });
   }
   
+/**
+ * Gathers task data from the form and sends it to the backend for saving.
+ * Uses putTask to store the task in the database, then resets the form.
+ * Redirects the user to the board view after saving is complete.
+ */
 
 async function saveTask() {
   collectTaskData();
   let data = {
-    title,
-    description,
-    assigned,
-    category,
-    duedate,
-    priority,
-    status,
-    subtasks,
+    title,description,assigned,category,duedate,priority,status,subtasks,
   };
   await putTask(data);
   resetForm();
   window.location.href = "board.html"; 
 }
+
+/**
+ * Fetches all tasks from the backend and formats them for use.
+ * Removes any null values from the subtasks array if present.
+ * Returns an array of task objects with their corresponding Firebase keys.
+ */
 
 async function getAllTasks() {
   let response = await fetch(BASE_URL_TASK + ".json");
@@ -347,6 +367,12 @@ async function getAllTasks() {
   return allTasks;
 }
 
+/**
+ * Sends a new task to the backend using a POST request.
+ * Converts the task data into JSON and logs the response from the server.
+ * Returns the response object containing the generated task ID.
+ */
+
 async function putTask(data, id = "") {
   let allTasks = await getAllTasks();
   const response = await fetch(BASE_URL_TASK + ".json", {
@@ -361,51 +387,4 @@ async function putTask(data, id = "") {
   return responseToJson;
 }
 
-function validateTaskBeforeSave() {
-  let isValid = true;
-  const titleField = document.getElementById("title-task");
-  const dateField = document.getElementById("date-task");
-  const categoryField = document.getElementById("assigned_category");
 
-  if (!titleField.value.trim()) {
-    showError(titleField, "errorMsg-title");
-    isValid = false;
-  } else {
-    hideError(titleField, "errorMsg-title");
-  }
-  if (!dateField.value.trim()) {
-    showError(dateField, "errorMsg-date");
-    isValid = false;
-  } else {
-    hideError(dateField, "errorMsg-date");
-  }
-  if (!categoryField.value.trim()) {
-    showError(categoryField, "errorMsg-category");
-    isValid = false;
-  } else {
-    hideError(categoryField, "errorMsg-category");
-  }
-  return isValid;
-}
-
-function showError(field, errorId) {
-  field.classList.add("error");
-  document.getElementById(errorId).style.display = "block";
-}
-
-function hideError(field, errorId) {
-  field.classList.remove("error");
-  document.getElementById(errorId).style.display = "none";
-}
-
-function resetForm() {
-  document.getElementById("title-task").value = "";
-  document.getElementById("description-task").value = "";
-  document.getElementById("date-task").value = "";
-  document.getElementById("assigned_category").selectedIndex = 0;
-  document.querySelectorAll(".priorty_button").forEach((btn) => btn.classList.remove("selected"));
-  document.querySelectorAll("#dropdownMenu input[type='checkbox']").forEach((cb) => (cb.checked = false));
-  document.getElementById("selectedContacts").innerHTML = "";
-  document.getElementById("todoList").innerHTML = "";
-  document.getElementById("todoInput").value = "";
-}

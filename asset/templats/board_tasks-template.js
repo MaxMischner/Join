@@ -347,7 +347,7 @@ function showDeleteTask(index) {
                            <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
                            <img src="asset/img/icons/arrow_drop_downaa.png" />
                          </div>
-                         <div class="dropdown-menu" id="dropdownMenu">
+                         <div class="dropdown-menu " id="dropdownMenu">
                            <div id="dropdownContent"></div>
                          </div>
                          <div id="selectedContacts" class="selected-contacts"></div>
