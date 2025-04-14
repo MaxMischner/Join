@@ -5,3 +5,7 @@
 .legal-notice-container div {
     margin-bottom: 20px;
 }
+
+.highlight-join {
+    color: rgba(41, 171, 226, 1);
+  }
