@@ -255,12 +255,12 @@ body {
     justify-content: space-between;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    padding: 15px;
+    /* padding: 15px; */
     margin: 15px 0 5px 0;
     gap:16px;
     background-color: rgba(255, 255, 255, 1);
     cursor: pointer;
-    width: 80%;
+    width: 100%;
 }
 
 .tasks-content-user {
@@ -271,6 +271,18 @@ body {
     text-align: center;
     vertical-align: middle;
     padding: 4px 0 4px 0;
+}
+
+.margin {
+    margin: 0 15px 0 15px;
+}
+
+.tasks-content-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .tasks-content-technical {
@@ -305,7 +317,6 @@ body {
     font-weight: 400;
     line-height: 120%;
     color: rgba(168, 168, 168, 1);
-    width : 90%;
     display: -webkit-box; 
     -webkit-box-orient: vertical; 
     -webkit-line-clamp: 3; 
@@ -316,8 +327,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 90%;
-    margin: 5px 0 5px 0;
+    
+    margin: 5px 15px 5px 15px;
 }
 
 .tasks-content-done-progressbar {
@@ -329,7 +340,6 @@ body {
     font-size: 12px;
     font-weight: 400;
     line-height: 120%;
-    width: 40%;
     white-space: nowrap;
 }
 
@@ -338,6 +348,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .assigned-container {
@@ -478,7 +489,6 @@ body {
     border-radius: 8px;
     text-align: center;
     vertical-align: middle;
-    padding: 4px 0 4px 0;
     font-size: 23px;
     font-weight: 400;
 }
@@ -490,7 +500,6 @@ body {
     border-radius: 8px;
     text-align: center;
     vertical-align: middle;
-    padding: 4px 0 4px 0;
     font-size: 23px;
     font-weight: 400;
 }
@@ -849,13 +858,6 @@ body {
         width: 90%;
     }  
 
-    .tasks-content-header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
     .move-to-button-mobile {
         display: block;
         width: 26px;
@@ -877,7 +879,7 @@ body {
         position: absolute;
         right: 0;
         top: 0;
-        width: 106px;
+        width: 140px;
         height: 113px;
         background-color: #2A3647;
         border-top-left-radius: 24px;
@@ -896,29 +898,31 @@ body {
     .overlay-move-to-button-content {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: baseline;
         justify-content: space-around;
+        width: 100%;
     }
 
     .overlay-move-to-button-arrow {
         width: 20px;
         height: 20px;
+        margin-right: 3px;
     }
 
     .overlay-move-to-button-headline {
         font-size: 16px;
         color: rgba(255, 255, 255, 1);
-        margin-bottom: 10px;
+        margin: 0 0px 10px 5px;
     }
 
     .overlay-move-to-button-inner-content {
         font-size: 14px;
         color: rgba(255, 255, 255, 1);
-        margin-right: 5px;
+        margin: 0 5px 5px 5px;
         width: 70%;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start;
         text-align: center;
     }
 
