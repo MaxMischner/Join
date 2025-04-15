@@ -440,15 +440,16 @@ function showDeleteTask(index) {
                              <input
                                type="text"
                                id="todoInput"
-                               class="input_field subtask-input input_field-board"
+                               class="input_field subtask-input "
                                placeholder="Add new subtask"
                                oninput="toggleSubtaskIcons()"
                              />
                              
-                             <div id="subtaskConfirmIcons" class="subtask-icon-group">
-                               <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
-                               <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
-                             </div>
+                             <button id="subtaskPlus" class="subtask-icon" onclick="addTodo() ">+</button>
+                            <div id="subtaskConfirmIcons" class="subtask-icon-group">
+                              <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
+                              <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
+                            </div>
                            </div>
                            
                            

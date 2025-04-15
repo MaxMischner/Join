@@ -15,8 +15,15 @@
   padding: 16px;
 }
 
-
+.subtask-icon{
+  right: 59px;
+  top: 719px;
+}
   
+.subtask-icon-group{
+  right: 59px;
+  top: 719px;
+}
 
 .dropdown-menu.show{
   width: 83%;
