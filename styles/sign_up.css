@@ -1,4 +1,9 @@
 
+.widescreen {
+    max-width: 1920px;
+    margin: auto;
+}
+
 .content {
     overflow: hidden;
     min-width: 100vw;
@@ -172,6 +177,7 @@
     .logo {
         top: 37px;
         left: 38px;
+        width: 64px;
     }
 
     .signup-cb-label {
@@ -181,9 +187,7 @@
     .signup-container {
         width: 396px;
         padding: 20px 0;
-    }
-
-    
+    }    
     
     .signup-headline-container {
         position: relative;
@@ -208,8 +212,7 @@
         height: 48px;
         padding-left: 10px;
         background-position: 346px 10px; 
-    }
-    
+    }    
   
      
     .signup-forms-submit-buttons {
@@ -244,10 +247,13 @@
 
 @media (max-width: 430px) {
 
+    .content-top {
+        height: 180px;
+    }
+
     .signup-headline {
         font-size: 32px;
         font-weight: 700;
-
     }
     
     .text-field {
@@ -300,8 +306,10 @@
   
 
     .signup-footer{
+        position: absolute;
+        bottom: 0;
         font-size: 14px;
-        margin-top: 230px;
+        margin-bottom: 15px;
     }
     
     .signup-headerline-with-arrow img {
