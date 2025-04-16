@@ -373,15 +373,17 @@ body {
 }
 
 .assigned-plus {
-    background-image: url('/asset/images/plus.png');
-    width: 21px;
-    height: 21px;
-    background-repeat: no-repeat; 
-    background-position: center; 
-    background-size: contain;  
-    margin-left: -4px;
+    width: 32px;
+    height: 32px;;
+    margin-left: -2px;
     border-radius: 45px;
-    border: 1px solid rgb(158, 158, 158);
+    border: 1px solid rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    background-color: rgb(170, 170, 170);
 }
 
 .priority-Low {

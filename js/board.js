@@ -679,6 +679,19 @@ function filterTasksButton() {
     renderTasks(); }   
 }
 
+/**
+ * Renders the "Edit Task" overlay with pre-filled data of the selected task.
+ * 
+ * This function retrieves the task based on the provided index, generates
+ * the HTML content for the overlay using `showEditTaskOverlay`, displays the
+ * overlay, and populates it with existing assigned contacts and subtasks.
+ * 
+ * @function renderEditTaskOverlay
+ * @param {number} index - The index of the task to be edited from the allTasks array.
+ * 
+ * @example
+ * renderEditTaskOverlay(3); // Opens the edit overlay for the task at index 3
+ */
 function renderEditTaskOverlay(index) {
     const task = allTasks[index];
     let overlay = document.getElementById('overlayAddTask');
@@ -700,6 +713,21 @@ function renderEditTaskOverlay(index) {
     }
 }
 
+/**
+ * Saves the edited task data to the backend and updates the UI accordingly.
+ * 
+ * This function collects the edited task data from the form, updates the corresponding task 
+ * in Firebase using a `PUT` request, and then refreshes the task list and detail view.
+ * 
+ * @async
+ * @function saveEditedTask
+ * @param {number} index - The index of the task in the allTasks array to be updated.
+ * 
+ * @returns {Promise<void>}
+ * 
+ * @example
+ * saveEditedTask(2); // Saves changes to the task at index 2
+ */
 async function saveEditedTask(index) {
     collectTaskData(); 
     const task = allTasks[index];
@@ -724,6 +752,25 @@ async function saveEditedTask(index) {
     await getAllTasks();
     renderTasks();
     renderTaskDetail(index)
+}
+
+/**
+ * Calculates how many additional assigned users exist beyond the first four.
+ * 
+ * This function is typically used to determine whether a "+X" indicator
+ * (e.g., "+2") should be shown when more than four users are assigned.
+ * 
+ * @function renderAdditionalAssigned
+ * @param {string[]} names - An array of assigned user names.
+ * @returns {number} The number of additional users beyond the first four.
+ * 
+ * @example
+ * const names = ['Anna', 'Ben', 'Chris', 'Dana', 'Eva', 'Finn'];
+ * const additional = renderAdditionalAssigned(names); // returns 2
+ */
+function renderAdditionalAssigned(names) {
+   let additionalNames = names.length - 4;
+   return additionalNames    
 }
 
     
