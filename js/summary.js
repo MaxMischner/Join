@@ -26,7 +26,115 @@ async function initSummary() {
     renderName (activeUser);
     renderGreeting();
     renderInitials(activeUser);
-    renderContent();
+    renderMobileGreeting (activeUser);
+}
+
+/**
+ * Renders a mobile greeting screen based on the device width and user status.
+ * 
+ * This function checks if the current screen width is less than or equal to 780px,
+ * identifying it as a mobile view. If on mobile, it hides the logo,
+ * shows the main container, and then conditionally renders either a guest
+ * greeting or a personalized user greeting based on the `activeUser` parameter.
+ * 
+ * If the screen is wider than 780px (i.e., not mobile), the full content view is rendered.
+ * 
+ * @function renderMobileGreeting
+ * @param {string|null} activeUser - The name or ID of the active user. If null or undefined, the guest greeting will be shown.
+ * 
+ */
+function renderMobileGreeting(activeUser) {
+    const isMobile = window.innerWidth <= 780;
+    if (isMobile) {
+        document.getElementById('mainContainer').classList.remove('d-none');
+        document.getElementById('waitLogo').classList.add('d-none');
+        document.getElementById('summaryContentLeft').classList.add('d-none');
+        if (!activeUser) {            
+            showGuestGreeting()
+        } else {
+            showUserGreeting(activeUser)
+        }        
+    }else {
+        renderContent()
+    }
+}
+
+/**
+ * Displays a temporary greeting screen for guest users on mobile devices.
+ * 
+ * This function reveals the guest greeting element by removing the `d-none` class
+ * and calls `renderMobileGreetingGuest()` to populate the greeting content.
+ * 
+ * After a delay of 2 seconds, the greeting is hidden again and the summary content
+ * section is shown.
+ * 
+ * This function is intended to be used within mobile views only.
+ * 
+ * @function showGuestGreeting
+ */
+function showGuestGreeting() {
+    document.getElementById('mobileGreetingGuest').classList.remove('d-none');
+    renderMobileGreetingGuest();
+    setTimeout(() => {
+        document.getElementById('mobileGreetingGuest').classList.add('d-none');
+        document.getElementById('summaryContentLeft').classList.remove('d-none');
+    }, 2000); 
+}
+
+/**
+ * Displays a personalized greeting for a logged-in user on mobile devices.
+ * 
+ * This function shows the user greeting screen by removing the `d-none` class from 
+ * the mobile greeting element. It then calls `renderMobileGreetingUser()` to set up 
+ * the greeting view and inserts the active user's name into the designated element.
+ * 
+ * After 2 seconds, the greeting screen is hidden and the main summary content is shown.
+ * 
+ * @async
+ * @function showUserGreeting
+ * @param {Array} activeUser - An array containing the active user object, where `activeUser[0].name` is used for display.
+ */
+async function showUserGreeting(activeUser) {
+    document.getElementById('mobileGreetingUser').classList.remove('d-none');
+    renderMobileGreetingUser();
+    document.getElementById('userNameMobile').innerHTML = activeUser[0].name;    
+    setTimeout(() => {
+        document.getElementById('mobileGreetingUser').classList.add('d-none');
+        document.getElementById('summaryContentLeft').classList.remove('d-none');
+    }, 2000); 
+}
+
+
+/**
+ * Checks the current time and selects the appropriate greeting 
+ * for the guest-user depending on the time.
+ * 
+ */
+function renderMobileGreetingGuest() {
+    let today = new Date();
+    let hour = today.getHours()
+    if((hour >=0) && (hour <=9))
+        document.getElementById('gremobileGreetingGuestGreeteting').innerHTML = 'Good Morning!'
+    if((hour >=10) && (hour <=18))
+        document.getElementById('mobileGreetingGuestGreet').innerHTML = 'Good Day!'
+    if((hour >=19) && (hour <=23))
+        document.getElementById('mobileGreetingGuestGreet').innerHTML = 'Good Evening!'
+}
+
+/**
+ * Checks the current time and selects the appropriate greeting 
+ * for the user depending on the time.
+ * 
+ */
+function renderMobileGreetingUser() {
+    let today = new Date();
+    let hour = today.getHours()
+    if((hour >=0) && (hour <=9))
+        document.getElementById('mobileGreetingUserGreet').innerHTML = 'Good Morning,'
+    if((hour >=10) && (hour <=18))
+        document.getElementById('mobileGreetingUserGreet').innerHTML = 'Good Day,'
+    if((hour >=19) && (hour <=23))
+        document.getElementById('mobileGreetingUserGreet').innerHTML = 'Good Evening,'
 }
 
 /**
