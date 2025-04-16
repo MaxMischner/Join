@@ -262,7 +262,7 @@ function showTaskDetail(index, names, subtasksClass) {
 function showAddTaskOverlay() {
     return `               
         <div>
-        <div id="addTaskOverlay" class="add-task-overlay slide-in wide-overlay" onclick="noBubbling(event)">                   
+        <div id="addTaskOverlay" class="add-task-overlay-board slide-in wide-overlay" onclick="noBubbling(event)">                   
             <div class="add-task-overlay-close-button">
                 <span class="add-task-overlay-close-header">Add Task</span>
                 <img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>

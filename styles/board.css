@@ -27,17 +27,6 @@ body {
     justify-content: center;     
 }
 
-.overlay-box{
-    position: fixed;
-    height: 100vh;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.0);
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;     
-}
-
 .overlay-box-delete{
     position: fixed;
     height: 100vh;
@@ -60,7 +49,7 @@ body {
     justify-content: center;     
 }
 
-.add-task-overlay {
+.add-task-overlay-board {
     background-color: rgba(255, 255, 255, 1);
     display: flex;
     flex-direction: column;
@@ -76,23 +65,23 @@ body {
     width: 100%;   
 }
 
-.add-task-overlay::-webkit-scrollbar {
+.add-task-overlay-board::-webkit-scrollbar {
     width: 6px;
     
 }
 
-.add-task-overlay::-webkit-scrollbar-track {
+.add-task-overlay-board::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 10px;
     padding-right: 50px;
 }
 
-.add-task-overlay::-webkit-scrollbar-thumb {
+.add-task-overla-board::-webkit-scrollbar-thumb {
     background-color: #c1c1c1;
     border-radius: 10px;
 }
 
-.add-task-overlay::-webkit-scrollbar-thumb:hover {
+.add-task-overlay-board::-webkit-scrollbar-thumb:hover {
     background-color: #a1a1a1;
 }
 
@@ -107,7 +96,6 @@ body {
 }
 
 .add-task-container {
-
     gap: 15px;
     display: flex;
     align-items: center;
@@ -120,7 +108,6 @@ body {
 }
 
 .board-search-field {
-
     height: 48px;
     border-radius: 10px;
     border: 2px solid rgba(209, 209, 209, 1) !important;
@@ -521,9 +508,7 @@ body {
     font-size: 55px;
     font-weight: 700;
     line-height: 120%;
-    margin: 0 40px 0 40px;    
-    width: 93%;
-        
+    margin: 0 40px 0 40px;           
 }
 
 .task-detail-description {
@@ -1052,10 +1037,6 @@ body {
 
     .task-detail-container {
         width: 99%;
-    }
-
-    .task-detail-title {
-        width:89%;
     }
 
     .board-search-field-container {

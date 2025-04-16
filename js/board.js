@@ -276,6 +276,14 @@ async function closeOverlay() {
 }
 
 /**
+ * Closes the add-task-overlay and hides the task details.
+ * 
+ */
+function closeAddTaskOverlay() {
+    document.getElementById('overlayAddTask').classList.add('d-none');
+}
+
+/**
  * Closes the add-task overlay.
  * This function removes the slide-in animation, adds a slide-out animation, 
  * and hides the overlay.

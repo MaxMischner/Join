@@ -139,11 +139,11 @@
     color: rgba(0, 0, 0, 1)
 }
 
-.white-card:hover #taksTotal {
+.white-card:hover #tasksTotal {
     color: white;
 }
 
-.white-card:hover #taksProgress {
+.white-card:hover #tasksProgress {
     color: white;
 }
 
