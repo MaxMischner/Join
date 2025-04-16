@@ -385,7 +385,7 @@ async function moveTo(status) {
  * // The button with the ID 'overlayMoveToProgress' and the mobile overlay will be made visible.
  */
 function openMoveTaskOverlay(buttonID, event) {
-    event.stopPropagation();
+    event.stopPropagation();    
     currentButton = buttonID;
     document.getElementById(currentButton).classList.remove('d-none');
     document.getElementById('overlayMoveToMobile').classList.remove('d-none');    
@@ -410,7 +410,7 @@ function openMoveTaskOverlay(buttonID, event) {
  */
 async function moveToMobile(overlayMoveTo, index, status, event) {
     event.stopPropagation();
-    let task = allTasks[index];     
+    let task = allTasks[index];         
     document.getElementById(overlayMoveTo).classList.add('d-none');
     document.getElementById('overlayMoveToMobile').classList.add('d-none');
     task.status = status; 
