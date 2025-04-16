@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Log in || Join</title>
+     <link rel="icon" href="/asset/images/fav.svg" type="image/svg+xml">
+     <link rel="stylesheet" href="/styles/sidebar.css">
+     <link rel="stylesheet" href="/styles/log_in.css">
+     <link rel="stylesheet" href="/styles/standart.css">
+ </head>
+ 
+ <body>
+     <div class="animated-container">
+         <img class="animated-logo" src="/asset/images/logo.svg" alt="">
+     </div>
+     <div class="content">
+     <div class="content widescreen">
+ 
+         <div class="content-top">
+         <div class="content-top widescreen" >
+             <img class="logo" src="/asset/images/logo.svg" alt="">
+             <div class="sign-up-container">
+                 <span class="sign-up-container-text">Not a Join user?</span>
+                 <div class="sign-up-container-field" onclick="window.location.href='sign-up.html'">
+                     <span class="sign-up-container-field-text">Sign up</span>
+                 </div>
+             </div>
+         </div>
+         <div class="log-in-container">
+             <div class="log-in-headline-container">
+                 <span class="log-in-headline">Log in</span>
+             </div>
+             <div>
+             <form id="loginForm" onsubmit="login();return false" class="login-forms" action="">
+                 <input id="loginEmail" class="log-in-input-field-mail" type="email" placeholder="Email" name="uname" required>
+                 <input id="loginPassword" class="log-in-input-field-password" type="password" placeholder="Password" name="uname" required>
+                 <div id="submitButtonsLogin" class="login-forms-submit-buttons">
+                     <button type="submit" class="login-forms-submit-buttons-login">Log in</button>
+                     <div  onclick="guestLogin()" class="login-forms-submit-buttons-guest">Guest Log in</div>
+                 </div>
+             </form>
+             </div>
+         </div>
+
+     </div>    
+     <footer class="login-footer">
+        <a class="pointer" href="privacy-policy-simple.html">Privacy Policy</a>
+        <a class="pointer" href="legal-notice-simple.html">Legal notice</a>
+    </footer>   
+ </body>
+ <script src="/js/log_in.js"></script>
+ <script src="/script.js"></script>
