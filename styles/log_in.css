@@ -375,12 +375,20 @@ body {
 
 @media (max-width: 430px) {
 
+    .content-top {
+        height: 180px;
+    }
+
     .log-in-container {
         width: 310px;
-        height: 390px;
-    }    
+        height: 350px;
+    }   
+    
+    .log-in-headline-container {
+        height: 50px;
+    }
  
-      .log-in-headline {
+    .log-in-headline {
         font-size: 32px;
         font-weight: 700;
     }
@@ -445,8 +453,9 @@ body {
     }
 
     .login-footer{
-        font-size: 14px;
-        margin-top: 230px;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 30px;
     }
     
 }
