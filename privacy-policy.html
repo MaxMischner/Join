@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="./styles/sidebar.css">
     <link rel="stylesheet" href="./styles/standart.css">
     <link rel="stylesheet" href="./styles/privacy-policy.css">
+    <link rel="stylesheet" href="./styles/legal-notice.css">
 </head>
-<body> 
+<body onload="initInitials ()"> 
     <div onclick="closeOverlay(event)" id="overlay" class="overlay d-none" >
         <ul>
             <li>
@@ -80,13 +81,14 @@
                           </g>
                           </svg>
                     </div></a>
-                    <div id="initialNames" class="header-right-name" onclick="openOverlay(event)">SM</div>
+                    <div id="initialNames" class="header-right-name" onclick="openOverlay(event)"></div>
                 </div>
 
             </header>
             <div class="content-left">
-                <div class="headline">
+                <div class="headline headline-continer-legal">
                     <span class="headline-left">Privacy Policy</span>
+                    <img src="asset/img/icons/Property 1=Variant2.png" alt="Back" onclick="goBack()" class="pointer">
                 </div>
                 <main class="privacy-policy-container">
                   <section>
@@ -172,9 +174,12 @@
     let user = localStorage.getItem("activeUser");
     let guestUser = localStorage.getItem("guestUser");
     if (!user && !guestUser) {
-        window.location.href = "log_in.html";
-        
+        window.location.href = "log_in.html";        
     } 
+
+    function goBack() {
+      window.history.back();
+    }
 </script>
 <script src="/script.js"></script>
 <script src="/js/summary.js"></script>

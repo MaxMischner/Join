@@ -8,4 +8,27 @@
 
 .highlight-join {
     color: rgba(41, 171, 226, 1);
-  }
+}
+
+.headline-continer-legal {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+
+@media (max-width: 800px) {
+    .headline-continer-legal {
+        width: 90%;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: baseline;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    .headline-left {
+        font-size: 35px;
+    }
+}

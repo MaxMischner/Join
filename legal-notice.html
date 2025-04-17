@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/standart.css">
     <link rel="stylesheet" href="./styles/legal-notice.css">
 </head>
-<body onload=""> 
+<body onload="initInitials ()"> 
   <div onclick="closeOverlay(event)" id="overlay" class="overlay d-none" >
     <ul>
         <li>
@@ -81,14 +81,15 @@
                             </svg>
                         </div>
                     </a>
-                    <div id="initialNames" class="header-right-name"  onclick="openOverlay(event)">SM</div>
+                    <div id="initialNames" class="header-right-name"  onclick="openOverlay(event)"></div>
                 </div>
 
             </header>
             <div class="content-left">
-                <div class="headline">
-                    <span class="headline-left">Legal Notice</span>
-                </div>
+              <div class="headline headline-continer-legal">
+                <span class="headline-left">Legal Notice</span>
+                <img src="asset/img/icons/Property 1=Variant2.png" alt="Back" onclick="goBack()" class="pointer">
+            </div>
                 <main class="legal-notice-container">
                     <section>
                       <div>
@@ -197,6 +198,11 @@
     if (!user && !guestUser) {
         window.location.href = "log_in.html";
     } 
+
+    function goBack() {
+      window.history.back();
+    }
+
 </script>
 <script src="/script.js"></script>
 <script src="/js/summary.js"></script>

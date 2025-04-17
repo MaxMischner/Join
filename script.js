@@ -5,6 +5,17 @@ const BASE_URL_CONTACT = "https://join-61c56-default-rtdb.europe-west1.firebased
 
 let initialNamesDiv = document.getElementById("initialNames");
 
+function initInitials () {
+    let user = localStorage.getItem("activeUser");
+    let guestUser = localStorage.getItem("guestUser");
+    if (!user && !guestUser) {
+        window.location.href = "log_in.html";
+        return ;
+    } 
+    let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
+    renderInitials(activeUser);
+}
+
 /* Close Menu Overlay */
 function closeOverlay(event) {
     if (event.target !== event.currentTarget) return;
@@ -80,3 +91,4 @@ function generateLightColor() {
   
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }
+

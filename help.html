@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/standart.css">
     <link rel="stylesheet" href="./styles/help.css">
 </head>
-<body onload=""> 
+<body onload="initInitials()">  
     <div onclick="closeOverlay(event)" id="overlay" class="overlay d-none" >
         <ul>
             <li>
@@ -81,7 +81,7 @@
                           </svg>
                       </div>
                     </a>
-                    <div id="initialNames" class="header-right-name" onclick="openOverlay(event)">SM</div>
+                    <div id="initialNames" class="header-right-name" onclick="openOverlay(event)"></div>
                 </div>
 
             </header>
@@ -127,6 +127,7 @@
 <script src="/js/summary.js"></script>
 <script src="/js/users.js"></script>
 <script src="/js/moment.js"></script>
+
 <script>
     function goBack() {
       window.history.back();
