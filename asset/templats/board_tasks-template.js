@@ -372,10 +372,12 @@ function showDeleteTask(index) {
   
   
   function showEditTaskOverlay(task, index) {
-     return `               
+     return ` 
+      <div class="scrollbar-container-taskdetail-overcontainer-board">
+     <div id="taskDetail" class="scrollbar-container-taskdetail-board slide-in">                 
          <div>
          <div id="addTaskOverlay" class="add-task-overlay slide-in" onclick="noBubbling(event)">                    
-             <div class="add-task-overlay-close-button">
+             <div class="add-task-overlay-close-button-board">
                  <span class="add-task-overlay-close-header"></span>
                  <img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>
              <div class="main_Box-board">                    
@@ -445,8 +447,8 @@ function showDeleteTask(index) {
                                oninput="toggleSubtaskIcons()"
                              />
                              
-                             <button id="subtaskPlus" class="subtask-icon" onclick="addTodo() ">+</button>
-                            <div id="subtaskConfirmIcons" class="subtask-icon-group">
+                             <button id="subtaskPlus" class="subtask-icon-board" onclick="addTodo() ">+</button>
+                            <div id="subtaskConfirmIcons" class="subtask-icon-group-board">
                               <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
                               <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
                             </div>
@@ -473,6 +475,7 @@ function showDeleteTask(index) {
              </div> 
          
          </div>  
+      </div>
       </div>
      `
   }
