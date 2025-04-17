@@ -370,3 +370,16 @@ onresize = (event) => {
     }
 };
 
+function validateEditEmailDomain() {
+    const input = document.getElementById("edit-contact-email");
+    const email = input.value.trim();
+    const validDomains = [".de", ".com", ".org"];
+    const isValid = validDomains.some(domain => email.endsWith(domain));
+  
+    if (!isValid) {
+      input.setCustomValidity("Only .de, .com or .org addresses are allowed");
+    } else {
+      input.setCustomValidity("");
+    }
+  }
+  

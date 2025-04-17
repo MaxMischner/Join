@@ -23,6 +23,8 @@ function init() {
     } 
   getAllContacts();
   setupPriorityButtons();
+  let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
+    renderInitials(activeUser);
 }
 
 /**

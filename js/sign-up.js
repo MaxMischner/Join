@@ -113,3 +113,16 @@ function checkField() {
 
     return {'b':b, 'message': ""}
 }
+
+function validateEmailDomain() {
+    const input = document.getElementById("signupEmail");
+    const email = input.value.trim();
+    const validDomains = [".de", ".com", ".org"];
+    const isValid = validDomains.some(domain => email.endsWith(domain));
+  
+    if (!isValid) {
+      input.setCustomValidity("Only .de, .com or .org addresses are allowed");
+    } else {
+      input.setCustomValidity("");
+    }
+  }

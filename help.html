@@ -86,8 +86,9 @@
 
             </header>
             <div class="content-left">
-                <div class="headline">
+                <div class="headline headline-continer">
                     <span class="headline-left">Help</span>
+                    <img src="asset/img/icons/Property 1=Variant2.png" alt="Back" onclick="goBack()" class="pointer">
                 </div>
                 <div class="help-container">
                   <p>Welcome to the help page for Join, your guide to using our kanban project management tool. Here, we'll provide an overview of what Join is, how it can benefit you, and how to use it.</p>
@@ -126,4 +127,9 @@
 <script src="/js/summary.js"></script>
 <script src="/js/users.js"></script>
 <script src="/js/moment.js"></script>
+<script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 </html>

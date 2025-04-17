@@ -119,7 +119,7 @@ function getAddContact() {
                             <img src="/asset/images/person.png" alt="">
                         </div>
                         <div class="edit-contact-field-div">
-                            <input class="edit-contact-field" type="email" id="edit-contact-email" required value="" minlength="3" oninput="clearErrorMsg()">
+                           <input class="edit-contact-field"  type="email" id="edit-contact-email" required value="" minlength="3" oninput="clearErrorMsg(); validateEditEmailDomain()"/>
                             <img src="/asset/images/grey-mail.svg" alt="">
                         </div>
                         <div class="edit-contact-field-div">

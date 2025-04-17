@@ -18,3 +18,23 @@
 .help-container h3 {
     margin-top: 10px;
 }
+
+.headline-continer{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 50px;
+    
+}
+
+@media (max-width: 500px){
+    .headline{
+        margin-right: 20px;
+        margin-left: 30px;
+    }
+    .headline-continer{
+        width: 80%;
+        
+        
+    }
+}

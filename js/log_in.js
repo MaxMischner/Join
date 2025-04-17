@@ -54,3 +54,17 @@ function guestLogin() {
     localStorage.setItem("guestUser", "guest")
     window.location.href = "summary.html";
 }
+
+function validateLoginEmailDomain() {
+    const input = document.getElementById("loginEmail");
+    const email = input.value.trim();
+    const validDomains = [".de", ".com", ".org"];
+    const isValid = validDomains.some(domain => email.endsWith(domain));
+  
+    if (!isValid) {
+      input.setCustomValidity("Only .de, .com or .org addresses are allowed");
+    } else {
+      input.setCustomValidity("");
+    }
+  }
+  
