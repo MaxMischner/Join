@@ -43,21 +43,39 @@ async function signup() {
 }
 
 
-/** Validate if the mail is already in DB  */
-async function checkEmail() {
-    let allUsers = await getAllUsers();
+/**
+ * Reconstruct user array
+ * @param {array} allUsers 
+ * @returns array
+ */
+function reconstructAllUsers(allUsers) {
     let allUserArr = [];
     for (let index = 0; index < allUsers.length; index++) {
         let oneUser = allUsers[index]; 
         let allEntries = Object.keys(oneUser);
         allUserArr.push(oneUser[allEntries[0]]);
     }
+    return allUserArr;
+}
 
-    let user = allUserArr.find(u => u.email == signupEmail.value.trim());
+/** Validate if the mail is already in DB  */
+async function checkEmail() {
+    let patt = /^([\w+\.])+@(\w+)([.]\w+)+$/ig;
+        
+    if(!patt.test(signupEmail.value.trim())) {
+        errorMSG.style.display = "block";
+        errorMSG.innerText = "Please fill up a valid email address.";
+        return ;
+    }
+
+    let allUsers = await getAllUsers();
+    allUsers = reconstructAllUsers(allUsers);
+
+    let user = allUsers.find(u => u.email == signupEmail.value.trim());
     
     if(user) {
         errorMSG.style.display = "block";
-        errorMSG.innerText = "The email is already used";
+        errorMSG.innerText = "The email is already used.";
     } else {
         signupUser();
     }
@@ -85,11 +103,11 @@ async function signupUser() {
 
 /** Show signup success notification */
 function showNotification() {
+    clearField();
     signupBtn.innerText = "You signed up successsfully."
     setTimeout(() => {
-            signupBtn.innerText = " Sign Up"
-            signupBtn.disabled = false;
-            clearField();
+            window.location.href = "index.html";
+            
     }, 2000) 
 }
 
@@ -114,15 +132,3 @@ function checkField() {
     return {'b':b, 'message': ""}
 }
 
-function validateEmailDomain() {
-    const input = document.getElementById("signupEmail");
-    const email = input.value.trim();
-    const validDomains = [".de", ".com", ".org"];
-    const isValid = validDomains.some(domain => email.endsWith(domain));
-  
-    if (!isValid) {
-      input.setCustomValidity("Only .de, .com or .org addresses are allowed");
-    } else {
-      input.setCustomValidity("");
-    }
-  }

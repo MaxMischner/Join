@@ -18,14 +18,14 @@
         </div>
         <div class="signup-container">
             <div class="signup-headerline-with-arrow">
-                <img class="pointer" src="./asset/images/return-icon.png" alt=""  onclick="window.location.href='log_in.html'">
+                <img class="pointer" src="./asset/images/return-icon.png" alt=""  onclick="window.location.href='index.html'">
                 <div class="signup-headline-container">
                     <span class="signup-headline">Sign Up</span>
                 </div>
             </div>
             <form onsubmit="signup();return false" class="signup-forms" action="">
                 <input id="signupName"  class="signup-input-field-name text-field" type="text" placeholder="Name" required minlength="6">
-                <input id="signupEmail"class="signup-input-field-mail text-field"type="email"placeholder="Email"requiredoninput="clearErrorMsg(); validateEmailDomain();"/>
+                <input id="signupEmail"class="signup-input-field-mail text-field"type="email"placeholder="Email" required oninput="clearErrorMsg();"/>
                 <input id="signupPassword"  class="signup-input-field-password text-field" type="password" placeholder="Password" required minlength="6" oninput="clearErrorMsg()">
                 <input id="signupPasswordAgain"  class="signup-input-field-password text-field" type="password" placeholder="Confirm Password" required minlength="6" oninput="clearErrorMsg()">
                 <div id="error-msg" class="d-none" style="padding: 10px; color:#ff8190">
