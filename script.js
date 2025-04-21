@@ -18,8 +18,7 @@ function initInitials () {
 
 /* Close Menu Overlay */
 function closeOverlay(event) {
-    if (event.target !== event.currentTarget) return;
-
+    
     initialNamesDiv.style.background = "white";
     initialNamesDiv.style.color = "rgb(41, 171, 226)";
 

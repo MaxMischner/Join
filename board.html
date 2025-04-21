@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="styles/add_task_board.css">
 </head>
 <body onload="init()"> 
+ 
     <div onclick="closeSignOutOverlay(event)" id="overlay" class="overlay d-none" >
+        <div class="overlay-content">
         <ul>
             <li>
                 <a  class="pointer" href="help.html">Help</a>
@@ -29,6 +31,7 @@
                 <a class="pointer" href="#" onclick="logout()">Log Out</a>
             </li>
         </ul>
+        </div>
     </div>
     <div class="content widescreen">
         <div onclick="closeOverlay()" id="overlayDetail" class="overlay-box d-none"></div> 
