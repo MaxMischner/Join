@@ -271,6 +271,17 @@ body {
     margin-top: 20px;
 }
 
+@media (max-width: 1900px) {
+.animated-logo {
+    position: absolute;
+    left: calc(50% - 100px);
+    top: calc(50% - 150px);
+    width: 200px;
+
+    animation: animated-logo-move 2s ease 1s forwards;
+}
+}
+
 @media (max-width: 950px) {
     .logo {
         width: 64px;
