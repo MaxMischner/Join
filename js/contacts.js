@@ -12,6 +12,7 @@ let shouldChnageColor = currentID ? false : true;
 let colorStr;
 let isMobile = false;
 let isOpenContactDetail = false;
+let deleteInProgress = false;
 
 
 /** Check if it is on mobile */
@@ -96,13 +97,15 @@ function moveToEditedLi() {
 async function queryContacts() {
     let response = await fetch(BASE_URL_CONTACT + ".json");
     let responseJSON = await response.json();
-    let keys = Object.keys(responseJSON);
-    
-    for (let index = 0; index < keys.length; index++) {    
-        const key = keys[index];
-        const value = responseJSON[key];
-        if (responseJSON[key]) queryedContacts.push({[key]: value});
-    }   
+    if (responseJSON) {
+        let keys = Object.keys(responseJSON);
+        
+        for (let index = 0; index < keys.length; index++) {    
+            const key = keys[index];
+            const value = responseJSON[key];
+            if (responseJSON[key]) queryedContacts.push({[key]: value});
+        }       
+    }
 }
 
 
@@ -175,19 +178,31 @@ function clearEditContact() {
 }
 
 
+/** Control delete btn */
+function afterDelete() {
+    document.body.removeChild(document.getElementById("notification-id"));
+    contactDetailDIV.innerHTML = "";
+    currentID = "";
+    initContact();
+    goContactList();
+}
+
+
 /** When user delete a contact */
-async function deleteContact(){
+async function deleteContact(e){
+    if (deleteInProgress) return;
+    deleteInProgress = true;
+    const deleteBtn = document.querySelector(".contact-detail-delete");
+    deleteBtn.disabled = true;
+
     await fetch(BASE_URL_CONTACT + currentID + '.json',  {
         method: "DELETE",
     }).then ((response) => {
+        deleteBtn.disabled = false;
         if (response.ok) {
             document.body.appendChild(getNotification("Contact successfully deleted"));
             setTimeout(() => {
-                document.body.removeChild(document.getElementById("notification-id"));
-                contactDetailDIV.innerHTML = "";
-                currentID = "";
-                initContact();
-                goContactList();
+                afterDelete();
             }, 1000);
         }
     });
@@ -203,24 +218,29 @@ async function saveEditContact(e) {
     const nameField = document.getElementById("edit-contact-name");
     const emailField = document.getElementById("edit-contact-email");
     const phoneField = document.getElementById("edit-contact-phone");
-    const initialsDIV = document.getElementById("edit-contact-intitals");
     const errorMSG = document.getElementById("edit-contact-error");
+    if (!validAllForm(nameField, emailField, phoneField, errorMSG)) {errorMSG.style.display = "block"; return;}
+    const initialsDIV = document.getElementById("edit-contact-intitals");
+   
     let user = allContacts.find(c => (c.email == emailField.value && c.id != currentID));
     if(user) {
         errorMSG.style.display = "block";
         errorMSG.innerText = "The email is already used";
     } else {
         let data = {email:emailField.value.trim(), name:nameField.value.trim(), phone:phoneField.value.trim() , color:initialsDIV.style.backgroundColor}
-        putContact(data, currentID);
+        putContact(data, currentID, e);
     }
 }
+
 
 /**
  * Add contact into DB
  * @param {String} id id is only to be passed by updating contact.
  * @param {object} data {email:"xin33@gmail.com", name:"Yang Xin", phone:"1234567", color:""}
  */
-async function putContact(data, id="") {
+async function putContact(data, id="", e) {
+    let btn = e.target.querySelector(".edit-contact-bottom-save");
+    btn.disabled = true;
     await fetch(BASE_URL_CONTACT + id + ".json", {
         method: id ? "PUT" : "POST" ,
         headers: {"Content-Type": "application/json"},
@@ -232,6 +252,7 @@ async function putContact(data, id="") {
         return response.json();
     })
     .then (result => {
+        btn.disabled = false;
         currentID = id || result.name;
         updatePageInfo();
     });
@@ -260,14 +281,17 @@ function updatePageInfo() {
  */
 function updateContactDetail(bgColor, inital, name, email, phone){
     const detailLogo = document.getElementById("contact-detail-header-logo");
-    const detailName = document.getElementById("contact-detail-name");
-    const detailEmail = document.getElementById("contact-detail-email");
-    const detailphone = document.getElementById("contact-detail-phone");
-    detailLogo.style.backgroundColor = bgColor;
-    detailLogo.innerText = inital;
-    detailName.innerText = name;
-    detailEmail.innerText = email;
-    detailphone.innerText = phone;
+    if (detailLogo) {
+        const detailName = document.getElementById("contact-detail-name");
+        const detailEmail = document.getElementById("contact-detail-email");
+        const detailphone = document.getElementById("contact-detail-phone");
+
+        detailLogo.style.backgroundColor = bgColor;
+        detailLogo.innerText = inital;
+        detailName.innerText = name;
+        detailEmail.innerText = email;
+        detailphone.innerText = phone;
+    }
 }
 
 
@@ -347,8 +371,11 @@ function goContactList() {
     isOpenContactDetail = false;
     buttons.style.display = "none";
 
-    contactLeftDiv.classList.remove("d-none");
-    contactRightDiv.classList.add("d-none");
+    if(isMobile) {
+        contactLeftDiv.classList.remove("d-none");
+        contactRightDiv.classList.add("d-none");
+    }
+    
 }
 
 
@@ -370,16 +397,3 @@ onresize = (event) => {
     }
 };
 
-function validateEditEmailDomain() {
-    const input = document.getElementById("edit-contact-email");
-    const email = input.value.trim();
-    const validDomains = [".de", ".com", ".org"];
-    const isValid = validDomains.some(domain => email.endsWith(domain));
-  
-    if (!isValid) {
-      input.setCustomValidity("Only .de, .com or .org addresses are allowed");
-    } else {
-      input.setCustomValidity("");
-    }
-  }
-  

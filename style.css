@@ -14,6 +14,14 @@
     z-index: 999;
 }
 
+.overlay-content {
+    max-width: 1920px;
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
 .overlay ul {
     position: absolute;
     right: 50px;
@@ -60,7 +68,6 @@
 .content {
     height: 100vh;
     display: flex;
-    
 }
 
 
