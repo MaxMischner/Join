@@ -1,4 +1,42 @@
 let activeUser = [];
+const email = document.getElementById('loginEmail');
+const password = document.getElementById('loginPassword');
+const errorMSG = document.getElementById('error-msg');
+
+
+/** Validate Email */
+function validateLoginEmail() {
+    if (!email.value.trim())  {
+        errorMSG.innerText = "The email address cannot be empty";
+        return false;
+    }
+
+    let patt = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        
+    if(!patt.test(email.value.trim())) {
+        errorMSG.innerText = "Please fill up a valid email address.";
+        return false;
+    }
+
+    return true;
+}
+
+
+/** Validate password */
+function validateLoginPassword() {
+    if (!password.value.trim())  {
+        errorMSG.innerText = "Password cannot be empty";
+        return false;
+    }
+        
+    if(password.value.trim().length < 6) {
+        errorMSG.innerText = "Password requires at least 6 letters";
+        return false;
+    }
+
+    return true;
+}
+
 
 /**
  * Checks if a user is registered and logs them in.
@@ -11,12 +49,14 @@ let activeUser = [];
  * 
  */
 async function login() {
-    let email = document.getElementById('loginEmail').value;
-    let password = document.getElementById('loginPassword').value;
+    if(!validateLoginEmail() || !validateLoginPassword()) {
+        errorMSG.classList.remove("d-none");
+        return false;
+    }
     let response = await fetch(BASE_URL_USER + ".json");
     let responseJSON = await response.json();
     let users = Object.values(responseJSON);
-    let user = users.find(u => u.email == email && u.password == password);    
+    let user = users.find(u => u.email == email.value && u.password == password.value);    
     if(user) {
         activeUser.push (user);
         localStorage.setItem("activeUser", JSON.stringify(activeUser));
@@ -34,14 +74,21 @@ async function login() {
  * 
  */
 function wrongLogin() {
-    const existingWarning = document.getElementById('loginError');
-    if (existingWarning) return;
-    let newElement = document.createElement('div');       
-    newElement.textContent = 'Email or password incorrect';
-    newElement.classList.add("wrong-login-text");
-    newElement.id = 'loginError';
-    document.getElementById('loginForm').appendChild(newElement); 
+    const existingWarning = document.getElementById('error-msg');
+    if (!existingWarning) return;
+  
+    existingWarning.innerText = 'Email or password incorrect';
+    existingWarning.classList.remove("d-none");
 }
+
+
+/** Clear error message */
+function clearErrorMsg () {
+
+    errorMSG.classList.add("d-none");
+    errorMSG.innerText = "";
+}
+
 
 /**
  * Forwards an user without login to the summary-site.
@@ -55,16 +102,3 @@ function guestLogin() {
     window.location.href = "summary.html";
 }
 
-function validateLoginEmailDomain() {
-    const input = document.getElementById("loginEmail");
-    const email = input.value.trim();
-    const validDomains = [".de", ".com", ".org"];
-    const isValid = validDomains.some(domain => email.endsWith(domain));
-  
-    if (!isValid) {
-      input.setCustomValidity("Only .de, .com or .org addresses are allowed");
-    } else {
-      input.setCustomValidity("");
-    }
-  }
-  

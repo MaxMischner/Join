@@ -33,9 +33,11 @@
              </div>
              <div>
              <form id="loginForm" onsubmit="login();return false" class="login-forms" action="">
-                <input id="loginEmail" class="log-in-input-field-mail" type="email" placeholder="Email" name="uname" requiredoninput="validateLoginEmailDomain()"/>
-              
-                 <input id="loginPassword" class="log-in-input-field-password" type="password" placeholder="Password" name="uname" required>
+                <input id="loginEmail" class="log-in-input-field-mail" type="text" placeholder="Email" name="uname" oninput="clearErrorMsg ()"/>
+                 <input id="loginPassword" class="log-in-input-field-password" type="password" placeholder="Password" name="uname"  oninput="clearErrorMsg ()">
+                 <div id="error-msg" class="d-none" style=" color:#ff8190">
+                    The passwords are not consistent.
+                </div>
                  <div id="submitButtonsLogin" class="login-forms-submit-buttons">
                      <button type="submit" class="login-forms-submit-buttons-login">Log in</button>
                      <div  onclick="guestLogin()" class="login-forms-submit-buttons-guest">Guest Log in</div>

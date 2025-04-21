@@ -34,7 +34,7 @@ function getConactDetail(initials, name, email, phone, id, color) {
                                     <button class="flex pointer contact-detail-edit" onclick="editContact('${id}')">
                                         <span>Edit</span>
                                     </button>
-                                    <button class="flex pointer contact-detail-delete" onclick="deleteContact('${id}')">
+                                    <button class="flex pointer contact-detail-delete" onclick="deleteContact(event)">
                                         
                                         <span>Delete</span>
                                     </button>
@@ -72,15 +72,15 @@ function getEditContact(initals, name, email, phone, color, id) {
                     <div class="edit-contact-form flex-column">
                         
                         <div class="edit-contact-field-div">
-                            <input class="edit-contact-field" type="text" id="edit-contact-name" required value="${name}" oninput="editChangeName()" minlength="3">
+                            <input class="edit-contact-field" type="text" id="edit-contact-name"  value="${name}" oninput="editChangeName()">
                             <img src="/asset/images/person.png" alt="">
                         </div>
                         <div class="edit-contact-field-div">
-                            <input class="edit-contact-field" type="email" id="edit-contact-email" required value="${email}" minlength="3" oninput="clearErrorMsg()">
+                            <input class="edit-contact-field" type="text" id="edit-contact-email"  value="${email}"  oninput="clearErrorMsg()">
                             <img src="/asset/images/grey-mail.svg" alt="">
                         </div>
                         <div class="edit-contact-field-div">
-                            <input class="edit-contact-field" type="text" id="edit-contact-phone" required value="${phone}" minlength="3" oninput="clearErrorMsg()">
+                            <input class="edit-contact-field" type="text" id="edit-contact-phone"  value="${phone}"  oninput="clearErrorMsg()">
                             <img src="/asset/images/phone.svg" alt="">
                         </div>
                         <div class="edit-contact-error" id="edit-contact-error">The email is already used</div>
@@ -115,15 +115,15 @@ function getAddContact() {
                     <div class="edit-contact-form flex-column">
                         
                         <div class="edit-contact-field-div">
-                            <input class="edit-contact-field" type="text" id="edit-contact-name" required value="" oninput="editChangeName()" minlength="3">
+                            <input class="edit-contact-field" type="text" id="edit-contact-name"  value="" oninput="editChangeName()" >
                             <img src="/asset/images/person.png" alt="">
                         </div>
                         <div class="edit-contact-field-div">
-                           <input class="edit-contact-field"  type="email" id="edit-contact-email" required value="" minlength="3" oninput="clearErrorMsg(); validateEditEmailDomain()"/>
+                           <input class="edit-contact-field"  type="text" id="edit-contact-email"  value=""  oninput="clearErrorMsg();"/>
                             <img src="/asset/images/grey-mail.svg" alt="">
                         </div>
                         <div class="edit-contact-field-div">
-                            <input class="edit-contact-field" type="text" id="edit-contact-phone" required value="" minlength="3" oninput="clearErrorMsg()">
+                            <input class="edit-contact-field" type="text" id="edit-contact-phone"  value=""  oninput="clearErrorMsg()">
                             <img src="/asset/images/phone.svg" alt="">
                         </div>
                         <div class="edit-contact-error" id="edit-contact-error">The email is already used</div>

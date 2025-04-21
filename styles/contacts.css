@@ -4,6 +4,7 @@
 }
 
 .contact-overlay {
+    overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
@@ -109,7 +110,7 @@
 }
 
 .contact-detail {
-    padding: 0 50px;
+    padding: 0 50px 20px;
 }
 
 .contact-detail .contact-detail-header {
@@ -136,7 +137,7 @@
 }
 
 .contact-detail-buttons {
-    justify-content: flex-start;
+    justify-content: flex-start !important;
     gap: 20px;
 
 }
@@ -284,6 +285,7 @@
         height: 50px;
         padding: 0;
         border-radius: 50%;
+        border: 1px solid white;
     }
 
     .contact-left > button > span {
@@ -297,6 +299,8 @@
     .contact-right {
         position: relative;
         width: 100%;
+        height: calc(100vh - 180px);
+        overflow-y: scroll;
     }
 
     .headline-arrow {

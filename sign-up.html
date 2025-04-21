@@ -24,10 +24,10 @@
                 </div>
             </div>
             <form onsubmit="signup();return false" class="signup-forms" action="">
-                <input id="signupName"  class="signup-input-field-name text-field" type="text" placeholder="Name" required minlength="6">
-                <input id="signupEmail"class="signup-input-field-mail text-field"type="email"placeholder="Email" required oninput="clearErrorMsg();"/>
-                <input id="signupPassword"  class="signup-input-field-password text-field" type="password" placeholder="Password" required minlength="6" oninput="clearErrorMsg()">
-                <input id="signupPasswordAgain"  class="signup-input-field-password text-field" type="password" placeholder="Confirm Password" required minlength="6" oninput="clearErrorMsg()">
+                <input id="signupName"  class="signup-input-field-name text-field" type="text" placeholder="Name" oninput="clearErrorMsg();">
+                <input id="signupEmail"class="signup-input-field-mail text-field"type="text" placeholder="Email"  oninput="clearErrorMsg();"/>
+                <input id="signupPassword"  class="signup-input-field-password text-field" type="password" placeholder="Password" oninput="clearErrorMsg()">
+                <input id="signupPasswordAgain"  class="signup-input-field-password text-field" type="password" placeholder="Confirm Password" oninput="clearErrorMsg()">
                 <div id="error-msg" class="d-none" style="padding: 10px; color:#ff8190">
                     The passwords are not consistent.
                 </div>
