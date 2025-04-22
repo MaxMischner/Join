@@ -11,10 +11,6 @@ body {
     background-color: rgba(246, 247, 248, 1);
 }
 
-.widescreen {
-    max-width: 1920px;
-    margin: auto;
-}
 
 .overlay-box{
     position: fixed;

@@ -15,7 +15,7 @@
 }
 
 .overlay-content {
-    max-width: 1920px;
+
     margin: auto;
     width: 100%;
     height: 100vh;
@@ -61,7 +61,7 @@
 
 /*Main Content*/
 .widescreen {
-    max-width: 1920px;
+  
     margin: auto;
 }
 
@@ -135,7 +135,9 @@
 .main-container {
     position: relative;
     width: 100%;
-    background-color: var(--main-container-bg)
+    
+    background-color: var(--main-container-bg);
+
 }
 
 .content-middle{
@@ -146,6 +148,7 @@
 }
 
 .content-left {
+    max-width: calc(1920px - 232px);
     height: calc(100vh - 96px);
     overflow-x: hidden;
     overflow-y: auto;
