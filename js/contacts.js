@@ -18,7 +18,7 @@ let deleteInProgress = false;
 /** Check if it is on mobile */
 function initUI() {
     getUser();
-    if (window.innerWidth <= 780) {
+    if (window.innerWidth <= 1100) {
         isMobile = true;
         contactRightDiv.classList.add("d-none");
         contactLeftDiv.classList.remove("d-none");
@@ -141,6 +141,8 @@ function renderContactDetail(id) {
 
 /** When user crate a new contact */
 function addNewConact() {
+    contactDetailDIV.innerHTML = "";
+
     if (prevLi) {
         prevLi.style.background = "";
         prevLi.querySelector(".contact-name").style.color = "#000";
@@ -194,11 +196,11 @@ async function deleteContact(e){
     deleteInProgress = true;
     const deleteBtn = document.querySelector(".contact-detail-delete");
     deleteBtn.disabled = true;
-
     await fetch(BASE_URL_CONTACT + currentID + '.json',  {
         method: "DELETE",
     }).then ((response) => {
         deleteBtn.disabled = false;
+        deleteInProgress = false;
         if (response.ok) {
             document.body.appendChild(getNotification("Contact successfully deleted"));
             setTimeout(() => {
@@ -280,6 +282,10 @@ function updatePageInfo() {
  * @param {string} phone the phone
  */
 function updateContactDetail(bgColor, inital, name, email, phone){
+    if (contactDetailDIV.innerHTML == "") {
+        contactDetailDIV.innerHTML = getConactDetail("", "", "", "", "", "");
+    }
+
     const detailLogo = document.getElementById("contact-detail-header-logo");
     if (detailLogo) {
         const detailName = document.getElementById("contact-detail-name");
@@ -382,7 +388,7 @@ function goContactList() {
 /** Mobile : when users resize the page */
 addEventListener("resize", (event) => {});
 onresize = (event) => {
-    if (window.innerWidth <= 780) {
+    if (window.innerWidth <= 1100) {
         isMobile = true;
         if (!isOpenContactDetail)
             contactRightDiv.classList.add("d-none");
