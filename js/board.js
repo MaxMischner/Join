@@ -86,13 +86,13 @@ async function getAllContactsBoard() {
  * @param {string} name - The name of the contact to find.
  * @returns {string} - The color associated with the matched contact.
  */
-function getBackgroundColorNames(name) {
+
+function getBackgroundColorNames(name) {   
     let nameToFind = name.trim().replace(/\u200B/g, '').toLowerCase();   
     let contact = allContactsBoard.find(c =>
         c.name.trim().replace(/\u200B/g, '').toLowerCase() === nameToFind
     );
-    return contact.color
-    
+    return contact.color            
 }
 
 /**

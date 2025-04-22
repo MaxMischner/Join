@@ -158,7 +158,7 @@ function showDoneTasks(index, subtasksClass, names) {
                       ${names[0] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""} 
                         ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
                         ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
+                        ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>` : ""}
                         ${names[4] ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}   
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
