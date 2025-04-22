@@ -92,9 +92,9 @@ function getBackgroundColorNames(name) {
     let contact = allContactsBoard.find(c =>
         c.name.trim().replace(/\u200B/g, '').toLowerCase() === nameToFind
     );
-
-    return contact ? contact.color : '#ccc'; // fallback color oder null, wie du willst
+    return contact ? contact.color : 'null'; 
 }
+
 /**
  * Renders the data from allTasks in the the four splits of the board: To-Do, Progress, Await Feedback and Done
  * 
