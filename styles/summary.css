@@ -24,10 +24,12 @@
     align-items: center;
     justify-content: center;
     flex: 1;
+    transition: 125ms;
 }
 
 .summary-tasks-done {
     flex: 1;
+    transition: 125ms;
 }
 
 .summary-tasks-todo-image {
@@ -124,6 +126,7 @@
     flex-direction: column;
     align-items: center;
     flex: 1;
+    transition: 125ms;
 }
 
 .summary-tasks-task-summary-container:hover {
