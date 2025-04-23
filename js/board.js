@@ -777,8 +777,23 @@ async function saveEditedTask(index) {
  * const additional = renderAdditionalAssigned(names); // returns 2
  */
 function renderAdditionalAssigned(names) {
-   let additionalNames = names.length - 4;
-   return additionalNames    
+    const validNames = names.filter(name => isNameInContacts(name));
+    const additionalCount = validNames.length - 4;
+    return additionalCount > 0 ? additionalCount : '';
+}
+
+
+/**
+ * checks if the name ist still in contacts
+ * @param {string} name - name of the assigned contact
+ * @returns 
+ */
+function isNameInContacts(name) {
+    if (!name) return false;
+    let nameToFind = name.trim().replace(/\u200B/g, '').toLowerCase();
+    return allContactsBoard.some(c =>
+        c.name.trim().replace(/\u200B/g, '').toLowerCase() === nameToFind
+    );
 }
 
     

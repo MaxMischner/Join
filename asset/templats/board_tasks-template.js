@@ -25,13 +25,13 @@ function showToDoTasks(index, subtasksClass, names) {
                     <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>
                 <div class="assigned-priority-container margin">
-                    <div class="assigned-container">
-                      ${names[0] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}   
-                        ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
-                        ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[4] ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}     
-                    </div>
+                        <div class="assigned-container">
+                            ${names[0] && isNameInContacts(names[0]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>` : ""}
+                            ${names[1] && isNameInContacts(names[1]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
+                            ${names[2] && isNameInContacts(names[2]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
+                            ${names[3] && isNameInContacts(names[3]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>` : ""}
+                            ${names[4] && renderAdditionalAssigned(names) ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}
+                        </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
             </div>
@@ -69,16 +69,16 @@ function showInProgressTasks(index, subtasksClass, names) {
                     <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
                     <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>                
-                <div class="assigned-priority-container margin">
-                    <div class="assigned-container">
-                        ${names[0] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}   
-                        ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
-                        ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[4] ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}                       
+                    <div class="assigned-priority-container margin">
+                        <div class="assigned-container">
+                            ${names[0] && isNameInContacts(names[0]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>` : ""}
+                            ${names[1] && isNameInContacts(names[1]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
+                            ${names[2] && isNameInContacts(names[2]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
+                            ${names[3] && isNameInContacts(names[3]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>` : ""}
+                            ${names[4] && renderAdditionalAssigned(names) ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}
+                        </div>
+                        <div class="priority-${allTasks[index].priority}"></div>
                     </div>
-                    <div class="priority-${allTasks[index].priority}"></div>
-                </div>
             </div>
         `
 }
@@ -115,11 +115,11 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
                 </div>
                 <div class="assigned-priority-container margin">
                     <div class="assigned-container">
-                      ${names[0] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""}   
-                        ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
-                        ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[4] ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}    
+                        ${names[0] && isNameInContacts(names[0]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>` : ""}
+                        ${names[1] && isNameInContacts(names[1]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
+                        ${names[2] && isNameInContacts(names[2]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
+                        ${names[3] && isNameInContacts(names[3]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>` : ""}
+                        ${names[4] && renderAdditionalAssigned(names) ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
@@ -155,11 +155,11 @@ function showDoneTasks(index, subtasksClass, names) {
                 </div>
                 <div class="assigned-priority-container margin">
                     <div class="assigned-container">
-                      ${names[0] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${names[0] ? getInitials(names[0]) : ""}</span>` : ""} 
-                        ${names[1] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
-                        ${names[2] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
-                        ${names[3] ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>` : ""}
-                        ${names[4] ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}   
+                        ${names[0] && isNameInContacts(names[0]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>` : ""}
+                        ${names[1] && isNameInContacts(names[1]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>` : ""}
+                        ${names[2] && isNameInContacts(names[2]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>` : ""}
+                        ${names[3] && isNameInContacts(names[3]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>` : ""}
+                        ${names[4] && renderAdditionalAssigned(names) ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>` : ""}
                     </div>
                     <div class="priority-${allTasks[index].priority}"></div>
                 </div>
