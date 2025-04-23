@@ -12,7 +12,7 @@
 
 .edit-contact-container {
     display: flex;
-    width: 800px;
+    width: 1000px;
     position: relative;
   
     height: 500px;
@@ -20,16 +20,28 @@
     overflow: hidden;
     background-color: var(--sidebar-bg);
 
-    animation: from-right-to-orignal-ani 1s ease-in-out 1 forwards;
+    animation: from-right-to-orignal-ani .5s ease-in-out 1 forwards;
 }
 
 .edit-contact-container-close {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 50px;
+    top: 50px;
     width: 24px;
     height: 24px;
-}   
+} 
+
+@media (max-width:1000px) {
+    .edit-contact-container {
+        width: 800px;
+    }
+    .edit-contact-container-close {
+        right: 30px;
+        top: 30px;
+    }
+}
+
+
 
 .close-white {
     display: none;
@@ -144,8 +156,6 @@
 @media (max-width: 900px) {
     .edit-contact-intitals {
         bottom: -60px;
-      
-
         left: 45%;
         transform: translateX(-50%);
     }
@@ -154,11 +164,17 @@
 .edit-contact-right {
     background-color: white;
     width: 100%;
-    padding-left: 150px;
+    padding-left: 130px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@media (max-width:1000px) {
+   .edit-contact-right {
+        padding-left: 150px;
+   }
 }
 
 @media (max-width: 900px) {
@@ -185,7 +201,17 @@
     width: 100%;
     box-sizing: border-box;
     height: 35px;
-    padding: 5px 10px;
+    padding: 5px 40px 5px 10px;
+} 
+
+.edit-contact-field-div input.red-border{
+    border: 1px solid red;
+}
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important;
 }
 
 .edit-contact-field-div input:focus {
@@ -222,6 +248,19 @@
     height: 50px;
     text-align: left;
     padding: 10px;
+}
+
+.edit-contact-bottom-delete {
+    width: 80px;
+    border: 1px solid var(--btn-color);
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center !important;
+}
+
+.edit-contact-bottom-delete:hover {
+    border: 1px solid var(--divider);
+    color: var(--divider);
 }
 
 .edit-contact-bottom-clear {

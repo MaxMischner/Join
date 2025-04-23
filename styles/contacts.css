@@ -74,6 +74,19 @@
     gap: 20px;
     border-radius: 10px;
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-list-right {
+    width: calc(100% - 40px);
+}
+
+.contact-container ul li .contact-name, .contact-container ul li .contact-email{
+    width: 100%;
+    white-space: nowrap;   
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contact-container ul li:hover {
@@ -132,7 +145,8 @@
 
 .contact-detail-name {
     font-weight: 600;
-    font-size: 30px;
+
+    font-size: clamp(16px, 3vw, 30px);
     padding: 5px 0;
 }
 
@@ -144,8 +158,9 @@
 
 .contact-detail-buttons button {
     background-color: transparent;
-    width: 75px;
+    width: 80px;
     height: 30px;
+    font-size: 16px;
     background-repeat: no-repeat;
     background-position: left center;
 }
@@ -160,7 +175,7 @@
 
 .contact-detail-delete {
     background-image: url(../asset/images/delete.svg);
-    width: 90px !important;
+    width: 95px !important;
 }
 
 .contact-detail-delete:hover {
@@ -182,7 +197,11 @@
 }
 
 .contact-detail-email {
-    color: var(--dark-blue)
+    color: var(--dark-blue);
+    width: 100%;
+    white-space: nowrap;   
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .headline-arrow {
@@ -262,9 +281,6 @@
 
     .contact-list-right > div {
         width: 90px;
-        white-space: nowrap;   
-        overflow: hidden;
-        text-overflow: ellipsis;
     }   
 }
 
@@ -298,6 +314,11 @@
         width: auto;
     }
 
+    .contact-container ul li .contact-name, .contact-container ul li .contact-email{
+        width: 100%;
+ 
+    }
+
     .contact-right {
         position: relative;
         width: 100%;
@@ -321,7 +342,7 @@
 
     .contact-right-action-button .contact-right-action-buttons {
         padding-left: 10px;
-        gap: 10px;
+        gap: 5px;
         width: 100px;
     }
 }
@@ -334,6 +355,14 @@
     .contact-list {
         height: calc(100vh - 205px);
         margin-top: 5px;
+    }
+
+    .contact-detail .contact-detail-header {
+        gap: 20px;
+    }
+
+    .headline {
+        padding: 30px 0;
     }
 
     .contact-right {

@@ -31,7 +31,7 @@ function getConactDetail(initials, name, email, phone, id, color) {
                             <div class="contact-detail-header-right">
                                 <div class="contact-detail-name" id="contact-detail-name">${name}</div>
                                 <div class="flex contact-detail-buttons contact-detail-buttons-onpage">
-                                    <button class="flex pointer contact-detail-edit" onclick="editContact('${id}')">
+                                    <button class="flex pointer contact-detail-edit" onclick="editContact(event)">
                                         <span>Edit</span>
                                     </button>
                                     <button class="flex pointer contact-detail-delete" onclick="deleteContact(event)">
@@ -86,7 +86,7 @@ function getEditContact(initals, name, email, phone, color, id) {
                         <div class="edit-contact-error" id="edit-contact-error">The email is already used</div>
                     </div>
                     <div class="edit-contact-bottom">
-                        <button class="edit-contact-bottom-clear pointer" type="button" onclick="clearEditContact()">Clear</button>
+                        <button class="edit-contact-bottom-delete pointer" type="button" onclick="deleteContact(event)">Delete</button>
                         <button class="edit-contact-bottom-save pointer" type="submit">Save</button>
                     </div>
                 </form>

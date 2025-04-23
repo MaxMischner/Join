@@ -157,7 +157,9 @@ function addNewConact() {
 
 
 /** When user edit a contact */
-function editContact() {
+function editContact(e) {
+    if(e) e.stopPropagation();
+
     shouldChnageColor = false;
     contactOverlay.classList.remove("d-none");
     const cont = allContacts.filter(c => c.id == currentID)[0];
@@ -192,6 +194,7 @@ function afterDelete() {
 
 /** When user delete a contact */
 async function deleteContact(e){
+    closeContactOverlay(e);
     if (deleteInProgress) return;
     deleteInProgress = true;
     const deleteBtn = document.querySelector(".contact-detail-delete");
@@ -211,15 +214,22 @@ async function deleteContact(e){
 }
 
 
+/** Get form fields */ 
+function getFormFields() {
+    const nameField = document.getElementById("edit-contact-name");
+    const emailField = document.getElementById("edit-contact-email");
+    const phoneField = document.getElementById("edit-contact-phone");
+
+    return [nameField, emailField, phoneField];
+}
 /**
  * When user click save or create contact
  * @param {object} e current event
  */
 async function saveEditContact(e) {
     e.preventDefault();
-    const nameField = document.getElementById("edit-contact-name");
-    const emailField = document.getElementById("edit-contact-email");
-    const phoneField = document.getElementById("edit-contact-phone");
+
+    [nameField, emailField, phoneField] = getFormFields();
     const errorMSG = document.getElementById("edit-contact-error");
     if (!validAllForm(nameField, emailField, phoneField, errorMSG)) {errorMSG.style.display = "block"; return;}
     const initialsDIV = document.getElementById("edit-contact-intitals");
@@ -227,7 +237,8 @@ async function saveEditContact(e) {
     let user = allContacts.find(c => (c.email == emailField.value && c.id != currentID));
     if(user) {
         errorMSG.style.display = "block";
-        errorMSG.innerText = "The email is already used";
+        errorMSG.innerText = "The email is already used.";
+        emailField.classList.add("red-border");
     } else {
         let data = {email:emailField.value.trim(), name:nameField.value.trim(), phone:phoneField.value.trim() , color:initialsDIV.style.backgroundColor}
         putContact(data, currentID, e);
@@ -356,6 +367,10 @@ function clearErrorMsg() {
     const errorMSG = document.getElementById("edit-contact-error");
     errorMSG.style.display = "none";
     errorMSG.innerText = "";
+
+    document.getElementById("edit-contact-name").classList.remove("red-border");
+    document.getElementById("edit-contact-email").classList.remove("red-border");
+    document.getElementById("edit-contact-phone").classList.remove("red-border"); 
 }
 
 

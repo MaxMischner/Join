@@ -48,18 +48,21 @@ function validAllForm(nameField, emailField, phoneField, errorMSG) {
     let [bName, msgName] = validateUsername(nameField.value);
     if (!bName) {
         errorMSG.innerText = msgName;
+        nameField.classList.add("red-border");
         return bName;
     }
 
     let [bEmail, msgEmail] = validateEmail(emailField.value);
     if (!bEmail) {
         errorMSG.innerText = msgEmail;
+        emailField.classList.add("red-border");
         return bEmail;
     }
 
     let [bPhone, msgPhone] = validatePhone(phoneField.value);
     if (!bPhone) {
         errorMSG.innerText = msgPhone;
+        phoneField.classList.add("red-border");
         return bPhone;
     }
 
