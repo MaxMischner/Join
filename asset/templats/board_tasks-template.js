@@ -189,10 +189,10 @@ function showTaskDetail(index, names, subtasksClass) {
                     + (function() {
                         let assignedHtml = '';
                         for (let i = 0; i < names.length; i++) {
-                            if (names[i]) {
+                            if (names[i] && isNameInContacts(names[i])) {
                                 assignedHtml += `
                                     <div class="task-detail-assigned-container">
-                                        <span class="task-detail-assigned-initials" style="background-color: ${getBackgroundColorNames(names[i])};">${names[i] ? getInitials(names[i]) : ""}</span>
+                                        <span class="task-detail-assigned-initials" style="background-color: ${getBackgroundColorNames(names[i])};">${getInitials(names[i])}</span>
                                         <span class="task-detail-assigned-name">${names[i]}</span>
                                     </div>
                                 `;
