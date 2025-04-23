@@ -27,6 +27,7 @@ function init() {
     } 
   getAllContacts();
   setupPriorityButtons();
+  restrictDueDateToToday();
   let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
     renderInitials(activeUser);
     const mediumBtn = document.querySelector(".priorty_button.medium");

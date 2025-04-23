@@ -2,6 +2,15 @@
    max-width: 1100px;
 }
 
+.element-container {
+  height: 90px;
+  margin-bottom: 5px;
+}
+
+.element-container-assignt {
+  height: 105px;
+  margin-bottom: 5px;
+}
 
 .main_Box {
   display: flex;
@@ -58,6 +67,7 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
+  font-size: 16px;
 }
 
 .cancel-btn img {
@@ -108,7 +118,7 @@ label.required::after {
   color: #2a3647;
 
   margin-top: 4px;
-  margin-bottom: 15px;
+  
 
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
@@ -116,6 +126,7 @@ label.required::after {
 
 .input_field_description {
   height: 105px;
+  margin-bottom: 15px;
 }
 
 .input-with-button {
@@ -431,7 +442,7 @@ select:focus {
 .subtask-icon-group {
   position: absolute;
   right: 15px;
-  top: 45%;
+  top: 55%;
   transform: translateY(-50%);
   display: flex;
   gap: 8px;
@@ -451,6 +462,9 @@ select:focus {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  height: 100px;     
+  overflow-y: auto;      
+  padding-right: 4px;    
 }
 
 .subtask-list-item {

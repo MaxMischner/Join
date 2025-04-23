@@ -201,10 +201,14 @@ function filterContacts() {
  *
  * @returns {string} The generated uppercase initials or '??' if input is invalid.
  */
-  function getInitials(name) {
-    if (!name || typeof name !== "string") return "??";
-    return name.split(" ").map((word) => word[0]).join("").toUpperCase();
-  }
+function getInitials(name) {
+  if (!name || typeof name !== "string") return "??";
+  const parts = name.trim().split(/\s+/);
+  const first = parts[0]?.[0] || "";
+  const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
+  return (first + last).toUpperCase();
+}
+
   
  /**
  * Updates the list of selected contacts based on checkbox states.
@@ -369,6 +373,10 @@ function validateTaskBeforeSave() {
     document.getElementById("selectedContacts").innerHTML = "";
     document.getElementById("todoList").innerHTML = "";
     document.getElementById("todoInput").value = "";
+    document.querySelectorAll(".error").forEach((el) => {el.classList.remove("error");
+    });
+    document.querySelectorAll(".input-error").forEach((msg) => {msg.style.display = "none";
+    });
     const mediumBtn = document.querySelector(".priorty_button.medium");
     if (mediumBtn) {
       selectPriority(mediumBtn);
@@ -399,3 +407,10 @@ function validateTaskBeforeSave() {
       toggle.classList.remove("back"); 
     }
   });
+
+  function restrictDueDateToToday() {
+    const input = document.getElementById("date-task");
+    const today = new Date().toISOString().split("T")[0];
+    input.setAttribute("min", today);
+  }
+  
