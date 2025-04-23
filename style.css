@@ -87,7 +87,6 @@
 .header-content {
     height: 96px;
     width: 100%;
-    max-width: 1688px;
     padding: 0 50px;
     box-sizing: border-box;
     display: flex;
@@ -134,10 +133,8 @@
 
 .main-container {
     position: relative;
-    width: 100%;
-    
+    width: 100%;    
     background-color: var(--main-container-bg);
-
 }
 
 .content-middle{
@@ -223,7 +220,6 @@
     background: var(--btn-color);
     color: white;
     border-radius: 10px;
-
     animation: notifaction-ani 1s ease-in-out  forwards;
 }
 
