@@ -383,7 +383,7 @@ function showDeleteTask(index) {
              <div class="main_Box-board">                    
                      <div class="content_box-board">
                          <div class="left-content-maincontent">
-                             <div>
+                             <div class="element-container">
                                  <label for="title-task" class="required">Title</label> <br>
                                   <input class="input_field input_field-board" type="text" id="title-task" value="${task.title}">
                                  <p id="errorMsg-title" class="input-error">This field is required</p>
@@ -393,7 +393,7 @@ function showDeleteTask(index) {
                                   <textarea class="input_field input_field_description input_field-board" id="description-task">${task.description}</textarea>
                          
                              </div>
-                              <div>
+                              <div class="element-container">
                                  <label for="date-task" class="required">Due date</label><br>
                                  <input class="input_field input_field-board" type="date" id="date-task" value="${task.duedate}">
                                  <p id="errorMsg-date" class="input-error">This field is required</p>
@@ -415,7 +415,7 @@ function showDeleteTask(index) {
                                  </button>
                                </div>
                            </div> 
-                        <div class="dropdown-container-board" id="toggleDropdown">
+                        <div class="dropdown-container-board " id="toggleDropdown">
                          <label for="">Assigned to</label>
                          <div class="dropdown-toggle" onclick="toggleDropdown()" >
                            <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
@@ -427,8 +427,8 @@ function showDeleteTask(index) {
                          <div id="selectedContacts" class="selected-contacts"></div>
              
                        </div>
-                       <div>
-                         <label for="assigned_category" class="required ">Category</label>
+                       <div class="element-container ">
+                         <label for="assigned_category" class="required">Category</label>
                              <select name="assigned_category" id="assigned_category">
                                   <option value="User Story" ${task.category === 'User Story' ? 'selected' : ''}>User Story</option>
                              <option value="Technical Task" ${task.category === 'Technical Task' ? 'selected' : ''}>Technical Task</option>
