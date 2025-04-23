@@ -46,8 +46,8 @@
   font-size: 20px;
   color: #2a3647;
   cursor: pointer;
-  right: 13%;
-  top: 710px;
+  right: 5%;
+  top: 25px;
 }
   
 .subtask-icon-group-board{
@@ -114,6 +114,10 @@ select,
 .dropdown-container-board {
   max-width: 100%;
   width: 100%;
+}
+
+.subtask-input-wrapper-board {
+  position: relative;
 }
 
 .priority-button-group-board {
