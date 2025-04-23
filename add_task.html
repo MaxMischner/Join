@@ -96,17 +96,17 @@
                 <div class="main_Box">                    
                     <div class="content_box">
                         <div class="left-content-maincontent">
-                            <div>
+                            <div class="element-container">
                                 <label for="title-task" class="required">Title</label> <br>
                                 <input class="input_field" type="text" id="title-task" placeholder="Enter a title">
                                 <p id="errorMsg-title" class="input-error">This field is required</p>
                             </div>
-                            <div>
+                            <div >
                                 <label for="description-task">Description</label><br>
                                 <textarea class="input_field input_field_description" name="Description" id="description-task" placeholder="Enter a Description" ></textarea>
                         
                             </div>
-                             <div>
+                             <div class="element-container">
                                 <label for="date-task" class="required">Due date</label><br>
                                 <input class="input_field" type="date" id="date-task">
                                 <p id="errorMsg-date" class="input-error">This field is required</p>
@@ -128,7 +128,7 @@
                                 </button>
                               </div>
                           </div> 
-                       <div class="dropdown-container" id="toggleDropdown">
+                       <div class="dropdown-container element-container-assignt" id="toggleDropdown">
                         <label for="">Assigned to</label>
                         <div class="dropdown-toggle" onclick="toggleDropdown()" >
                           <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
@@ -140,7 +140,7 @@
                         <div id="selectedContacts" class="selected-contacts"></div>
             
                       </div>
-                      <div>
+                      <div class="element-container">
                         <label for="assigned_category" class="required ">Category</label>
                             <select name="assigned_category" id="assigned_category">
                                 <option value="">Select task category</option>
