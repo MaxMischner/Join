@@ -158,11 +158,11 @@
 
 .contact-detail-buttons button {
     background-color: transparent;
-    width: 80px;
+    width: 110px;
     height: 30px;
     font-size: 16px;
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: 10% center;
 }
 
 .contact-detail-edit {
@@ -175,7 +175,8 @@
 
 .contact-detail-delete {
     background-image: url(../asset/images/delete.svg);
-    width: 95px !important;
+    width: 130px !important;
+    background-position: 7% center !important;
 }
 
 .contact-detail-delete:hover {
@@ -229,15 +230,39 @@
     display: none;
 }
 
+.button-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+@keyframes button-move {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: none;
+    }
+}
+
 .contact-right-action-button .contact-right-action-buttons {
     position: absolute;
-    bottom: 55px;
-    right: 0;
+    bottom: 30px;
+    right: 30px;
     width: 120px;
-    border-radius: 10px;
+    border-radius: 20px 20px 0;
     align-items: flex-start;
+    padding: 15px;
 
-    display: none;
+    animation: button-move .5s ease-in-out 1 forwards;
 }
 
 
@@ -342,7 +367,7 @@
 
     .contact-right-action-button .contact-right-action-buttons {
         padding-left: 10px;
-        gap: 5px;
+        gap: 10px;
         width: 100px;
     }
 }
@@ -353,7 +378,7 @@
     }
 
     .contact-list {
-        height: calc(100vh - 205px);
+        height: calc(100vh - 190px);
         margin-top: 5px;
     }
 
@@ -366,7 +391,11 @@
     }
 
     .contact-right {
-        height: calc(100vh - 180px);
+        height: calc(100vh - 185px);
+    }
+
+    .contact-detail {
+        padding: 0 50px;
     }
 
     .contact-left > button {
@@ -375,6 +404,10 @@
 
     .contact-right-action-button {
         bottom: 120px;
+    }
+
+    .contact-right-action-button .contact-right-action-buttons {
+        bottom: 110px;
     }
 
 }

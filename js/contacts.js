@@ -6,6 +6,7 @@ const contactDetailDIV = document.getElementById("contact-detail");
 const contactRightDiv = document.getElementById("contact-right");
 const contactLeftDiv = document.getElementById("contact-left");
 const buttons = document.getElementById("contact-right-action-buttons");
+const buttonOverlay = document.getElementById("button-overlay");
 let prevLi;
 let currentID = "";
 let shouldChnageColor = currentID ? false : true;
@@ -159,6 +160,8 @@ function addNewConact() {
 /** When user edit a contact */
 function editContact(e) {
     if(e) e.stopPropagation();
+
+    buttonOverlay.classList.add("d-none");
 
     shouldChnageColor = false;
     contactOverlay.classList.remove("d-none");
@@ -375,8 +378,15 @@ function clearErrorMsg() {
 
 
 /** Mobile : when click 3 points button */
-function toggleContactActionButtons() {
-    buttons.style.display =getComputedStyle(buttons).display == "none" ? "flex" : "none";
+function openButtonOverlay(event) {
+    buttonOverlay.classList.remove("d-none");
+}
+
+function closeButtonOverlay(event) {
+
+    if (event.target !== event.currentTarget) return; 
+    buttonOverlay.classList.add("d-none");
+    event.stopPropagation();
 }
 
 
@@ -390,7 +400,7 @@ function openContactDetail() {
 /** Mobile : from contact detail to contact list */
 function goContactList() {
     isOpenContactDetail = false;
-    buttons.style.display = "none";
+    buttonOverlay.classList.add("d-none");
 
     if(isMobile) {
         contactLeftDiv.classList.remove("d-none");
