@@ -209,7 +209,7 @@
     }
     
     .summary-tasks-todo-text {
-        font-size: 13px;
+        font-size: 15px;
     }
     
     .summary-tasks-done-image {
@@ -240,7 +240,7 @@
     }
     
     .summary-tasks-task-summary-text {
-        font-size: 13px;
+        font-size: 15px;
     }
     
     .content-right-text-greeting {
@@ -301,6 +301,10 @@
         display: block;
         padding: 0 50px;
         margin-left: 0px;
+    }
+
+    .summary-tasks-task-summary {
+        gap: 14px;
     }
 }
 
