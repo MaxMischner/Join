@@ -100,7 +100,7 @@
                 <div class="headline headline-board widescreen">
                     <div class="headline-mobile">
                         <span class="headline-left">Board</span>   
-                        <img onclick="renderAddTaskOverlay()" class="add-task-mobile-plus" src="/asset/images/plus add task mobile.png" alt="">
+                        <img onclick="renderAddTaskOverlay(),addTaskInit()" class="add-task-mobile-plus" src="/asset/images/plus add task mobile.png" alt="">
                     </div>        
                     <div class="add-task-container">
                         <div class="board-search-field-container">
@@ -108,7 +108,7 @@
                             <div class="search-field-border"></div>
                             <img onclick="filterTasksButton()" class="search-field-button" src="/asset/images/board-search.png" alt="">
                         </div>                        
-                        <div onclick="renderAddTaskOverlay()" class="add-task-button">
+                        <div onclick="renderAddTaskOverlay(),addTaskInit()" class="add-task-button">
                             <div class="add-task-button-text">Add task</div>
                             <img class="add-task-button-plus" src="/asset/images/add-task-button-plus-sign.png" alt="">
                         </div>
@@ -119,7 +119,7 @@
                     <div ondrop="moveTo('To do')" ondragover="allowDrop(event)" class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">To Do</span>
-                            <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/plus button mobile-white.svg" alt="">
+                            <img onclick="renderAddTaskOverlay(),addTaskInit()" class="board-splits-image" src="/asset/images/plus button mobile-white.svg" alt="">
                         </div>
                         <div class="board-splits-content" id="ToDo"></div>
                         <div class="no-tasks" id="noTasksToDo">
@@ -130,7 +130,7 @@
                     <div ondrop="moveTo('in Progress')" ondragover="allowDrop(event)" class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">In Progress</span>
-                            <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/plus button mobile-white.svg" alt="">
+                            <img onclick="renderAddTaskOverlay(),addTaskInit()" class="board-splits-image" src="/asset/images/plus button mobile-white.svg" alt="">
                         </div>
 
                         <div class="board-splits-content" id="inProgress"></div>
@@ -142,7 +142,7 @@
                     <div ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">Await feedback</span>
-                            <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/plus button mobile-white.svg" alt="">
+                            <img onclick="renderAddTaskOverlay(),addTaskInit()" class="board-splits-image" src="/asset/images/plus button mobile-white.svg" alt="">
                         </div>
 
                         <div class="board-splits-content" id="await"></div>
@@ -154,7 +154,7 @@
                     <div ondrop="moveTo('done')" ondragover="allowDrop(event)" class="board-splits">
                         <div class="board-splits-category">
                             <span class="board-splits-text">Done</span>
-                            <img onclick="renderAddTaskOverlay()" class="board-splits-image" src="/asset/images/plus button mobile-white.svg" alt="">
+                            <img onclick="renderAddTaskOverlay(),addTaskInit()" class="board-splits-image" src="/asset/images/plus button mobile-white.svg" alt="">
                         </div>
                         <div class="board-splits-content" id="done"></div>
                         <div class="no-tasks" id="noTasksDone">

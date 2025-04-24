@@ -768,6 +768,15 @@ select:focus {
   }
 }
 
+@media (max-width: 658px) {
+  .main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 510px) {
   .main_Box {
     width: 100%;
@@ -781,8 +790,8 @@ select:focus {
 
 @media (max-width: 400px) {
   .priorty_button {
-    max-width: 90px;
-    font-size: 14px;
+    max-width: 98px;
+    font-size: 16px;
     height: 45px;
   }
 }

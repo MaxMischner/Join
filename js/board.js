@@ -15,7 +15,8 @@ async function init() {
     renderInitials(activeUser);
     await getAllTasks();  
     await getAllContactsBoard(); 
-    await  renderTasks();       
+    await  renderTasks();  
+         
 }
 
 /**

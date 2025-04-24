@@ -416,7 +416,7 @@ function showTaskDetail(index, names, subtasksClass) {
                 }
                 </div>    
                 <div class="task-detail-delete-edit-container">
-                    <div onclick="deleteTask('${index}')" class="task-detail-delete-container">
+                    <div onclick="deleteTask('${index}'),addTaskInit()" class="task-detail-delete-container">
                         <img class="task-detail-delete-image" src="/asset/images/board-task-detail-delete.png" alt="">
                         <Span class="task-detail-delete-text">Delete</Span>
                     </div>     
@@ -462,7 +462,7 @@ function showAddTaskOverlay() {
                 <img onclick="closeAddTaskOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt=""></div>
             <div class="content_box">
                 <div class="left-content-maincontent">
-                    <div>
+                    <div class="element-container">
                         <label for="title-task" class="required">Title</label> <br>
                         <input class="input_field" type="text" id="title-task" placeholder="Enter a title">
                         <p id="errorMsg-title" class="input-error">This field is required</p>
@@ -471,7 +471,7 @@ function showAddTaskOverlay() {
                         <label for="">Description</label><br>
                         <textarea class="input_field input_field_description" name="Description" id="description-task" placeholder="Enter a Description" ></textarea>
                     </div>
-                        <div>
+                        <div class="element-container">
                         <label for="date-task" class="required">Due date</label><br>
                         <input class="input_field" type="date" id="date-task">
                         <p id="errorMsg-date" class="input-error">This field is required</p>
@@ -505,7 +505,7 @@ function showAddTaskOverlay() {
                 <div id="selectedContacts" class="selected-contacts"></div>
     
                 </div>
-                <div>
+                <div class="element-container">
                 <label for="assigned_category" class="required">Category</label>
                     <select name="assigned_category" id="assigned_category">
                         <option value="">Select task category</option>
@@ -647,26 +647,25 @@ function showEditTaskOverlay(task, index) {
                          <p id="errorMsg-category" class="input-error">This field is required</p>
                        </div>
                        
-                        <div class="todo-wrapper">
-                         <label>Subtasks</label><br>
-                         <div class="subtask-input-wrapper-board">
-                             <input
-                               type="text"
-                               id="todoInput"
-                               class="input_field subtask-input "
-                               placeholder="Add new subtask"
-                               oninput="toggleSubtaskIcons()"
-                             />
-                             
-                             <button id="subtaskPlus" class="subtask-icon-board" onclick="addTodo() ">+</button>
-                            <div id="subtaskConfirmIcons" class="subtask-icon-group-board">
+                     <div class="todo-wrapper">
+                        <label>Subtasks</label><br>
+                        <div class="subtask-input-wrapper">
+                            <input
+                              type="text"
+                              id="todoInput"
+                              class="input_field subtask-input"
+                              placeholder="Add new subtask"
+                              oninput="toggleSubtaskIcons()"
+                            />
+                            <button id="subtaskPlus" class="subtask-icon" onclick="addTodo()">+</button>
+                            <div id="subtaskConfirmIcons" class="subtask-icon-group">
                               <img src="asset/img/icons/subtasks_icons_X.png" onclick="clearSubtaskInput()" />
                               <img src="asset/img/icons/Subtasks icons11.png" onclick="addTodo()" />
                             </div>
-                           </div>
-                           
-                           
-                           <div id="todoList" class="subtask-list"></div>
+                          </div>
+                          
+                          
+                          <div id="todoList" class="subtask-list"></div>
              
                        </div>
                        <div class="button_container-board">

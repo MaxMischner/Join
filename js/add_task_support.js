@@ -409,8 +409,45 @@ function validateTaskBeforeSave() {
   });
 
   function restrictDueDateToToday() {
-    const input = document.getElementById("date-task");
-    const today = new Date().toISOString().split("T")[0];
-    input.setAttribute("min", today);
+    const dateInput = document.getElementById("date-task");
+    if (!dateInput) return; // <-- 🔒 Schutz vor null
+  
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const dd = String(today.getDate()).padStart(2, "0");
+    const minDate = `${yyyy}-${mm}-${dd}`;
+    dateInput.setAttribute("min", minDate);
+  
+    dateInput.addEventListener("input", () => {
+      const selectedDate = new Date(dateInput.value);
+      const todayMidnight = new Date();
+      todayMidnight.setHours(0, 0, 0, 0);
+  
+      if (selectedDate < todayMidnight) {
+        dateInput.setCustomValidity("Please select today or a future date.");
+        dateInput.reportValidity();
+      } else {
+        dateInput.setCustomValidity("");
+      }
+    });
   }
   
+  
+  function setupLiveValidation() {
+    const fields = [
+      { id: "title-task", errorId: "errorMsg-title" },
+      { id: "date-task", errorId: "errorMsg-date" },
+      { id: "assigned_category", errorId: "errorMsg-category" },
+    ];
+  
+    fields.forEach(({ id, errorId }) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener("input", () => hideError(el, errorId));
+      }
+    });
+  }
+  
+  
+
