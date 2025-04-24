@@ -925,10 +925,10 @@ body {
         padding: 3px;
     }
 
-    .overlay-move-to-button-inner-content:hover {
+    /* .overlay-move-to-button-inner-content:hover {
         background-color: rgba(9, 25, 49, 1);
         border-radius: 8px;
-    }
+    } */
 }
 
 
