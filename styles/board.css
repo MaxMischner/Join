@@ -238,7 +238,6 @@ body {
     justify-content: space-between;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    /* padding: 15px; */
     margin: 15px 0 5px 0;
     gap:16px;
     background-color: rgba(255, 255, 255, 1);
@@ -818,6 +817,10 @@ body {
         width: 100%;
     }
 
+    .tasks-content {
+        width: 97%;
+    }
+
     .board-splits-content {
         max-height: 600px;
         overflow: auto;
@@ -855,8 +858,6 @@ body {
     .overlay-move-to-button {
         cursor: default;
     }
-
-
     
     .overlay-move-to-button {
         position: absolute;
