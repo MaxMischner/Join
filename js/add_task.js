@@ -18,7 +18,7 @@ let subtasks = "";
  * @var {Object|null} activeUser - Parsed user object containing at least a name property.
  * @var {HTMLElement|null} mediumBtn - The DOM element for the "medium" priority button.
  */
-function init() {
+function addTaskInit() {
   let user = localStorage.getItem("activeUser");
     let guestUser = localStorage.getItem("guestUser");
     if (!user && !guestUser) {
@@ -28,12 +28,14 @@ function init() {
   getAllContacts();
   setupPriorityButtons();
   restrictDueDateToToday();
+  setupLiveValidation();
   let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
     renderInitials(activeUser);
     const mediumBtn = document.querySelector(".priorty_button.medium");
   if (mediumBtn) {
     selectPriority(mediumBtn);
   }
+  
 }
 
 /**
@@ -137,10 +139,17 @@ function buttenReset(buttons, iconMap) {
  */
 function toggleDropdown() {
   const menu = document.getElementById("dropdownMenu");
-  menu.classList.toggle("show");
-  const menuback = document.getElementById("toggleDropdown");
-  menuback.classList.toggle("back");
+  const toggle = document.getElementById("toggleDropdown");
+
+  if (menu) {
+    menu.classList.toggle("show");
+  }
+
+  if (toggle) {
+    toggle.classList.toggle("back");
+  }
 }
+
 
 /**
  * Adds a new subtask item to the task's subtask list based on user input.
