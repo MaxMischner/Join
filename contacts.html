@@ -109,15 +109,17 @@
                 </div>
                 <div class="contact-right" id="contact-right">
                     <img class="pointer headline-arrow" src="./asset/images/return-icon.png" alt=""  onclick="goContactList()">
-                    <div class="contact-right-action-button pointer" onclick="toggleContactActionButtons()">
+                    <div class="contact-right-action-button pointer" onclick="openButtonOverlay(event)">
                         <span>⋮</span>
-                        <div id="contact-right-action-buttons" class="flex-column contact-detail-buttons contact-right-action-buttons" style="background-color: white;">
-                            <button class="flex pointer contact-detail-edit" onclick="editContact(event)">
-                                <span>Edit</span>
-                            </button>
-                            <button class="flex pointer contact-detail-delete" onclick="deleteContact(event)">
-                                <span>Delete</span>
-                            </button>
+                        <div class="button-overlay d-none" id="button-overlay" onclick="closeButtonOverlay(event)">
+                            <div id="contact-right-action-buttons" class="flex-column contact-detail-buttons contact-right-action-buttons" style="background-color: white;">
+                                <button class="flex pointer contact-detail-edit" onclick="editContact(event)">
+                                    <span>Edit</span>
+                                </button>
+                                <button class="flex pointer contact-detail-delete" onclick="deleteContact(event)">
+                                    <span>Delete</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="headline">
