@@ -257,12 +257,11 @@ body {
 .login-footer{
     width: 100%;
     display: flex;
-    /* position: absolute; */
-    margin-top: 150px;
-    margin-bottom: 50px;
+    position: absolute;
+    bottom: 30px;
+    left: 0%;
     gap: 20px;
-    justify-content: center;
-    
+    justify-content: center;  
 }
 
 
@@ -456,12 +455,10 @@ body {
     .sign-up-container {
         top: 80%;
         justify-content: space-between;
-        width: 242px;
-
- 
+        width: 242px; 
         position: fixed !important;
         right: calc(100vw / 2 - 121px);
-        top: calc(100vh - 130px);
+        top: calc(100vh - 108px);
     }
     
     .sign-up-container-text {

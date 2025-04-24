@@ -28,12 +28,6 @@ function validateLoginPassword() {
         errorMSG.innerText = "Password cannot be empty";
         return false;
     }
-        
-    if(password.value.trim().length < 6) {
-        errorMSG.innerText = "Password requires at least 6 letters";
-        return false;
-    }
-
     return true;
 }
 

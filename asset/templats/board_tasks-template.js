@@ -18,55 +18,27 @@ function showToDoTasks(index, subtasksClass, names) {
                             </div>
                     </div>        
                 </div>
-                <span class="tasks-content-title margin">${
-                  allTasks[index].title
-                }</span>
-                <span class="tasks-content-description margin">${
-                  allTasks[index].description
-                }</span>
+                <span class="tasks-content-title margin">${allTasks[index].title}</span>
+                <span class="tasks-content-description margin">${allTasks[index].description}</span>
                 <div class="tasks-content-done ${subtasksClass}">
-                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(
-                      index
-                    )}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
-                    <span class="tasks-content-done-text">${getDoneSubtasks(
-                      index
-                    )}/${subTaskLenght(index)} Subtasks</span>
+                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
+                    <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>
                 <div class="assigned-priority-container margin">
                         <div class="assigned-container">
-                            ${
-                              names[0] && isNameInContacts(names[0])
-                                ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                    names[0]
-                                  )};">${getInitials(names[0])}</span>`
+                            ${names[0] && isNameInContacts(names[0]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>`
                                 : ""
                             }
-                            ${
-                              names[1] && isNameInContacts(names[1])
-                                ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                    names[1]
-                                  )};">${getInitials(names[1])}</span>`
+                            ${names[1] && isNameInContacts(names[1]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>`
                                 : ""
                             }
-                            ${
-                              names[2] && isNameInContacts(names[2])
-                                ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                    names[2]
-                                  )};">${getInitials(names[2])}</span>`
+                            ${names[2] && isNameInContacts(names[2]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>`
                                 : ""
                             }
-                            ${
-                              names[3] && isNameInContacts(names[3])
-                                ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                    names[3]
-                                  )};">${getInitials(names[3])}</span>`
+                            ${names[3] && isNameInContacts(names[3]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>`
                                 : ""
                             }
-                            ${
-                              names[4] && renderAdditionalAssigned(names)
-                                ? `<span class="assigned-plus">+${renderAdditionalAssigned(
-                                    names
-                                  )}</span>`
+                            ${names[4] && renderAdditionalAssigned(names) ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>`
                                 : ""
                             }
                         </div>
@@ -100,52 +72,27 @@ function showInProgressTasks(index, subtasksClass, names) {
                             </div>
                     </div>        
                 </div>
-                <span class="tasks-content-title margin">${
-                  allTasks[index].title
-                }</span>
-                <span class="tasks-content-description margin">${
-                  allTasks[index].description
-                }</span>
-                
+                <span class="tasks-content-title margin">${allTasks[index].title}</span>
+                <span class="tasks-content-description margin">${allTasks[index].description}</span>                
                 <div id="subtasks" class="tasks-content-done ${subtasksClass}">
                     <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index)}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
                     <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>                
                     <div class="assigned-priority-container margin">
                         <div class="assigned-container">
-                            ${
-                              names[0] && isNameInContacts(names[0])
-                                ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                    names[0]
-                                  )};">${getInitials(names[0])}</span>`
+                            ${ names[0] && isNameInContacts(names[0]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>`
                                 : ""
                             }
-                            ${
-                              names[1] && isNameInContacts(names[1])
-                                ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                    names[1]
-                                  )};">${getInitials(names[1])}</span>`
+                            ${names[1] && isNameInContacts(names[1]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>`
                                 : ""
                             }
-                            ${
-                              names[2] && isNameInContacts(names[2])
-                                ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                    names[2]
-                                  )};">${getInitials(names[2])}</span>`
+                            ${names[2] && isNameInContacts(names[2]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>`
                                 : ""
                             }
-                            ${
-                              names[3] && isNameInContacts(names[3])
-                                ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                    names[3]
-                                  )};">${getInitials(names[3])}</span>`
+                            ${names[3] && isNameInContacts(names[3]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>`
                                 : ""
                             }
-                            ${
-                              names[4] && renderAdditionalAssigned(names)
-                                ? `<span class="assigned-plus">+${renderAdditionalAssigned(
-                                    names
-                                  )}</span>`
+                            ${names[4] && renderAdditionalAssigned(names) ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>`
                                 : ""
                             }
                         </div>
@@ -187,29 +134,19 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
                 </div>
                 <div class="assigned-priority-container margin">
                     <div class="assigned-container">
-                        ${
-                          names[0] && isNameInContacts(names[0])
-                            ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>`
+                        ${names[0] && isNameInContacts(names[0]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>`
                             : ""
                         }
-                        ${
-                          names[1] && isNameInContacts(names[1])
-                            ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>`
+                        ${names[1] && isNameInContacts(names[1]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>`
                             : ""
                         }
-                        ${
-                          names[2] && isNameInContacts(names[2])
-                            ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>`
+                        ${names[2] && isNameInContacts(names[2]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>`
                             : ""
                         }
-                        ${
-                          names[3] && isNameInContacts(names[3])
-                            ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>`
+                        ${names[3] && isNameInContacts(names[3]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>`
                             : ""
                         }
-                        ${
-                          names[4] && renderAdditionalAssigned(names)
-                            ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>`
+                        ${names[4] && renderAdditionalAssigned(names) ? `<span class="assigned-plus">+${renderAdditionalAssigned(names)}</span>`
                             : ""
                         }
                     </div>
@@ -242,50 +179,24 @@ function showDoneTasks(index, subtasksClass, names) {
                 <span class="tasks-content-title margin">${allTasks[index].title}</span>
                 <span class="tasks-content-description margin">${allTasks[index].description}</span>
                 <div class="tasks-content-done ${subtasksClass}">
-                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(
-                      index
-                    )}" max="${subTaskLenght(
-    index
-  )}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
-                    <span class="tasks-content-done-text">${getDoneSubtasks(
-                      index
-                    )}/${subTaskLenght(index)} Subtasks</span>
+                    <progress class="tasks-content-done-progressbar" class="progress-bar" value="${getDoneSubtasks(index )}" max="${subTaskLenght(index)}" style="--value: 1; --max: ${subTaskLenght(index)};"></progress>
+                    <span class="tasks-content-done-text">${getDoneSubtasks(index)}/${subTaskLenght(index)} Subtasks</span>
                 </div>
                 <div class="assigned-priority-container margin">
                     <div class="assigned-container">
-                        ${
-                          names[0] && isNameInContacts(names[0])
-                            ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                names[0]
-                              )};">${getInitials(names[0])}</span>`
+                        ${names[0] && isNameInContacts(names[0]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[0])};">${getInitials(names[0])}</span>`
                             : ""
                         }
-                        ${
-                          names[1] && isNameInContacts(names[1])
-                            ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                names[1]
-                              )};">${getInitials(names[1])}</span>`
+                        ${names[1] && isNameInContacts(names[1]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[1])};">${getInitials(names[1])}</span>`
                             : ""
                         }
-                        ${
-                          names[2] && isNameInContacts(names[2])
-                            ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                names[2]
-                              )};">${getInitials(names[2])}</span>`
+                        ${names[2] && isNameInContacts(names[2]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[2])};">${getInitials(names[2])}</span>`
                             : ""
                         }
-                        ${
-                          names[3] && isNameInContacts(names[3])
-                            ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(
-                                names[3]
-                              )};">${getInitials(names[3])}</span>`
+                        ${names[3] && isNameInContacts(names[3]) ? `<span class="assigned" style="background-color: ${getBackgroundColorNames(names[3])};">${getInitials(names[3])}</span>`
                             : ""
                         }
-                        ${
-                          names[4] && renderAdditionalAssigned(names)
-                            ? `<span class="assigned-plus">+${renderAdditionalAssigned(
-                                names
-                              )}</span>`
+                        ${names[4] && renderAdditionalAssigned(names) ? `<span class="assigned-plus">+${renderAdditionalAssigned(names )}</span>`
                             : ""
                         }
                     </div>
@@ -300,35 +211,19 @@ function showTaskDetail(index, names, subtasksClass) {
         <div id="taskDetail" class="scrollbar-container-taskdetail slide-in">   
             <div  onclick="noBubbling(event)" class="task-detail-container">
                 <div class="task-detail-head">
-                    <span class="overlay-tasks-content-${getCategoryClass(
-                      index
-                    )}">${allTasks[index].category}</span>
+                    <span class="overlay-tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</span>
                     <img onclick="closeOverlay()" class="task-detail-close-button" src="/asset/images/board-close-overlay.png" alt="">
                 </div>
                 <span class="task-detail-title">${allTasks[index].title}</span>
-                <span class="task-detail-description">${
-                  allTasks[index].description
-                }</span>
-                <span class="task-detail-due-date">Due date: ${taskDetailDueDate(
-                  allTasks[index].duedate
-                )}</span>
+                <span class="task-detail-description">${allTasks[index].description}</span>
+                <span class="task-detail-due-date">Due date: ${taskDetailDueDate(allTasks[index].duedate)}</span>
                 <div class="task-detail-due-priority-container">
                     <span class="task-detail-due-priority-text">Priority: </span>
-                    <span class="task-detail-due-priority">${
-                      !allTasks[index].priority
-                        ? `Low`
-                        : allTasks[index].priority
-                    }</span>
-                    <div class="task-detail-priority-${
-                      !allTasks[index].priority
-                        ? `Low`
-                        : allTasks[index].priority
-                    }"></div>
+                    <span class="task-detail-due-priority">${!allTasks[index].priority ? `Low` : allTasks[index].priority }</span>
+                    <div class="task-detail-priority-${!allTasks[index].priority ? `Low` : allTasks[index].priority}"></div>
                 </div>
                 <span class="task-detail-due-date">Assigned To:</span>
-                ${
-                  allTasks[index].assigned !== ""
-                    ? `<div class="task-detail-assigned">` +
+                ${allTasks[index].assigned !== "" ? `<div class="task-detail-assigned">` +
                       (function () {
                         let assignedHtml = "";
                         for (let i = 0; i < names.length; i++) {
@@ -351,18 +246,14 @@ function showTaskDetail(index, names, subtasksClass) {
                     : ""
                 }
                 <div id="subTasksOverlay">
-                ${
-                  subtaskContent.length > 0
-                    ? `<div class="task-detail-subtasks-container ${subtasksClass}">        
+                ${subtaskContent.length > 0 ? `<div class="task-detail-subtasks-container ${subtasksClass}">        
                         <span class="task-detail-subtasks">Subtasks</span>
                         ${(() => {
                           let subtaskHTML = "";
                           for (let i = 0; i < subtaskContent.length; i++) {
                             subtaskHTML += `
                                     <div class="task-detail-subtask-container">
-                                        <div onclick="changeSubtaskComplete('${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(
-                              i
-                            )}"></div>
+                                        <div onclick="changeSubtaskComplete('${index}', '${i}'); changeSubtaskCompleteApi('${index}', '${i}')" class="task-detail-subtask-image-${getSubTaskImage(i)}"></div>
                                         <div class="task-detail-subtask-text">${
                                           subtaskContent[i].name
                                         }</div><br>
@@ -536,23 +427,16 @@ function showEditTaskOverlay(task, index) {
                          <div class="left-content-maincontent">
                              <div class="element-container">
                                  <label for="title-task" class="required">Title</label> <br>
-                                  <input class="input_field input_field-board" type="text" id="title-task" value="${
-                                    task.title
-                                  }">
+                                  <input class="input_field input_field-board" type="text" id="title-task" value="${task.title}">
                                  <p id="errorMsg-title" class="input-error">This field is required</p>
                              </div>
                              <div>
                                  <label for="description-task">Description</label><br>
-                                  <textarea class="input_field input_field_description input_field-board" id="description-task">${
-                                    task.description
-                                  }</textarea>
-                         
+                                  <textarea class="input_field input_field_description input_field-board" id="description-task">${task.description}</textarea>                         
                              </div>
                               <div class="element-container">
                                  <label for="date-task" class="required">Due date</label><br>
-                                 <input class="input_field input_field-board" type="date" id="date-task" value="${
-                                   task.duedate
-                                 }">
+                                 <input class="input_field input_field-board" type="date" id="date-task" value="${task.duedate}">
                                  <p id="errorMsg-date" class="input-error">This field is required</p>
                              </div>
                          </div>
@@ -561,14 +445,8 @@ function showEditTaskOverlay(task, index) {
                          <div >
                              <label for="Priority">Priority</label><br>
                              <div class="priority-button-group">
-                                <button class="priorty_button urgent ${
-                                  task.priority === "Urgent" ? "selected" : ""
-                                }" data-value="Urgent" onclick="selectPriority(this)">
-                                   Urgent <img src="asset/img/icons/icon_urgent.png" />
-                                 </button>
-                                 <button class="priorty_button medium ${
-                                   task.priority === "Medium" ? "selected" : ""
-                                 }" data-value="Medium" onclick="selectPriority(this)">
+                                <button class="priorty_button urgent ${task.priority === "Urgent" ? "selected" : ""}" data-value="Urgent" onclick="selectPriority(this)">Urgent <img src="asset/img/icons/icon_urgent.png" /></button>
+                                 <button class="priorty_button medium ${task.priority === "Medium" ? "selected" : ""}" data-value="Medium" onclick="selectPriority(this)">
                                    Medium <img src="asset/img/icons/icon_medium.png" />
                                  </button>
                                  <button class="priorty_button low ${
@@ -593,16 +471,8 @@ function showEditTaskOverlay(task, index) {
                        <div class="element-container ">
                          <label for="assigned_category" class="required">Category</label>
                              <select name="assigned_category" id="assigned_category">
-                                  <option value="User Story" ${
-                                    task.category === "User Story"
-                                      ? "selected"
-                                      : ""
-                                  }>User Story</option>
-                             <option value="Technical Task" ${
-                               task.category === "Technical Task"
-                                 ? "selected"
-                                 : ""
-                             }>Technical Task</option>
+                                <option value="User Story" ${task.category === "User Story" ? "selected" : ""}>User Story</option>
+                                <option value="Technical Task" ${ task.category === "Technical Task" ? "selected" : "" }>Technical Task</option>
                              </select>
                          <p id="errorMsg-category" class="input-error">This field is required</p>
                        </div>
@@ -637,9 +507,6 @@ function showEditTaskOverlay(task, index) {
                       </div>  
                     </div>
                      </div>
-                     </div>
-                     
-                 
              </div>
              </div> 
          
