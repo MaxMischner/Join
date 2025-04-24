@@ -410,7 +410,7 @@ function validateTaskBeforeSave() {
 
   function restrictDueDateToToday() {
     const dateInput = document.getElementById("date-task");
-    if (!dateInput) return; // <-- 🔒 Schutz vor null
+    if (!dateInput) return; 
   
     const today = new Date();
     const yyyy = today.getFullYear();
@@ -449,5 +449,39 @@ function validateTaskBeforeSave() {
     });
   }
   
+  function isUserAuthenticated() {
+    const user = localStorage.getItem("activeUser");
+    const guestUser = localStorage.getItem("guestUser");
+  
+    if (!user && !guestUser) {
+      window.location.href = "log_in.html";
+      return false;
+    }
+    return true;
+  }
+  
+  function renderActiveUserInitials() {
+    const user = JSON.parse(localStorage.getItem("activeUser"));
+    if (user) renderInitials(user);
+  }
+  
+  function setDefaultMediumPriority() {
+    const mediumBtn = document.querySelector(".priorty_button.medium");
+    if (mediumBtn) {
+      selectPriority(mediumBtn);
+    }
+  }
+  
+  function setupSubtaskEnterShortcut() {
+    const todoInput = document.getElementById("todoInput");
+    if (todoInput) {
+      todoInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && todoInput.value.trim() !== "") {
+          e.preventDefault();
+          addTodo();
+        }
+      });
+    }
+  }
   
 

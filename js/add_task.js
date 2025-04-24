@@ -19,24 +19,17 @@ let subtasks = "";
  * @var {HTMLElement|null} mediumBtn - The DOM element for the "medium" priority button.
  */
 function addTaskInit() {
-  let user = localStorage.getItem("activeUser");
-    let guestUser = localStorage.getItem("guestUser");
-    if (!user && !guestUser) {
-        window.location.href = "log_in.html";
-        return ;
-    } 
+  if (!isUserAuthenticated()) return;
+
   getAllContacts();
   setupPriorityButtons();
   restrictDueDateToToday();
   setupLiveValidation();
-  let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
-    renderInitials(activeUser);
-    const mediumBtn = document.querySelector(".priorty_button.medium");
-  if (mediumBtn) {
-    selectPriority(mediumBtn);
-  }
-  
+  renderActiveUserInitials();
+  setDefaultMediumPriority();
+  setupSubtaskEnterShortcut();
 }
+
 
 /**
  * Sets up click event listeners for all priority buttons.

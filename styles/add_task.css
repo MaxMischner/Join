@@ -601,7 +601,7 @@ select:focus {
   }
 
   .priority-button-group {
-    flex-wrap: wrap;
+    
     align-items: center;
     gap: 5px;
   }
@@ -790,8 +790,31 @@ select:focus {
 
 @media (max-width: 400px) {
   .priorty_button {
-    max-width: 98px;
+    max-width: 95px;
     font-size: 16px;
     height: 45px;
+  }
+}
+
+@media (max-width: 320px){
+  .main_Box{
+    padding: 0px;
+    margin-right: 0;
+    
+  }
+  .fixed-buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .button-row{
+    margin: 5px;
+    
+  }
+  .create-btn{
+    margin-right: 0;
   }
 }
