@@ -339,7 +339,9 @@ function getInitials(names) {
  * 
  */
 function startDragging(index) {
-    currentDraggedElement = index;    
+    currentDraggedElement = index;  
+    document.getElementById(`task-card-${index}`).classList.add('tilt-on-drag'); 
+    document.body.classList.add('drag-active'); 
 }
 
 /**
@@ -369,6 +371,7 @@ async function moveTo(status) {
     let task = allTasks[currentDraggedElement]; 
     task.status = status; 
     renderTasks();    
+    document.body.classList.remove('drag-active');
     let response = await fetch(`${BASE_URL_TASK}/${task.firebaseID}.json`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },

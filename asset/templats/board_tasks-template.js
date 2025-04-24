@@ -1,6 +1,6 @@
 function showToDoTasks(index, subtasksClass, names) {
   return `
-            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
+            <div id="task-card-${index}" onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
                 <div class="tasks-content-header margin">
                     <div class="tasks-content-${getCategoryClass(index)} ">${allTasks[index].category}</div>
                     <div class="move-to-button-mobile-container">
@@ -78,7 +78,7 @@ function showToDoTasks(index, subtasksClass, names) {
 
 function showInProgressTasks(index, subtasksClass, names) {
   return `
-            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
+            <div id="task-card-${index}" onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondragover="allowDrop(event)" class="tasks-content">
                 <div class="tasks-content-header margin">
                     <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
                     <div class="move-to-button-mobile-container">
@@ -157,7 +157,7 @@ function showInProgressTasks(index, subtasksClass, names) {
 
 function showAwaitFeedbackTasks(index, subtasksClass, names) {
   return `
-            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="tasks-content">
+            <div id="task-card-${index}" onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('await Feedback')" ondragover="allowDrop(event)" class="tasks-content">
                 <div class="tasks-content-header margin">
                     <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
                     <div class="move-to-button-mobile-container">
@@ -221,7 +221,7 @@ function showAwaitFeedbackTasks(index, subtasksClass, names) {
 
 function showDoneTasks(index, subtasksClass, names) {
   return `
-            <div onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('done')" ondragover="allowDrop(event)" class="tasks-content">
+            <div id="task-card-${index}" onclick="renderTaskDetail('${index}')" draggable="true" ondragstart="startDragging(${index})" ondrop="moveTo('done')" ondragover="allowDrop(event)" class="tasks-content">
                 <div class="tasks-content-header margin">
                     <div class="tasks-content-${getCategoryClass(index)}">${allTasks[index].category}</div>
                     <div class="move-to-button-mobile-container">

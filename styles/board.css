@@ -11,6 +11,10 @@ body {
     background-color: rgba(246, 247, 248, 1);
 }
 
+.drag-active .empty-drag-box {
+    display: block !important;
+}
+
 
 .overlay-box{
     position: fixed;
@@ -713,6 +717,11 @@ body {
     height: 18px;
 }
 
+.tilt-on-drag {
+    transform: rotate(3deg);
+    transition: transform 0.2s ease;
+}
+
 .task-detail-delete-text {
     font-size: 16px;
     font-weight: 400;
@@ -795,6 +804,13 @@ body {
     display: none;
 }
 
+.empty-drag-box {
+    width: 98%;
+    height: 200px;
+    border: dashed rgba(168, 168, 168, 1) 1px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 
 @media(max-height: 680) {
     .task-detail-container {
@@ -925,10 +941,9 @@ body {
         padding: 3px;
     }
 
-    /* .overlay-move-to-button-inner-content:hover {
-        background-color: rgba(9, 25, 49, 1);
-        border-radius: 8px;
-    } */
+    .empty-drag-box {
+        width: 72%;
+    }
 }
 
 
