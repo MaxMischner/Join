@@ -282,45 +282,6 @@ function getInitials(name) {
       }
       
 /**
- * Validates the required fields of the task form before saving.
- * Checks that title, due date, and category fields are not empty.
- * Displays or hides error messages accordingly and returns the overall validity.
- *
- * @returns {boolean} True if all required fields are filled, otherwise false.
- *
- * @var {boolean} isValid - Indicates whether the form is valid (default: true).
- * @var {HTMLInputElement} titleField - The input field for the task title.
- * @var {HTMLInputElement} dateField - The input field for the task due date.
- * @var {HTMLSelectElement} categoryField - The dropdown select element for the task category.
- */
-function validateTaskBeforeSave() {
-    let isValid = true;
-    const titleField = document.getElementById("title-task");
-    const dateField = document.getElementById("date-task");
-    const categoryField = document.getElementById("assigned_category");
-  
-    if (!titleField.value.trim()) {
-      showError(titleField, "errorMsg-title");
-      isValid = false;
-    } else {
-      hideError(titleField, "errorMsg-title");
-    }
-    if (!dateField.value.trim()) {
-      showError(dateField, "errorMsg-date");
-      isValid = false;
-    } else {
-      hideError(dateField, "errorMsg-date");
-    }
-    if (!categoryField.value.trim()) {
-      showError(categoryField, "errorMsg-category");
-      isValid = false;
-    } else {
-      hideError(categoryField, "errorMsg-category");
-    }
-    return isValid;
-  }
-  
-/**
  * Highlights a form field with an error state and displays the associated error message.
  * Adds the 'error' class to the input field and makes the error message visible.
  * The error message is selected using the provided element ID.
@@ -345,143 +306,86 @@ function validateTaskBeforeSave() {
     document.getElementById(errorId).style.display = "none";
   }
   
-/**
- * Clears all input fields, selections, and visual states in the task form.
- * Resets text inputs, dropdowns, checkboxes, subtasks, and selected contact chips.
- * Prepares the form for a new task entry by restoring the default UI state.
+  /**
+ * Sets up click event listeners for all priority buttons.
+ * Ensures only one button can be selected at a time by toggling the 'selected' class.
+ * Visually indicates the active priority level.
  *
- * @var {HTMLInputElement} title - The input field for the task title.
- * @var {HTMLInputElement} description - The input field for the task description.
- * @var {HTMLInputElement} duedate - The input field for the task due date.
- * @var {HTMLSelectElement} category - The select dropdown for task categories.
- * @var {NodeListOf<HTMLElement>} priorityButtons - All priority button elements.
- * @var {NodeListOf<HTMLInputElement>} checkboxes - All contact selection checkboxes.
- * @var {NodeListOf<HTMLElement>} selectedItems - Contact items visually marked as selected.
- * @var {HTMLElement} selectedContacts - Container where contact chips are displayed.
- * @var {HTMLElement} todoList - The container holding all subtask items.
- * @var {HTMLInputElement} todoInput - The input field for adding new subtasks.
- * @var {HTMLElement|null} mediumBtn - The "medium" priority button to reselect as default.
+ * @var {NodeListOf<HTMLElement>} priorityButtons - All elements with the class `.priorty_button`.
  */
-  function resetForm() {
-    document.getElementById("title-task").value = "";
-    document.getElementById("description-task").value = "";
-    document.getElementById("date-task").value = "";
-    document.getElementById("assigned_category").selectedIndex = 0;
-    document.querySelectorAll(".priorty_button").forEach((btn) => btn.classList.remove("selected"));
-    document.querySelectorAll("#dropdownMenu input[type='checkbox']").forEach((cb) => (cb.checked = false));
-    document.querySelectorAll(".contact-item.selected").forEach(item => item.classList.remove("selected"));
-    document.getElementById("selectedContacts").innerHTML = "";
-    document.getElementById("todoList").innerHTML = "";
-    document.getElementById("todoInput").value = "";
-    document.querySelectorAll(".error").forEach((el) => {el.classList.remove("error");
+function setupPriorityButtons() {
+  const priorityButtons = document.querySelectorAll(".priorty_button");
+  priorityButtons.forEach((btn) => {btn.addEventListener("click", () => {
+      priorityButtons.forEach((b) => b.classList.remove("selected"));
+      btn.classList.add("selected");
     });
-    document.querySelectorAll(".input-error").forEach((msg) => {msg.style.display = "none";
-    });
-    const mediumBtn = document.querySelector(".priorty_button.medium");
-    if (mediumBtn) {
-      selectPriority(mediumBtn);
-    }
-  }
-
-/**
- * Closes the contact dropdown menu when a click occurs outside of it.
- * Listens for all document-wide clicks and checks whether the click was inside the dropdown or its toggle.
- * If the click was outside, it removes the 'show' and 'back' classes to hide the dropdown.
- *
- * @param {MouseEvent} event - The click event triggered on the document.
- *
- * @var {HTMLElement|null} menu - The dropdown menu element being toggled.
- * @var {HTMLElement|null} toggle - The element that toggles the dropdown visibility (e.g. input or button).
- */
-  document.addEventListener("click", function (event) {
-    const menu = document.getElementById("dropdownMenu");
-    const toggle = document.getElementById("toggleDropdown");
-  
-    if (
-      menu &&
-      toggle &&
-      !menu.contains(event.target) &&
-      !toggle.contains(event.target)
-    ) {
-      menu.classList.remove("show");
-      toggle.classList.remove("back"); 
-    }
   });
+}
 
-  function restrictDueDateToToday() {
-    const dateInput = document.getElementById("date-task");
-    if (!dateInput) return; 
-  
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, "0");
-    const dd = String(today.getDate()).padStart(2, "0");
-    const minDate = `${yyyy}-${mm}-${dd}`;
-    dateInput.setAttribute("min", minDate);
-  
-    dateInput.addEventListener("input", () => {
-      const selectedDate = new Date(dateInput.value);
-      const todayMidnight = new Date();
-      todayMidnight.setHours(0, 0, 0, 0);
-  
-      if (selectedDate < todayMidnight) {
-        dateInput.setCustomValidity("Please select today or a future date.");
-        dateInput.reportValidity();
-      } else {
-        dateInput.setCustomValidity("");
-      }
-    });
-  }
-  
-  
-  function setupLiveValidation() {
-    const fields = [
-      { id: "title-task", errorId: "errorMsg-title" },
-      { id: "date-task", errorId: "errorMsg-date" },
-      { id: "assigned_category", errorId: "errorMsg-category" },
-    ];
-  
-    fields.forEach(({ id, errorId }) => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.addEventListener("input", () => hideError(el, errorId));
-      }
-    });
-  }
-  
-  function isUserAuthenticated() {
-    const user = localStorage.getItem("activeUser");
-    const guestUser = localStorage.getItem("guestUser");
-  
-    if (!user && !guestUser) {
-      window.location.href = "log_in.html";
-      return false;
-    }
-    return true;
-  }
-  
-  function renderActiveUserInitials() {
-    const user = JSON.parse(localStorage.getItem("activeUser"));
-    if (user) renderInitials(user);
-  }
-  
-  function setDefaultMediumPriority() {
-    const mediumBtn = document.querySelector(".priorty_button.medium");
-    if (mediumBtn) {
-      selectPriority(mediumBtn);
-    }
-  }
-  
-  function setupSubtaskEnterShortcut() {
-    const todoInput = document.getElementById("todoInput");
-    if (todoInput) {
-      todoInput.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" && todoInput.value.trim() !== "") {
-          e.preventDefault();
-          addTodo();
-        }
-      });
-    }
-  }
+/**
+ * Activates a selected priority button and updates its icon to the active state.
+ * Resets all other priority buttons to their default style and icon using an icon map.
+ * Updates the global `priority` variable based on the selected button's data attribute.
+ *
+ * @param {HTMLElement} button - The clicked priority button element.
+ *
+ * @var {NodeListOf<HTMLElement>} buttons - All elements with the class `.priorty_button`.
+ * @var {Object} iconMap - Mapping of priority levels to their default and active icon sources.
+ * @var {string} selectedLevel - The priority level class of the selected button (e.g., "urgent").
+ * @var {HTMLImageElement} activeImg - The image element inside the selected button to update the icon.
+ * @global {string} priority - Holds the currently selected priority level.
+ */
+
+
+function selectPriority(button) {
+  const buttons = document.querySelectorAll(".priorty_button");
+  const iconMap = {
+    urgent: {
+      default: "asset/img/icons/icon_urgent.png",
+      active: "asset/img/icons/prio_alta.png",
+    },
+    medium: {
+      default: "asset/img/icons/icon_medium.png",
+      active: "asset/img/icons/prio_media.png",
+    },
+    low: {
+      default: "asset/img/icons/icon_low.png",
+      active: "asset/img/icons/prio_baja.png",
+    },
+  };
+
+  buttenReset(buttons, iconMap);
+  button.classList.add("selected");
+  const selectedLevel = getPriorityLevel(button);
+  const activeImg = button.querySelector("img");
+  if (selectedLevel) activeImg.src = iconMap[selectedLevel].active;
+  priority = button.dataset.value;
+}
+
+/**
+ * Gathers task data from the form and sends it to the backend for saving.
+ * Uses putTask to store the task in the database, then resets the form.
+ * Redirects the user to the board view after saving is complete.
+ *
+ * @var {Object} data - The compiled task object containing all relevant task fields.
+ * @var {string} data.title - The task title.
+ * @var {string} data.description - The task description.
+ * @var {string} data.assigned - A comma-separated list of assigned contact names.
+ * @var {string} data.category - The selected task category.
+ * @var {string} data.duedate - The due date of the task (YYYY-MM-DD).
+ * @var {string} data.priority - The selected priority level.
+ * @var {string} data.status - The task status (e.g. "todo", "in-progress", etc.).
+ * @var {Array<{name: string, completed: boolean}>} data.subtasks - Array of subtask objects.
+ */
+async function saveTask() {
+  collectTaskData();
+  let data = {
+    title,description,assigned,category,duedate,priority,status,subtasks,
+  };
+  await putTask(data);
+  resetForm();
+  window.location.href = "board.html"; 
+}
+
   
 

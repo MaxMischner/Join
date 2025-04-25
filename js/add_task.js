@@ -1,4 +1,3 @@
-
 let title = "";
 let description = "";
 let assigned = "";
@@ -28,63 +27,6 @@ function addTaskInit() {
   renderActiveUserInitials();
   setDefaultMediumPriority();
   setupSubtaskEnterShortcut();
-}
-
-
-/**
- * Sets up click event listeners for all priority buttons.
- * Ensures only one button can be selected at a time by toggling the 'selected' class.
- * Visually indicates the active priority level.
- *
- * @var {NodeListOf<HTMLElement>} priorityButtons - All elements with the class `.priorty_button`.
- */
-function setupPriorityButtons() {
-  const priorityButtons = document.querySelectorAll(".priorty_button");
-  priorityButtons.forEach((btn) => {btn.addEventListener("click", () => {
-      priorityButtons.forEach((b) => b.classList.remove("selected"));
-      btn.classList.add("selected");
-    });
-  });
-}
-
-/**
- * Activates a selected priority button and updates its icon to the active state.
- * Resets all other priority buttons to their default style and icon using an icon map.
- * Updates the global `priority` variable based on the selected button's data attribute.
- *
- * @param {HTMLElement} button - The clicked priority button element.
- *
- * @var {NodeListOf<HTMLElement>} buttons - All elements with the class `.priorty_button`.
- * @var {Object} iconMap - Mapping of priority levels to their default and active icon sources.
- * @var {string} selectedLevel - The priority level class of the selected button (e.g., "urgent").
- * @var {HTMLImageElement} activeImg - The image element inside the selected button to update the icon.
- * @global {string} priority - Holds the currently selected priority level.
- */
-
-
-function selectPriority(button) {
-  const buttons = document.querySelectorAll(".priorty_button");
-  const iconMap = {
-    urgent: {
-      default: "asset/img/icons/icon_urgent.png",
-      active: "asset/img/icons/prio_alta.png",
-    },
-    medium: {
-      default: "asset/img/icons/icon_medium.png",
-      active: "asset/img/icons/prio_media.png",
-    },
-    low: {
-      default: "asset/img/icons/icon_low.png",
-      active: "asset/img/icons/prio_baja.png",
-    },
-  };
-
-  buttenReset(buttons, iconMap);
-  button.classList.add("selected");
-  const selectedLevel = getPriorityLevel(button);
-  const activeImg = button.querySelector("img");
-  if (selectedLevel) activeImg.src = iconMap[selectedLevel].active;
-  priority = button.dataset.value;
 }
 
 /**
@@ -142,7 +84,6 @@ function toggleDropdown() {
     toggle.classList.toggle("back");
   }
 }
-
 
 /**
  * Adds a new subtask item to the task's subtask list based on user input.
@@ -227,10 +168,8 @@ function editSubtask(item, oldValue) {
   const input = createSubtaskInput(oldValue);
   const delBtn = createDeleteButton(item);
   const saveBtn = createSaveButton(item, input);
-
   const divider = createDivider();
   wrapper.append(input, delBtn, divider, saveBtn);
-
   replaceSubtaskContent(item, wrapper);
   input.focus();
 }
@@ -373,25 +312,6 @@ function clearSubtaskInput() {
 }
 
 /**
- * Adds an event listener to trigger subtask creation when Enter is pressed.
- * Waits for the DOM to fully load before attaching the listener to the input field.
- * Ensures the input exists to prevent errors on pages where it may be missing.
- *
- * @var {HTMLInputElement|null} todoInput - The input field for subtasks, if present in the DOM.
- * @var {KeyboardEvent} e - The keydown event object used to detect the Enter key.
- */
-window.addEventListener("DOMContentLoaded", () => {
-  const todoInput = document.getElementById("todoInput");
-  if (todoInput) {
-    todoInput.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        addTodo();
-      }
-    });
-  }
-});
-
-/**
  * Collects all task-related data from the form fields and stores it in global variables.
  * Retrieves title, description, due date, selected priority, category, and subtasks.
  * Converts subtask elements into structured objects with name and completion status.
@@ -421,31 +341,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
   
-/**
- * Gathers task data from the form and sends it to the backend for saving.
- * Uses putTask to store the task in the database, then resets the form.
- * Redirects the user to the board view after saving is complete.
- *
- * @var {Object} data - The compiled task object containing all relevant task fields.
- * @var {string} data.title - The task title.
- * @var {string} data.description - The task description.
- * @var {string} data.assigned - A comma-separated list of assigned contact names.
- * @var {string} data.category - The selected task category.
- * @var {string} data.duedate - The due date of the task (YYYY-MM-DD).
- * @var {string} data.priority - The selected priority level.
- * @var {string} data.status - The task status (e.g. "todo", "in-progress", etc.).
- * @var {Array<{name: string, completed: boolean}>} data.subtasks - Array of subtask objects.
- */
-async function saveTask() {
-  collectTaskData();
-  let data = {
-    title,description,assigned,category,duedate,priority,status,subtasks,
-  };
-  await putTask(data);
-  resetForm();
-  window.location.href = "board.html"; 
-}
-
 /**
  * Fetches all tasks from the backend and formats them for use.
  * Removes any null values from the subtasks array if present.
