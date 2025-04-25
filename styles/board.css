@@ -843,7 +843,7 @@ body {
         overflow-x: hidden;
         scrollbar-width: thin;
         scrollbar-color: #c1c1c1 transparent;
-        max-width: 75%;
+        max-width: 90%;
         padding-left: 2px;
     }
 
@@ -965,6 +965,14 @@ body {
         margin-left: 0;
     }
 
+    .board-splits-content {
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        justify-content: baseline;
+        max-width: 88%;
+    }
+
     .board-splits-category {
         display: flex;
         flex-direction: row;
@@ -973,6 +981,15 @@ body {
         max-width: 90%;
     }
     
+    .tasks-content {
+        margin-right: 10px;
+        max-width: 205px;
+        border-radius: 20px;
+    }
+
+    .move-to-button-mobile {
+        margin-left: 5px;
+    }
 }
 
 @media (max-width: 780px){
@@ -980,8 +997,17 @@ body {
         width: 96%;
     }
 
+    .board-splits {
+        width: 117%;
+    }
+
     .task-detail-container {
         width: 99%;
+    }
+
+    .add-task-container {
+        width: 100%;
+        margin: 10px;
     }
 
     .button-row-overlay {
@@ -1028,7 +1054,19 @@ body {
 
 }
 
+@media (max-width: 660px) {
+    .content-left-board {
+        width: 100%;
+    }
+}
+
 @media (max-width: 580px) {
+
+
+    .headline {
+        margin: 20px;
+    }
+
     .add-task-container {
         width: 100%;
         flex-direction: column;
@@ -1037,6 +1075,10 @@ body {
 
     .add-task-button {
         display:none
+    }
+
+    .board-splits {
+        width: 107%;
     }
 
     .board-splits-container {
@@ -1083,8 +1125,12 @@ body {
 }
 
 @media (max-width: 460px) {
-    .board-splits {
-        width: 90%;
+
+    .content-left-board {
+        margin-left: 10px;
+    }
+    .headline-board {
+        width: 93%;
     }
 
     .board-search-field-container {
