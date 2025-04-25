@@ -17,8 +17,6 @@ function initInitials () {
         window.location.href = "index.html";
         return ;
     } 
-
-
     let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
     renderInitials(activeUser);
 }
