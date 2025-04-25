@@ -968,9 +968,15 @@ body {
     .board-splits-content {
         display: flex;
         flex-direction: row;
-        overflow: auto;
         justify-content: baseline;
         max-width: 88%;
+        overflow-x: auto;     
+        scrollbar-width: none;  
+        -ms-overflow-style: none;
+    }
+      
+    .scroll-container::-webkit-scrollbar {
+        display: none; 
     }
 
     .board-splits-category {

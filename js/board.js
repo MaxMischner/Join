@@ -281,6 +281,7 @@ function getInitials(names) {
  * 
  */
 function startDragging(index) {
+    if (window.innerWidth <= 1330) return;
     currentDraggedElement = index;  
     document.getElementById(`task-card-${index}`).classList.add('tilt-on-drag'); 
     document.body.classList.add('drag-active'); 
@@ -295,6 +296,7 @@ function startDragging(index) {
  * @returns {void} - This function does not return any value.
  */
 function allowDrop(ev) {
+    if (window.innerWidth <= 1330) return;
     ev.preventDefault();
 }
 
