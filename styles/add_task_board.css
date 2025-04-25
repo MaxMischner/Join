@@ -95,7 +95,7 @@
 .content-left-board {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 100px - 96px);
+  height: calc(100vh - 100px);
 }
 
 .splitbar-board {
@@ -213,8 +213,7 @@ select,
     @media (max-width: 780px) {
       .scrollbar-container-taskdetail-board{
         height: 85vh;
-        width: 450px;
-       
+        width: 450px;    
     
     }
     
@@ -222,6 +221,10 @@ select,
 
       height: 85vh;
       width: 463px;
+    }
+
+    .content-left-board {
+      height: calc(100vh - 100px - 96px);
     }
       
 
