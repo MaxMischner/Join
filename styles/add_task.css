@@ -120,6 +120,10 @@ label.required::after {
   box-sizing: border-box;
 }
 
+.input_field:hover{
+  cursor: pointer;
+}
+
 .input_field_description {
   height: 105px;
   margin-bottom: 15px;
@@ -249,6 +253,10 @@ label.required::after {
   margin-top: 8px;
   max-height: 260px;
   overflow-y: auto;
+}
+
+.dropdown-menu:hover{
+  cursor: pointer;
 }
 
 .dropdown-menu.show {
@@ -472,6 +480,10 @@ select:focus {
   position: relative;
 }
 
+.subtask-list-item:hover{
+  cursor: pointer;
+}
+
 .subtask-list-item::before {
   content: "•";
   position: absolute;
@@ -569,10 +581,9 @@ select:focus {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .content-left {
     display: flex;
-
     flex-direction: column;
   }
   .main_Box {
@@ -762,10 +773,7 @@ select:focus {
     font-size: 16px;
     margin-right: 0;
   }
-  .dropdown-menu.show{
-    width: 81%;
-
-  }
+  
 }
 
 @media (max-width: 658px) {
@@ -816,5 +824,31 @@ select:focus {
   }
   .create-btn{
     margin-right: 0;
+  }
+  .left-content-maincontent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 280px;
+  }
+
+  .input_field,
+  .input_field_description,
+  select,
+  .subtask-input-wrapper,
+  .dropdown-container,
+  .button_container,
+  .element-container {
+    width: 260px;
+   
+  }
+  .priority-button-group img {
+    width: 15px;
+    height: auto;
+    gap: 3px;
+  }
+  .priorty_button{
+    max-width: 85px;
   }
 }
