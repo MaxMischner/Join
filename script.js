@@ -5,16 +5,43 @@ const BASE_URL_CONTACT = "https://join-61c56-default-rtdb.europe-west1.firebased
 
 let initialNamesDiv = document.getElementById("initialNames");
 
+/** Show initials on top right corner */
 function initInitials () {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const state = urlParams.get('state');
+
     let user = localStorage.getItem("activeUser");
     let guestUser = localStorage.getItem("guestUser");
-    if (!user && !guestUser) {
-        window.location.href = "log_in.html";
+    if (!user && !guestUser && state != "0") {
+        window.location.href = "index.html";
         return ;
     } 
+
+
     let activeUser = JSON.parse(localStorage.getItem("activeUser"));   
     renderInitials(activeUser);
 }
+
+/**
+ * Renders the initials of the active user into the DOM.
+ * 
+ * If no user is active, a default letter "G" is shown.
+ * If a user is present, the initials are generated from the user's name.
+ * 
+ * @param {Array<Object>} activeUser - An array with one user object that contains a `name` property.
+ * @property {string} activeUser[].name - The full name of the active user (e.g., "John Doe").
+ */
+function renderInitials(activeUser) {
+    if (!activeUser) {
+        document.getElementById('initialNames').innerHTML = "G"; 
+   }else {
+        let originalName = activeUser[0].name;
+        let initials = originalName.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+        document.getElementById('initialNames').innerHTML = initials; 
+    }
+}
+
 
 /* Close Menu Overlay */
 function closeOverlay(event) {

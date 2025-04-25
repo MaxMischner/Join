@@ -18,10 +18,10 @@
                     <a  class="pointer" href="help.html">Help</a>
                 </li>
                 <li>
-                    <a class="pointer" href="legal-notice.html">Legal Notice</a>
+                    <a class="pointer" href="legal-notice.html?state=1">Legal Notice</a>
                 </li>
                 <li>
-                    <a class="pointer" href="privacy-policy.html">Privacy Policy</a>
+                    <a class="pointer" href="privacy-policy.htmlstate=1">Privacy Policy</a>
                 </li>
                 <li>
                     <a class="pointer" href="#" onclick="logout()">Log Out</a>
@@ -52,17 +52,17 @@
                     </a>
                 </li>
                 <li class="pointer">
-                    <a href="Contacts.html">
+                    <a href="contacts.html">
                         <img src="./asset/images/sidebar-imgs/contacts.png" alt="">
                         <span>Contact</span>
                     </a>
                 </li>
             </ul>
-            <ul class="sidebar-bottom">
+            <ul class="sidebar-bottom" id="sidebar-bottom" style="display: none;">
                 <li class="pointer">
                     <a href="privacy-policy.html">Privacy Policy</a>
                 </li>
-                <li class="sidebar-li-selected pointer">
+                <li class="pointer">
                     <a href="legal-notice.html">Legal Notice</a>
                 </li>
             </ul>
@@ -126,6 +126,7 @@
     </div>
 </body>
 <script src="/script.js"></script>
+<script src="js/script-loggedin.js"></script>
 <script src="/js/summary.js"></script>
 <script src="/js/users.js"></script>
 <script src="/js/moment.js"></script>

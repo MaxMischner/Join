@@ -30,9 +30,17 @@
     </div>
 </div>
     <div class="content widescreen ">
-        <div class="sidebar-dummy">
+      <div class="sidebar-dummy">
             <img class="pointer" src="./asset/images/logo-light.svg" alt="" onclick="window.location.reload()">
-            <ul class="sidebar-middle">
+            <ul class="sidebar-middle log-in-ul" id="log-in-ul">
+                <li class="pointer">
+                    <a href="index.html">
+                        <img src="./asset/images/login.png" alt="">
+                        <span>Log in</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="sidebar-middle" id="menu-ul" style="display: none;">
                 <li class="pointer">
                     <a href="summary.html">
                         <img src="./asset/images/sidebar-imgs/summary.png" alt="">
@@ -58,12 +66,13 @@
                     </a>
                 </li>
             </ul>
-            <ul class="sidebar-bottom">
+
+            <ul class="sidebar-bottom" id="sidebar-bottom">
                 <li class="pointer">
-                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="privacy-policy.html?state=0">Privacy Policy</a>
                 </li>
-                <li class="sidebar-li-selected pointer">
-                    <a href="legal-notice.html">Legal Notice</a>
+                <li class="pointer sidebar-li-selected">
+                    <a href="legal-notice.html?state=0">Legal Notice</a>
                 </li>
             </ul>
         </div>
@@ -71,7 +80,7 @@
             <header class="header">
                 <img src="./asset/images/logo.svg" alt="" class="header-logo d-none" width="32" height="39">
                 <span class="header-left">Kanban Project Management Tool</span>
-                <div class="header-right">
+                <div class="header-right"  id="header-right"  style="display: none;">
                     <a href="help.html">
                         <div class="header-right-help"><svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="mask0_70853_4959" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="33">
@@ -193,20 +202,7 @@
         </div>
     </div>
 </body>
-<script>
-  let user = localStorage.getItem("activeUser");
-    let guestUser = localStorage.getItem("guestUser");
-    if (!user && !guestUser) {
-        window.location.href = "log_in.html";
-    } 
 
-    function goBack() {
-      window.history.back();
-    }
-
-</script>
-<script src="/script.js"></script>
-<script src="/js/summary.js"></script>
-<script src="/js/users.js"></script>
-<script src="/js/moment.js"></script>
+<script src="js/private-policy.js"></script>
+<script src="script.js"></script>
 </html>

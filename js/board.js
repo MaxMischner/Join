@@ -4,6 +4,7 @@ let subtaskContent = [];
 let currentDraggedElement;
 let currentButton;
 
+
 async function init() {
     let user = localStorage.getItem("activeUser");
     let guestUser = localStorage.getItem("guestUser");

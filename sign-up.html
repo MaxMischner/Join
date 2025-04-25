@@ -31,18 +31,23 @@
                 <div id="error-msg" class="d-none" style="padding: 10px; color:#ff8190">
                     The passwords are not consistent.
                 </div>
-                <label for="signupCB" class="signup-cb-label">
-                    <input id="signupCB" type="checkbox" onchange="clearErrorMsg()">
-                    I accept the <span class="signup-privacy-policy">Privacy Policy</span>
-                </label>
+                <div style="margin-top: 20px;">
+                    <label for="signupCB" class="signup-cb-label">
+                        <input id="signupCB" type="checkbox" onchange="clearErrorMsg()">
+                        I accept the 
+                    </label>
+                    <span class="signup-privacy-policy pointer" onclick="window.location.href='privacy-policy.html?state=0'"> Privacy Policy</span>
+                </div>
+                
+                
                 <div class="signup-forms-submit-buttons">
                     <button id="signupBtn" type="submit" class="signup-forms-submit-buttons-login">Sign Up</button>
                 </div>
             </form>
         </div>
         <footer class="signup-footer">
-            <a class="pointer" href="privacy-policy-simple.html">Privacy Policy</a>
-            <a class="pointer" href="legal-notice-simple.html">Legal notice</a>
+            <a class="pointer" href="privacy-policy.html?state=0">Privacy Policy</a>
+            <a class="pointer" href="legal-notice.html?state=0">Legal notice</a>
         </footer>   
     </div>    
 </body>

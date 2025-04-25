@@ -1,0 +1,22 @@
+const sidebarBottom = document.getElementById("sidebar-bottom");
+
+
+/** if show sidebar bottom */
+function showSidebarBottom () {
+    console.log(11);
+    
+    if (window.innerWidth <= 780) {
+        sidebarBottom.style.display = "none";
+        
+    } else {
+        sidebarBottom.style.display = "block";
+    }
+}
+showSidebarBottom ();
+
+
+/** resize screen*/
+addEventListener("resize", (event) => {});
+onresize = (event) => {
+    showSidebarBottom ();
+};

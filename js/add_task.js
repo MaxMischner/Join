@@ -7,6 +7,7 @@ let priority = "";
 let status = "To do";
 let subtasks = "";
 
+
 /**
  * Initializes the add task view by verifying user authentication.
  * Redirects to the login page if no active or guest user is found.

@@ -18,7 +18,7 @@ async function initSummary() {
     let user = localStorage.getItem("activeUser");
     let guestUser = localStorage.getItem("guestUser");
     if (!user && !guestUser) {
-        window.location.href = "log_in.html";
+        window.location.href = "index.html";
         return ;
     } 
     await getTasks();

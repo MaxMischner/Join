@@ -413,6 +413,8 @@ function goContactList() {
 /** Mobile : when users resize the page */
 addEventListener("resize", (event) => {});
 onresize = (event) => {
+    showSidebarBottom ();
+    
     if (window.innerWidth <= 1100) {
         isMobile = true;
         if (!isOpenContactDetail)
