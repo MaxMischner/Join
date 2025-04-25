@@ -1013,6 +1013,10 @@ body {
         width: 117%;
     }
 
+    .no-tasks {
+        width: 65%;
+    }
+
     .task-detail-container {
         width: 99%;
     }
@@ -1087,7 +1091,9 @@ body {
     }
 
     .board-splits-category {
-        max-width: 100%;
+        width: 95%;
+        max-width: 95%;
+        margin: 0;
     }
 
     .tasks-content {
@@ -1114,11 +1120,11 @@ body {
     }
 
     .no-tasks {
-        width: 97%;
+        width: 95%;
     }
 
     .board-splits {
-        width: 107%;
+        width: 100%;
     }
 
     .board-splits-container {
