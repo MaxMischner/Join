@@ -107,15 +107,15 @@
                         
                             </div>
                              <div class="element-container">
-                                <label for="date-task" class="required">Due date</label><br>
-                                <input class="input_field" type="date" id="date-task">
+                                <label style="cursor: pointer;" for="date-task" class="required">Due date</label><br>
+                                <input class="input_field pointer" type="date" id="date-task">
                                 <p id="errorMsg-date" class="input-error">This field is required</p>
                             </div>
                         </div>
                         <div class="splitbar"></div>
                     <div class="left-content-maincontent">
                         <div >
-                            <label for="Priority">Priority</label><br>
+                            <label id="Priority">Priority</label><br>
                             <div class="priority-button-group">
                                 <button class="priorty_button urgent" data-value="Urgent" onclick="selectPriority(this)">
                                   Urgent <img src="asset/img/icons/icon_urgent.png" />
@@ -129,7 +129,7 @@
                               </div>
                           </div> 
                        <div class="dropdown-container element-container-assignt" id="toggleDropdown">
-                        <label for="">Assigned to</label>
+                        <label >Assigned to</label>
                         <div class="dropdown-toggle" onclick="toggleDropdown()" >
                           <input type="text" id="contactSearchInput" placeholder="Search..." oninput="filterContacts()">
                           <img src="asset/img/icons/arrow_drop_downaa.png" />
@@ -143,9 +143,9 @@
                       <div class="element-container">
                         <label for="assigned_category" class="required ">Category</label>
                             <select name="assigned_category" id="assigned_category">
-                                <option value="">Select task category</option>
-                                <option value="User Story">User Story</option>
-                                <option value="Technical Task">Technical Task</option>
+                                <option class="pointer-option" value="">Select task category</option>
+                                <option class="pointer-option" value="User Story">User Story</option>
+                                <option class="pointer-option" value="Technical Task">Technical Task</option>
                             </select>
                         <p id="errorMsg-category" class="input-error">This field is required</p>
                       </div>

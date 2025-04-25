@@ -31,11 +31,33 @@
   margin-top: 8px;
 }
 
+#date-task {
+  cursor: pointer;
+  appearance: none; 
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+}
+
+input[type="date"] {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 .splitbar {
   background-color: #d1d1d1;
-  height: 300px;
+  height: 380px;
   width: 1px;
   margin: 10px;
+}
+
+.pointer:hover{
+  cursor: pointer;
+}
+
+.pointer-option:hover{
+cursor: pointer;
 }
 
 .button_container {
@@ -96,7 +118,7 @@ label.required::after {
 
 .left-content-maincontent {
   width: 100%;
-  max-width: 480px;
+  max-width: 430px;
 }
 
 .input_field {
@@ -120,8 +142,8 @@ label.required::after {
   box-sizing: border-box;
 }
 
-.input_field:hover{
-  cursor: pointer;
+select{
+cursor: pointer;
 }
 
 .input_field_description {
