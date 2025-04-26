@@ -247,6 +247,9 @@
 
 @media (max-width: 430px) {
 
+   
+
+
     .content-top {
         height: 180px;
     }
@@ -293,8 +296,9 @@
     }
 
     .signup-container {
+        width: 310px;
         top: 80%;
-        width: 319px;
+   
         justify-content: space-between;
     }
     

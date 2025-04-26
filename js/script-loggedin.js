@@ -3,7 +3,6 @@ const sidebarBottom = document.getElementById("sidebar-bottom");
 
 /** if show sidebar bottom */
 function showSidebarBottom () {
-    console.log(11);
     
     if (window.innerWidth <= 780) {
         sidebarBottom.style.display = "none";
