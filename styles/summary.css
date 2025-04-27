@@ -143,11 +143,11 @@
     color: white;
 }
 
-.white-card:hover #tasksProgress {
+.white-card:hover #tasksInProgress {
     color: white;
 }
 
-.white-card:hover #awaitFeedback {
+.white-card:hover #tasksAwaitFeedback {
     color: white;
 }
 
