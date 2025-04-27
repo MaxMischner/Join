@@ -840,7 +840,7 @@ body {
     }
 
     .board-splits-content {
-        max-height: 600px;
+        max-height: 400px;
         overflow: auto;
         overflow-x: hidden;
         scrollbar-width: thin;
@@ -848,6 +848,7 @@ body {
         max-width: 90%;
         padding-left: 2px;
     }
+    
 
     .board-splits-category{
         margin-right: 4%;
