@@ -144,7 +144,7 @@ body {
 
 .login-wrapper {
     width: 100%;
-    height: calc(100vh - 260px - 40px);
+    height: calc(100vh - 260px - 80px);
 
     display: flex;
     align-items: center;
@@ -508,7 +508,14 @@ body {
     
 }
 
+@media (max-height:1000px) {
+    .login-wrapper {
+        height: auto;
+    }
+}
+
 @media (max-height:900px) and (min-width:430px) {
+    
     
     .login-footer {
         position: static;
@@ -527,7 +534,6 @@ body {
     }
     .login-footer {
         position: static;
-        margin-top: 30px;
     }
 
     .sign-up-container-bottom {
