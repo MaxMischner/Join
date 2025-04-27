@@ -224,7 +224,7 @@ select,
     }
 
     .content-left-board {
-      height: calc(100vh - 100px - 96px);
+      height: calc(100vh - 80px - 96px);
     }
       
 

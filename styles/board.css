@@ -1104,7 +1104,7 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: baseline;
-        max-width: 88%;
+        max-width: 92%;
         overflow-x: auto;     
         scrollbar-width: none;  
     }

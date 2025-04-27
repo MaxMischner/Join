@@ -253,11 +253,12 @@
 /* Mobile Style*/
 @media (max-width: 780px) {
     .main-container {
-        height: calc(100vh - 100px);
+        height: calc(100vh - 80px);
     }
 
     .content-left {
         height: calc(100vh - 80px - 96px);
+        background-color: var(--main-container-bg);
     }
 
     .header-logo {
