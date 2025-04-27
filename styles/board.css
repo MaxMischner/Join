@@ -1104,8 +1104,8 @@ body {
     }
 
     .board-splits-category {
-        width: 95%;
-        max-width: 95%;
+        width: 100%;
+        max-width: 100%;
         margin: 0;
     }
 
@@ -1201,6 +1201,11 @@ body {
         padding: 5px;
     }
 
+    .board-splits-category {
+        width: 95%;
+        max-width: 95%;
+        margin: 0;
+    }
 
     .headline {
         margin: 5px;
