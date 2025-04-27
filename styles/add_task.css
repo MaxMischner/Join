@@ -31,18 +31,12 @@
   margin-top: 8px;
 }
 
-#date-task {
-  cursor: pointer;
-  appearance: none; 
-  -webkit-appearance: none; 
-  -moz-appearance: none; 
+input[type="date"]:disabled {
+  cursor: default;
 }
 
-input[type="date"] {
+input[type="date"]:not(:disabled) {
   cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
 .splitbar {
@@ -581,6 +575,9 @@ select:focus {
 }
 
 @media (max-width: 1200px) {
+  .headline{
+    margin-left: 10px;
+  }
   .main_Box {
     padding: 5px;
     margin-right: 5px;
@@ -604,6 +601,11 @@ select:focus {
 }
 
 @media (max-width: 1000px) {
+  .headline{
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
   .content-left {
     display: flex;
     flex-direction: column;
@@ -657,6 +659,7 @@ select:focus {
 }
 
 @media (max-width: 780px) {
+  
   .main_Box {
     padding: 16px;
     margin-bottom: 75px;
