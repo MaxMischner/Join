@@ -114,7 +114,7 @@ function renderMobileGreetingGuest() {
     let today = new Date();
     let hour = today.getHours()
     if((hour >=0) && (hour <=9))
-        document.getElementById('gremobileGreetingGuestGreeteting').innerHTML = 'Good Morning!'
+        document.getElementById('mobileGreetingGuestGreet').innerHTML = 'Good Morning!'
     if((hour >=10) && (hour <=18))
         document.getElementById('mobileGreetingGuestGreet').innerHTML = 'Good Day!'
     if((hour >=19) && (hour <=23))
