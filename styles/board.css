@@ -948,10 +948,22 @@ body {
     }
 
     .headline-board {
-        margin: 0px 0 0 28px;
+        margin: 0px 0 0 28px !important;
     }
 }
 
+@media (max-width: 1200px) {
+    .headline-board {
+        justify-content: space-between !important;
+        align-items: baseline !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .headline-board {
+        margin: 0px 0 0 28px;
+    }
+}
 
 @media (max-width: 900px) {
     .headline-board{
@@ -1177,6 +1189,7 @@ body {
     }
     .headline-board {
         width: 93%;
+        margin: 0 0 0 5px !important;
     }
 
     .board-search-field-container {
