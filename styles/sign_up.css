@@ -7,7 +7,7 @@
 .content {
     overflow: hidden;
     min-width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -318,5 +318,22 @@
     
     .signup-headerline-with-arrow img {
         left: 15px;
+    }
+}
+
+@media (max-height:900px) and (min-width:430px) {
+    
+    .signup-footer {
+        position: static;
+        margin-top: 30px;
+    }
+
+  
+}
+
+@media (max-height:700px) and (max-width:430px) {
+    .signup-footer {
+        position: static;
+        margin-top: 30px;
     }
 }

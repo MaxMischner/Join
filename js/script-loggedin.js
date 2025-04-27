@@ -14,7 +14,7 @@ function showSidebarBottom () {
 showSidebarBottom ();
 
 
-/** resize screen*/
+/** resize screen */
 addEventListener("resize", (event) => {});
 onresize = (event) => {
     showSidebarBottom ();

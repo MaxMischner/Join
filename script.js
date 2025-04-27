@@ -41,7 +41,9 @@ function renderInitials(activeUser) {
 }
 
 
-/* Close Menu Overlay */
+/* Close Menu Overlay 
+ * @param {*} event tiggered event
+*/
 function closeOverlay(event) {
     
     initialNamesDiv.style.background = "white";

@@ -17,7 +17,6 @@
      </div>
     </div>
      <div class="content">
-         <div class="content-top">
          <div class="content-top" >
              <img class="logo" src="/asset/images/logo.svg" alt="">
              <div class="sign-up-container">
@@ -27,26 +26,35 @@
                  </div>
              </div>
          </div>
-         <div class="log-in-container">
-             <div class="log-in-headline-container">
-                 <span class="log-in-headline">Log in</span>
-             </div>
-             <div>
-             <form id="loginForm" onsubmit="login();return false" class="login-forms" action="">
-                <input id="loginEmail" class="log-in-input-field-mail" type="text" placeholder="Email" name="uname" oninput="clearErrorMsg ()"/>
-                 <input id="loginPassword" class="log-in-input-field-password" type="password" placeholder="Password" name="uname"  oninput="clearErrorMsg ()">
-                 <div id="error-msg" class="d-none" style=" color:#ff8190">
-                    The passwords are not consistent.
+         <div class="login-wrapper">
+            <div class="log-in-container">
+                <div class="log-in-headline-container">
+                    <span class="log-in-headline">Log in</span>
                 </div>
-                 <div id="submitButtonsLogin" class="login-forms-submit-buttons">
-                     <button type="submit" class="login-forms-submit-buttons-login">Log in</button>
-                     <div  onclick="guestLogin()" class="login-forms-submit-buttons-guest">Guest Log in</div>
-                 </div>
-             </form>
-             </div>
+                <div>
+                <form id="loginForm" onsubmit="login();return false" class="login-forms" action="">
+                   <input id="loginEmail" class="log-in-input-field-mail" type="text" placeholder="Email" name="uname" oninput="clearErrorMsg ()"/>
+                    <input id="loginPassword" class="log-in-input-field-password" type="password" placeholder="Password" name="uname"  oninput="clearErrorMsg ()">
+                    <div id="error-msg" class="d-none" style=" color:#ff8190">
+                       The passwords are not consistent.
+                   </div>
+                    <div id="submitButtonsLogin" class="login-forms-submit-buttons">
+                        <button type="submit" class="login-forms-submit-buttons-login">Log in</button>
+                        <div  onclick="guestLogin()" class="login-forms-submit-buttons-guest">Guest Log in</div>
+                    </div>
+                </form>
+                </div>
+            </div>
          </div>
+        
 
-     </div>    
+     </div>
+     <div class="sign-up-container-bottom">
+        <span class="sign-up-container-text">Not a Join user?</span>
+        <div class="sign-up-container-field" onclick="window.location.href='sign-up.html'">
+            <span class="sign-up-container-field-text">Sign up</span>
+        </div>
+    </div>   
      <footer class="login-footer">
         <a class="pointer" href="privacy-policy.html?state=0">Privacy Policy</a>
         <a class="pointer" href="legal-notice.html?state=0">Legal notice</a>

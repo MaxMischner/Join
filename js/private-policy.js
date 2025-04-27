@@ -7,7 +7,7 @@ const headerRight = document.getElementById("header-right");
 let user = localStorage.getItem("activeUser");
 let guestUser = localStorage.getItem("guestUser");
 
-
+/** Check if user already logged in */
 if (!user && !guestUser) {
     menuUL.style.display = "none";
     loginUL.style.display = "block";
